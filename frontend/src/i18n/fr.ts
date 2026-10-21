@@ -1791,4 +1791,5 @@ export const fr: Record<string, string> = {
   "diag.save": "Noter dans le journal comme problème",
   "diag.saved": "Noté dans le journal",
   "diag.disclaimer": "Une estimation de l'IA à partir d'une seule photo : vérifiez la plante vous-même avant d'agir.",
+  "climate.table": "Tableau climatique, défile latéralement",
 };

@@ -91,7 +91,7 @@ export class CalendarView extends LitElement {
       .dow { background: var(--hl-surface-2); padding: 6px; font-size: var(--hl-fs-xs); font-weight: 600; color: var(--hl-text-muted); text-transform: uppercase; text-align: center; }
       .cell { background: var(--hl-surface); min-height: 108px; padding: 4px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
       .cell.other { background: var(--hl-surface-2); }
-      .cell.other .num { opacity: 0.5; }
+      .cell.other .num { font-weight: 400; }
       .cell.today { box-shadow: inset 0 0 0 2px var(--hl-primary); }
       .num { font-size: var(--hl-fs-xs); font-weight: 600; color: var(--hl-text-muted); padding: 2px 4px; }
       .ev { display: flex; align-items: center; gap: 4px; border: 0; border-left: 3px solid; background: var(--hl-surface-2); border-radius: 4px;
@@ -188,11 +188,11 @@ export class CalendarView extends LitElement {
     const days = Array.from({ length: 42 }, (_, i) => addDays(start, i));
     const map = this.byDay();
     const dows = Array.from({ length: 7 }, (_, i) => formatDate(addDays(start, i), this.lang, { weekday: "short" }));
-    return html`<div class="month" role="grid">
-      ${dows.map((d) => html`<div class="dow" role="columnheader">${d}</div>`)}
+    return html`<div class="month" role="list" aria-label=${formatDate(toIso(first), this.lang, { month: "long", year: "numeric" })}>
+      ${dows.map((d) => html`<div class="dow" aria-hidden="true">${d}</div>`)}
       ${days.map((day) => {
         const list = map.get(day) ?? [];
-        return html`<div class="cell ${parseDate(day).getMonth() !== month ? "other" : ""} ${day === this.today ? "today" : ""}" role="gridcell" aria-label=${formatDate(day, this.lang, { day: "numeric", month: "long" })}>
+        return html`<div class="cell ${parseDate(day).getMonth() !== month ? "other" : ""} ${day === this.today ? "today" : ""}" role="listitem" aria-label=${formatDate(day, this.lang, { day: "numeric", month: "long" })}>
           <span class="num">${parseDate(day).getDate()}</span>
           ${list.slice(0, 4).map((task) => this.renderEvent(task))}
           ${list.length > 4 ? html`<button class="more" @click=${() => { this.cursor = day; this.mode = "week"; }}>+${list.length - 4}</button>` : nothing}

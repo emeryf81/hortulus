@@ -186,7 +186,7 @@ export class JournalView extends LitElement {
     const sections: [Section, string][] = [["diary", "mdi:notebook-outline"], ["harvest", "mdi:basket-outline"], ["kitchen", "mdi:silverware-fork-knife"], ["seeds", "mdi:seed-outline"], ["water", "mdi:water-outline"], ["report", "mdi:file-chart-outline"], ["system", "mdi:history"]];
     return html`
       <div class="tabs" role="tablist">
-        ${sections.map(([id, icon]) => html`<button class="chip" role="tab" aria-selected=${String(this.section === id)} aria-pressed=${String(this.section === id)}
+        ${sections.map(([id, icon]) => html`<button class="chip" role="tab" aria-selected=${String(this.section === id)}
           @click=${() => this.openSection(id)}><ha-icon icon=${icon}></ha-icon>${this.t(`journal.${id}`)}</button>`)}
       </div>
       ${this.section === "diary" ? this.renderDiary() : this.section === "harvest" ? this.renderHarvest() : this.section === "seeds" ? this.renderSeeds()

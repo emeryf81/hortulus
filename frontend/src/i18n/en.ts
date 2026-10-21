@@ -1791,4 +1791,5 @@ export const en: Record<string, string> = {
   "diag.save": "Note it in the diary as a problem",
   "diag.saved": "Noted in the diary",
   "diag.disclaimer": "An AI guess from one photo: check the plant yourself before you act.",
+  "climate.table": "Climate table, scrolls sideways",
 };

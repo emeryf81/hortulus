@@ -52,7 +52,7 @@ export class ClimateHistory extends LitElement {
       .tile .v { font-family: var(--hl-font-serif); font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
       .tile .l { font-size: var(--hl-fs-xs); color: var(--hl-text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
       .tile .d { font-size: var(--hl-fs-xs); font-variant-numeric: tabular-nums; }
-      .up { color: var(--hl-danger, #b5482b); } .down { color: var(--hl-water-500, #3f7fb8); }
+      .up { color: var(--hl-danger-ink, #9a2e1c); } .down { color: var(--hl-water-ink, #2a5f86); }
       table { width: 100%; border-collapse: collapse; font-size: var(--hl-fs-sm); font-variant-numeric: tabular-nums; }
       th, td { text-align: right; padding: 5px 6px; border-top: 1px solid color-mix(in srgb, var(--hl-border) 60%, transparent); white-space: nowrap; }
       th:first-child, td:first-child { text-align: left; }
@@ -188,7 +188,7 @@ export class ClimateHistory extends LitElement {
 
   private renderSensors(s: ClimateStats): TemplateResult {
     if (!s.sensors.length) return html`<p class="small muted">${this.t("climate.no_sensors")}</p>`;
-    return html`<div class="scroll"><table>
+    return html`<div class="scroll" tabindex="0" role="region" aria-label=${this.t("climate.table")}><table>
       <thead><tr><th>${this.t("climate.sensor")}</th><th>${this.t("climate.now")}</th><th>${this.t("climate.today")}</th>
         <th>${this.t("climate.mean_7")}</th><th>${this.t("climate.range_30")}</th><th>${this.t("climate.record_low")}</th>
         <th>${this.t("climate.record_high")}</th><th>${this.t("climate.days")}</th><th></th></tr></thead>
@@ -210,7 +210,7 @@ export class ClimateHistory extends LitElement {
     if (!s.months.length) return html`<p class="small muted">${this.t("climate.too_few")}</p>`;
     const byMonth = new Map(s.months.map((m) => [m.month, m]));
     const ago = (m: string) => `${Number(m.slice(0, 4)) - 1}${m.slice(4)}`;
-    return html`<div class="scroll"><table>
+    return html`<div class="scroll" tabindex="0" role="region" aria-label=${this.t("climate.table")}><table>
       <thead><tr><th>${this.t("climate.month")}</th><th>${this.t("climate.mean")}</th><th>${this.t("climate.lowest")}</th><th>${this.t("climate.highest")}</th>
         <th>${this.t("climate.rain")}</th><th>${this.t("climate.frost_nights")}</th><th>${this.t("climate.hot_days")}</th><th>${this.t("climate.sun")}</th><th>${this.t("climate.gust")}</th></tr></thead>
       <tbody>${s.months.slice(0, 13).map((m) => {
@@ -317,7 +317,7 @@ export class ClimateHistory extends LitElement {
       <section class="card s12 chart">
         <header class="bar"><h2>${this.t("climate.title")}</h2>
           <div class="chips" role="tablist">${([30, 90, 365] as Range[]).map((r) => html`<button class="chip" role="tab" aria-selected=${String(this.range === r)}
-            aria-pressed=${String(this.range === r)} @click=${() => (this.range = r)}>${this.t(`climate.range.${r}`)}</button>`)}</div></header>
+            @click=${() => (this.range = r)}>${this.t(`climate.range.${r}`)}</button>`)}</div></header>
         ${this.renderChart(rows)}
         <p class="note">${this.t("climate.legend")}</p>
       </section>

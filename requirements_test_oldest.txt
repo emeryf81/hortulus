@@ -1,0 +1,6 @@
+# The oldest Home Assistant Hortulus supports (hacs.json "homeassistant": 2025.10.0), checked in CI
+# next to the pinned current release in requirements_test.txt.
+pytest-homeassistant-custom-component==0.13.286
+home-assistant-frontend==20251001.0
+# aiodns of that release does not work with pycares 5
+pycares<5

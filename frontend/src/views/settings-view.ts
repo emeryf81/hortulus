@@ -517,7 +517,7 @@ export class SettingsView extends LitElement {
         const price = Number(String(f.get("price") ?? "").replace(",", "."));
         if (f.get("plant") && price > 0) set({ prices: { [String(f.get("plant"))]: price } });
       }}>
-        <select name="plant">${planted.map((id) => html`<option value=${id}>${plantName(byId.get(id), this.lang) || id}</option>`)}</select>
+        <select name="plant" aria-label=${this.t("lib.plant")}>${planted.map((id) => html`<option value=${id}>${plantName(byId.get(id), this.lang) || id}</option>`)}</select>
         <input name="price" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder=${`${eco.currency}/kg`} style="max-width:110px" />
         <button class="btn small" type="submit" ?disabled=${!planted.length}>${this.t("common.add")}</button>
       </form>
