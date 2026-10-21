@@ -163,25 +163,22 @@ def test_pdf_handles_non_latin_text():
 # --------------------------------------------------------------------------- #
 # Handbook
 # --------------------------------------------------------------------------- #
-def test_handbook_has_the_same_chapters_in_every_language():
-    en = chapters("en")
+def test_handbook_has_the_same_chapters_in_both_languages():
+    en, nl = chapters("en"), chapters("nl")
     assert len(en) >= 15
-    for lang in ("nl", "fr", "de"):
-        other = chapters(lang)
-        assert [c.id for c in en] == [c.id for c in other], lang
-        for a, b in zip(en, other, strict=True):
-            assert a.title and b.title and a.title != b.title, (lang, a.id)
-            assert len(a.sections) == len(b.sections), (lang, a.id)
+    assert [c.id for c in en] == [c.id for c in nl]
+    for a, b in zip(en, nl, strict=True):
+        assert a.title and b.title and a.title != b.title
+        assert len(a.sections) == len(b.sections)
 
 
 def test_glossary_terms_link_to_existing_chapters():
     ids = {c.id for c in chapters("en")}
-    for lang in ("en", "nl", "fr", "de"):
+    for lang in ("en", "nl"):
         terms = glossary(lang)
         assert len(terms) >= 25
         assert all(t["chapter"] in ids for t in terms.values())
     assert glossary("nl")["rotation"]["term"] == "Vruchtwisseling"
-    assert glossary("de")["rotation"]["term"] == "Fruchtfolge"
 
 
 def test_maintenance_tasks_reference_existing_chapters():
@@ -193,7 +190,7 @@ def test_maintenance_tasks_reference_existing_chapters():
 def test_handbook_search_and_fallback():
     hits = search("serre", "nl")
     assert hits and hits[0]["id"] == "greenhouse"
-    assert chapter("watering", "es").title == chapter("watering", "en").title
+    assert chapter("watering", "de").title == chapter("watering", "en").title
 
 
 def test_every_handbook_file_is_a_chapter():
@@ -202,6 +199,6 @@ def test_every_handbook_file_is_a_chapter():
     from custom_components.garden_manager.engine.handbook import chapters as all_chapters
 
     root = Path(__file__).resolve().parents[2] / "custom_components/garden_manager/data/handbook"
-    for lang in ("en", "nl", "fr", "de"):
+    for lang in ("en", "nl"):
         files = list((root / lang).glob("*.md"))
         assert len(all_chapters(lang)) == len(files) >= 21

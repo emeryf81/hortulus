@@ -1,10 +1,10 @@
 // Day-month-year dates in the panel's language, independent of the browser's locale.
 
-/** ``2026-04-13`` -> ``13-04-2026`` (nl) / ``13.04.2026`` (de) / ``13/04/2026`` (en). */
+/** ``2026-04-13`` -> ``13-04-2026`` (nl) / ``13/04/2026`` (en). */
 export function displayDate(iso: string | null | undefined, lang: string): string {
   if (!iso) return "";
   const [y, m, d] = iso.slice(0, 10).split("-");
-  return y && m && d ? [d, m, y].join(lang === "nl" ? "-" : lang === "de" ? "." : "/") : iso;
+  return y && m && d ? [d, m, y].join(lang === "nl" ? "-" : "/") : iso;
 }
 
 /** Day-month-year (any separator, 2- or 4-digit year) or ISO -> ISO; ``undefined`` when unreadable. */

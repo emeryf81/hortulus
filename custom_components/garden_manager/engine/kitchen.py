@@ -81,10 +81,6 @@ TIPS: dict[str, dict[str, tuple[str, str]]] = {
             "Gardez tomates et courgettes hors du réfrigérateur ; récoltez tous les deux ou trois jours.",
             "Faites du coulis, de la ratatouille ou un chutney, rôtissez et congelez, ou partagez avec les voisins.",
         ),
-        "de": (
-            "Tomaten und Zucchini nicht im Kühlschrank lagern; alle paar Tage ernten.",
-            "Passata, Ratatouille oder Chutney kochen, rösten und einfrieren oder mit den Nachbarn teilen.",
-        ),
     },
     "leafy": {
         "en": (
@@ -98,10 +94,6 @@ TIPS: dict[str, dict[str, tuple[str, str]]] = {
         "fr": (
             "Récoltez à la fraîcheur du matin, rincez et gardez dans un linge humide au réfrigérateur (3-5 jours).",
             "Faites un pesto ou une soupe, blanchissez et congelez épinards et blettes, ou semez moins la prochaine fois.",
-        ),
-        "de": (
-            "Morgens in der Kühle ernten, abspülen und in einem feuchten Tuch im Kühlschrank aufbewahren (3-5 Tage).",
-            "Pesto oder Suppe machen, Spinat und Mangold blanchieren und einfrieren oder beim nächsten Mal weniger säen.",
         ),
     },
     "brassica": {
@@ -117,10 +109,6 @@ TIPS: dict[str, dict[str, tuple[str, str]]] = {
             "Gardez au frais et emballé au réfrigérateur ; beaucoup de choux peuvent aussi rester un moment sur pied.",
             "Blanchissez et congelez les bouquets, faites de la choucroute ou du kimchi, ou laissez le chou frisé rustique en place.",
         ),
-        "de": (
-            "Kühl und verpackt im Kühlschrank lagern; viele Kohlarten können auch noch eine Weile an der Pflanze bleiben.",
-            "Röschen blanchieren und einfrieren, Sauerkraut oder Kimchi machen oder winterharten Grünkohl im Beet lassen.",
-        ),
     },
     "root": {
         "en": (
@@ -134,10 +122,6 @@ TIPS: dict[str, dict[str, tuple[str, str]]] = {
         "fr": (
             "Tordez les fanes, gardez sans laver dans un endroit frais, sombre et légèrement humide.",
             "Conservez-les dans du sable en caisse, laissez-les en terre sous la paille, ou faites une soupe et congelez.",
-        ),
-        "de": (
-            "Das Laub abdrehen und ungewaschen kühl, dunkel und leicht feucht lagern.",
-            "In einer Kiste in Sand einschlagen, unter Stroh im Boden lassen oder Suppe kochen und einfrieren.",
         ),
     },
     "legume": {
@@ -153,10 +137,6 @@ TIPS: dict[str, dict[str, tuple[str, str]]] = {
             "Cueillez jeune et souvent ; consommez en quelques jours ou blanchissez tout de suite.",
             "Blanchissez et congelez, ou laissez sécher les dernières gousses sur pied pour des haricots secs.",
         ),
-        "de": (
-            "Jung und oft pflücken; innerhalb weniger Tage essen oder sofort blanchieren.",
-            "Blanchieren und einfrieren oder die letzten Hülsen an der Pflanze trocknen lassen für Trockenbohnen.",
-        ),
     },
     "allium": {
         "en": (
@@ -170,10 +150,6 @@ TIPS: dict[str, dict[str, tuple[str, str]]] = {
         "fr": (
             "Faites sécher oignons et ail deux semaines au soleil ou dans un abri aéré avant de les stocker.",
             "Tressez-les et suspendez-les, faites une confiture d'oignons, ou congelez du poireau émincé.",
-        ),
-        "de": (
-            "Zwiebeln und Knoblauch vor dem Einlagern zwei Wochen in der Sonne oder in einem luftigen Schuppen trocknen.",
-            "Zu Zöpfen flechten und aufhängen, Zwiebelkonfitüre kochen oder geschnittenen Lauch einfrieren.",
         ),
     },
     "herb": {
@@ -189,10 +165,6 @@ TIPS: dict[str, dict[str, tuple[str, str]]] = {
             "Coupez le matin, gardez les tiges dans l'eau ou dans un linge humide.",
             "Faites sécher en bouquets, congelez en glaçons avec de l'huile, ou préparez du sel aux herbes et du pesto.",
         ),
-        "de": (
-            "Morgens schneiden, die Stiele in Wasser stellen oder in ein feuchtes Tuch wickeln.",
-            "In Sträußen trocknen, mit Öl in Eiswürfeln einfrieren oder Kräutersalz und Pesto herstellen.",
-        ),
     },
     "fruit": {
         "en": (
@@ -207,10 +179,6 @@ TIPS: dict[str, dict[str, tuple[str, str]]] = {
             "Cueillez sec et mûr, gardez au frais sans laver ; les petits fruits dans les deux jours.",
             "Faites de la confiture ou de la compote, congelez à plat sur un plateau, ou séchez des rondelles de pomme.",
         ),
-        "de": (
-            "Trocken und reif pflücken, kühl und ungewaschen lagern; Beerenobst innerhalb von zwei Tagen.",
-            "Marmelade oder Kompott kochen, auf einem Blech einfrieren oder Apfelringe trocknen.",
-        ),
     },
 }
 TIPS["other"] = TIPS["fruiting"]
@@ -218,7 +186,6 @@ TIPS["flower"] = {
     "en": ("Cut in the morning and put straight into water.", "Make bouquets, dry them, or share."),
     "nl": ("Knip 's ochtends en zet meteen in water.", "Maak boeketten, droog ze of deel ze uit."),
     "fr": ("Coupez le matin et mettez tout de suite dans l'eau.", "Faites des bouquets, séchez-les ou offrez-les."),
-    "de": ("Morgens schneiden und sofort ins Wasser stellen.", "Sträuße binden, trocknen oder verschenken."),
 }
 
 

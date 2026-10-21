@@ -22,7 +22,7 @@ def _fields(template: str) -> set[str]:
 def test_normalize_lang_accepts_french():
     assert "fr" in i18n.SUPPORTED
     assert normalize_lang("fr-BE") == "fr" and normalize_lang("fr_FR") == "fr" and normalize_lang("FR") == "fr"
-    assert normalize_lang("es") == "en"
+    assert normalize_lang("de") == "en"
 
 
 def test_every_message_has_french_with_the_same_placeholders():

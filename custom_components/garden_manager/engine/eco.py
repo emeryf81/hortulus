@@ -19,7 +19,7 @@ from __future__ import annotations
 from collections.abc import Sequence
 from dataclasses import dataclass
 
-from .i18n import MESSAGES, normalize_lang, t
+from .i18n import MESSAGES, t
 from .models import GardenData, Plant, PlantCategory, PlantingStatus, ZoneType, present_in
 from .plantdb import PlantDatabase
 
@@ -320,85 +320,10 @@ _FR = {
     "advice.polyculture": "{bed} : une seule famille",
     "advice.polyculture.text": "Tout dans {bed} est de la famille {family}. Mélangez une autre famille, une aromatique ou une fleur - les planches mixtes ont moins de ravageurs et exploitent mieux le sol.",
 }
-_DE = {
-    "bio.prefix": "Biologisch:",
-    "bio.pest.carrot_fly": "dünn säen, damit nicht vereinzelt werden muss, nach dem ersten Flug (Juni) säen und Reihen von Zwiebeln oder Lauch zwischen die Möhren setzen - der Geruch verwirrt die Fliege.",
-    "bio.pest.cabbage_root_fly": "Kohl fest einpflanzen, leicht anhäufeln und den Boden mit Kompost lebendig halten; Laufkäfer und Kurzflügler fressen die Eier.",
-    "bio.pest.cabbage_white": "Kapuzinerkresse als Fangpflanze abseits des Kohls säen und Schlupfwespen arbeiten lassen - gelbe Kokons an den Blättern in Ruhe lassen.",
-    "bio.pest.onion_fly": "Zwiebeln mit Möhren mischen, spät säen und frischen Mist vermeiden; Steckzwiebeln leiden weniger als gesäte Zwiebeln.",
-    "bio.pest.leek_moth": "Lauch zwischen Möhren oder Sellerie pflanzen und Vögel im Garten halten (Nistkästen) - Meisen fressen die Raupen.",
-    "bio.pest.pea_moth": "Erbsen früh oder spät außerhalb der Flugzeit (Juni-Juli) säen und eine wilde Ecke für Schlupfwespen lassen.",
-    "bio.pest.flea_beetle": "den Boden feucht halten (das mögen sie nicht), zwischen den Pflanzen mulchen und junge Kohlpflanzen mit Vlies abdecken.",
-    "bio.pest.aphids": "einen kalten Brennnesselauszug spritzen (1 kg Brennnesseln, 10 l Wasser, 24 h, unverdünnt) und Dill, Ringelblume und Phacelia für Schwebfliegen, Florfliegen und Marienkäfer säen.",
-    "bio.pest.black_bean_aphid": "die Triebspitzen der Bohnen ausbrechen, sobald die ersten Hülsen ansetzen, Ackerbohnen früh säen und den Rest den Marienkäfern überlassen.",
-    "bio.pest.colorado_beetle": "täglich absammeln, Katzenminze, Koriander oder Lein zwischen die Kartoffeln pflanzen und Platz für Laufkäfer lassen.",
-    "bio.pest.asparagus_beetle": "die Käfer morgens absammeln und einige Tomatenpflanzen in die Nähe setzen - ihr Geruch hält sie fern.",
-    "bio.pest.whitefly": "Gelbtafeln aufhängen, Studentenblumen (Tagetes) zwischen die Tomaten pflanzen und im Gewächshaus Encarsia-Schlupfwespen einsetzen.",
-    "bio.pest.red_spider_mite": "die Luft im Gewächshaus feucht halten (Wege befeuchten) und bei den ersten Flecken Raubmilben (Phytoseiulus) freilassen.",
-    "bio.pest.slugs": "Igel, Kröten und Laufkäfer willkommen heißen (ein Holzstapel, ein Teich), morgens statt abends gießen und Schafwolle oder einen Ring aus trockener Kleie um Jungpflanzen legen.",
-    "bio.disease": "Biologisch: vorbeugend Ackerschachtelhalmbrühe spritzen (alle 1-2 Wochen), mulchen, damit keine Erde auf die Blätter spritzt, und im nächsten Jahr resistente Sorten wählen.",
-    "maint.eco_flower_strip": "Einen Blühstreifen für Nützlinge säen",
-    "maint.eco_flower_strip.desc": "Phacelia, Ringelblume, Kornblume, Dill und Buchweizen entlang der Beete ernähren Schwebfliegen, Florfliegen und Schlupfwespen - sie halten Blattläuse und Raupen in Schach.",
-    "maint.eco_horsetail": "Ackerschachtelhalmbrühe ansetzen (gegen Pilze)",
-    "maint.eco_horsetail.desc": "150 g getrockneten (1 kg frischen) Ackerschachtelhalm 30 Minuten in 10 l Regenwasser kochen, über Nacht stehen lassen, 1:5 verdünnen und bei feuchtem Wetter alle 1-2 Wochen auf Tomaten, Kartoffeln und Zucchini spritzen.",
-    "maint.eco_no_dig": "Den Boden füttern statt umgraben (No-Dig)",
-    "maint.eco_no_dig.desc": "3-5 cm Kompost, Laub oder Stroh auf den leeren Beeten verteilen. Die Regenwürmer arbeiten es über den Winter ein; das Bodenleben bleibt intakt und Unkraut hat weniger Chancen.",
-    "maint.eco_wild_corner": "Eine wilde Ecke und Samenstände stehen lassen",
-    "maint.eco_wild_corner.desc": "Ein Holzstapel, Laub unter der Hecke und hohle Stängel, die bis zum Frühjahr stehen bleiben: Dort überwintern Igel, Marienkäfer und Wildbienen.",
-    "maint.eco_insect_hotel": "Das Insektenhotel kontrollieren",
-    "maint.eco_insect_hotel.desc": "Gespaltene oder schimmelige Röhrchen ersetzen und neue Schilfhalme oder angebohrtes Hartholz (Löcher 3-8 mm) einsetzen, bevor die Wildbienen fliegen.",
-    "maint.eco_stems": "Die Stängel des Vorjahres jetzt zurückschneiden",
-    "maint.eco_stems.desc": "Die Insekten, die in den hohlen Stängeln überwintert haben, fliegen wieder: die Stängel zurückschneiden und einige Wochen auf einem Haufen liegen lassen.",
-    "maint.eco_water_dish": "Eine Tränke für Vögel und Bienen aufstellen",
-    "maint.eco_water_dish.desc": "Eine flache Schale mit Steinen zum Landen, alle paar Tage aufgefüllt, hilft Vögeln und Insekten durch Trockenphasen.",
-    "eco.month.1": "Vielfalt planen",
-    "eco.month.1.text": "In jedem Beet Familien mischen, Blumen und Kräuter ergänzen und eine Ecke mit Stauden einplanen - ein vielfältiger Garten hat weniger Schädlinge.",
-    "eco.month.2": "Nistkästen reinigen, den Boden füttern",
-    "eco.month.2.text": "Die Vögel suchen Nistplätze: saubere Nistkästen aufhängen. Kompost auf den Beeten verteilen statt umzugraben.",
-    "eco.month.3": "Platz für Nützlinge schaffen",
-    "eco.month.3.text": "Den Löwenzahn im Rasen stehen lassen: Er ist die erste Nahrung für Hummeln. Das Insektenhotel kontrollieren.",
-    "eco.month.4": "Brennnesseln: kostenloser Dünger",
-    "eco.month.4.text": "Junge Brennnesseln ergeben die beste Jauche (1:10 als Dünger, kalter Auszug unverdünnt gegen Blattläuse). Eine Ecke für die Schmetterlinge stehen lassen.",
-    "eco.month.5": "Mulch und Blumen",
-    "eco.month.5.text": "Den warmen Boden mit Rasenschnitt mulchen und einen Blühstreifen säen - die Schwebfliegen kommen rechtzeitig zu den ersten Blattläusen.",
-    "eco.month.6": "Klug gießen",
-    "eco.month.6.text": "Morgens am Fuß der Pflanzen gießen, Regen von jedem Dach auffangen und den Boden bedeckt halten.",
-    "eco.month.7": "Einfach mal lassen",
-    "eco.month.7.text": "Ein paar Blattläuse ernähren die Larven der Marienkäfer. Eine Woche warten, bevor Sie eingreifen - die Natur regelt es oft selbst.",
-    "eco.month.8": "Gründüngung nach der Ernte",
-    "eco.month.8.text": "Phacelia, Klee oder Winterroggen auf jede freie Stelle säen: kein offener Boden, mehr Bodenleben, Stickstoff für das nächste Jahr.",
-    "eco.month.9": "Eigenes Saatgut gewinnen",
-    "eco.month.9.text": "Die besten Bohnen, Tomaten und Salate in Samen schießen lassen - an Ihren Garten angepasst und kostenlos.",
-    "eco.month.10": "Laub ist Gold",
-    "eco.month.10.text": "Laub auf die Beete oder in einen Drahtkorb für Laubkompost rechen. Niemals verbrennen.",
-    "eco.month.11": "Bäume und Sträucher pflanzen",
-    "eco.month.11.text": "Wurzelnackte Obstbäume, Beerensträucher und heimische Hecken jetzt pflanzen: der Anfang eines Waldgartens oder einer lebenden Hecke.",
-    "eco.month.12": "Ruhen und zurückblicken",
-    "eco.month.12.text": "Samenstände für die Vögel stehen lassen, schauen, was gut funktioniert hat, und mehr Stauden für einen pflegeleichteren Garten planen.",
-    "forest.layer.canopy": "Baumschicht",
-    "forest.layer.sub_canopy": "Niedrige Bäume",
-    "forest.layer.shrub": "Sträucher",
-    "forest.layer.herb": "Kräuter und Stauden",
-    "forest.layer.ground": "Bodendecker",
-    "forest.layer.root": "Wurzeln und Knollen",
-    "forest.layer.climber": "Kletterpflanzen",
-    "advice.food_forest": "Waldgarten {zone}: noch zu füllen: {layers}",
-    "advice.food_forest.text": "Ein Waldgarten ahmt einen jungen Waldrand nach: Jede Schicht hat ihre Pflanzen, und gemeinsam nähren, beschirmen und schützen sie sich gegenseitig. Ideen: {plants}.",
-    "advice.food_forest_try": "{zone} in einen Waldgarten verwandeln",
-    "advice.food_forest_try.text": "Unter und zwischen den Obstbäumen ist Platz für Beeren, Kräuter, Bodendecker und Kletterpflanzen. Den Zonentyp auf Waldgarten ändern: Hortulus zeigt dann die noch fehlenden Schichten.",
-    "advice.eco_month": "Ökologischer Tipp: {title}",
-    "advice.eco_month.text": "{text}",
-    "advice.polyculture": "{bed}: nur eine Familie",
-    "advice.polyculture.text": "Alles in {bed} gehört zu {family}. Eine andere Familie, ein Kraut oder eine Blume dazumischen - gemischte Beete haben weniger Schädlinge und nutzen den Boden besser.",
-}
 MESSAGES["en"].update(_EN)
 MESSAGES["nl"].update(_NL)
 MESSAGES["fr"].update(_FR)
-MESSAGES["de"].update(_DE)
 
 
 def layer_names(layers: Sequence[str], lang: str | None) -> str:
-    # German nouns keep their capital letter.
-    keep_case = normalize_lang(lang) == "de"
-    names = (t(f"forest.layer.{layer}", lang) for layer in layers)
-    return ", ".join(name if keep_case else name.lower() for name in names)
+    return ", ".join(t(f"forest.layer.{layer}", lang).lower() for layer in layers)

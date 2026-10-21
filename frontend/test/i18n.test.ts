@@ -18,6 +18,6 @@ test("translator interpolates and localises alert params", () => {
   const t = makeTranslator("nl-NL");
   assert.equal(normalizeLang("nl-BE"), "nl");
   assert.equal(t("alert.frost", { level: "high", temp: -2, when: "when.tonight" }), "Vorstrisico hoog: -2 °C verwacht vannacht");
-  assert.equal(makeTranslator("es")("nav.planner"), "Planner");
+  assert.equal(makeTranslator("de")("nav.planner"), "Planner");
   assert.equal(t("missing.key"), "missing.key");
 });

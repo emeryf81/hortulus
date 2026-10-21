@@ -155,42 +155,11 @@ LABELS: dict[str, dict[str, str]] = {
         "before": "avant", "after": "après",
         "days_to_harvest": "Jours jusqu'à la récolte", "family": "Famille",
     },
-    "de": {
-        "garden": "Gartenplan", "zone": "Zonenplan", "beds": "Beetblatt", "tasks": "Aufgabenliste",
-        "season": "Saisonübersicht", "blank": "Planungsblatt", "plants": "Pflanzenkarten",
-        "year": "Jahresplan", "sow_indoor": "Drinnen vorziehen", "grow": "Wachstum", "tasks_month": "Aufgaben",
-        "season_n": "Saison {season}", "printed": "Gedruckt am {date}", "page": "Seite {n}/{total}",
-        "legend": "Legende", "notes": "Notizen", "north": "N", "families": "Pflanzenfamilien", "zones": "Zonen",
-        "features": "Gartenelemente", "crops": "Kulturen", "crop": "Kultur", "bed": "Beet", "count": "Pflanzen",
-        "sow": "Aussaat", "plant_out": "Auspflanzen", "harvest": "Ernte", "method": "Methode", "spacing": "Abstand",
-        "due": "Fällig", "task": "Aufgabe", "minutes": "Min.", "done": "Erledigt", "week": "Woche vom {date}",
-        "outdoor": "Freiland", "greenhouse": "Gewächshaus", "cold_frame": "Frühbeet", "bed_outline": "Beet",
-        "container": "Kübel / Topf", "plant_pos": "Pflanzstelle", "area": "Fläche", "soil": "Boden",
-        "compost": "Kompost {kg} kg", "fertilizer": "organischer Dünger {g} g", "lime": "pH-Wert prüfen (Kohl)",
-        "rotation": "Vorher", "none": "-", "frost_last": "letzter Frost", "frost_first": "erster Frost",
-        "today": "heute", "indoor": "drinnen", "direct": "direkt", "transplant": "Jungpflanzen",
-        "good_neighbours": "Gute Nachbarn", "bad_neighbours": "Meiden", "depth": "Tiefe", "water": "Wasser",
-        "feeding": "Düngung", "low": "gering", "medium": "mittel", "high": "hoch", "sowing_windows": "Aussaat",
-        "add_tasks": "Zusätzliche Aufgaben", "scale": "Maßstab", "empty": "Noch nichts geplant.",
-        "path": "Weg", "compost_heap": "Kompost", "water_butt": "Regentonne", "shed": "Gartenhaus", "tree": "Baum",
-        "hedge": "Hecke", "trellis": "Rankgitter", "other": "Sonstiges", "draw_here": "Skizzieren Sie hier Ihren Plan",
-        "house": "Haus", "driveway": "Einfahrt", "street": "Straße", "parking": "Parkplatz",
-        "play": "Spielecke", "beehive": "Bienenstock",
-        "terrace": "Terrasse", "lawn": "Rasen", "flowerbed": "Blumenbeet", "fence": "Zaun", "pond": "Teich",
-        "orchard": "Obstgarten", "food_forest": "Waldgarten", "fruit": "Beerenobst", "herbs": "Kräutergarten", "flowers": "Blumengarten",
-        "zone_garden": "Ziergarten", "zone_containers": "Pflanzkübel und Töpfe",
-        "stone_path": "Steinweg", "wood_path": "Holzweg", "stepping_stones": "Trittsteine",
-        "bark_path": "Rindenmulchweg", "decking": "Holzdeck", "wall": "Mauer", "carport": "Carport / Garage",
-        "shrub": "Strauch", "pool": "Schwimmbecken", "seating": "Sitzplatz",
-        "before": "vor", "after": "nach",
-        "days_to_harvest": "Tage bis zur Ernte", "family": "Familie",
-    },
 }  # fmt: skip
 MONTHS = {
     "en": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     "nl": ["jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec"],
     "fr": ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."],
-    "de": ["Jan.", "Feb.", "März", "Apr.", "Mai", "Juni", "Juli", "Aug.", "Sep.", "Okt.", "Nov.", "Dez."],
 }
 
 
@@ -785,9 +754,7 @@ def draw_table(
 def _fmt(d: date | None, lang: str) -> str:
     if d is None:
         return "-"
-    code = normalize_lang(lang)
-    day = f"{d.day}." if code == "de" else str(d.day)  # German: "5. Mai"
-    return f"{day} {MONTHS[code][d.month - 1]}"
+    return f"{d.day} {MONTHS[normalize_lang(lang)][d.month - 1]}"
 
 
 def _crop_rows(ctx: PrintContext, plantings: Sequence[Planting], lang: str) -> tuple[list[list[str]], list[str | None]]:

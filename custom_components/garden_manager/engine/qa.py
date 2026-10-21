@@ -152,48 +152,11 @@ L: dict[str, dict[str, str]] = {
             "failed": "raté",
         },
     },
-    "de": {
-        "not_planted": "{plant} steht in dieser Saison nicht in Ihrem Plan.",
-        "planting": "{bed}: {status}, {stage}.",
-        "harvest": "Erntezeitraum: {start} - {end}.",
-        "not_bearing": "Noch zu jung, um Früchte zu tragen (ab {season}).",
-        "moisture": "Boden in {bed}: {state}{pct}.",
-        "next_tasks": "Als Nächstes: {tasks}.",
-        "no_tasks": "Im Moment keine offenen Aufgaben.",
-        "sow_window": "{kind}: {start} - {end}.",
-        "maturity": "Erntereif {min}-{max} Tage nach {from_}.",
-        "pests": "Achten Sie auf: {list}.",
-        "friends": "Gute Nachbarn: {list}.",
-        "enemies": "Fernhalten von: {list}.",
-        "water_need": "Wasserbedarf: {level}; lieber 10-20 l/m² auf einmal geben als täglich ein wenig.",
-        "feed_need": "Nährstoffbedarf: {level}{interval}.",
-        "feed_interval": ", etwa alle {days} Tage nachdüngen",
-        "gh_temp": "Jetzt {temp} °C in {zone}.",
-        "gh_action": "Empfehlung: {action}.",
-        "frost_risk": "Frostrisiko: {level}.",
-        "disease_risk": "Pilzrisiko: {level}.",
-        "open_tasks": "{n} offene Aufgaben für heute oder überfällig.",
-        "gaps": "Keine Ernte im: {months}.",
-        "coverage_ok": "Jeden Monat etwas zu ernten - gut gemacht!",
-        "what_next": "Als Nächstes in der Fruchtfolge nach {families}: Hülsenfrüchtler, dann Blattgemüse, dann Wurzelgemüse (oder dazwischen eine Gründüngung).",
-        "tools_for": "Für {task}: {tools}.",
-        "shopping_item": "{name}: {qty} {unit} ({reason})",
-        "status_label": {
-            "planned": "geplant",
-            "sown_indoors": "drinnen gesät",
-            "sown": "gesät",
-            "transplanted": "gepflanzt",
-            "harvesting": "in der Ernte",
-            "finished": "abgeschlossen",
-            "failed": "misslungen",
-        },
-    },
 }
 LEVEL = {
     "en": {"low": "low", "medium": "medium", "high": "high"},
     "nl": {"low": "laag", "medium": "matig", "high": "hoog"},
     "fr": {"low": "faible", "medium": "moyen", "high": "élevé"},
-    "de": {"low": "gering", "medium": "mittel", "high": "hoch"},
 }
 STAGE = {
     "en": {"not_planted": "not started", "germination": "germinating", "seedling": "seedling", "vegetative": "growing",
@@ -203,9 +166,6 @@ STAGE = {
     "fr": {"not_planted": "pas encore commencé", "germination": "en germination", "seedling": "plantule",
            "vegetative": "en croissance", "flowering": "en fleur", "fruiting": "en fructification",
            "harvest": "prêt à récolter", "finished": "terminé"},
-    "de": {"not_planted": "noch nicht begonnen", "germination": "keimt", "seedling": "Sämling",
-           "vegetative": "wächst", "flowering": "blüht", "fruiting": "setzt Früchte an",
-           "harvest": "erntereif", "finished": "abgeschlossen"},
 }  # fmt: skip
 
 
@@ -231,7 +191,7 @@ class Answer:
 
 def _lk(lang: str) -> str:
     """Catalogue key for ``lang``: the languages written out here, else English."""
-    return lang if lang in ("nl", "fr", "de") else "en"
+    return lang if lang in ("nl", "fr") else "en"
 
 
 def _l(key: str, lang: str, **kw: Any) -> str:

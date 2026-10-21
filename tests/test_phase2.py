@@ -462,11 +462,10 @@ async def test_voice_answers_and_sentence_install(hass: HomeAssistant, garden, t
     runtime = entry.runtime_data
     for intent_type in ("HortulusTasksToday", "HortulusHarvest", "HortulusGreenhouse", "HortulusWater", "HortulusFrost",
                         "HortulusOverdue"):  # fmt: skip
-        assert answer(runtime, intent_type, "nl") and answer(runtime, intent_type, "de")
+        assert answer(runtime, intent_type, "nl")
     hass.config.config_dir = str(tmp_path)
     res = await hass.services.async_call(DOMAIN, "install_voice_sentences", {}, blocking=True, return_response=True)
-    assert len(res["written"]) == 4 and (tmp_path / "custom_sentences/nl/hortulus.yaml").exists()
-    assert (tmp_path / "custom_sentences/de/hortulus.yaml").exists()
+    assert len(res["written"]) == 3 and (tmp_path / "custom_sentences/nl/hortulus.yaml").exists()
     again = await hass.services.async_call(DOMAIN, "install_voice_sentences", {}, blocking=True, return_response=True)
     assert again["written"] == []  # never overwrite without asking
 

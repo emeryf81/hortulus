@@ -80,8 +80,7 @@
    "names": {
     "en": "Alpine strawberry",
     "nl": "Bosaardbei",
-    "fr": "Fraise des bois",
-    "de": "Walderdbeere"
+    "fr": "Fraise des bois"
    },
    "scientific_name": "Fragaria vesca",
    "family": "Rosaceae",
@@ -104,9 +103,6 @@
     ],
     "fr": [
      "Pas de stolons - une bordure parfaite le long des allées et sous les arbres fruitiers ; supporte l'ombre."
-    ],
-    "de": [
-     "Keine Ausläufer - eine perfekte Einfassung für Wege und unter Obstbäumen; verträgt Schatten."
     ]
    },
    "companions": [
@@ -200,8 +196,7 @@
    "names": {
     "en": "Angelica",
     "nl": "Engelwortel",
-    "fr": "Angélique",
-    "de": "Engelwurz"
+    "fr": "Angélique"
    },
    "scientific_name": "Angelica archangelica",
    "family": "Apiaceae",
@@ -223,10 +218,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -295,8 +286,7 @@
    "names": {
     "en": "Anise",
     "nl": "Anijs",
-    "fr": "Anis vert",
-    "de": "Anis"
+    "fr": "Anis vert"
    },
    "scientific_name": "Pimpinella anisum",
    "family": "Apiaceae",
@@ -317,10 +307,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -402,8 +388,7 @@
    "names": {
     "en": "Anise hyssop",
     "nl": "Anijsnetel",
-    "fr": "Agastache anisée",
-    "de": "Duftnessel"
+    "fr": "Agastache anisée"
    },
    "scientific_name": "Agastache foeniculum",
    "family": "Lamiaceae",
@@ -416,9 +401,6 @@
     ],
     "fr": [
      "Fleurit pendant 3 mois - l'une des meilleures plantes mellifères."
-    ],
-    "de": [
-     "Blüht 3 Monate lang - eine der besten Bienenpflanzen."
     ]
    },
    "companions": [],
@@ -497,8 +479,7 @@
    "names": {
     "en": "Apple",
     "nl": "Appel",
-    "fr": "Pommier",
-    "de": "Apfel"
+    "fr": "Pommier"
    },
    "scientific_name": "Malus domestica",
    "family": "Rosaceae",
@@ -625,12 +606,6 @@
      "Variétés résistantes à la tavelure : Topaz, Santana, Rubinola, Reinette d'Orléans.",
      "Une bande de glu autour du tronc en octobre arrête les femelles aptères de la cheimatobie.",
      "La décoction de prêle (faites bouillir 100 g de prêle séchée dans 1 l d'eau pendant 30 min, diluez à 1:5) renforce les feuilles contre la tavelure."
-    ],
-    "de": [
-     "Eine zweite Sorte (oder einen Zierapfel) im Umkreis von 50 m pflanzen, die zur gleichen Zeit blüht.",
-     "Schorfresistente Sorten: Topaz, Santana, Rubinola, Renette von Orleans.",
-     "Ein Leimring um den Stamm im Oktober stoppt die flügellosen Weibchen des Frostspanners.",
-     "Ackerschachtelhalmbrühe (100 g getrockneten Schachtelhalm 30 Min. in 1 l Wasser kochen, 1:5 verdünnen) stärkt die Blätter gegen Schorf."
     ]
    },
    "companions": [
@@ -753,8 +728,7 @@
    "names": {
     "en": "Apple mint",
     "nl": "Appelmunt",
-    "fr": "Menthe pomme",
-    "de": "Apfelminze"
+    "fr": "Menthe pomme"
    },
    "scientific_name": "Mentha suaveolens",
    "family": "Lamiaceae",
@@ -771,9 +745,6 @@
     ],
     "fr": [
      "Cultivez-la dans un seau enterré - la menthe est envahissante."
-    ],
-    "de": [
-     "In einem eingegrabenen Eimer ziehen - Minze wuchert."
     ]
    },
    "companions": [],
@@ -852,8 +823,7 @@
    "names": {
     "en": "Apricot",
     "nl": "Abrikoos",
-    "fr": "Abricotier",
-    "de": "Aprikose"
+    "fr": "Abricotier"
    },
    "scientific_name": "Prunus armeniaca",
    "family": "Rosaceae",
@@ -963,9 +933,6 @@
     ],
     "fr": [
      "Plantez contre un mur chaud exposé au sud ; il fleurit avant que les abeilles ne volent."
-    ],
-    "de": [
-     "Vor eine warme Südwand pflanzen; sie blüht, bevor die Bienen fliegen."
     ]
    },
    "companions": [],
@@ -1043,8 +1010,7 @@
    "names": {
     "en": "Aronia (chokeberry)",
     "nl": "Appelbes",
-    "fr": "Aronia (aronie noire)",
-    "de": "Aronia (Apfelbeere)"
+    "fr": "Aronia (aronie noire)"
    },
    "scientific_name": "Aronia melanocarpa",
    "family": "Rosaceae",
@@ -1086,9 +1052,6 @@
     ],
     "fr": [
      "Très riche en antioxydants ; meilleure cuite ou en jus. Belles couleurs d'automne."
-    ],
-    "de": [
-     "Sehr reich an Antioxidantien; am besten gekocht oder als Saft. Schöne Herbstfärbung."
     ]
    },
    "companions": [],
@@ -1158,8 +1121,7 @@
    "names": {
     "en": "Asparagus",
     "nl": "Asperge",
-    "fr": "Asperge",
-    "de": "Spargel"
+    "fr": "Asperge"
    },
    "scientific_name": "Asparagus officinalis",
    "family": "Asparagaceae",
@@ -1209,9 +1171,6 @@
     ],
     "fr": [
      "Ne récoltez pas la 1re année, légèrement la 2e, puis pleinement à partir de la 3e année jusqu'au 24 juin."
-    ],
-    "de": [
-     "Im 1. Jahr nicht ernten, im 2. Jahr nur wenig stechen, ab dem 3. Jahr voll bis zum 24. Juni."
     ]
    },
    "icon": "asparagus",
@@ -1292,8 +1251,7 @@
    "names": {
     "en": "Aubergine / Eggplant",
     "nl": "Aubergine",
-    "fr": "Aubergine",
-    "de": "Aubergine"
+    "fr": "Aubergine"
    },
    "scientific_name": "Solanum melongena",
    "family": "Solanaceae",
@@ -1368,10 +1326,6 @@
     "fr": [
      "Arrosez le sol, jamais le feuillage, et le matin : les feuilles mouillées favorisent le mildiou.",
      "Retirez les feuilles sous le premier bouquet et paillez avec de la paille contre les éclaboussures contaminantes."
-    ],
-    "de": [
-     "Morgens den Boden gießen, nie die Blätter: Nasse Blätter fördern die Kraut- und Braunfäule.",
-     "Die Blätter unterhalb des ersten Fruchtstands entfernen und mit Stroh mulchen gegen Spritzinfektionen."
     ]
    }
   },
@@ -1380,8 +1334,7 @@
    "names": {
     "en": "Basil",
     "nl": "Basilicum",
-    "fr": "Basilic",
-    "de": "Basilikum"
+    "fr": "Basilic"
    },
    "scientific_name": "Ocimum basilicum",
    "variety": "Genovese",
@@ -1533,10 +1486,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -1611,8 +1560,7 @@
    "names": {
     "en": "Bay laurel",
     "nl": "Laurier",
-    "fr": "Laurier-sauce",
-    "de": "Lorbeer"
+    "fr": "Laurier-sauce"
    },
    "scientific_name": "Laurus nobilis",
    "family": "Lauraceae",
@@ -1630,9 +1578,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -1709,8 +1654,7 @@
    "names": {
     "en": "Beefsteak tomato",
     "nl": "Vleestomaat",
-    "fr": "Tomate cœur de bœuf",
-    "de": "Fleischtomate"
+    "fr": "Tomate cœur de bœuf"
    },
    "scientific_name": "Solanum lycopersicum (beefsteak)",
    "family": "Solanaceae",
@@ -1756,9 +1700,6 @@
     ],
     "fr": [
      "Chez nous, de préférence sous serre ; secouez les bouquets en fleurs en milieu de matinée pour aider la pollinisation."
-    ],
-    "de": [
-     "In unserem Klima am besten unter Glas; die blühenden Rispen am späten Vormittag schütteln, um die Bestäubung zu fördern."
     ]
    },
    "companions": [
@@ -1791,8 +1732,7 @@
    "names": {
     "en": "Beetroot",
     "nl": "Rode biet",
-    "fr": "Betterave rouge",
-    "de": "Rote Bete"
+    "fr": "Betterave rouge"
    },
    "scientific_name": "Beta vulgaris",
    "family": "Amaranthaceae",
@@ -1929,9 +1869,6 @@
     ],
     "fr": [
      "Semez par temps frais : l'épinard monte en graines avec les jours longs et la chaleur."
-    ],
-    "de": [
-     "Bei kühlem Wetter säen; Spinat schießt bei langen Tagen und Hitze."
     ]
    }
   },
@@ -2013,8 +1950,7 @@
    "names": {
     "en": "Bee balm (bergamot)",
     "nl": "Bergamotplant",
-    "fr": "Monarde (bergamote)",
-    "de": "Indianernessel"
+    "fr": "Monarde (bergamote)"
    },
    "scientific_name": "Monarda didyma",
    "family": "Lamiaceae",
@@ -2027,9 +1963,6 @@
     ],
     "fr": [
      "Attire abeilles et syrphes ; les feuilles parfument un thé façon « Earl Grey »."
-    ],
-    "de": [
-     "Magnet für Bienen und Schwebfliegen; die Blätter für „Earl Grey“-Tee."
     ]
    },
    "companions": [],
@@ -2108,8 +2041,7 @@
    "names": {
     "en": "Thornless blackberry",
     "nl": "Doornloze braam",
-    "fr": "Mûre sans épines (ronce)",
-    "de": "Dornenlose Brombeere"
+    "fr": "Mûre sans épines (ronce)"
    },
    "scientific_name": "Rubus fruticosus",
    "family": "Rosaceae",
@@ -2189,9 +2121,6 @@
     ],
     "fr": [
      "Variétés sans épines : Loch Ness, Thornfree, Triple Crown."
-    ],
-    "de": [
-     "Dornenlose Sorten: Loch Ness, Thornfree, Triple Crown."
     ]
    },
    "companions": [
@@ -2279,8 +2208,7 @@
    "names": {
     "en": "Blackcurrant",
     "nl": "Zwarte bes",
-    "fr": "Cassis",
-    "de": "Schwarze Johannisbeere"
+    "fr": "Cassis"
    },
    "scientific_name": "Ribes nigrum",
    "family": "Grossulariaceae",
@@ -2366,10 +2294,6 @@
     "fr": [
      "Plantez 5 cm plus profond que dans le pot : les nouvelles pousses partent du sol.",
      "En hiver, cueillez les bourgeons gonflés et ronds (phytopte du cassis) et brûlez-les."
-    ],
-    "de": [
-     "5 cm tiefer pflanzen als im Topf: Neue Triebe kommen aus dem Boden.",
-     "Geschwollene runde Knospen (Johannisbeergallmilbe) im Winter abzupfen und verbrennen."
     ]
    },
    "companions": [
@@ -2459,8 +2383,7 @@
    "names": {
     "en": "Blueberry",
     "nl": "Blauwe bes",
-    "fr": "Myrtillier",
-    "de": "Kulturheidelbeere"
+    "fr": "Myrtillier"
    },
    "scientific_name": "Vaccinium corymbosum",
    "family": "Ericaceae",
@@ -2530,10 +2453,6 @@
     "fr": [
      "Exige un sol acide : plantez dans un grand trou ou un bac rempli de terreau pour plantes de terre de bruyère sans tourbe.",
      "Plantez deux variétés pour une récolte bien plus abondante."
-    ],
-    "de": [
-     "Braucht sauren Boden: in ein großes Pflanzloch oder einen Kübel mit torffreier Moorbeeterde pflanzen.",
-     "Zwei Sorten pflanzen für eine viel größere Ernte."
     ]
    },
    "companions": [
@@ -2618,8 +2537,7 @@
    "names": {
     "en": "Borage",
     "nl": "Bernagie",
-    "fr": "Bourrache",
-    "de": "Borretsch"
+    "fr": "Bourrache"
    },
    "scientific_name": "Borago officinalis",
    "family": "Boraginaceae",
@@ -2640,9 +2558,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -2733,8 +2648,7 @@
    "names": {
     "en": "Borlotti / drying bean",
     "nl": "Droogboon (borlotti)",
-    "fr": "Haricot à écosser (borlotti)",
-    "de": "Borlotti / Trockenbohne"
+    "fr": "Haricot à écosser (borlotti)"
    },
    "scientific_name": "Phaseolus vulgaris",
    "family": "Fabaceae",
@@ -2757,10 +2671,6 @@
     "fr": [
      "Après la récolte, coupez les plants au ras du sol - les nodosités riches en azote restent en terre.",
      "Pincez la tête des fèves dès que les premières gousses se forment : cela arrête le puceron noir."
-    ],
-    "de": [
-     "Die Pflanzen nach der Ernte am Boden abschneiden - die Stickstoffknöllchen bleiben in der Erde.",
-     "Die Spitzen der Ackerbohnen ausbrechen, sobald die ersten Hülsen ansetzen: Das stoppt die Schwarze Bohnenlaus."
     ]
    }
   },
@@ -2769,8 +2679,7 @@
    "names": {
     "en": "Broad bean / Fava",
     "nl": "Tuinboon",
-    "fr": "Fève",
-    "de": "Ackerbohne / Dicke Bohne"
+    "fr": "Fève"
    },
    "scientific_name": "Vicia faba",
    "family": "Fabaceae",
@@ -2921,10 +2830,6 @@
     "fr": [
      "Après la récolte, coupez les plants au ras du sol - les nodosités riches en azote restent en terre.",
      "Pincez la tête des fèves dès que les premières gousses se forment : cela arrête le puceron noir."
-    ],
-    "de": [
-     "Die Pflanzen nach der Ernte am Boden abschneiden - die Stickstoffknöllchen bleiben in der Erde.",
-     "Die Spitzen der Ackerbohnen ausbrechen, sobald die ersten Hülsen ansetzen: Das stoppt die Schwarze Bohnenlaus."
     ]
    }
   },
@@ -3022,8 +2927,7 @@
    "names": {
     "en": "Broccoli",
     "nl": "Broccoli",
-    "fr": "Brocoli",
-    "de": "Brokkoli"
+    "fr": "Brocoli"
    },
    "scientific_name": "Brassica oleracea var. italica",
    "family": "Brassicaceae",
@@ -3048,10 +2952,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -3148,8 +3048,7 @@
    "names": {
     "en": "Brussels sprouts",
     "nl": "Spruitkool",
-    "fr": "Chou de Bruxelles",
-    "de": "Rosenkohl"
+    "fr": "Chou de Bruxelles"
    },
    "scientific_name": "Brassica oleracea var. gemmifera",
    "family": "Brassicaceae",
@@ -3184,10 +3083,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -3253,8 +3148,7 @@
    "names": {
     "en": "Buckwheat",
     "nl": "Boekweit",
-    "fr": "Sarrasin",
-    "de": "Buchweizen"
+    "fr": "Sarrasin"
    },
    "scientific_name": "Fagopyrum esculentum",
    "family": "Polygonaceae",
@@ -3267,9 +3161,6 @@
     ],
     "fr": [
      "L'engrais vert d'été le plus rapide (6 semaines) ; mobilise le phosphore ; enfouissez-le à la floraison."
-    ],
-    "de": [
-     "Schnellste Sommergründüngung (6 Wochen); macht Phosphor verfügbar; zur Blüte einarbeiten."
     ]
    },
    "companions": [
@@ -3293,8 +3184,7 @@
    "names": {
     "en": "French bean (bush)",
     "nl": "Stamboon",
-    "fr": "Haricot nain",
-    "de": "Buschbohne"
+    "fr": "Haricot nain"
    },
    "scientific_name": "Phaseolus vulgaris",
    "family": "Fabaceae",
@@ -3446,10 +3336,6 @@
     "fr": [
      "Après la récolte, coupez les plants au ras du sol - les nodosités riches en azote restent en terre.",
      "Pincez la tête des fèves dès que les premières gousses se forment : cela arrête le puceron noir."
-    ],
-    "de": [
-     "Die Pflanzen nach der Ernte am Boden abschneiden - die Stickstoffknöllchen bleiben in der Erde.",
-     "Die Spitzen der Ackerbohnen ausbrechen, sobald die ersten Hülsen ansetzen: Das stoppt die Schwarze Bohnenlaus."
     ]
    }
   },
@@ -3539,8 +3425,7 @@
    "names": {
     "en": "Butternut squash",
     "nl": "Butternut",
-    "fr": "Courge butternut",
-    "de": "Butternut-Kürbis"
+    "fr": "Courge butternut"
    },
    "scientific_name": "Cucurbita moschata",
    "family": "Cucurbitaceae",
@@ -3563,10 +3448,6 @@
     "fr": [
      "Plantez sur une butte de compost ; une pulvérisation de lait (1:9) chaque semaine freine l'oïdium.",
      "Pas de fruits ? Pollinisez à la main : frottez une fleur mâle sur la fleur femelle le matin."
-    ],
-    "de": [
-     "Auf einen Komposthügel pflanzen; wöchentlich Milch spritzen (1:9) hält den Echten Mehltau zurück.",
-     "Kein Fruchtansatz? Von Hand bestäuben: morgens eine männliche Blüte an der weiblichen abstreifen."
     ]
    }
   },
@@ -3575,8 +3456,7 @@
    "names": {
     "en": "Cabbage",
     "nl": "Kool (sluitkool)",
-    "fr": "Chou pommé",
-    "de": "Weißkohl"
+    "fr": "Chou pommé"
    },
    "scientific_name": "Brassica oleracea var. capitata",
    "family": "Brassicaceae",
@@ -3739,10 +3619,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -3810,8 +3686,7 @@
    "names": {
     "en": "Pot marigold / Calendula",
     "nl": "Goudsbloem",
-    "fr": "Souci",
-    "de": "Ringelblume"
+    "fr": "Souci"
    },
    "scientific_name": "Calendula officinalis",
    "family": "Asteraceae",
@@ -3841,10 +3716,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -3921,8 +3792,7 @@
    "names": {
     "en": "Cape gooseberry",
     "nl": "Ananaskers",
-    "fr": "Physalis (coqueret du Pérou)",
-    "de": "Physalis (Kapstachelbeere)"
+    "fr": "Physalis (coqueret du Pérou)"
    },
    "scientific_name": "Physalis peruviana",
    "family": "Solanaceae",
@@ -3957,10 +3827,6 @@
     "fr": [
      "Arrosez le sol, jamais le feuillage, et le matin : les feuilles mouillées favorisent le mildiou.",
      "Retirez les feuilles sous le premier bouquet et paillez avec de la paille contre les éclaboussures contaminantes."
-    ],
-    "de": [
-     "Morgens den Boden gießen, nie die Blätter: Nasse Blätter fördern die Kraut- und Braunfäule.",
-     "Die Blätter unterhalb des ersten Fruchtstands entfernen und mit Stroh mulchen gegen Spritzinfektionen."
     ]
    }
   },
@@ -4030,8 +3896,7 @@
    "names": {
     "en": "Caraway",
     "nl": "Karwij",
-    "fr": "Carvi",
-    "de": "Kümmel"
+    "fr": "Carvi"
    },
    "scientific_name": "Carum carvi",
    "family": "Apiaceae",
@@ -4053,10 +3918,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -4123,8 +3984,7 @@
    "names": {
     "en": "Cardoon",
     "nl": "Kardoen",
-    "fr": "Cardon",
-    "de": "Kardy"
+    "fr": "Cardon"
    },
    "scientific_name": "Cynara cardunculus",
    "family": "Asteraceae",
@@ -4158,9 +4018,6 @@
     ],
     "fr": [
      "Ses fleurs de chardon attirent les abeilles comme un aimant."
-    ],
-    "de": [
-     "Ihre Distelblüten sind ein Bienenmagnet."
     ]
    },
    "companions": [],
@@ -4173,8 +4030,7 @@
    "names": {
     "en": "Carrot",
     "nl": "Wortel",
-    "fr": "Carotte",
-    "de": "Möhre"
+    "fr": "Carotte"
    },
    "scientific_name": "Daucus carota subsp. sativus",
    "family": "Apiaceae",
@@ -4364,10 +4220,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -4448,8 +4300,7 @@
    "names": {
     "en": "Catnip",
     "nl": "Kattenkruid",
-    "fr": "Herbe aux chats",
-    "de": "Katzenminze"
+    "fr": "Herbe aux chats"
    },
    "scientific_name": "Nepeta cataria",
    "family": "Lamiaceae",
@@ -4475,10 +4326,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -4576,8 +4423,7 @@
    "names": {
     "en": "Cauliflower",
     "nl": "Bloemkool",
-    "fr": "Chou-fleur",
-    "de": "Blumenkohl"
+    "fr": "Chou-fleur"
    },
    "scientific_name": "Brassica oleracea var. botrytis",
    "family": "Brassicaceae",
@@ -4604,10 +4450,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -4707,8 +4549,7 @@
    "names": {
     "en": "Cavolo nero",
     "nl": "Palmkool",
-    "fr": "Chou palmier (cavolo nero)",
-    "de": "Palmkohl"
+    "fr": "Chou palmier (cavolo nero)"
    },
    "scientific_name": "Brassica oleracea var. palmifolia",
    "family": "Brassicaceae",
@@ -4723,9 +4564,6 @@
     ],
     "fr": [
      "Cueillez les feuilles du bas ; la plante continue de monter comme un palmier jusqu'au printemps."
-    ],
-    "de": [
-     "Die unteren Blätter pflücken; die Pflanze wächst bis zum Frühjahr wie eine Palme weiter in die Höhe."
     ]
    },
    "companions": [
@@ -4811,8 +4649,7 @@
    "names": {
     "en": "Celeriac",
     "nl": "Knolselderij",
-    "fr": "Céleri-rave",
-    "de": "Knollensellerie"
+    "fr": "Céleri-rave"
    },
    "scientific_name": "Apium graveolens var. rapaceum",
    "family": "Apiaceae",
@@ -4882,10 +4719,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -4963,8 +4796,7 @@
    "names": {
     "en": "Celery",
     "nl": "Bleekselderij",
-    "fr": "Céleri branche",
-    "de": "Staudensellerie"
+    "fr": "Céleri branche"
    },
    "scientific_name": "Apium graveolens var. dulce",
    "family": "Apiaceae",
@@ -5001,10 +4833,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -5078,8 +4906,7 @@
    "names": {
     "en": "German chamomile",
     "nl": "Echte kamille",
-    "fr": "Camomille allemande",
-    "de": "Echte Kamille"
+    "fr": "Camomille allemande"
    },
    "scientific_name": "Matricaria chamomilla",
    "family": "Asteraceae",
@@ -5103,10 +4930,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -5183,8 +5006,7 @@
    "names": {
     "en": "Cherry tomato",
     "nl": "Kerstomaat",
-    "fr": "Tomate cerise",
-    "de": "Kirschtomate"
+    "fr": "Tomate cerise"
    },
    "scientific_name": "Solanum lycopersicum var. cerasiforme",
    "family": "Solanaceae",
@@ -5241,10 +5063,6 @@
     "fr": [
      "Arrosez le sol, jamais le feuillage, et le matin : les feuilles mouillées favorisent le mildiou.",
      "Retirez les feuilles sous le premier bouquet et paillez avec de la paille contre les éclaboussures contaminantes."
-    ],
-    "de": [
-     "Morgens den Boden gießen, nie die Blätter: Nasse Blätter fördern die Kraut- und Braunfäule.",
-     "Die Blätter unterhalb des ersten Fruchtstands entfernen und mit Stroh mulchen gegen Spritzinfektionen."
     ]
    }
   },
@@ -5319,8 +5137,7 @@
    "names": {
     "en": "Chervil",
     "nl": "Kervel",
-    "fr": "Cerfeuil",
-    "de": "Kerbel"
+    "fr": "Cerfeuil"
    },
    "scientific_name": "Anthriscus cerefolium",
    "family": "Apiaceae",
@@ -5342,10 +5159,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -5414,8 +5227,7 @@
    "names": {
     "en": "Winter chervil",
     "nl": "Winterkervel",
-    "fr": "Cerfeuil d'hiver",
-    "de": "Winterkerbel"
+    "fr": "Cerfeuil d'hiver"
    },
    "scientific_name": "Anthriscus cerefolium (winter)",
    "family": "Apiaceae",
@@ -5428,9 +5240,6 @@
     ],
     "fr": [
      "Semé en automne, le cerfeuil donne de la verdure fraîche tout l'hiver sous voile."
-    ],
-    "de": [
-     "Im Herbst gesäter Kerbel liefert unter Vlies den ganzen Winter frisches Grün."
     ]
    },
    "companions": [],
@@ -5526,8 +5335,7 @@
    "names": {
     "en": "Chickpea",
     "nl": "Kikkererwt",
-    "fr": "Pois chiche",
-    "de": "Kichererbse"
+    "fr": "Pois chiche"
    },
    "scientific_name": "Cicer arietinum",
    "family": "Fabaceae",
@@ -5540,9 +5348,6 @@
     ],
     "fr": [
      "Aime un été chaud et sec - un bac surélevé ensoleillé est idéal."
-    ],
-    "de": [
-     "Liebt einen warmen, trockenen Sommer - ein sonniges Hochbeet ist ideal."
     ]
    },
    "companions": [
@@ -5621,8 +5426,7 @@
    "names": {
     "en": "Belgian endive (witloof)",
     "nl": "Witloof",
-    "fr": "Chicon (endive)",
-    "de": "Chicorée"
+    "fr": "Chicon (endive)"
    },
    "scientific_name": "Cichorium intybus var. foliosum",
    "family": "Asteraceae",
@@ -5649,10 +5453,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -5730,8 +5530,7 @@
    "names": {
     "en": "Chili pepper",
     "nl": "Chilipeper",
-    "fr": "Piment",
-    "de": "Chili"
+    "fr": "Piment"
    },
    "scientific_name": "Capsicum annuum / C. chinense",
    "family": "Solanaceae",
@@ -5768,10 +5567,6 @@
     "fr": [
      "Arrosez le sol, jamais le feuillage, et le matin : les feuilles mouillées favorisent le mildiou.",
      "Retirez les feuilles sous le premier bouquet et paillez avec de la paille contre les éclaboussures contaminantes."
-    ],
-    "de": [
-     "Morgens den Boden gießen, nie die Blätter: Nasse Blätter fördern die Kraut- und Braunfäule.",
-     "Die Blätter unterhalb des ersten Fruchtstands entfernen und mit Stroh mulchen gegen Spritzinfektionen."
     ]
    }
   },
@@ -5839,8 +5634,7 @@
    "names": {
     "en": "Chinese artichoke (crosne)",
     "nl": "Japanse andoorn (crosne)",
-    "fr": "Crosne du Japon",
-    "de": "Knollenziest"
+    "fr": "Crosne du Japon"
    },
    "scientific_name": "Stachys affinis",
    "family": "Lamiaceae",
@@ -5861,9 +5655,6 @@
     ],
     "fr": [
      "Laissez les tubercules en terre et arrachez-les au besoin tout l'hiver ; contenez-le - il s'étend."
-    ],
-    "de": [
-     "Die Knollen im Boden lassen und den ganzen Winter nach Bedarf ausgraben; eindämmen - sie breiten sich aus."
     ]
    },
    "companions": [],
@@ -5945,8 +5736,7 @@
    "names": {
     "en": "Chinese cabbage",
     "nl": "Chinese kool",
-    "fr": "Chou chinois",
-    "de": "Chinakohl"
+    "fr": "Chou chinois"
    },
    "scientific_name": "Brassica rapa subsp. pekinensis",
    "family": "Brassicaceae",
@@ -5973,10 +5763,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -6066,8 +5852,7 @@
    "names": {
     "en": "Chives",
     "nl": "Bieslook",
-    "fr": "Ciboulette",
-    "de": "Schnittlauch"
+    "fr": "Ciboulette"
    },
    "scientific_name": "Allium schoenoprasum",
    "family": "Amaryllidaceae",
@@ -6109,10 +5894,6 @@
     "fr": [
      "Binez avec soin - les alliacées détestent la concurrence des mauvaises herbes ; arrêtez d'arroser 2 semaines avant la récolte.",
      "Associez-les aux carottes : chacune masque l'odeur de l'autre face à sa mouche."
-    ],
-    "de": [
-     "Vorsichtig hacken - Lauchgewächse vertragen keine Unkrautkonkurrenz; 2 Wochen vor der Ernte nicht mehr gießen.",
-     "Zusammen mit Möhren pflanzen: Jede überdeckt den Geruch der anderen vor deren Fliege."
     ]
    }
   },
@@ -6185,8 +5966,7 @@
    "names": {
     "en": "Pink purslane",
     "nl": "Roze winterpostelein",
-    "fr": "Claytone de Sibérie",
-    "de": "Sibirisches Tellerkraut"
+    "fr": "Claytone de Sibérie"
    },
    "scientific_name": "Claytonia sibirica",
    "family": "Montiaceae",
@@ -6199,9 +5979,6 @@
     ],
     "fr": [
      "Salade vivace qui aime l'ombre, se ressème seule et porte des fleurs comestibles."
-    ],
-    "de": [
-     "Schattenliebender, sich selbst aussäender mehrjähriger Salat mit essbaren Blüten."
     ]
    },
    "companions": [],
@@ -6287,8 +6064,7 @@
    "names": {
     "en": "Comfrey",
     "nl": "Smeerwortel",
-    "fr": "Consoude",
-    "de": "Beinwell"
+    "fr": "Consoude"
    },
    "scientific_name": "Symphytum officinale",
    "family": "Boraginaceae",
@@ -6311,9 +6087,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -6389,8 +6162,7 @@
    "names": {
     "en": "Coriander / Cilantro",
     "nl": "Koriander",
-    "fr": "Coriandre",
-    "de": "Koriander"
+    "fr": "Coriandre"
    },
    "scientific_name": "Coriandrum sativum",
    "family": "Apiaceae",
@@ -6418,10 +6190,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -6493,8 +6261,7 @@
    "names": {
     "en": "Cornflower",
     "nl": "Korenbloem",
-    "fr": "Bleuet",
-    "de": "Kornblume"
+    "fr": "Bleuet"
    },
    "scientific_name": "Centaurea cyanus",
    "family": "Asteraceae",
@@ -6518,10 +6285,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -6607,8 +6370,7 @@
    "names": {
     "en": "Romaine (cos) lettuce",
     "nl": "Bindsla (romaine)",
-    "fr": "Laitue romaine",
-    "de": "Römersalat"
+    "fr": "Laitue romaine"
    },
    "scientific_name": "Lactuca sativa var. longifolia",
    "family": "Asteraceae",
@@ -6621,9 +6383,6 @@
     ],
     "fr": [
      "Supporte mieux la chaleur et monte moins vite en graines que la laitue pommée."
-    ],
-    "de": [
-     "Hitze- und schossfester als Kopfsalat."
     ]
    },
    "companions": [],
@@ -6694,8 +6453,7 @@
    "names": {
     "en": "Cosmos",
     "nl": "Cosmea",
-    "fr": "Cosmos",
-    "de": "Schmuckkörbchen"
+    "fr": "Cosmos"
    },
    "scientific_name": "Cosmos bipinnatus",
    "family": "Asteraceae",
@@ -6719,10 +6477,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -6731,8 +6485,7 @@
    "names": {
     "en": "Courgette / Zucchini",
     "nl": "Courgette",
-    "fr": "Courgette",
-    "de": "Zucchini"
+    "fr": "Courgette"
    },
    "scientific_name": "Cucurbita pepo",
    "family": "Cucurbitaceae",
@@ -6903,10 +6656,6 @@
     "fr": [
      "Plantez sur une butte de compost ; une pulvérisation de lait (1:9) chaque semaine freine l'oïdium.",
      "Pas de fruits ? Pollinisez à la main : frottez une fleur mâle sur la fleur femelle le matin."
-    ],
-    "de": [
-     "Auf einen Komposthügel pflanzen; wöchentlich Milch spritzen (1:9) hält den Echten Mehltau zurück.",
-     "Kein Fruchtansatz? Von Hand bestäuben: morgens eine männliche Blüte an der weiblichen abstreifen."
     ]
    }
   },
@@ -6982,8 +6731,7 @@
    "names": {
     "en": "Cranberry",
     "nl": "Cranberry (grote veenbes)",
-    "fr": "Canneberge",
-    "de": "Großfrüchtige Moosbeere (Cranberry)"
+    "fr": "Canneberge"
    },
    "scientific_name": "Vaccinium macrocarpon",
    "family": "Ericaceae",
@@ -7027,9 +6775,6 @@
     ],
     "fr": [
      "Sol acide et tourbeux ; un couvre-sol persistant."
-    ],
-    "de": [
-     "Saurer, moorig-nasser Boden; ein immergrüner Bodendecker."
     ]
    },
    "companions": [],
@@ -7105,8 +6850,7 @@
    "names": {
     "en": "Crimson clover",
     "nl": "Incarnaatklaver",
-    "fr": "Trèfle incarnat",
-    "de": "Inkarnatklee"
+    "fr": "Trèfle incarnat"
    },
    "scientific_name": "Trifolium incarnatum",
    "family": "Fabaceae",
@@ -7127,10 +6871,6 @@
     "fr": [
      "Après la récolte, coupez les plants au ras du sol - les nodosités riches en azote restent en terre.",
      "Pincez la tête des fèves dès que les premières gousses se forment : cela arrête le puceron noir."
-    ],
-    "de": [
-     "Die Pflanzen nach der Ernte am Boden abschneiden - die Stickstoffknöllchen bleiben in der Erde.",
-     "Die Spitzen der Ackerbohnen ausbrechen, sobald die ersten Hülsen ansetzen: Das stoppt die Schwarze Bohnenlaus."
     ]
    }
   },
@@ -7220,8 +6960,7 @@
    "names": {
     "en": "Cucamelon",
     "nl": "Muismeloen",
-    "fr": "Concombre à confire (cucamelon)",
-    "de": "Mexikanische Minigurke"
+    "fr": "Concombre à confire (cucamelon)"
    },
    "scientific_name": "Melothria scabra",
    "family": "Cucurbitaceae",
@@ -7236,9 +6975,6 @@
     ],
     "fr": [
      "« Mini-pastèques » de la taille d'un grain de raisin, au goût de concombre et de citron vert ; a besoin d'un treillis."
-    ],
-    "de": [
-     "Traubengroße „Mini-Wassermelonen“ mit Gurken- und Limettengeschmack; braucht ein Rankgitter."
     ]
    },
    "companions": [
@@ -7262,8 +6998,7 @@
    "names": {
     "en": "Cucumber",
     "nl": "Komkommer",
-    "fr": "Concombre",
-    "de": "Gurke"
+    "fr": "Concombre"
    },
    "scientific_name": "Cucumis sativus",
    "family": "Cucurbitaceae",
@@ -7496,10 +7231,6 @@
     "fr": [
      "Plantez sur une butte de compost ; une pulvérisation de lait (1:9) chaque semaine freine l'oïdium.",
      "Pas de fruits ? Pollinisez à la main : frottez une fleur mâle sur la fleur femelle le matin."
-    ],
-    "de": [
-     "Auf einen Komposthügel pflanzen; wöchentlich Milch spritzen (1:9) hält den Echten Mehltau zurück.",
-     "Kein Fruchtansatz? Von Hand bestäuben: morgens eine männliche Blüte an der weiblichen abstreifen."
     ]
    }
   },
@@ -7585,8 +7316,7 @@
    "names": {
     "en": "Cumin",
     "nl": "Komijn",
-    "fr": "Cumin",
-    "de": "Kreuzkümmel"
+    "fr": "Cumin"
    },
    "scientific_name": "Cuminum cyminum",
    "family": "Apiaceae",
@@ -7599,9 +7329,6 @@
     ],
     "fr": [
      "A besoin d'un été long et chaud - plus facile en serre."
-    ],
-    "de": [
-     "Braucht einen langen, warmen Sommer - am einfachsten im Gewächshaus."
     ]
    },
    "companions": [],
@@ -7687,8 +7414,7 @@
    "names": {
     "en": "Curry plant",
     "nl": "Kerrieplant",
-    "fr": "Immortelle d'Italie (plante curry)",
-    "de": "Currykraut"
+    "fr": "Immortelle d'Italie (plante curry)"
    },
    "scientific_name": "Helichrysum italicum",
    "family": "Asteraceae",
@@ -7701,9 +7427,6 @@
     ],
     "fr": [
      "Les feuilles argentées sentent le curry ; un aromate, pas l'épice curry."
-    ],
-    "de": [
-     "Silbrige Blätter riechen nach Curry; ein Aroma, kein Currygewürz."
     ]
    },
    "companions": [],
@@ -7772,8 +7495,7 @@
    "names": {
     "en": "Daikon",
     "nl": "Daikon (Japanse rammenas)",
-    "fr": "Radis daikon",
-    "de": "Daikon-Rettich"
+    "fr": "Radis daikon"
    },
    "scientific_name": "Raphanus sativus var. longipinnatus",
    "family": "Brassicaceae",
@@ -7786,9 +7508,6 @@
     ],
     "fr": [
      "Ameublit les sols tassés - aussi un excellent engrais vert « radis décompacteur »."
-    ],
-    "de": [
-     "Lockert verdichteten Boden - auch eine großartige Gründüngung als „Bodenrettich“."
     ]
    },
    "companions": [],
@@ -7864,8 +7583,7 @@
    "names": {
     "en": "Dill",
     "nl": "Dille",
-    "fr": "Aneth",
-    "de": "Dill"
+    "fr": "Aneth"
    },
    "scientific_name": "Anethum graveolens",
    "family": "Apiaceae",
@@ -7893,10 +7611,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -7960,8 +7674,7 @@
    "names": {
     "en": "Early potato",
     "nl": "Vroege aardappel",
-    "fr": "Pomme de terre primeur",
-    "de": "Frühkartoffel"
+    "fr": "Pomme de terre primeur"
    },
    "scientific_name": "Solanum tuberosum (first early)",
    "family": "Solanaceae",
@@ -8000,10 +7713,6 @@
     "fr": [
      "Faites germer les plants de pommes de terre 4-6 semaines dans un endroit clair et hors gel.",
      "Les variétés hâtives échappent souvent au mildiou - Première, Frieslander, Annabelle."
-    ],
-    "de": [
-     "Pflanzkartoffeln 4-6 Wochen an einem hellen, frostfreien Ort vorkeimen.",
-     "Frühe Sorten entgehen oft der Kraut- und Braunfäule - Première, Frieslander, Annabelle."
     ]
    },
    "companions": [
@@ -8108,8 +7817,7 @@
    "names": {
     "en": "Echinacea",
     "nl": "Zonnehoed",
-    "fr": "Échinacée pourpre",
-    "de": "Sonnenhut (Echinacea)"
+    "fr": "Échinacée pourpre"
    },
    "scientific_name": "Echinacea purpurea",
    "family": "Asteraceae",
@@ -8130,10 +7838,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -8204,8 +7908,7 @@
    "names": {
     "en": "Viper's bugloss",
     "nl": "Slangenkruid",
-    "fr": "Vipérine",
-    "de": "Natternkopf"
+    "fr": "Vipérine"
    },
    "scientific_name": "Echium vulgare",
    "family": "Boraginaceae",
@@ -8218,9 +7921,6 @@
     ],
     "fr": [
      "Dans le top 3 des plantes mellifères : du nectar toute la journée."
-    ],
-    "de": [
-     "Eine der drei besten Bienenpflanzen: Nektar den ganzen Tag."
     ]
    },
    "companions": [],
@@ -8315,8 +8015,7 @@
    "names": {
     "en": "Edamame / Soybean",
     "nl": "Edamame (sojaboon)",
-    "fr": "Edamame (soja)",
-    "de": "Edamame / Sojabohne"
+    "fr": "Edamame (soja)"
    },
    "scientific_name": "Glycine max",
    "family": "Fabaceae",
@@ -8339,10 +8038,6 @@
     "fr": [
      "Après la récolte, coupez les plants au ras du sol - les nodosités riches en azote restent en terre.",
      "Pincez la tête des fèves dès que les premières gousses se forment : cela arrête le puceron noir."
-    ],
-    "de": [
-     "Die Pflanzen nach der Ernte am Boden abschneiden - die Stickstoffknöllchen bleiben in der Erde.",
-     "Die Spitzen der Ackerbohnen ausbrechen, sobald die ersten Hülsen ansetzen: Das stoppt die Schwarze Bohnenlaus."
     ]
    }
   },
@@ -8416,8 +8111,7 @@
    "names": {
     "en": "Elderberry",
     "nl": "Vlier",
-    "fr": "Sureau noir",
-    "de": "Holunder"
+    "fr": "Sureau noir"
    },
    "scientific_name": "Sambucus nigra",
    "family": "Viburnaceae",
@@ -8467,10 +8161,6 @@
     "fr": [
      "Les fleurs (juin) pour le sirop, les baies uniquement cuites - crues, elles sont légèrement toxiques.",
      "Un purin de feuilles de sureau pulvérisé sur les plantes éloigne pucerons et souris."
-    ],
-    "de": [
-     "Die Blüten (Juni) für Sirup, die Beeren nur gekocht - roh sind sie leicht giftig.",
-     "Holunderblättertee auf die Pflanzen gespritzt hält Blattläuse und Mäuse fern."
     ]
    },
    "companions": [],
@@ -8553,8 +8243,7 @@
    "names": {
     "en": "Elephant garlic",
     "nl": "Olifantsknoflook",
-    "fr": "Ail éléphant",
-    "de": "Elefantenknoblauch"
+    "fr": "Ail éléphant"
    },
    "scientific_name": "Allium ampeloprasum var. ampeloprasum",
    "family": "Amaryllidaceae",
@@ -8577,10 +8266,6 @@
     "fr": [
      "Binez avec soin - les alliacées détestent la concurrence des mauvaises herbes ; arrêtez d'arroser 2 semaines avant la récolte.",
      "Associez-les aux carottes : chacune masque l'odeur de l'autre face à sa mouche."
-    ],
-    "de": [
-     "Vorsichtig hacken - Lauchgewächse vertragen keine Unkrautkonkurrenz; 2 Wochen vor der Ernte nicht mehr gießen.",
-     "Zusammen mit Möhren pflanzen: Jede überdeckt den Geruch der anderen vor deren Fliege."
     ]
    }
   },
@@ -8666,8 +8351,7 @@
    "names": {
     "en": "Endive",
     "nl": "Andijvie",
-    "fr": "Chicorée frisée / scarole",
-    "de": "Endivie"
+    "fr": "Chicorée frisée / scarole"
    },
    "scientific_name": "Cichorium endivia",
    "family": "Asteraceae",
@@ -8694,10 +8378,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -8768,8 +8448,7 @@
    "names": {
     "en": "Fenugreek",
     "nl": "Fenegriek",
-    "fr": "Fenugrec",
-    "de": "Bockshornklee"
+    "fr": "Fenugrec"
    },
    "scientific_name": "Trigonella foenum-graecum",
    "family": "Fabaceae",
@@ -8790,10 +8469,6 @@
     "fr": [
      "Après la récolte, coupez les plants au ras du sol - les nodosités riches en azote restent en terre.",
      "Pincez la tête des fèves dès que les premières gousses se forment : cela arrête le puceron noir."
-    ],
-    "de": [
-     "Die Pflanzen nach der Ernte am Boden abschneiden - die Stickstoffknöllchen bleiben in der Erde.",
-     "Die Spitzen der Ackerbohnen ausbrechen, sobald die ersten Hülsen ansetzen: Das stoppt die Schwarze Bohnenlaus."
     ]
    }
   },
@@ -8873,8 +8548,7 @@
    "names": {
     "en": "Feverfew",
     "nl": "Moederkruid",
-    "fr": "Grande camomille",
-    "de": "Mutterkraut"
+    "fr": "Grande camomille"
    },
    "scientific_name": "Tanacetum parthenium",
    "family": "Asteraceae",
@@ -8898,10 +8572,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -8968,8 +8638,7 @@
    "names": {
     "en": "Field bean (green manure)",
     "nl": "Veldboon (groenbemester)",
-    "fr": "Féverole (engrais vert)",
-    "de": "Ackerbohne (Gründüngung)"
+    "fr": "Féverole (engrais vert)"
    },
    "scientific_name": "Vicia faba var. minor",
    "family": "Fabaceae",
@@ -8982,9 +8651,6 @@
     ],
     "fr": [
      "Ses racines profondes ouvrent le sous-sol ; fauchez au printemps avant la floraison."
-    ],
-    "de": [
-     "Tiefe Wurzeln öffnen den Unterboden; im Frühjahr vor der Blüte abschneiden."
     ]
    },
    "companions": [],
@@ -9064,8 +8730,7 @@
    "names": {
     "en": "Fig",
     "nl": "Vijg",
-    "fr": "Figuier",
-    "de": "Feige"
+    "fr": "Figuier"
    },
    "scientific_name": "Ficus carica",
    "family": "Moraceae",
@@ -9134,9 +8799,6 @@
     ],
     "fr": [
      "Limitez les racines (dalles dans le trou de plantation ou grand pot) pour avoir des fruits plutôt que des feuilles."
-    ],
-    "de": [
-     "Die Wurzeln begrenzen (Platten im Pflanzloch oder ein großer Topf), damit sie Früchte statt Blätter bildet."
     ]
    },
    "companions": [],
@@ -9225,8 +8887,7 @@
    "names": {
     "en": "Florence fennel",
     "nl": "Knolvenkel",
-    "fr": "Fenouil bulbeux",
-    "de": "Knollenfenchel"
+    "fr": "Fenouil bulbeux"
    },
    "scientific_name": "Foeniculum vulgare var. azoricum",
    "family": "Apiaceae",
@@ -9276,10 +8937,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -9362,8 +9019,7 @@
    "names": {
     "en": "Garden cress",
     "nl": "Tuinkers",
-    "fr": "Cresson alénois",
-    "de": "Gartenkresse"
+    "fr": "Cresson alénois"
    },
    "scientific_name": "Lepidium sativum",
    "family": "Brassicaceae",
@@ -9387,10 +9043,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -9399,8 +9051,7 @@
    "names": {
     "en": "Garlic",
     "nl": "Knoflook",
-    "fr": "Ail",
-    "de": "Knoblauch"
+    "fr": "Ail"
    },
    "scientific_name": "Allium sativum",
    "family": "Amaryllidaceae",
@@ -9573,10 +9224,6 @@
     "fr": [
      "Binez avec soin - les alliacées détestent la concurrence des mauvaises herbes ; arrêtez d'arroser 2 semaines avant la récolte.",
      "Associez-les aux carottes : chacune masque l'odeur de l'autre face à sa mouche."
-    ],
-    "de": [
-     "Vorsichtig hacken - Lauchgewächse vertragen keine Unkrautkonkurrenz; 2 Wochen vor der Ernte nicht mehr gießen.",
-     "Zusammen mit Möhren pflanzen: Jede überdeckt den Geruch der anderen vor deren Fliege."
     ]
    }
   },
@@ -9657,8 +9304,7 @@
    "names": {
     "en": "Garlic chives",
     "nl": "Chinese bieslook",
-    "fr": "Ciboulette chinoise (ciboule de Chine)",
-    "de": "Schnittknoblauch"
+    "fr": "Ciboulette chinoise (ciboule de Chine)"
    },
    "scientific_name": "Allium tuberosum",
    "family": "Amaryllidaceae",
@@ -9683,10 +9329,6 @@
     "fr": [
      "Binez avec soin - les alliacées détestent la concurrence des mauvaises herbes ; arrêtez d'arroser 2 semaines avant la récolte.",
      "Associez-les aux carottes : chacune masque l'odeur de l'autre face à sa mouche."
-    ],
-    "de": [
-     "Vorsichtig hacken - Lauchgewächse vertragen keine Unkrautkonkurrenz; 2 Wochen vor der Ernte nicht mehr gießen.",
-     "Zusammen mit Möhren pflanzen: Jede überdeckt den Geruch der anderen vor deren Fliege."
     ]
    }
   },
@@ -9775,8 +9417,7 @@
    "names": {
     "en": "Gherkin",
     "nl": "Augurk",
-    "fr": "Cornichon",
-    "de": "Einlegegurke"
+    "fr": "Cornichon"
    },
    "scientific_name": "Cucumis sativus",
    "family": "Cucurbitaceae",
@@ -9813,10 +9454,6 @@
     "fr": [
      "Plantez sur une butte de compost ; une pulvérisation de lait (1:9) chaque semaine freine l'oïdium.",
      "Pas de fruits ? Pollinisez à la main : frottez une fleur mâle sur la fleur femelle le matin."
-    ],
-    "de": [
-     "Auf einen Komposthügel pflanzen; wöchentlich Milch spritzen (1:9) hält den Echten Mehltau zurück.",
-     "Kein Fruchtansatz? Von Hand bestäuben: morgens eine männliche Blüte an der weiblichen abstreifen."
     ]
    }
   },
@@ -9889,8 +9526,7 @@
    "names": {
     "en": "Globe artichoke",
     "nl": "Artisjok",
-    "fr": "Artichaut",
-    "de": "Artischocke"
+    "fr": "Artichaut"
    },
    "scientific_name": "Cynara cardunculus var. scolymus",
    "family": "Asteraceae",
@@ -9923,10 +9559,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -10000,8 +9632,7 @@
    "names": {
     "en": "Goji berry",
     "nl": "Gojibes",
-    "fr": "Goji",
-    "de": "Goji-Beere"
+    "fr": "Goji"
    },
    "scientific_name": "Lycium barbarum",
    "family": "Solanaceae",
@@ -10075,9 +9706,6 @@
     ],
     "fr": [
      "Supporte les sols pauvres et secs et le vent salé."
-    ],
-    "de": [
-     "Verträgt mageren, trockenen Boden und salzigen Wind."
     ]
    },
    "companions": [],
@@ -10155,8 +9783,7 @@
    "names": {
     "en": "Gooseberry",
     "nl": "Kruisbes",
-    "fr": "Groseillier à maquereau",
-    "de": "Stachelbeere"
+    "fr": "Groseillier à maquereau"
    },
    "scientific_name": "Ribes uva-crispa",
    "family": "Grossulariaceae",
@@ -10249,9 +9876,6 @@
     ],
     "fr": [
      "Résistantes à l'oïdium : Invicta, Hinnonmäki Röd, Pax."
-    ],
-    "de": [
-     "Mehltauresistent: Invicta, Hinnonmäki Röd, Pax."
     ]
    },
    "companions": [],
@@ -10329,8 +9953,7 @@
    "names": {
     "en": "Grape (table)",
     "nl": "Druif (tafel)",
-    "fr": "Vigne (raisin de table)",
-    "de": "Tafeltraube"
+    "fr": "Vigne (raisin de table)"
    },
    "scientific_name": "Vitis vinifera",
    "family": "Vitaceae",
@@ -10421,11 +10044,6 @@
      "Variétés résistantes pour l'extérieur : Boskoop Glory, Phoenix, Muscat bleu, Vanessa.",
      "Ensachez les grappes dans des sachets en organza contre les guêpes.",
      "Une pulvérisation hebdomadaire de lait (1 part de lait : 9 parts d'eau) aide contre l'oïdium."
-    ],
-    "de": [
-     "Resistente Freilandsorten: Boskoop Glory, Phoenix, Muscat bleu, Vanessa.",
-     "Trauben in Organzabeutel hüllen gegen Wespen.",
-     "Wöchentlich Milch spritzen (1 Teil Milch : 9 Teile Wasser) hilft gegen Echten Mehltau."
     ]
    },
    "companions": [
@@ -10535,8 +10153,7 @@
    "names": {
     "en": "Greek bush basil",
     "nl": "Griekse basilicum",
-    "fr": "Basilic grec",
-    "de": "Griechisches Buschbasilikum"
+    "fr": "Basilic grec"
    },
    "scientific_name": "Ocimum basilicum var. minimum",
    "family": "Lamiaceae",
@@ -10549,9 +10166,6 @@
     ],
     "fr": [
      "Boule compacte, feuilles minuscules - idéal en pot."
-    ],
-    "de": [
-     "Kompakte Kugel, winzige Blätter - ideal für Töpfe."
     ]
    },
    "companions": [],
@@ -10630,8 +10244,7 @@
    "names": {
     "en": "Hazelnut",
     "nl": "Hazelaar",
-    "fr": "Noisetier",
-    "de": "Haselnuss"
+    "fr": "Noisetier"
    },
    "scientific_name": "Corylus avellana",
    "family": "Betulaceae",
@@ -10687,9 +10300,6 @@
     ],
     "fr": [
      "Pollinisé par le vent : plantez deux variétés (p. ex. Cosford + Webb's Prize) pour avoir des noisettes."
-    ],
-    "de": [
-     "Windbestäubt: zwei Sorten pflanzen (z. B. Cosford + Webbs Preisnuss) für Nüsse."
     ]
    },
    "companions": [],
@@ -10774,8 +10384,7 @@
    "names": {
     "en": "Fennel (herb)",
     "nl": "Venkel (kruid)",
-    "fr": "Fenouil (aromatique)",
-    "de": "Gewürzfenchel"
+    "fr": "Fenouil (aromatique)"
    },
    "scientific_name": "Foeniculum vulgare",
    "family": "Apiaceae",
@@ -10800,10 +10409,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -10893,8 +10498,7 @@
    "names": {
     "en": "Red kuri squash (Hokkaido)",
     "nl": "Hokkaido-pompoen",
-    "fr": "Potimarron (Hokkaido)",
-    "de": "Hokkaido-Kürbis"
+    "fr": "Potimarron (Hokkaido)"
    },
    "scientific_name": "Cucurbita maxima 'Uchiki Kuri'",
    "family": "Cucurbitaceae",
@@ -10908,9 +10512,6 @@
     ],
     "fr": [
      "Peau comestible ; se conserve 4-6 mois à 12-15 °C. Pincez après 4 fruits par plant."
-    ],
-    "de": [
-     "Essbare Schale; lagert 4-6 Monate bei 12-15 °C. Nach 4 Früchten pro Pflanze entspitzen."
     ]
    },
    "companions": [
@@ -11011,8 +10612,7 @@
    "names": {
     "en": "Holy basil / Tulsi",
     "nl": "Heilige basilicum (tulsi)",
-    "fr": "Basilic sacré (tulsi)",
-    "de": "Indisches Basilikum / Tulsi"
+    "fr": "Basilic sacré (tulsi)"
    },
    "scientific_name": "Ocimum tenuiflorum",
    "family": "Lamiaceae",
@@ -11033,10 +10633,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -11110,8 +10706,7 @@
    "names": {
     "en": "Honeyberry (haskap)",
     "nl": "Honingbes",
-    "fr": "Camérisier (baie de mai)",
-    "de": "Maibeere (Haskap)"
+    "fr": "Camérisier (baie de mai)"
    },
    "scientific_name": "Lonicera caerulea",
    "family": "Caprifoliaceae",
@@ -11185,9 +10780,6 @@
     ],
     "fr": [
      "Premier fruit de l'année (mai-juin) ; a besoin d'une deuxième variété pour la pollinisation."
-    ],
-    "de": [
-     "Erstes Obst des Jahres (Mai-Juni); braucht eine zweite Sorte zur Bestäubung."
     ]
    },
    "companions": [],
@@ -11259,8 +10851,7 @@
    "names": {
     "en": "Horseradish",
     "nl": "Mierikswortel",
-    "fr": "Raifort",
-    "de": "Meerrettich"
+    "fr": "Raifort"
    },
    "scientific_name": "Armoracia rusticana",
    "family": "Brassicaceae",
@@ -11294,10 +10885,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -11379,8 +10966,7 @@
    "names": {
     "en": "Hyssop",
     "nl": "Hysop",
-    "fr": "Hysope",
-    "de": "Ysop"
+    "fr": "Hysope"
    },
    "scientific_name": "Hyssopus officinalis",
    "family": "Lamiaceae",
@@ -11415,10 +11001,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -11497,8 +11079,7 @@
    "names": {
     "en": "Ice plant",
     "nl": "IJskruid",
-    "fr": "Ficoïde glaciale",
-    "de": "Eiskraut"
+    "fr": "Ficoïde glaciale"
    },
    "scientific_name": "Mesembryanthemum crystallinum",
    "family": "Aizoaceae",
@@ -11511,9 +11092,6 @@
     ],
     "fr": [
      "Feuilles croquantes et salées ; prospère dans la chaleur et la sécheresse."
-    ],
-    "de": [
-     "Knackige, salzige Blätter; gedeiht bei Hitze und Trockenheit."
     ]
    },
    "companions": [],
@@ -11603,8 +11181,7 @@
    "names": {
     "en": "Iceberg lettuce",
     "nl": "IJsbergsla",
-    "fr": "Laitue iceberg",
-    "de": "Eisbergsalat"
+    "fr": "Laitue iceberg"
    },
    "scientific_name": "Lactuca sativa var. capitata (crisphead)",
    "family": "Asteraceae",
@@ -11617,9 +11194,6 @@
     ],
     "fr": [
      "A besoin d'une humidité régulière pour former une pomme ferme."
-    ],
-    "de": [
-     "Braucht gleichmäßige Feuchtigkeit, um einen festen Kopf zu bilden."
     ]
    },
    "companions": [],
@@ -11692,8 +11266,7 @@
    "names": {
     "en": "Jerusalem artichoke",
     "nl": "Aardpeer",
-    "fr": "Topinambour",
-    "de": "Topinambur"
+    "fr": "Topinambour"
    },
    "scientific_name": "Helianthus tuberosus",
    "family": "Asteraceae",
@@ -11726,10 +11299,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -11803,8 +11372,7 @@
    "names": {
     "en": "Jostaberry",
     "nl": "Jostabes",
-    "fr": "Josta (casseille)",
-    "de": "Jostabeere"
+    "fr": "Josta (casseille)"
    },
    "scientific_name": "Ribes × nidigrolaria",
    "family": "Grossulariaceae",
@@ -11881,9 +11449,6 @@
     ],
     "fr": [
      "Résiste à l'oïdium et au phytopte - un cassis sans souci."
-    ],
-    "de": [
-     "Resistent gegen Mehltau und Johannisbeergallmilbe - eine pflegeleichte Schwarze Johannisbeere."
     ]
    },
    "companions": [],
@@ -11896,8 +11461,7 @@
    "names": {
     "en": "Kale",
     "nl": "Boerenkool",
-    "fr": "Chou frisé (kale)",
-    "de": "Grünkohl"
+    "fr": "Chou frisé (kale)"
    },
    "scientific_name": "Brassica oleracea var. sabellica",
    "family": "Brassicaceae",
@@ -12069,10 +11633,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -12146,8 +11706,7 @@
    "names": {
     "en": "Kiwi berry",
     "nl": "Kiwibes",
-    "fr": "Kiwaï (kiwi de Sibérie)",
-    "de": "Kiwibeere"
+    "fr": "Kiwaï (kiwi de Sibérie)"
    },
    "scientific_name": "Actinidia arguta",
    "family": "Actinidiaceae",
@@ -12211,9 +11770,6 @@
     ],
     "fr": [
      "A besoin d'un pied mâle (1 pour 6 femelles), sauf si vous choisissez l'autofertile 'Issai'."
-    ],
-    "de": [
-     "Braucht eine männliche Pflanze (1 auf 6 weibliche), außer man wählt die selbstfruchtbare 'Issai'."
     ]
    },
    "companions": [],
@@ -12324,8 +11880,7 @@
    "names": {
     "en": "Kohlrabi",
     "nl": "Koolrabi",
-    "fr": "Chou-rave",
-    "de": "Kohlrabi"
+    "fr": "Chou-rave"
    },
    "scientific_name": "Brassica oleracea var. gongylodes",
    "family": "Brassicaceae",
@@ -12359,10 +11914,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -12445,8 +11996,7 @@
    "names": {
     "en": "Komatsuna",
     "nl": "Komatsuna",
-    "fr": "Komatsuna",
-    "de": "Komatsuna"
+    "fr": "Komatsuna"
    },
    "scientific_name": "Brassica rapa var. perviridis",
    "family": "Brassicaceae",
@@ -12459,9 +12009,6 @@
     ],
     "fr": [
      "Moutarde-épinard japonaise très résistante au froid : salade d'hiver sous serre."
-    ],
-    "de": [
-     "Sehr winterharter japanischer Senfspinat: Wintersalat unter Glas."
     ]
    },
    "companions": [],
@@ -12538,8 +12085,7 @@
    "names": {
     "en": "Lamb's lettuce / Corn salad",
     "nl": "Veldsla",
-    "fr": "Mâche",
-    "de": "Feldsalat"
+    "fr": "Mâche"
    },
    "scientific_name": "Valerianella locusta",
    "family": "Caprifoliaceae",
@@ -12559,9 +12105,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -12643,8 +12186,7 @@
    "names": {
     "en": "Lavender",
     "nl": "Lavendel",
-    "fr": "Lavande",
-    "de": "Lavendel"
+    "fr": "Lavande"
    },
    "scientific_name": "Lavandula angustifolia",
    "family": "Lamiaceae",
@@ -12673,10 +12215,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -12759,8 +12297,7 @@
    "names": {
     "en": "Leaf celery",
     "nl": "Snijselderij",
-    "fr": "Céleri à couper",
-    "de": "Schnittsellerie"
+    "fr": "Céleri à couper"
    },
    "scientific_name": "Apium graveolens var. secalinum",
    "family": "Apiaceae",
@@ -12788,10 +12325,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -12800,8 +12333,7 @@
    "names": {
     "en": "Leek",
     "nl": "Prei",
-    "fr": "Poireau",
-    "de": "Lauch / Porree"
+    "fr": "Poireau"
    },
    "scientific_name": "Allium ampeloprasum var. porrum",
    "family": "Amaryllidaceae",
@@ -12962,10 +12494,6 @@
     "fr": [
      "Binez avec soin - les alliacées détestent la concurrence des mauvaises herbes ; arrêtez d'arroser 2 semaines avant la récolte.",
      "Associez-les aux carottes : chacune masque l'odeur de l'autre face à sa mouche."
-    ],
-    "de": [
-     "Vorsichtig hacken - Lauchgewächse vertragen keine Unkrautkonkurrenz; 2 Wochen vor der Ernte nicht mehr gießen.",
-     "Zusammen mit Möhren pflanzen: Jede überdeckt den Geruch der anderen vor deren Fliege."
     ]
    }
   },
@@ -13047,8 +12575,7 @@
    "names": {
     "en": "Lemon balm",
     "nl": "Citroenmelisse",
-    "fr": "Mélisse",
-    "de": "Zitronenmelisse"
+    "fr": "Mélisse"
    },
    "scientific_name": "Melissa officinalis",
    "family": "Lamiaceae",
@@ -13070,10 +12597,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -13159,8 +12682,7 @@
    "names": {
     "en": "Lemon basil",
     "nl": "Citroenbasilicum",
-    "fr": "Basilic citron",
-    "de": "Zitronenbasilikum"
+    "fr": "Basilic citron"
    },
    "scientific_name": "Ocimum × citriodorum",
    "family": "Lamiaceae",
@@ -13181,10 +12703,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -13259,8 +12777,7 @@
    "names": {
     "en": "Lemon thyme",
     "nl": "Citroentijm",
-    "fr": "Thym citron",
-    "de": "Zitronenthymian"
+    "fr": "Thym citron"
    },
    "scientific_name": "Thymus × citriodorus",
    "family": "Lamiaceae",
@@ -13288,10 +12805,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -13366,8 +12879,7 @@
    "names": {
     "en": "Lemon verbena",
     "nl": "Citroenverbena",
-    "fr": "Verveine citronnelle",
-    "de": "Zitronenverbene"
+    "fr": "Verveine citronnelle"
    },
    "scientific_name": "Aloysia citrodora",
    "family": "Verbenaceae",
@@ -13385,9 +12897,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -13470,8 +12979,7 @@
    "names": {
     "en": "Lemongrass",
     "nl": "Citroengras",
-    "fr": "Citronnelle",
-    "de": "Zitronengras"
+    "fr": "Citronnelle"
    },
    "scientific_name": "Cymbopogon citratus",
    "family": "Poaceae",
@@ -13489,9 +12997,6 @@
     ],
     "fr": [
      "Plantez en carré, pas en une seule rangée : la pollinisation se fait par le vent."
-    ],
-    "de": [
-     "In Blöcken pflanzen, nicht in einzelnen Reihen: windbestäubt."
     ]
    }
   },
@@ -13500,8 +13005,7 @@
    "names": {
     "en": "Lettuce",
     "nl": "Sla",
-    "fr": "Laitue",
-    "de": "Kopfsalat"
+    "fr": "Laitue"
    },
    "scientific_name": "Lactuca sativa",
    "variety": "Butterhead",
@@ -13673,10 +13177,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -13764,8 +13264,7 @@
    "names": {
     "en": "Loose-leaf lettuce",
     "nl": "Pluksla",
-    "fr": "Laitue à couper",
-    "de": "Pflücksalat"
+    "fr": "Laitue à couper"
    },
    "scientific_name": "Lactuca sativa var. crispa",
    "family": "Asteraceae",
@@ -13780,9 +13279,6 @@
     ],
     "fr": [
      "Ne cueillez que les feuilles extérieures - un seul semis vous nourrit pendant deux mois."
-    ],
-    "de": [
-     "Nur die äußeren Blätter pflücken - eine Aussaat ernährt Sie zwei Monate lang."
     ]
    },
    "companions": [],
@@ -13868,8 +13364,7 @@
    "names": {
     "en": "Lovage",
     "nl": "Lavas (maggiplant)",
-    "fr": "Livèche (ache de montagne)",
-    "de": "Liebstöckel"
+    "fr": "Livèche (ache de montagne)"
    },
    "scientific_name": "Levisticum officinale",
    "family": "Apiaceae",
@@ -13891,10 +13386,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -13961,8 +13452,7 @@
    "names": {
     "en": "Blue lupin",
     "nl": "Blauwe lupine",
-    "fr": "Lupin bleu",
-    "de": "Blaue Lupine"
+    "fr": "Lupin bleu"
    },
    "scientific_name": "Lupinus angustifolius",
    "family": "Fabaceae",
@@ -13975,9 +13465,6 @@
     ],
     "fr": [
      "Prospère en sol sableux pauvre et l'ameublit en profondeur."
-    ],
-    "de": [
-     "Gedeiht auf magerem Sandboden und lockert ihn tief."
     ]
    },
    "companions": [],
@@ -13991,8 +13478,7 @@
    "names": {
     "en": "French marigold",
     "nl": "Afrikaantje",
-    "fr": "Œillet d'Inde",
-    "de": "Studentenblume"
+    "fr": "Œillet d'Inde"
    },
    "scientific_name": "Tagetes patula",
    "family": "Asteraceae",
@@ -14153,10 +13639,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -14241,8 +13723,7 @@
    "names": {
     "en": "Sweet marjoram",
     "nl": "Marjolein",
-    "fr": "Marjolaine",
-    "de": "Majoran"
+    "fr": "Marjolaine"
    },
    "scientific_name": "Origanum majorana",
    "family": "Lamiaceae",
@@ -14270,10 +13751,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -14348,8 +13825,7 @@
    "names": {
     "en": "Marrowfat pea",
     "nl": "Kapucijner",
-    "fr": "Pois ridé à écosser (capucijner)",
-    "de": "Markerbse"
+    "fr": "Pois ridé à écosser (capucijner)"
    },
    "scientific_name": "Pisum sativum var. arvense",
    "family": "Fabaceae",
@@ -14362,9 +13838,6 @@
     ],
     "fr": [
      "Un classique flamand : récoltez les gousses sèches, écossez et conservez."
-    ],
-    "de": [
-     "Ein flämischer Klassiker: die trockenen Hülsen ernten, auspalen und lagern."
     ]
    },
    "companions": [],
@@ -14443,8 +13916,7 @@
    "names": {
     "en": "Medlar",
     "nl": "Mispel",
-    "fr": "Néflier",
-    "de": "Mispel"
+    "fr": "Néflier"
    },
    "scientific_name": "Mespilus germanica",
    "family": "Rosaceae",
@@ -14543,9 +14015,6 @@
     ],
     "fr": [
      "Récoltez après les premières gelées et laissez-les blettir 2-3 semaines à l'intérieur."
-    ],
-    "de": [
-     "Nach dem ersten Frost ernten und 2-3 Wochen drinnen teigig (weich) werden lassen."
     ]
    },
    "companions": [],
@@ -14639,8 +14108,7 @@
    "names": {
     "en": "Melon",
     "nl": "Meloen",
-    "fr": "Melon",
-    "de": "Melone"
+    "fr": "Melon"
    },
    "scientific_name": "Cucumis melo",
    "family": "Cucurbitaceae",
@@ -14697,10 +14165,6 @@
     "fr": [
      "Plantez sur une butte de compost ; une pulvérisation de lait (1:9) chaque semaine freine l'oïdium.",
      "Pas de fruits ? Pollinisez à la main : frottez une fleur mâle sur la fleur femelle le matin."
-    ],
-    "de": [
-     "Auf einen Komposthügel pflanzen; wöchentlich Milch spritzen (1:9) hält den Echten Mehltau zurück.",
-     "Kein Fruchtansatz? Von Hand bestäuben: morgens eine männliche Blüte an der weiblichen abstreifen."
     ]
    }
   },
@@ -14783,8 +14247,7 @@
    "names": {
     "en": "Mizuna",
     "nl": "Mizuna",
-    "fr": "Mizuna",
-    "de": "Mizuna"
+    "fr": "Mizuna"
    },
    "scientific_name": "Brassica rapa var. nipposinica",
    "family": "Brassicaceae",
@@ -14809,10 +14272,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -14892,8 +14351,7 @@
    "names": {
     "en": "Mugwort",
     "nl": "Bijvoet",
-    "fr": "Armoise commune",
-    "de": "Beifuß"
+    "fr": "Armoise commune"
    },
    "scientific_name": "Artemisia vulgaris",
    "family": "Asteraceae",
@@ -14914,10 +14372,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -14991,8 +14445,7 @@
    "names": {
     "en": "Black mulberry",
     "nl": "Zwarte moerbei",
-    "fr": "Mûrier noir",
-    "de": "Schwarze Maulbeere"
+    "fr": "Mûrier noir"
    },
    "scientific_name": "Morus nigra",
    "family": "Moraceae",
@@ -15034,9 +14487,6 @@
     ],
     "fr": [
      "Étendez un drap sous l'arbre et secouez : les mûres mûres tombent."
-    ],
-    "de": [
-     "Ein Tuch unter den Baum legen und schütteln: Reife Maulbeeren fallen herunter."
     ]
    },
    "companions": [],
@@ -15122,8 +14572,7 @@
    "names": {
     "en": "Mustard greens",
     "nl": "Bladmosterd",
-    "fr": "Moutarde de Chine (moutarde à feuilles)",
-    "de": "Blattsenf"
+    "fr": "Moutarde de Chine (moutarde à feuilles)"
    },
    "scientific_name": "Brassica juncea",
    "family": "Brassicaceae",
@@ -15148,10 +14597,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -15232,8 +14677,7 @@
    "names": {
     "en": "Mustard (for seed/green manure)",
     "nl": "Gele mosterd (groenbemester)",
-    "fr": "Moutarde blanche (graines/engrais vert)",
-    "de": "Senf (für Samen/Gründüngung)"
+    "fr": "Moutarde blanche (graines/engrais vert)"
    },
    "scientific_name": "Sinapis alba",
    "family": "Brassicaceae",
@@ -15259,10 +14703,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -15343,8 +14783,7 @@
    "names": {
     "en": "Nasturtium",
     "nl": "Oost-Indische kers",
-    "fr": "Capucine",
-    "de": "Kapuzinerkresse"
+    "fr": "Capucine"
    },
    "scientific_name": "Tropaeolum majus",
    "family": "Tropaeolaceae",
@@ -15373,9 +14812,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -15446,8 +14882,7 @@
    "names": {
     "en": "Black cumin (nigella)",
     "nl": "Zwarte komijn",
-    "fr": "Nigelle (cumin noir)",
-    "de": "Schwarzkümmel"
+    "fr": "Nigelle (cumin noir)"
    },
    "scientific_name": "Nigella sativa",
    "family": "Ranunculaceae",
@@ -15460,9 +14895,6 @@
     ],
     "fr": [
      "Jolies fleurs bleues, puis des capsules de graines pour le pain."
-    ],
-    "de": [
-     "Hübsche blaue Blüten, danach Samenkapseln für Brot."
     ]
    },
    "companions": [],
@@ -15552,8 +14984,7 @@
    "names": {
     "en": "New Zealand spinach",
     "nl": "Nieuw-Zeelandse spinazie",
-    "fr": "Tétragone (épinard de Nouvelle-Zélande)",
-    "de": "Neuseeländer Spinat"
+    "fr": "Tétragone (épinard de Nouvelle-Zélande)"
    },
    "scientific_name": "Tetragonia tetragonioides",
    "family": "Aizoaceae",
@@ -15579,9 +15010,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -15645,8 +15073,7 @@
    "names": {
     "en": "Oca",
     "nl": "Oca",
-    "fr": "Oca du Pérou",
-    "de": "Oca (Knolliger Sauerklee)"
+    "fr": "Oca du Pérou"
    },
    "scientific_name": "Oxalis tuberosa",
    "family": "Oxalidaceae",
@@ -15659,9 +15086,6 @@
     ],
     "fr": [
      "Les tubercules ne se forment que lorsque les jours raccourcissent : récoltez fin novembre."
-    ],
-    "de": [
-     "Die Knollen bilden sich erst, wenn die Tage kürzer werden: Ende November ernten."
     ]
    },
    "companions": [],
@@ -15743,8 +15167,7 @@
    "names": {
     "en": "Okra",
     "nl": "Okra",
-    "fr": "Gombo",
-    "de": "Okra"
+    "fr": "Gombo"
    },
    "scientific_name": "Abelmoschus esculentus",
    "family": "Malvaceae",
@@ -15764,9 +15187,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -15775,8 +15195,7 @@
    "names": {
     "en": "Onion",
     "nl": "Ui",
-    "fr": "Oignon",
-    "de": "Zwiebel"
+    "fr": "Oignon"
    },
    "scientific_name": "Allium cepa",
    "variety": "From sets",
@@ -15943,10 +15362,6 @@
     "fr": [
      "Binez avec soin - les alliacées détestent la concurrence des mauvaises herbes ; arrêtez d'arroser 2 semaines avant la récolte.",
      "Associez-les aux carottes : chacune masque l'odeur de l'autre face à sa mouche."
-    ],
-    "de": [
-     "Vorsichtig hacken - Lauchgewächse vertragen keine Unkrautkonkurrenz; 2 Wochen vor der Ernte nicht mehr gießen.",
-     "Zusammen mit Möhren pflanzen: Jede überdeckt den Geruch der anderen vor deren Fliege."
     ]
    }
   },
@@ -16017,8 +15432,7 @@
    "names": {
     "en": "Orache",
     "nl": "Melde",
-    "fr": "Arroche",
-    "de": "Gartenmelde"
+    "fr": "Arroche"
    },
    "scientific_name": "Atriplex hortensis",
    "family": "Amaranthaceae",
@@ -16038,9 +15452,6 @@
     ],
     "fr": [
      "Semez par temps frais : l'épinard monte en graines avec les jours longs et la chaleur."
-    ],
-    "de": [
-     "Bei kühlem Wetter säen; Spinat schießt bei langen Tagen und Hitze."
     ]
    }
   },
@@ -16122,8 +15533,7 @@
    "names": {
     "en": "Oregano",
     "nl": "Oregano",
-    "fr": "Origan",
-    "de": "Oregano"
+    "fr": "Origan"
    },
    "scientific_name": "Origanum vulgare",
    "family": "Lamiaceae",
@@ -16151,10 +15561,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -16236,8 +15642,7 @@
    "names": {
     "en": "Pak choi",
     "nl": "Paksoi",
-    "fr": "Pak-choï",
-    "de": "Pak Choi"
+    "fr": "Pak-choï"
    },
    "scientific_name": "Brassica rapa subsp. chinensis",
    "family": "Brassicaceae",
@@ -16260,10 +15665,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -16272,8 +15673,7 @@
    "names": {
     "en": "Parsley",
     "nl": "Peterselie",
-    "fr": "Persil",
-    "de": "Petersilie"
+    "fr": "Persil"
    },
    "scientific_name": "Petroselinum crispum",
    "family": "Apiaceae",
@@ -16391,10 +15791,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -16459,8 +15855,7 @@
    "names": {
     "en": "Parsnip",
     "nl": "Pastinaak",
-    "fr": "Panais",
-    "de": "Pastinake"
+    "fr": "Panais"
    },
    "scientific_name": "Pastinaca sativa",
    "family": "Apiaceae",
@@ -16493,10 +15888,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -16585,8 +15976,7 @@
    "names": {
     "en": "Patty pan squash",
     "nl": "Patisson",
-    "fr": "Pâtisson",
-    "de": "Patisson"
+    "fr": "Pâtisson"
    },
    "scientific_name": "Cucurbita pepo var. patissonina",
    "family": "Cucurbitaceae",
@@ -16601,9 +15991,6 @@
     ],
     "fr": [
      "Cueillez à 8-10 cm - comme la courgette."
-    ],
-    "de": [
-     "Bei 8-10 cm pflücken - wie Zucchini."
     ]
    },
    "companions": [],
@@ -16617,8 +16004,7 @@
    "names": {
     "en": "Garden pea",
     "nl": "Doperwt",
-    "fr": "Petit pois",
-    "de": "Palerbse"
+    "fr": "Petit pois"
    },
    "scientific_name": "Pisum sativum",
    "family": "Fabaceae",
@@ -16774,10 +16160,6 @@
     "fr": [
      "Après la récolte, coupez les plants au ras du sol - les nodosités riches en azote restent en terre.",
      "Pincez la tête des fèves dès que les premières gousses se forment : cela arrête le puceron noir."
-    ],
-    "de": [
-     "Die Pflanzen nach der Ernte am Boden abschneiden - die Stickstoffknöllchen bleiben in der Erde.",
-     "Die Spitzen der Ackerbohnen ausbrechen, sobald die ersten Hülsen ansetzen: Das stoppt die Schwarze Bohnenlaus."
     ]
    }
   },
@@ -16851,8 +16233,7 @@
    "names": {
     "en": "Peach",
     "nl": "Perzik",
-    "fr": "Pêcher",
-    "de": "Pfirsich"
+    "fr": "Pêcher"
    },
    "scientific_name": "Prunus persica",
    "family": "Rosaceae",
@@ -16968,10 +16349,6 @@
     "fr": [
      "Pollinisez les fleurs précoces avec un pinceau doux - peu d'insectes volent en mars.",
      "Résistantes à la cloque : Amsden, Redhaven, 'Avalon Pride'."
-    ],
-    "de": [
-     "Die frühe Blüte mit einem weichen Pinsel von Hand bestäuben - im März fliegen kaum Insekten.",
-     "Kräuselresistent: Amsden, Redhaven, 'Avalon Pride'."
     ]
    },
    "companions": [
@@ -17059,8 +16436,7 @@
    "names": {
     "en": "Pear",
     "nl": "Peer",
-    "fr": "Poirier",
-    "de": "Birne"
+    "fr": "Poirier"
    },
    "scientific_name": "Pyrus communis",
    "family": "Rosaceae",
@@ -17182,11 +16558,6 @@
      "Cueillez les poires un peu avant maturité et laissez-les mûrir à l'intérieur ; sur l'arbre, elles deviennent farineuses.",
      "La rouille grillagée du poirier passe l'hiver sur le genévrier - évitez les Juniperus à proximité.",
      "Bons couples pollinisateurs : Conférence avec Doyenné du Comice ou Beurré Hardy."
-    ],
-    "de": [
-     "Birnen leicht unreif pflücken und drinnen nachreifen lassen; am Baum werden sie mehlig.",
-     "Der Birnengitterrost überwintert auf Wacholder - keinen Juniperus in der Nähe pflanzen.",
-     "Gute Befruchterpaare: Conference mit Vereinsdechantsbirne oder Gellerts Butterbirne."
     ]
    },
    "companions": [
@@ -17277,8 +16648,7 @@
    "names": {
     "en": "Peppermint",
     "nl": "Pepermunt",
-    "fr": "Menthe poivrée",
-    "de": "Pfefferminze"
+    "fr": "Menthe poivrée"
    },
    "scientific_name": "Mentha × piperita",
    "family": "Lamiaceae",
@@ -17310,10 +16680,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -17399,8 +16765,7 @@
    "names": {
     "en": "Shiso / Perilla",
     "nl": "Shiso",
-    "fr": "Shiso / périlla",
-    "de": "Shiso / Perilla"
+    "fr": "Shiso / périlla"
    },
    "scientific_name": "Perilla frutescens",
    "family": "Lamiaceae",
@@ -17421,10 +16786,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -17490,8 +16851,7 @@
    "names": {
     "en": "Phacelia",
     "nl": "Phacelia",
-    "fr": "Phacélie",
-    "de": "Phacelia"
+    "fr": "Phacélie"
    },
    "scientific_name": "Phacelia tanacetifolia",
    "family": "Boraginaceae",
@@ -17513,9 +16873,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -17597,8 +16954,7 @@
    "names": {
     "en": "Pineapple sage",
     "nl": "Ananassalie",
-    "fr": "Sauge ananas",
-    "de": "Ananassalbei"
+    "fr": "Sauge ananas"
    },
    "scientific_name": "Salvia elegans",
    "family": "Lamiaceae",
@@ -17611,9 +16967,6 @@
     ],
     "fr": [
      "Fleurs rouges en automne pour les bourdons tardifs ; hivernage hors gel."
-    ],
-    "de": [
-     "Rote Herbstblüten für späte Hummeln; frostfrei überwintern."
     ]
    },
    "companions": [],
@@ -17692,8 +17045,7 @@
    "names": {
     "en": "Plum",
     "nl": "Pruim",
-    "fr": "Prunier",
-    "de": "Pflaume"
+    "fr": "Prunier"
    },
    "scientific_name": "Prunus domestica",
    "family": "Rosaceae",
@@ -17791,10 +17143,6 @@
     "fr": [
      "Variétés autofertiles : Victoria, Reine-Claude d'Oullins, Opal.",
      "Étayez les branches très chargées - le bois du prunier casse facilement."
-    ],
-    "de": [
-     "Selbstfruchtbare Sorten: Victoria, Reneklode von Oullins, Opal.",
-     "Schwer behangene Äste stützen - Pflaumenholz bricht leicht."
     ]
    },
    "companions": [
@@ -17881,8 +17229,7 @@
    "names": {
     "en": "Poached egg plant",
     "nl": "Moerasbloem",
-    "fr": "Limnanthe (fleur aux œufs pochés)",
-    "de": "Spiegeleiblume"
+    "fr": "Limnanthe (fleur aux œufs pochés)"
    },
    "scientific_name": "Limnanthes douglasii",
    "family": "Limnanthaceae",
@@ -17895,9 +17242,6 @@
     ],
     "fr": [
      "En bordure du potager : elle attire les syrphes, dont les larves mangent les pucerons."
-    ],
-    "de": [
-     "Am Rand des Gemüsebeets: Schwebfliegen, deren Larven Blattläuse fressen."
     ]
    },
    "companions": [
@@ -18010,8 +17354,7 @@
    "names": {
     "en": "Pointed cabbage",
     "nl": "Spitskool",
-    "fr": "Chou pointu",
-    "de": "Spitzkohl"
+    "fr": "Chou pointu"
    },
    "scientific_name": "Brassica oleracea var. capitata f. alba (conical)",
    "family": "Brassicaceae",
@@ -18025,9 +17368,6 @@
     ],
     "fr": [
      "Rapide, sucré et tendre - semez toutes les 4 semaines pour une récolte continue."
-    ],
-    "de": [
-     "Schnell, süß und zart - alle 4 Wochen säen für einen steten Nachschub."
     ]
    },
    "companions": [
@@ -18132,8 +17472,7 @@
    "names": {
     "en": "Climbing French bean",
     "nl": "Stokboon",
-    "fr": "Haricot à rames",
-    "de": "Stangenbohne"
+    "fr": "Haricot à rames"
    },
    "scientific_name": "Phaseolus vulgaris",
    "family": "Fabaceae",
@@ -18178,10 +17517,6 @@
     "fr": [
      "Après la récolte, coupez les plants au ras du sol - les nodosités riches en azote restent en terre.",
      "Pincez la tête des fèves dès que les premières gousses se forment : cela arrête le puceron noir."
-    ],
-    "de": [
-     "Die Pflanzen nach der Ernte am Boden abschneiden - die Stickstoffknöllchen bleiben in der Erde.",
-     "Die Spitzen der Ackerbohnen ausbrechen, sobald die ersten Hülsen ansetzen: Das stoppt die Schwarze Bohnenlaus."
     ]
    }
   },
@@ -18246,8 +17581,7 @@
    "names": {
     "en": "Potato",
     "nl": "Aardappel",
-    "fr": "Pomme de terre",
-    "de": "Kartoffel"
+    "fr": "Pomme de terre"
    },
    "scientific_name": "Solanum tuberosum",
    "family": "Solanaceae",
@@ -18355,10 +17689,6 @@
     "fr": [
      "Arrosez le sol, jamais le feuillage, et le matin : les feuilles mouillées favorisent le mildiou.",
      "Retirez les feuilles sous le premier bouquet et paillez avec de la paille contre les éclaboussures contaminantes."
-    ],
-    "de": [
-     "Morgens den Boden gießen, nie die Blätter: Nasse Blätter fördern die Kraut- und Braunfäule.",
-     "Die Blätter unterhalb des ersten Fruchtstands entfernen und mit Stroh mulchen gegen Spritzinfektionen."
     ]
    }
   },
@@ -18448,8 +17778,7 @@
    "names": {
     "en": "Pumpkin / Winter squash",
     "nl": "Pompoen",
-    "fr": "Potiron / courge d'hiver",
-    "de": "Kürbis / Riesenkürbis"
+    "fr": "Potiron / courge d'hiver"
    },
    "scientific_name": "Cucurbita maxima",
    "family": "Cucurbitaceae",
@@ -18521,10 +17850,6 @@
     "fr": [
      "Plantez sur une butte de compost ; une pulvérisation de lait (1:9) chaque semaine freine l'oïdium.",
      "Pas de fruits ? Pollinisez à la main : frottez une fleur mâle sur la fleur femelle le matin."
-    ],
-    "de": [
-     "Auf einen Komposthügel pflanzen; wöchentlich Milch spritzen (1:9) hält den Echten Mehltau zurück.",
-     "Kein Fruchtansatz? Von Hand bestäuben: morgens eine männliche Blüte an der weiblichen abstreifen."
     ]
    }
   },
@@ -18610,8 +17935,7 @@
    "names": {
     "en": "Purple basil",
     "nl": "Paarse basilicum",
-    "fr": "Basilic pourpre",
-    "de": "Rotes Basilikum"
+    "fr": "Basilic pourpre"
    },
    "scientific_name": "Ocimum basilicum 'Purpurascens'",
    "family": "Lamiaceae",
@@ -18624,9 +17948,6 @@
     ],
     "fr": [
      "Touche de couleur dans les salades et entre les tomates."
-    ],
-    "de": [
-     "Farbakzent im Salat und zwischen Tomaten."
     ]
    },
    "companions": [],
@@ -18731,8 +18052,7 @@
    "names": {
     "en": "Purple sprouting broccoli",
     "nl": "Paarse broccoli (winter)",
-    "fr": "Brocoli violet à jets",
-    "de": "Sprossenbrokkoli (violett)"
+    "fr": "Brocoli violet à jets"
    },
    "scientific_name": "Brassica oleracea var. italica",
    "family": "Brassicaceae",
@@ -18747,9 +18067,6 @@
     ],
     "fr": [
      "Comble la période de soudure en mars-avril. Tuteurez contre le vent d'hiver."
-    ],
-    "de": [
-     "Füllt die Erntelücke im März-April. Gegen Winterwind anbinden."
     ]
    },
    "companions": [],
@@ -18826,8 +18143,7 @@
    "names": {
     "en": "Summer purslane",
     "nl": "Postelein",
-    "fr": "Pourpier",
-    "de": "Sommerportulak"
+    "fr": "Pourpier"
    },
    "scientific_name": "Portulaca oleracea",
    "family": "Portulacaceae",
@@ -18847,9 +18163,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -18923,8 +18236,7 @@
    "names": {
     "en": "Quince",
     "nl": "Kweepeer",
-    "fr": "Cognassier",
-    "de": "Quitte"
+    "fr": "Cognassier"
    },
    "scientific_name": "Cydonia oblonga",
    "family": "Rosaceae",
@@ -19024,9 +18336,6 @@
     ],
     "fr": [
      "Conservez les coings à part - leur parfum imprègne pommes et poires."
-    ],
-    "de": [
-     "Quitten getrennt lagern - ihr Duft geht auf Äpfel und Birnen über."
     ]
    },
    "companions": [],
@@ -19116,8 +18425,7 @@
    "names": {
     "en": "Radicchio",
     "nl": "Roodlof",
-    "fr": "Chicorée rouge (radicchio)",
-    "de": "Radicchio"
+    "fr": "Chicorée rouge (radicchio)"
    },
    "scientific_name": "Cichorium intybus var. foliosum",
    "family": "Asteraceae",
@@ -19140,10 +18448,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -19152,8 +18456,7 @@
    "names": {
     "en": "Radish",
     "nl": "Radijs",
-    "fr": "Radis",
-    "de": "Radieschen"
+    "fr": "Radis"
    },
    "scientific_name": "Raphanus sativus",
    "family": "Brassicaceae",
@@ -19304,10 +18607,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -19381,8 +18680,7 @@
    "names": {
     "en": "Raspberry (autumn)",
     "nl": "Framboos (herfst)",
-    "fr": "Framboisier (remontant)",
-    "de": "Herbsthimbeere"
+    "fr": "Framboisier (remontant)"
    },
    "scientific_name": "Rubus idaeus 'Autumn Bliss'",
    "family": "Rosaceae",
@@ -19463,9 +18761,6 @@
     ],
     "fr": [
      "Le framboisier le plus facile : pas besoin de palissage si vous le gardez court."
-    ],
-    "de": [
-     "Die einfachste Himbeere: Kurz gehalten braucht sie keine Stütze."
     ]
    },
    "companions": [
@@ -19553,8 +18848,7 @@
    "names": {
     "en": "Raspberry (summer)",
     "nl": "Framboos (zomer)",
-    "fr": "Framboisier (non remontant)",
-    "de": "Sommerhimbeere"
+    "fr": "Framboisier (non remontant)"
    },
    "scientific_name": "Rubus idaeus",
    "family": "Rosaceae",
@@ -19640,10 +18934,6 @@
     "fr": [
      "Palissage sur fils à 60, 120 et 170 cm.",
      "Cueillez tous les 2-3 jours par temps sec ; retirez les fruits trop mûrs contre Drosophila suzukii."
-    ],
-    "de": [
-     "Drahtgerüst in 60, 120 und 170 cm Höhe.",
-     "Bei trockenem Wetter alle 2-3 Tage pflücken; überreife Beeren gegen die Kirschessigfliege auslesen."
     ]
    },
    "companions": [
@@ -19765,8 +19055,7 @@
    "names": {
     "en": "Red cabbage",
     "nl": "Rodekool",
-    "fr": "Chou rouge",
-    "de": "Rotkohl"
+    "fr": "Chou rouge"
    },
    "scientific_name": "Brassica oleracea var. capitata f. rubra",
    "family": "Brassicaceae",
@@ -19789,10 +19078,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -19866,8 +19151,7 @@
    "names": {
     "en": "Redcurrant",
     "nl": "Rode bes",
-    "fr": "Groseillier rouge",
-    "de": "Rote Johannisbeere"
+    "fr": "Groseillier rouge"
    },
    "scientific_name": "Ribes rubrum",
    "family": "Grossulariaceae",
@@ -19962,10 +19246,6 @@
     "fr": [
      "Cueillez les grappes entières et égrappez avec une fourchette.",
      "Supporte la mi-ombre - parfait pour une clôture exposée au nord."
-    ],
-    "de": [
-     "Ganze Rispen pflücken und die Beeren mit einer Gabel abstreifen.",
-     "Verträgt Halbschatten - perfekt für einen nach Norden ausgerichteten Zaun."
     ]
    },
    "companions": [
@@ -20050,8 +19330,7 @@
    "names": {
     "en": "Rhubarb",
     "nl": "Rabarber",
-    "fr": "Rhubarbe",
-    "de": "Rhabarber"
+    "fr": "Rhubarbe"
    },
    "scientific_name": "Rheum rhabarbarum",
    "family": "Polygonaceae",
@@ -20079,9 +19358,6 @@
     ],
     "fr": [
      "Arrêtez de tirer les tiges après la mi-juin pour que la plante récupère ; les feuilles sont toxiques (mais bonnes pour un purin anti-pucerons)."
-    ],
-    "de": [
-     "Ab Mitte Juni keine Stiele mehr ernten, damit sich die Pflanze erholt; die Blätter sind giftig (taugen aber für eine Blattlausbrühe)."
     ]
    },
    "icon": "rhubarb",
@@ -20168,8 +19444,7 @@
    "names": {
     "en": "Rocket / Arugula",
     "nl": "Rucola",
-    "fr": "Roquette",
-    "de": "Rucola"
+    "fr": "Roquette"
    },
    "scientific_name": "Eruca vesicaria subsp. sativa",
    "family": "Brassicaceae",
@@ -20194,10 +19469,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -20278,8 +19549,7 @@
    "names": {
     "en": "Roman chamomile",
     "nl": "Roomse kamille",
-    "fr": "Camomille romaine",
-    "de": "Römische Kamille"
+    "fr": "Camomille romaine"
    },
    "scientific_name": "Chamaemelum nobile",
    "family": "Asteraceae",
@@ -20292,9 +19562,6 @@
     ],
     "fr": [
      "Une alternative parfumée au gazon pour les petites allées."
-    ],
-    "de": [
-     "Eine duftende Rasenalternative für kleine Wege."
     ]
    },
    "companions": [],
@@ -20397,8 +19664,7 @@
    "names": {
     "en": "Romanesco",
     "nl": "Romanesco",
-    "fr": "Chou romanesco",
-    "de": "Romanesco"
+    "fr": "Chou romanesco"
    },
    "scientific_name": "Brassica oleracea var. botrytis 'Romanesco'",
    "family": "Brassicaceae",
@@ -20411,9 +19677,6 @@
     ],
     "fr": [
      "A besoin d'une humidité constante ; le moindre stress donne de petites pommes."
-    ],
-    "de": [
-     "Braucht gleichmäßige Feuchtigkeit; jede Stockung ergibt kleine Köpfe."
     ]
    },
    "companions": [],
@@ -20482,8 +19745,7 @@
    "names": {
     "en": "Root parsley",
     "nl": "Wortelpeterselie",
-    "fr": "Persil tubéreux",
-    "de": "Wurzelpetersilie"
+    "fr": "Persil tubéreux"
    },
    "scientific_name": "Petroselinum crispum var. tuberosum",
    "family": "Apiaceae",
@@ -20509,10 +19771,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -20594,8 +19852,7 @@
    "names": {
     "en": "Rosemary",
     "nl": "Rozemarijn",
-    "fr": "Romarin",
-    "de": "Rosmarin"
+    "fr": "Romarin"
    },
    "scientific_name": "Salvia rosmarinus",
    "family": "Lamiaceae",
@@ -20631,10 +19888,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -20713,8 +19966,7 @@
    "names": {
     "en": "Rue",
     "nl": "Wijnruit",
-    "fr": "Rue officinale",
-    "de": "Weinraute"
+    "fr": "Rue officinale"
    },
    "scientific_name": "Ruta graveolens",
    "family": "Rutaceae",
@@ -20739,9 +19991,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -20831,8 +20080,7 @@
    "names": {
     "en": "Runner bean",
     "nl": "Pronkboon",
-    "fr": "Haricot d'Espagne",
-    "de": "Feuerbohne"
+    "fr": "Haricot d'Espagne"
    },
    "scientific_name": "Phaseolus coccineus",
    "family": "Fabaceae",
@@ -20877,10 +20125,6 @@
     "fr": [
      "Après la récolte, coupez les plants au ras du sol - les nodosités riches en azote restent en terre.",
      "Pincez la tête des fèves dès que les premières gousses se forment : cela arrête le puceron noir."
-    ],
-    "de": [
-     "Die Pflanzen nach der Ernte am Boden abschneiden - die Stickstoffknöllchen bleiben in der Erde.",
-     "Die Spitzen der Ackerbohnen ausbrechen, sobald die ersten Hülsen ansetzen: Das stoppt die Schwarze Bohnenlaus."
     ]
    }
   },
@@ -20953,8 +20197,7 @@
    "names": {
     "en": "Saffron crocus",
     "nl": "Saffraankrokus",
-    "fr": "Crocus à safran",
-    "de": "Safran-Krokus"
+    "fr": "Crocus à safran"
    },
    "scientific_name": "Crocus sativus",
    "family": "Iridaceae",
@@ -20976,9 +20219,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -21059,8 +20299,7 @@
    "names": {
     "en": "Sage",
     "nl": "Salie",
-    "fr": "Sauge officinale",
-    "de": "Salbei"
+    "fr": "Sauge officinale"
    },
    "scientific_name": "Salvia officinalis",
    "family": "Lamiaceae",
@@ -21085,10 +20324,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -21167,8 +20402,7 @@
    "names": {
     "en": "Salad burnet",
     "nl": "Pimpernel",
-    "fr": "Pimprenelle",
-    "de": "Kleiner Wiesenknopf (Pimpinelle)"
+    "fr": "Pimprenelle"
    },
    "scientific_name": "Sanguisorba minor",
    "family": "Rosaceae",
@@ -21186,9 +20420,6 @@
     ],
     "fr": [
      "Paillez, ne bêchez pas sous les fruitiers : les racines nourricières sont superficielles."
-    ],
-    "de": [
-     "Unter Obst mulchen, nicht graben: Die Saugwurzeln liegen flach."
     ]
    }
   },
@@ -21253,8 +20484,7 @@
    "names": {
     "en": "Salsify",
     "nl": "Haverwortel",
-    "fr": "Salsifis",
-    "de": "Haferwurzel"
+    "fr": "Salsifis"
    },
    "scientific_name": "Tragopogon porrifolius",
    "family": "Asteraceae",
@@ -21267,9 +20497,6 @@
     ],
     "fr": [
      "Sol profond et sans cailloux ; ses fleurs violettes de 2e année attirent les abeilles."
-    ],
-    "de": [
-     "Tiefer, steinfreier Boden; die violetten Blüten im 2. Jahr locken Bienen an."
     ]
    },
    "companions": [],
@@ -21353,8 +20580,7 @@
    "names": {
     "en": "Samphire",
     "nl": "Zeekraal",
-    "fr": "Salicorne",
-    "de": "Queller"
+    "fr": "Salicorne"
    },
    "scientific_name": "Salicornia europaea",
    "family": "Amaranthaceae",
@@ -21367,9 +20593,6 @@
     ],
     "fr": [
      "Arrosez une fois par semaine à l'eau salée (10 g de sel marin par litre)."
-    ],
-    "de": [
-     "Einmal pro Woche mit Salzwasser gießen (10 g Meersalz pro Liter)."
     ]
    },
    "companions": [],
@@ -21455,8 +20678,7 @@
    "names": {
     "en": "Cotton lavender",
     "nl": "Heiligenbloem",
-    "fr": "Santoline",
-    "de": "Heiligenkraut"
+    "fr": "Santoline"
    },
    "scientific_name": "Santolina chamaecyparissus",
    "family": "Asteraceae",
@@ -21473,9 +20695,6 @@
     ],
     "fr": [
      "Bordure basse taillée pour les carrés d'aromatiques ; les brins séchés éloignent les mites des armoires."
-    ],
-    "de": [
-     "Niedrige Schnitteinfassung für Kräuterbeete; getrocknete Zweige halten Motten aus den Schränken fern."
     ]
    },
    "companions": [],
@@ -21579,8 +20798,7 @@
    "names": {
     "en": "Savoy cabbage",
     "nl": "Savooiekool",
-    "fr": "Chou de Milan",
-    "de": "Wirsing"
+    "fr": "Chou de Milan"
    },
    "scientific_name": "Brassica oleracea var. sabauda",
    "family": "Brassicaceae",
@@ -21603,10 +20821,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -21670,8 +20884,7 @@
    "names": {
     "en": "Scorzonera",
     "nl": "Schorseneer",
-    "fr": "Scorsonère",
-    "de": "Schwarzwurzel"
+    "fr": "Scorsonère"
    },
    "scientific_name": "Scorzonera hispanica",
    "family": "Asteraceae",
@@ -21694,10 +20907,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -21772,8 +20981,7 @@
    "names": {
     "en": "Sea buckthorn",
     "nl": "Duindoorn",
-    "fr": "Argousier",
-    "de": "Sanddorn"
+    "fr": "Argousier"
    },
    "scientific_name": "Hippophae rhamnoides",
    "family": "Elaeagnaceae",
@@ -21847,9 +21055,6 @@
     ],
     "fr": [
      "Dioïque : plantez 1 mâle pour au maximum 6 femelles. Fixe l'azote."
-    ],
-    "de": [
-     "Zweihäusig: 1 männliche Pflanze für bis zu 6 weibliche. Bindet Stickstoff."
     ]
    },
    "companions": [],
@@ -21919,8 +21124,7 @@
    "names": {
     "en": "Sea kale",
     "nl": "Zeekool",
-    "fr": "Chou marin (crambe)",
-    "de": "Meerkohl"
+    "fr": "Chou marin (crambe)"
    },
    "scientific_name": "Crambe maritima",
    "family": "Brassicaceae",
@@ -21953,9 +21157,6 @@
     ],
     "fr": [
      "Les jeunes pousses blanchies au printemps ont un goût d'asperge et de noisette."
-    ],
-    "de": [
-     "Gebleichte Frühjahrstriebe schmecken nach Haselnuss und Spargel."
     ]
    },
    "companions": [],
@@ -22038,8 +21239,7 @@
    "names": {
     "en": "Shallot",
     "nl": "Sjalot",
-    "fr": "Échalote",
-    "de": "Schalotte"
+    "fr": "Échalote"
    },
    "scientific_name": "Allium cepa var. aggregatum",
    "family": "Amaryllidaceae",
@@ -22062,10 +21262,6 @@
     "fr": [
      "Binez avec soin - les alliacées détestent la concurrence des mauvaises herbes ; arrêtez d'arroser 2 semaines avant la récolte.",
      "Associez-les aux carottes : chacune masque l'odeur de l'autre face à sa mouche."
-    ],
-    "de": [
-     "Vorsichtig hacken - Lauchgewächse vertragen keine Unkrautkonkurrenz; 2 Wochen vor der Ernte nicht mehr gießen.",
-     "Zusammen mit Möhren pflanzen: Jede überdeckt den Geruch der anderen vor deren Fliege."
     ]
    }
   },
@@ -22151,8 +21347,7 @@
    "names": {
     "en": "Green shiso",
     "nl": "Groene shiso",
-    "fr": "Shiso vert",
-    "de": "Grünes Shiso"
+    "fr": "Shiso vert"
    },
    "scientific_name": "Perilla frutescens var. crispa",
    "family": "Lamiaceae",
@@ -22165,9 +21360,6 @@
     ],
     "fr": [
      "Semez en surface - a besoin de lumière pour germer."
-    ],
-    "de": [
-     "Auf die Oberfläche säen - Lichtkeimer."
     ]
    },
    "companions": [],
@@ -22246,8 +21438,7 @@
    "names": {
     "en": "Snow pea / Mangetout",
     "nl": "Peultje",
-    "fr": "Pois mange-tout",
-    "de": "Zuckererbse / Kaiserschote"
+    "fr": "Pois mange-tout"
    },
    "scientific_name": "Pisum sativum var. saccharatum",
    "family": "Fabaceae",
@@ -22282,10 +21473,6 @@
     "fr": [
      "Après la récolte, coupez les plants au ras du sol - les nodosités riches en azote restent en terre.",
      "Pincez la tête des fèves dès que les premières gousses se forment : cela arrête le puceron noir."
-    ],
-    "de": [
-     "Die Pflanzen nach der Ernte am Boden abschneiden - die Stickstoffknöllchen bleiben in der Erde.",
-     "Die Spitzen der Ackerbohnen ausbrechen, sobald die ersten Hülsen ansetzen: Das stoppt die Schwarze Bohnenlaus."
     ]
    }
   },
@@ -22366,8 +21553,7 @@
    "names": {
     "en": "Sorrel",
     "nl": "Zuring",
-    "fr": "Oseille",
-    "de": "Sauerampfer"
+    "fr": "Oseille"
    },
    "scientific_name": "Rumex acetosa",
    "family": "Polygonaceae",
@@ -22386,9 +21572,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -22462,8 +21645,7 @@
    "names": {
     "en": "Sour cherry (morello)",
     "nl": "Zure kers (morel)",
-    "fr": "Griottier (cerisier acide)",
-    "de": "Sauerkirsche (Schattenmorelle)"
+    "fr": "Griottier (cerisier acide)"
    },
    "scientific_name": "Prunus cerasus",
    "family": "Rosaceae",
@@ -22570,10 +21752,6 @@
     "fr": [
      "Les griottiers fructifient sur le bois de l'an dernier et supportent un mur au nord - idéal pour une clôture ombragée.",
      "Coupez immédiatement les rameaux atteints de moniliose (pointes flétries) 15 cm dans le bois sain."
-    ],
-    "de": [
-     "Sauerkirschen tragen am einjährigen Holz und vertragen eine Nordwand - ideal für einen schattigen Zaun.",
-     "Triebe mit Monilia (welke Spitzen) sofort 15 cm ins gesunde Holz zurückschneiden."
     ]
    },
    "companions": [],
@@ -22667,8 +21845,7 @@
    "names": {
     "en": "Spaghetti squash",
     "nl": "Spaghettipompoen",
-    "fr": "Courge spaghetti",
-    "de": "Spaghettikürbis"
+    "fr": "Courge spaghetti"
    },
    "scientific_name": "Cucurbita pepo 'Vegetable Spaghetti'",
    "family": "Cucurbitaceae",
@@ -22681,9 +21858,6 @@
     ],
     "fr": [
      "Faites-la cuire entière au four, puis grattez les « spaghettis »."
-    ],
-    "de": [
-     "Im Ganzen backen, dann die „Spaghetti“ herauskratzen."
     ]
    },
    "companions": [],
@@ -22764,8 +21938,7 @@
    "names": {
     "en": "Spearmint",
     "nl": "Groene munt",
-    "fr": "Menthe verte",
-    "de": "Grüne Minze"
+    "fr": "Menthe verte"
    },
    "scientific_name": "Mentha spicata",
    "family": "Lamiaceae",
@@ -22792,10 +21965,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -22804,8 +21973,7 @@
    "names": {
     "en": "Spinach",
     "nl": "Spinazie",
-    "fr": "Épinard",
-    "de": "Spinat"
+    "fr": "Épinard"
    },
    "scientific_name": "Spinacia oleracea",
    "family": "Amaranthaceae",
@@ -22939,9 +22107,6 @@
     ],
     "fr": [
      "Semez par temps frais : l'épinard monte en graines avec les jours longs et la chaleur."
-    ],
-    "de": [
-     "Bei kühlem Wetter säen; Spinat schießt bei langen Tagen und Hitze."
     ]
    }
   },
@@ -23020,8 +22185,7 @@
    "names": {
     "en": "Spring onion",
     "nl": "Lente-ui",
-    "fr": "Oignon de printemps (cébette)",
-    "de": "Frühlingszwiebel"
+    "fr": "Oignon de printemps (cébette)"
    },
    "scientific_name": "Allium cepa / A. fistulosum",
    "family": "Amaryllidaceae",
@@ -23045,10 +22209,6 @@
     "fr": [
      "Binez avec soin - les alliacées détestent la concurrence des mauvaises herbes ; arrêtez d'arroser 2 semaines avant la récolte.",
      "Associez-les aux carottes : chacune masque l'odeur de l'autre face à sa mouche."
-    ],
-    "de": [
-     "Vorsichtig hacken - Lauchgewächse vertragen keine Unkrautkonkurrenz; 2 Wochen vor der Ernte nicht mehr gießen.",
-     "Zusammen mit Möhren pflanzen: Jede überdeckt den Geruch der anderen vor deren Fliege."
     ]
    }
   },
@@ -23129,8 +22289,7 @@
    "names": {
     "en": "St John's wort",
     "nl": "Sint-Janskruid",
-    "fr": "Millepertuis",
-    "de": "Johanniskraut"
+    "fr": "Millepertuis"
    },
    "scientific_name": "Hypericum perforatum",
    "family": "Hypericaceae",
@@ -23143,9 +22302,6 @@
     ],
     "fr": [
      "Plante médicinale - interagit avec de nombreux médicaments ; demandez conseil à un pharmacien avant usage."
-    ],
-    "de": [
-     "Heilpflanze - wechselwirkt mit vielen Medikamenten; vor der Anwendung in der Apotheke fragen."
     ]
    },
    "companions": [],
@@ -23237,8 +22393,7 @@
    "names": {
     "en": "Stevia",
     "nl": "Stevia",
-    "fr": "Stévia",
-    "de": "Stevia"
+    "fr": "Stévia"
    },
    "scientific_name": "Stevia rebaudiana",
    "family": "Asteraceae",
@@ -23259,10 +22414,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -23343,8 +22494,7 @@
    "names": {
     "en": "Stinging nettle",
     "nl": "Brandnetel",
-    "fr": "Ortie",
-    "de": "Große Brennnessel"
+    "fr": "Ortie"
    },
    "scientific_name": "Urtica dioica",
    "family": "Urticaceae",
@@ -23367,9 +22517,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -23440,8 +22587,7 @@
    "names": {
     "en": "Strawberry",
     "nl": "Aardbei",
-    "fr": "Fraisier",
-    "de": "Gartenerdbeere"
+    "fr": "Fraisier"
    },
    "scientific_name": "Fragaria × ananassa",
    "family": "Rosaceae",
@@ -23518,10 +22664,6 @@
     "fr": [
      "De la paille sous les fruits les garde propres et secs (d'où le nom anglais « strawberry »).",
      "Renouvelez la planche tous les 3-4 ans à partir des stolons les plus vigoureux."
-    ],
-    "de": [
-     "Stroh unter den Früchten hält sie sauber und trocken (daher der englische Name strawberry).",
-     "Das Beet alle 3-4 Jahre aus den kräftigsten Ausläufern erneuern."
     ]
    },
    "icon": "strawberry",
@@ -23598,8 +22740,7 @@
    "names": {
     "en": "Sugar snap pea",
     "nl": "Suikererwt",
-    "fr": "Pois gourmand (sugar snap)",
-    "de": "Knackerbse (Sugar Snap)"
+    "fr": "Pois gourmand (sugar snap)"
    },
    "scientific_name": "Pisum sativum var. macrocarpon",
    "family": "Fabaceae",
@@ -23634,10 +22775,6 @@
     "fr": [
      "Après la récolte, coupez les plants au ras du sol - les nodosités riches en azote restent en terre.",
      "Pincez la tête des fèves dès que les premières gousses se forment : cela arrête le puceron noir."
-    ],
-    "de": [
-     "Die Pflanzen nach der Ernte am Boden abschneiden - die Stickstoffknöllchen bleiben in der Erde.",
-     "Die Spitzen der Ackerbohnen ausbrechen, sobald die ersten Hülsen ansetzen: Das stoppt die Schwarze Bohnenlaus."
     ]
    }
   },
@@ -23722,8 +22859,7 @@
    "names": {
     "en": "Summer savory",
     "nl": "Bonenkruid (zomer)",
-    "fr": "Sarriette annuelle",
-    "de": "Bohnenkraut"
+    "fr": "Sarriette annuelle"
    },
    "scientific_name": "Satureja hortensis",
    "family": "Lamiaceae",
@@ -23747,10 +22883,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -23830,8 +22962,7 @@
    "names": {
     "en": "Sunflower",
     "nl": "Zonnebloem",
-    "fr": "Tournesol",
-    "de": "Sonnenblume"
+    "fr": "Tournesol"
    },
    "scientific_name": "Helianthus annuus",
    "family": "Asteraceae",
@@ -23857,10 +22988,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -23926,8 +23053,7 @@
    "names": {
     "en": "Swede / Rutabaga",
     "nl": "Koolraap",
-    "fr": "Rutabaga (chou-navet)",
-    "de": "Steckrübe"
+    "fr": "Rutabaga (chou-navet)"
    },
    "scientific_name": "Brassica napus var. napobrassica",
    "family": "Brassicaceae",
@@ -23957,10 +23083,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -24027,8 +23149,7 @@
    "names": {
     "en": "Sweet alyssum",
     "nl": "Zilverschildzaad",
-    "fr": "Alysse odorante",
-    "de": "Duftsteinrich"
+    "fr": "Alysse odorante"
    },
    "scientific_name": "Lobularia maritima",
    "family": "Brassicaceae",
@@ -24041,9 +23162,6 @@
     ],
     "fr": [
      "Ses petites fleurs nourrissent syrphes et guêpes parasitoïdes - une lutte naturelle contre les pucerons entre les laitues."
-    ],
-    "de": [
-     "Winzige Blüten ernähren Schwebfliegen und Schlupfwespen - natürliche Blattlausbekämpfung zwischen dem Salat."
     ]
    },
    "companions": [
@@ -24132,8 +23250,7 @@
    "names": {
     "en": "Sweet cherry",
     "nl": "Zoete kers",
-    "fr": "Cerisier (cerise douce)",
-    "de": "Süßkirsche"
+    "fr": "Cerisier (cerise douce)"
    },
    "scientific_name": "Prunus avium",
    "family": "Rosaceae",
@@ -24242,10 +23359,6 @@
     "fr": [
      "Pour un petit jardin, choisissez une variété autofertile (Stella, Lapins, Sunburst) sur porte-greffe nanisant Gisela 5.",
      "Suspendez des pièges jaunes englués en mai contre la mouche de la cerise."
-    ],
-    "de": [
-     "Für kleine Gärten eine selbstfruchtbare Sorte (Stella, Lapins, Sunburst) auf schwachwachsender Unterlage Gisela 5 wählen.",
-     "Im Mai Gelbtafeln gegen die Kirschfruchtfliege aufhängen."
     ]
    },
    "companions": [
@@ -24339,8 +23452,7 @@
    "names": {
     "en": "Sweet cicely",
     "nl": "Roomse kervel",
-    "fr": "Cerfeuil musqué",
-    "de": "Süßdolde"
+    "fr": "Cerfeuil musqué"
    },
    "scientific_name": "Myrrhis odorata",
    "family": "Apiaceae",
@@ -24362,10 +23474,6 @@
     "fr": [
      "Un filet ou une barrière de voile de 60 cm arrête la mouche de la carotte (elle vole bas) ; éclaircissez le soir.",
      "Pas de fumier frais : les racines fourchent. Semez dans une terre riche en compost bien décomposé."
-    ],
-    "de": [
-     "Ein Netz oder ein 60 cm hoher Vlieszaun hält die Möhrenfliege fern (sie fliegt niedrig); abends vereinzeln.",
-     "Kein frischer Mist: Die Wurzeln verzweigen sich. In kompostreichen, aber gut verrotteten Boden säen."
     ]
    }
   },
@@ -24448,8 +23556,7 @@
    "names": {
     "en": "Sweet corn",
     "nl": "Suikermaïs",
-    "fr": "Maïs doux",
-    "de": "Zuckermais"
+    "fr": "Maïs doux"
    },
    "scientific_name": "Zea mays convar. saccharata",
    "family": "Poaceae",
@@ -24510,9 +23617,6 @@
     ],
     "fr": [
      "Plantez en carré, pas en une seule rangée : la pollinisation se fait par le vent."
-    ],
-    "de": [
-     "In Blöcken pflanzen, nicht in einzelnen Reihen: windbestäubt."
     ]
    }
   },
@@ -24585,8 +23689,7 @@
    "names": {
     "en": "Sweet pea",
     "nl": "Siererwt (lathyrus)",
-    "fr": "Pois de senteur",
-    "de": "Duftwicke"
+    "fr": "Pois de senteur"
    },
    "scientific_name": "Lathyrus odoratus",
    "family": "Fabaceae",
@@ -24599,9 +23702,6 @@
     ],
     "fr": [
      "Non comestible ! Faites-le grimper sur le tipi à haricots pour attirer les pollinisateurs."
-    ],
-    "de": [
-     "Nicht essbar! Am Bohnenzelt ziehen, um Bestäuber anzulocken."
     ]
    },
    "companions": [],
@@ -24615,8 +23715,7 @@
    "names": {
     "en": "Sweet pepper",
     "nl": "Paprika",
-    "fr": "Poivron",
-    "de": "Paprika"
+    "fr": "Poivron"
    },
    "scientific_name": "Capsicum annuum",
    "family": "Solanaceae",
@@ -24784,10 +23883,6 @@
     "fr": [
      "Arrosez le sol, jamais le feuillage, et le matin : les feuilles mouillées favorisent le mildiou.",
      "Retirez les feuilles sous le premier bouquet et paillez avec de la paille contre les éclaboussures contaminantes."
-    ],
-    "de": [
-     "Morgens den Boden gießen, nie die Blätter: Nasse Blätter fördern die Kraut- und Braunfäule.",
-     "Die Blätter unterhalb des ersten Fruchtstands entfernen und mit Stroh mulchen gegen Spritzinfektionen."
     ]
    }
   },
@@ -24865,8 +23960,7 @@
    "names": {
     "en": "Sweet potato",
     "nl": "Zoete aardappel",
-    "fr": "Patate douce",
-    "de": "Süßkartoffel"
+    "fr": "Patate douce"
    },
    "scientific_name": "Ipomoea batatas",
    "family": "Convolvulaceae",
@@ -24883,10 +23977,6 @@
     "fr": [
      "Cultivez à partir de boutures (pousses) d'un tubercule du commerce ; un paillage plastique noir réchauffe le sol.",
      "Faites ressuyer les tubercules 1 semaine à 28 °C, puis conservez-les à 13-15 °C."
-    ],
-    "de": [
-     "Aus Stecklingen (Trieben) einer gekauften Knolle ziehen; schwarze Mulchfolie erwärmt den Boden.",
-     "Die Knollen 1 Woche bei 28 °C nachreifen lassen, dann bei 13-15 °C lagern."
     ]
    },
    "companions": [],
@@ -24977,8 +24067,7 @@
    "names": {
     "en": "Swiss chard",
     "nl": "Snijbiet",
-    "fr": "Poirée (bette)",
-    "de": "Mangold"
+    "fr": "Poirée (bette)"
    },
    "scientific_name": "Beta vulgaris subsp. vulgaris",
    "family": "Amaranthaceae",
@@ -25013,9 +24102,6 @@
     ],
     "fr": [
      "Semez par temps frais : l'épinard monte en graines avec les jours longs et la chaleur."
-    ],
-    "de": [
-     "Bei kühlem Wetter säen; Spinat schießt bei langen Tagen und Hitze."
     ]
    }
   },
@@ -25088,8 +24174,7 @@
    "names": {
     "en": "Tagetes minuta",
     "nl": "Afrikaantje (tagetes patula)",
-    "fr": "Tagète (œillet d'Inde)",
-    "de": "Mexikanische Studentenblume (Tagetes minuta)"
+    "fr": "Tagète (œillet d'Inde)"
    },
    "scientific_name": "Tagetes patula",
    "family": "Asteraceae",
@@ -25106,9 +24191,6 @@
     ],
     "fr": [
      "Ses racines combattent les nématodes à galles - plantez dense toute une saison avant les tomates."
-    ],
-    "de": [
-     "Die Wurzeln unterdrücken Wurzelgallennematoden - eine ganze Saison vor Tomaten dicht pflanzen."
     ]
    },
    "companions": [
@@ -25203,8 +24285,7 @@
    "names": {
     "en": "Tansy",
     "nl": "Boerenwormkruid",
-    "fr": "Tanaisie",
-    "de": "Rainfarn"
+    "fr": "Tanaisie"
    },
    "scientific_name": "Tanacetum vulgare",
    "family": "Asteraceae",
@@ -25234,10 +24315,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -25312,8 +24389,7 @@
    "names": {
     "en": "French tarragon",
     "nl": "Dragon",
-    "fr": "Estragon",
-    "de": "Französischer Estragon"
+    "fr": "Estragon"
    },
    "scientific_name": "Artemisia dracunculus",
    "family": "Asteraceae",
@@ -25338,10 +24414,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -25432,8 +24504,7 @@
    "names": {
     "en": "Tatsoi",
     "nl": "Tatsoi",
-    "fr": "Tatsoï",
-    "de": "Tatsoi"
+    "fr": "Tatsoï"
    },
    "scientific_name": "Brassica rapa subsp. narinosa",
    "family": "Brassicaceae",
@@ -25446,9 +24517,6 @@
     ],
     "fr": [
      "Semez après la Saint-Jean - les semis de printemps montent en graines."
-    ],
-    "de": [
-     "Nach dem Sommeranfang säen - Frühjahrsaussaaten schießen."
     ]
    },
    "companions": [],
@@ -25527,8 +24595,7 @@
    "names": {
     "en": "Tayberry",
     "nl": "Tayberry",
-    "fr": "Tayberry",
-    "de": "Tayberry"
+    "fr": "Tayberry"
    },
    "scientific_name": "Rubus fruticosus × idaeus",
    "family": "Rosaceae",
@@ -25602,9 +24669,6 @@
     ],
     "fr": [
      "Cueillez quand le fruit est pourpre foncé - un croisement de framboise et de mûre."
-    ],
-    "de": [
-     "Pflücken, wenn sie tief violett sind - eine Kreuzung aus Himbeere und Brombeere."
     ]
    },
    "companions": [],
@@ -25694,8 +24758,7 @@
    "names": {
     "en": "Thai basil",
     "nl": "Thaise basilicum",
-    "fr": "Basilic thaï",
-    "de": "Thai-Basilikum"
+    "fr": "Basilic thaï"
    },
    "scientific_name": "Ocimum basilicum var. thyrsiflora",
    "family": "Lamiaceae",
@@ -25734,10 +24797,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -25819,8 +24878,7 @@
    "names": {
     "en": "Thyme",
     "nl": "Tijm",
-    "fr": "Thym",
-    "de": "Thymian"
+    "fr": "Thym"
    },
    "scientific_name": "Thymus vulgaris",
    "family": "Lamiaceae",
@@ -25848,10 +24906,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -25927,8 +24981,7 @@
    "names": {
     "en": "Tomatillo",
     "nl": "Tomatillo",
-    "fr": "Tomatillo",
-    "de": "Tomatillo"
+    "fr": "Tomatillo"
    },
    "scientific_name": "Physalis philadelphica",
    "family": "Solanaceae",
@@ -25963,10 +25016,6 @@
     "fr": [
      "Arrosez le sol, jamais le feuillage, et le matin : les feuilles mouillées favorisent le mildiou.",
      "Retirez les feuilles sous le premier bouquet et paillez avec de la paille contre les éclaboussures contaminantes."
-    ],
-    "de": [
-     "Morgens den Boden gießen, nie die Blätter: Nasse Blätter fördern die Kraut- und Braunfäule.",
-     "Die Blätter unterhalb des ersten Fruchtstands entfernen und mit Stroh mulchen gegen Spritzinfektionen."
     ]
    }
   },
@@ -25975,8 +25024,7 @@
    "names": {
     "en": "Tomato",
     "nl": "Tomaat",
-    "fr": "Tomate",
-    "de": "Tomate"
+    "fr": "Tomate"
    },
    "scientific_name": "Solanum lycopersicum",
    "variety": "Indeterminate (cordon)",
@@ -26250,10 +25298,6 @@
     "fr": [
      "Arrosez le sol, jamais le feuillage, et le matin : les feuilles mouillées favorisent le mildiou.",
      "Retirez les feuilles sous le premier bouquet et paillez avec de la paille contre les éclaboussures contaminantes."
-    ],
-    "de": [
-     "Morgens den Boden gießen, nie die Blätter: Nasse Blätter fördern die Kraut- und Braunfäule.",
-     "Die Blätter unterhalb des ersten Fruchtstands entfernen und mit Stroh mulchen gegen Spritzinfektionen."
     ]
    }
   },
@@ -26335,8 +25379,7 @@
    "names": {
     "en": "Turnip",
     "nl": "Raap / meiraap",
-    "fr": "Navet",
-    "de": "Mairübe / Speiserübe"
+    "fr": "Navet"
    },
    "scientific_name": "Brassica rapa subsp. rapa",
    "family": "Brassicaceae",
@@ -26359,10 +25402,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -26445,8 +25484,7 @@
    "names": {
     "en": "Turnip greens (raapstelen)",
     "nl": "Raapstelen",
-    "fr": "Fanes de navet (raapstelen)",
-    "de": "Stielmus"
+    "fr": "Fanes de navet (raapstelen)"
    },
    "scientific_name": "Brassica rapa subsp. rapa",
    "family": "Brassicaceae",
@@ -26459,9 +25497,6 @@
     ],
     "fr": [
      "Coupez à 20 cm - souvent une deuxième coupe suit. Excellent sous serre en fin d'hiver."
-    ],
-    "de": [
-     "Bei 20 cm schneiden - oft folgt ein zweiter Schnitt. Großartig unter Glas im Spätwinter."
     ]
    },
    "companions": [],
@@ -26530,8 +25565,7 @@
    "names": {
     "en": "Turnip-rooted chervil",
     "nl": "Knolkervel",
-    "fr": "Cerfeuil tubéreux",
-    "de": "Kerbelrübe"
+    "fr": "Cerfeuil tubéreux"
    },
    "scientific_name": "Chaerophyllum bulbosum",
    "family": "Apiaceae",
@@ -26544,9 +25578,6 @@
     ],
     "fr": [
      "La graine a besoin du froid de l'hiver : semez en automne, récoltez en juillet suivant ; goût de châtaigne."
-    ],
-    "de": [
-     "Das Saatgut braucht Winterkälte: im Herbst säen, im folgenden Juli ernten; schmeckt nach Esskastanie."
     ]
    },
    "companions": [],
@@ -26631,8 +25662,7 @@
    "names": {
     "en": "Valerian",
     "nl": "Valeriaan",
-    "fr": "Valériane",
-    "de": "Baldrian"
+    "fr": "Valériane"
    },
    "scientific_name": "Valeriana officinalis",
    "family": "Caprifoliaceae",
@@ -26650,9 +25680,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -26726,8 +25753,7 @@
    "names": {
     "en": "Purpletop vervain",
     "nl": "Patagonisch ijzerhard",
-    "fr": "Verveine de Buenos Aires",
-    "de": "Argentinisches Eisenkraut"
+    "fr": "Verveine de Buenos Aires"
    },
    "scientific_name": "Verbena bonariensis",
    "family": "Verbenaceae",
@@ -26741,9 +25767,6 @@
     ],
     "fr": [
      "Transparente - plantez-la parmi les légumes sans leur faire d'ombre ; les papillons l'adorent."
-    ],
-    "de": [
-     "Durchscheinend - zwischen Gemüse pflanzen, ohne es zu beschatten; Schmetterlinge lieben sie."
     ]
    },
    "companions": [],
@@ -26830,8 +25853,7 @@
    "names": {
     "en": "Vietnamese coriander",
     "nl": "Vietnamese koriander",
-    "fr": "Coriandre vietnamienne",
-    "de": "Vietnamesischer Koriander"
+    "fr": "Coriandre vietnamienne"
    },
    "scientific_name": "Persicaria odorata",
    "family": "Polygonaceae",
@@ -26844,9 +25866,6 @@
     ],
     "fr": [
      "Le goût de la coriandre sans montée en graines ; rentrez-la en hiver."
-    ],
-    "de": [
-     "Koriandergeschmack, der nicht schießt; im Winter drinnen halten."
     ]
    },
    "companions": [],
@@ -26925,8 +25944,7 @@
    "names": {
     "en": "Viola (horned pansy)",
     "nl": "Hoornviooltje",
-    "fr": "Violette cornue",
-    "de": "Hornveilchen"
+    "fr": "Violette cornue"
    },
    "scientific_name": "Viola cornuta",
    "family": "Violaceae",
@@ -26939,9 +25957,6 @@
     ],
     "fr": [
      "Fleurs d'hiver comestibles pour les salades."
-    ],
-    "de": [
-     "Essbare Winterblüten für Salate."
     ]
    },
    "companions": [],
@@ -27016,8 +26031,7 @@
    "names": {
     "en": "Watercress",
     "nl": "Waterkers",
-    "fr": "Cresson de fontaine",
-    "de": "Brunnenkresse"
+    "fr": "Cresson de fontaine"
    },
    "scientific_name": "Nasturtium officinale",
    "family": "Brassicaceae",
@@ -27040,10 +26054,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -27124,8 +26134,7 @@
    "names": {
     "en": "Land cress",
     "nl": "Landkers",
-    "fr": "Cresson de terre",
-    "de": "Winterkresse (Barbarakraut)"
+    "fr": "Cresson de terre"
    },
    "scientific_name": "Barbarea verna",
    "family": "Brassicaceae",
@@ -27139,9 +26148,6 @@
     ],
     "fr": [
      "Le goût du cresson de fontaine sans eau courante ; salade d'hiver rustique."
-    ],
-    "de": [
-     "Brunnenkressegeschmack ohne fließendes Wasser; winterharter Wintersalat."
     ]
    },
    "companions": [],
@@ -27236,8 +26242,7 @@
    "names": {
     "en": "Watermelon",
     "nl": "Watermeloen",
-    "fr": "Pastèque",
-    "de": "Wassermelone"
+    "fr": "Pastèque"
    },
    "scientific_name": "Citrullus lanatus",
    "family": "Cucurbitaceae",
@@ -27260,10 +26265,6 @@
     "fr": [
      "Plantez sur une butte de compost ; une pulvérisation de lait (1:9) chaque semaine freine l'oïdium.",
      "Pas de fruits ? Pollinisez à la main : frottez une fleur mâle sur la fleur femelle le matin."
-    ],
-    "de": [
-     "Auf einen Komposthügel pflanzen; wöchentlich Milch spritzen (1:9) hält den Echten Mehltau zurück.",
-     "Kein Fruchtansatz? Von Hand bestäuben: morgens eine männliche Blüte an der weiblichen abstreifen."
     ]
    }
   },
@@ -27342,8 +26343,7 @@
    "names": {
     "en": "Welsh onion",
     "nl": "Stengelui",
-    "fr": "Ciboule",
-    "de": "Winterheckenzwiebel"
+    "fr": "Ciboule"
    },
    "scientific_name": "Allium fistulosum",
    "family": "Amaryllidaceae",
@@ -27371,10 +26371,6 @@
     "fr": [
      "Binez avec soin - les alliacées détestent la concurrence des mauvaises herbes ; arrêtez d'arroser 2 semaines avant la récolte.",
      "Associez-les aux carottes : chacune masque l'odeur de l'autre face à sa mouche."
-    ],
-    "de": [
-     "Vorsichtig hacken - Lauchgewächse vertragen keine Unkrautkonkurrenz; 2 Wochen vor der Ernte nicht mehr gießen.",
-     "Zusammen mit Möhren pflanzen: Jede überdeckt den Geruch der anderen vor deren Fliege."
     ]
    }
   },
@@ -27448,8 +26444,7 @@
    "names": {
     "en": "White clover",
     "nl": "Witte klaver",
-    "fr": "Trèfle blanc",
-    "de": "Weißklee"
+    "fr": "Trèfle blanc"
    },
    "scientific_name": "Trifolium repens",
    "family": "Fabaceae",
@@ -27463,9 +26458,6 @@
     ],
     "fr": [
      "Paillage vivant pour les allées et sous les arbres fruitiers ; fixe l'azote."
-    ],
-    "de": [
-     "Lebender Mulch für Wege und unter Obstbäumen; bindet Stickstoff."
     ]
    },
    "companions": [],
@@ -27541,8 +26533,7 @@
    "names": {
     "en": "White mustard",
     "nl": "Gele mosterd",
-    "fr": "Moutarde blanche",
-    "de": "Gelbsenf"
+    "fr": "Moutarde blanche"
    },
    "scientific_name": "Sinapis alba",
    "family": "Brassicaceae",
@@ -27555,9 +26546,6 @@
     ],
     "fr": [
      "Couvert d'automne rapide, mais c'est une crucifère : pas avant des choux (hernie)."
-    ],
-    "de": [
-     "Schnelle Herbstbegrünung, aber ein Kreuzblütler: nicht vor Kohl verwenden (Kohlhernie)."
     ]
    },
    "companions": [],
@@ -27636,8 +26624,7 @@
    "names": {
     "en": "Whitecurrant",
     "nl": "Witte bes",
-    "fr": "Groseillier blanc",
-    "de": "Weiße Johannisbeere"
+    "fr": "Groseillier blanc"
    },
    "scientific_name": "Ribes rubrum (white)",
    "family": "Grossulariaceae",
@@ -27715,9 +26702,6 @@
     ],
     "fr": [
      "Plus douce que la groseille rouge - délicieuse fraîche."
-    ],
-    "de": [
-     "Süßer als die Rote Johannisbeere - herrlich frisch."
     ]
    },
    "companions": [],
@@ -27802,8 +26786,7 @@
    "names": {
     "en": "Wild garlic / Ramsons",
     "nl": "Daslook",
-    "fr": "Ail des ours",
-    "de": "Bärlauch"
+    "fr": "Ail des ours"
    },
    "scientific_name": "Allium ursinum",
    "family": "Amaryllidaceae",
@@ -27825,10 +26808,6 @@
     "fr": [
      "Binez avec soin - les alliacées détestent la concurrence des mauvaises herbes ; arrêtez d'arroser 2 semaines avant la récolte.",
      "Associez-les aux carottes : chacune masque l'odeur de l'autre face à sa mouche."
-    ],
-    "de": [
-     "Vorsichtig hacken - Lauchgewächse vertragen keine Unkrautkonkurrenz; 2 Wochen vor der Ernte nicht mehr gießen.",
-     "Zusammen mit Möhren pflanzen: Jede überdeckt den Geruch der anderen vor deren Fliege."
     ]
    }
   },
@@ -27900,8 +26879,7 @@
    "names": {
     "en": "Winter purslane / Claytonia",
     "nl": "Winterpostelein",
-    "fr": "Claytone de Cuba (pourpier d'hiver)",
-    "de": "Winterportulak / Tellerkraut"
+    "fr": "Claytone de Cuba (pourpier d'hiver)"
    },
    "scientific_name": "Claytonia perfoliata",
    "family": "Montiaceae",
@@ -27921,9 +26899,6 @@
     ],
     "fr": [
      "Paillez le sol nu : cela nourrit la vie du sol, garde l'humidité et freine les mauvaises herbes."
-    ],
-    "de": [
-     "Offenen Boden mulchen; das ernährt das Bodenleben, hält die Feuchtigkeit und unterdrückt Unkraut."
     ]
    }
   },
@@ -27989,8 +26964,7 @@
    "names": {
     "en": "Winter radish (black)",
     "nl": "Winterradijs (zwarte)",
-    "fr": "Radis noir d'hiver",
-    "de": "Winterrettich (schwarz)"
+    "fr": "Radis noir d'hiver"
    },
    "scientific_name": "Raphanus sativus var. niger",
    "family": "Brassicaceae",
@@ -28020,10 +26994,6 @@
     "fr": [
      "Couvrez d'un filet anti-insectes (0,8 mm) dès la plantation : il arrête la piéride du chou, la mouche du chou et l'altise.",
      "Une plantation bien tassée et un pH au-dessus de 7 (chaulage) préviennent la hernie du chou."
-    ],
-    "de": [
-     "Direkt nach der Pflanzung mit Kulturschutznetz (0,8 mm) abdecken: stoppt Kohlweißling, Kohlfliege und Erdflöhe.",
-     "Feste Pflanzung und ein pH-Wert über 7 (Kalk) beugen der Kohlhernie vor."
     ]
    }
   },
@@ -28088,8 +27058,7 @@
    "names": {
     "en": "Winter rye",
     "nl": "Winterrogge",
-    "fr": "Seigle d'hiver",
-    "de": "Winterroggen"
+    "fr": "Seigle d'hiver"
    },
    "scientific_name": "Secale cereale",
    "family": "Poaceae",
@@ -28102,9 +27071,6 @@
     ],
     "fr": [
      "L'engrais vert que l'on sème le plus tard ; fauchez et enfouissez 4 semaines avant le semis (il freine la germination)."
-    ],
-    "de": [
-     "Die am spätesten gesäte Gründüngung; 4 Wochen vor der Aussaat mähen und einarbeiten (sie hemmt die Keimung)."
     ]
    },
    "companions": [],
@@ -28190,8 +27156,7 @@
    "names": {
     "en": "Winter savory",
     "nl": "Bonenkruid (winter)",
-    "fr": "Sarriette des montagnes (vivace)",
-    "de": "Winterbohnenkraut"
+    "fr": "Sarriette des montagnes (vivace)"
    },
    "scientific_name": "Satureja montana",
    "family": "Lamiaceae",
@@ -28215,10 +27180,6 @@
     "fr": [
      "Récoltez le matin, quand les huiles essentielles sont les plus concentrées ; rabattez après la floraison pour de nouvelles pousses.",
      "La plupart des aromatiques méditerranéennes veulent un sol pauvre et bien drainé - pas d'engrais."
-    ],
-    "de": [
-     "Morgens ernten, wenn die ätherischen Öle am stärksten sind; nach der Blüte zurückschneiden für frischen Austrieb.",
-     "Die meisten mediterranen Kräuter brauchen mageren, gut durchlässigen Boden - keinen Dünger."
     ]
    }
   },
@@ -28285,8 +27246,7 @@
    "names": {
     "en": "Winter vetch",
     "nl": "Winterwikke",
-    "fr": "Vesce velue",
-    "de": "Zottelwicke"
+    "fr": "Vesce velue"
    },
    "scientific_name": "Vicia villosa",
    "family": "Fabaceae",
@@ -28299,9 +27259,6 @@
     ],
     "fr": [
      "Semez avec du seigle : le seigle sert de tuteur, la vesce apporte jusqu'à 100 kg N/ha."
-    ],
-    "de": [
-     "Mit Roggen säen: Roggen gibt Halt, die Wicke bringt bis zu 100 kg N/ha."
     ]
    },
    "companions": [],
@@ -28385,8 +27342,7 @@
    "names": {
     "en": "Wormwood",
     "nl": "Alsem",
-    "fr": "Absinthe",
-    "de": "Wermut"
+    "fr": "Absinthe"
    },
    "scientific_name": "Artemisia absinthium",
    "family": "Asteraceae",
@@ -28416,10 +27372,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -28496,8 +27448,7 @@
    "names": {
     "en": "Yacon",
     "nl": "Yacon",
-    "fr": "Yacon",
-    "de": "Yacon"
+    "fr": "Yacon"
    },
    "scientific_name": "Smallanthus sonchifolius",
    "family": "Asteraceae",
@@ -28511,9 +27462,6 @@
     ],
     "fr": [
      "Récoltez quand les premières gelées ont noirci le feuillage ; gardez les souches hors gel pour l'an prochain."
-    ],
-    "de": [
-     "Ernten, nachdem der erste Frost die Blätter geschwärzt hat; die Wurzelstöcke für das nächste Jahr frostfrei halten."
     ]
    },
    "companions": [],
@@ -28599,8 +27547,7 @@
    "names": {
     "en": "Yarrow",
     "nl": "Duizendblad",
-    "fr": "Achillée millefeuille",
-    "de": "Schafgarbe"
+    "fr": "Achillée millefeuille"
    },
    "scientific_name": "Achillea millefolium",
    "family": "Asteraceae",
@@ -28624,10 +27571,6 @@
     "fr": [
      "Les limaces adorent la laitue : pièges à bière, cercle de cendre de bois ou de gravillons, et rondes le soir.",
      "Semez peu mais souvent (toutes les 2-3 semaines) pour une récolte régulière."
-    ],
-    "de": [
-     "Schnecken lieben Salat: Bierfallen, ein Ring aus Holzasche oder Splitt und abendliche Kontrollgänge.",
-     "Wenig und oft säen (alle 2-3 Wochen) für eine gleichmäßige Ernte."
     ]
    }
   },
@@ -28708,8 +27651,7 @@
    "names": {
     "en": "Zinnia",
     "nl": "Zinnia",
-    "fr": "Zinnia",
-    "de": "Zinnie"
+    "fr": "Zinnia"
    },
    "scientific_name": "Zinnia elegans",
    "family": "Asteraceae",
@@ -28723,9 +27665,6 @@
     ],
     "fr": [
      "Les papillons adorent les variétés à fleurs simples."
-    ],
-    "de": [
-     "Schmetterlinge lieben die einfach blühenden Sorten."
     ]
    },
    "companions": [

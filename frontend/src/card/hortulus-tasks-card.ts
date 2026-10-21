@@ -37,7 +37,6 @@ interface ClimateLite {
 const STRINGS = {
   en: { week: "7 days: {t} °C", vs: "{d} °C vs last year", rain: "{mm} mm rain", sun: "{h} h sun", water: "Watered today: {l} L", running: "Watering {bed} until {time}", stuck: "{what} is still open", leak: "Water meter counts while every valve is closed: {l} L", close: "Close", title: "Garden today", none: "Nothing to do - enjoy the garden.", overdue: "overdue", more: "+{n} more", open: "Open Hortulus", min: "min", error: "Hortulus is not available", failed: "Could not complete the task - try again or open Hortulus." },
   fr: { week: "7 jours : {t} °C", vs: "{d} °C par rapport à l'an dernier", rain: "{mm} mm de pluie", sun: "{h} h de soleil", water: "Arrosé aujourd'hui : {l} L", running: "Arrosage de {bed} jusqu'à {time}", stuck: "{what} est toujours ouvert", leak: "Le compteur d'eau tourne alors que toutes les vannes sont fermées : {l} L", close: "Fermer", title: "Potager aujourd'hui", none: "Rien à faire - profitez du jardin.", overdue: "en retard", more: "+{n} de plus", open: "Ouvrir Hortulus", min: "min", error: "Hortulus n'est pas disponible", failed: "La tâche n'a pas pu être terminée - réessayez ou ouvrez Hortulus." },
-  de: { week: "7 Tage: {t} °C", vs: "{d} °C ggü. Vorjahr", rain: "{mm} mm Regen", sun: "{h} Std. Sonne", water: "Heute gegossen: {l} L", running: "{bed} wird bis {time} gegossen", stuck: "{what} ist noch offen", leak: "Der Wasserzähler zählt, obwohl alle Ventile geschlossen sind: {l} L", close: "Schließen", title: "Garten heute", none: "Nichts zu tun - genießen Sie den Garten.", overdue: "überfällig", more: "+{n} weitere", open: "Hortulus öffnen", min: "Min.", error: "Hortulus ist nicht verfügbar", failed: "Die Aufgabe konnte nicht erledigt werden - erneut versuchen oder Hortulus öffnen." },
   nl: { week: "7 dagen: {t} °C", vs: "{d} °C t.o.v. vorig jaar", rain: "{mm} mm regen", sun: "{h} u zon", water: "Vandaag water gegeven: {l} L", running: "{bed} krijgt water tot {time}", stuck: "{what} staat nog open", leak: "Watermeter telt terwijl alle kranen dicht zijn: {l} L", close: "Sluiten", title: "Tuin vandaag", none: "Niets te doen - geniet van de tuin.", overdue: "achterstallig", more: "+{n} meer", open: "Open Hortulus", min: "min", error: "Hortulus is niet beschikbaar", failed: "Taak afronden lukte niet - probeer opnieuw of open Hortulus." },
 };
 
@@ -96,7 +95,7 @@ export class HortulusTasksCard extends LitElement {
 
   private get s() {
     const base = (this.hass?.locale?.language ?? this.hass?.language ?? "en").toLowerCase().slice(0, 2);
-    const lang = base === "nl" || base === "fr" || base === "de" ? base : "en";
+    const lang = base === "nl" || base === "fr" ? base : "en";
     return { ...STRINGS[lang], lang };
   }
 
@@ -213,7 +212,7 @@ export class HortulusTasksCard extends LitElement {
       .filter((e) => new Date(e.at).toLocaleDateString("sv-SE") === today) // the browser's calendar day, like `today`
       .reduce((a, e) => a + e.liters, 0);
     const bed = (id: string | null) => this.snap?.beds?.find((b) => b.id === id)?.name ?? "";
-    const time = (iso: string | null) => (iso ? new Date(iso).toLocaleTimeString(({ nl: "nl-BE", fr: "fr-BE", de: "de-DE" } as Record<string, string>)[s.lang] ?? "en-GB", { hour: "2-digit", minute: "2-digit" }) : "");
+    const time = (iso: string | null) => (iso ? new Date(iso).toLocaleTimeString(({ nl: "nl-BE", fr: "fr-BE" } as Record<string, string>)[s.lang] ?? "en-GB", { hour: "2-digit", minute: "2-digit" }) : "");
     const rows: TemplateResult[] = [];
     if (st?.leak) rows.push(html`<div class="w bad"><ha-icon icon="mdi:water-alert"></ha-icon><span>${s.leak.replace("{l}", String(st.leak.liters))}</span></div>`);
     for (const v of st?.stuck ?? []) {
@@ -254,7 +253,7 @@ export class HortulusTasksCard extends LitElement {
             <ha-icon icon=${this.busy.has(t.id) ? "mdi:progress-check" : "mdi:checkbox-blank-circle-outline"}></ha-icon></button>
           <ha-icon class="type" icon=${TASK_ICONS[t.type] ?? "mdi:sprout"}></ha-icon>
           <span class="text"><span class="title">${t.title}</span>
-            <span class="meta">${t.due < today ? html`<b>${s.overdue}</b> · ` : t.due > today ? html`${new Date(`${t.due}T12:00`).toLocaleDateString(({ nl: "nl-BE", fr: "fr-BE", de: "de-DE" } as Record<string, string>)[s.lang] ?? "en-GB", { weekday: "short" })} · ` : nothing}${t.estimated_minutes} ${s.min}</span></span>
+            <span class="meta">${t.due < today ? html`<b>${s.overdue}</b> · ` : t.due > today ? html`${new Date(`${t.due}T12:00`).toLocaleDateString(({ nl: "nl-BE", fr: "fr-BE" } as Record<string, string>)[s.lang] ?? "en-GB", { weekday: "short" })} · ` : nothing}${t.estimated_minutes} ${s.min}</span></span>
         </li>`)}
       </ul>`}
       ${this.failed ? html`<p class="failed" role="alert">${s.failed}</p>` : nothing}

@@ -229,8 +229,7 @@
         "auto": "Suivre Home Assistant",
         "en": "English",
         "nl": "Nederlands",
-        "fr": "Français",
-        "de": "Deutsch"
+        "fr": "Français"
       }
     },
     "task_type": {
@@ -1032,7 +1031,7 @@
     },
     "install_voice_sentences": {
       "name": "Installer les phrases vocales",
-      "description": "Copie les phrases Hortulus pour Assist dans /config/custom_sentences (EN, NL, FR et DE).",
+      "description": "Copie les phrases Hortulus pour Assist dans /config/custom_sentences (EN, NL et FR).",
       "fields": {
         "overwrite": {
           "name": "Écraser",

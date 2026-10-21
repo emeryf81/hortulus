@@ -21,10 +21,10 @@ export function familyName(families: Record<string, FamilyInfo>, family: string,
   return info?.[lang] ?? info?.en;
 }
 
-/** BCP-47 locale for Intl date/number formatting: Belgian for nl/fr, German for de, British English otherwise. */
+/** BCP-47 locale for Intl date/number formatting: Belgian for nl/fr, British English otherwise. */
 export function localeOf(lang: string | null | undefined): string {
   const base = (lang ?? "en").toLowerCase().split(/[-_]/)[0];
-  return base === "nl" ? "nl-BE" : base === "fr" ? "fr-BE" : base === "de" ? "de-DE" : "en-GB";
+  return base === "nl" ? "nl-BE" : base === "fr" ? "fr-BE" : "en-GB";
 }
 
 export function plantName(plant: Plant | undefined, lang: string): string {

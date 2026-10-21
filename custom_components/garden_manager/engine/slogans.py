@@ -58,20 +58,6 @@ SLOGANS: dict[str, dict[str, tuple[str, ...]]] = {
             "Une mauvaise herbe n'est qu'une plante sans nom.",
             "Au potager pousse bien plus que des légumes.",
         ),
-        "de": (
-            "Ein Garten ist nie fertig, und genau das ist das Schöne daran.",
-            "Wer einen Garten pflanzt, glaubt an morgen.",
-            "Jeden Tag ein bisschen Garten macht das ganze Jahr schöner.",
-            "Guter Boden ist die halbe Arbeit.",
-            "Der beste Dünger ist der Schritt des Gärtners.",
-            "Kleines Beet, große Freude.",
-            "Eine Stunde im Garten ist nie verlorene Zeit.",
-            "Mit Sorgfalt gesät, mit Freude geerntet.",
-            "Gärtnern ist Geduld mit einer Pflanzkelle.",
-            "Lebendiger Boden macht starke Pflanzen.",
-            "Unkraut ist nur eine Pflanze, die noch keinen Namen bekommen hat.",
-            "Im Gemüsegarten wächst mehr als nur Gemüse.",
-        ),
     },
     "veg": {
         "nl": (
@@ -101,15 +87,6 @@ SLOGANS: dict[str, dict[str, tuple[str, ...]]] = {
             "Les assiettes colorées naissent dans un potager coloré.",
             "Les herbes du jardin transforment chaque repas en fête.",
         ),
-        "de": (
-            "Nichts schmeckt so gut wie selbst geerntetes Gemüse.",
-            "Vom Beet auf den Teller: frischer geht es nicht.",
-            "Gesundes Essen beginnt im Boden.",
-            "Eine Handvoll eigener Salat schlägt einen vollen Einkaufswagen.",
-            "Selbst angebaut ist doppelt gesund: für Sie und für den Garten.",
-            "Bunte Teller beginnen in einem bunten Gemüsegarten.",
-            "Kräuter aus dem eigenen Garten machen jedes Essen zum Fest.",
-        ),
     },
     "outdoors": {
         "nl": (
@@ -136,14 +113,6 @@ SLOGANS: dict[str, dict[str, tuple[str, ...]]] = {
             "Une journée sans terre sur les mains est une journée manquée.",
             "Écoutez un instant : le jardin chante toujours un peu.",
         ),
-        "de": (
-            "Frische Luft, schmutzige Hände, froher Sinn.",
-            "Ein Moment draußen wirkt Wunder.",
-            "Draußen werkeln ist die beste Pause des Tages.",
-            "Der Garten ruft: die Stiefel anziehen.",
-            "Ein Tag ohne Erde an den Händen ist ein verpasster Tag.",
-            "Einen Moment lauschen: Der Garten singt immer ein bisschen.",
-        ),
     },
     "harvest": {
         "nl": (
@@ -163,12 +132,6 @@ SLOGANS: dict[str, dict[str, tuple[str, ...]]] = {
             "Un panier plein, c'est le plus beau des bilans.",
             "Qui récolte à temps récolte plus longtemps.",
             "Partagez votre récolte : les légumes ont meilleur goût entre voisins.",
-        ),
-        "de": (
-            "Die Ernte ist das Fest für all die Arbeit.",
-            "Ein voller Korb ist der schönste Bericht.",
-            "Wer rechtzeitig erntet, erntet länger.",
-            "Die Ernte teilen: Gemüse schmeckt mit Nachbarn besser.",
         ),
     },
     "rest": {
@@ -190,12 +153,6 @@ SLOGANS: dict[str, dict[str, tuple[str, ...]]] = {
             "Rien à faire ? Allez voir ce qui fleurit.",
             "Le jardin aussi a besoin de jours de repos.",
         ),
-        "de": (
-            "Heute keine Arbeiten: einfach den Garten genießen.",
-            "Ein ruhiger Gartentag: Zeit für eine Tasse Tee zwischen den Beeten.",
-            "Nichts zu tun? Schauen Sie, was gerade blüht.",
-            "Auch ein Garten braucht Ruhetage.",
-        ),
     },
     "weather": {
         "nl": (
@@ -216,12 +173,6 @@ SLOGANS: dict[str, dict[str, tuple[str, ...]]] = {
             "On ne choisit pas la météo, mais on choisit son jardin.",
             "Un bon jardinier regarde d'abord le ciel.",
         ),
-        "de": (
-            "Jeder Regenschauer ist kostenloses Wasser für den Garten.",
-            "Auf Regen folgt Sonnenschein, und dann wächst alles.",
-            "Das Wetter kann man sich nicht aussuchen, den Garten schon.",
-            "Ein guter Gärtner schaut zuerst zum Himmel.",
-        ),
     },
     "spring": {
         "nl": (
@@ -238,11 +189,6 @@ SLOGANS: dict[str, dict[str, tuple[str, ...]]] = {
             "Le printemps est la promesse de tout l'été.",
             "Semez maintenant, régalez-vous plus tard.",
             "Chaque graine est un petit bout d'avenir.",
-        ),
-        "de": (
-            "Der Frühling ist das Versprechen des ganzen Sommers.",
-            "Jetzt säen, später schlemmen.",
-            "Jedes Samenkorn ist ein kleines Stück Zukunft.",
         ),
     },
     "summer": {
@@ -261,11 +207,6 @@ SLOGANS: dict[str, dict[str, tuple[str, ...]]] = {
             "Arrosez le matin, profitez le soir.",
             "Longues journées, paniers pleins.",
         ),
-        "de": (
-            "Sommer im Gemüsegarten: jeden Tag etwas zu pflücken.",
-            "Morgens gießen, abends genießen.",
-            "Lange Tage, volle Körbe.",
-        ),
     },
     "autumn": {
         "nl": (
@@ -283,11 +224,6 @@ SLOGANS: dict[str, dict[str, tuple[str, ...]]] = {
             "Les feuilles tombent, la terre se nourrit.",
             "Ce que vous paillez maintenant vous remerciera au printemps.",
         ),
-        "de": (
-            "Der Herbst ist die Erntezeit Ihrer Geduld.",
-            "Die Blätter fallen, der Boden wird satt.",
-            "Was Sie jetzt mulchen, dankt es Ihnen im Frühling.",
-        ),
     },
     "winter": {
         "nl": (
@@ -304,11 +240,6 @@ SLOGANS: dict[str, dict[str, tuple[str, ...]]] = {
             "En hiver, le jardin se repose et le jardinier rêve.",
             "Un bon plan est la meilleure graine pour l'an prochain.",
             "Sous la terre, le printemps se prépare déjà.",
-        ),
-        "de": (
-            "Im Winter ruht der Garten, und der Gärtner träumt.",
-            "Ein guter Plan ist das beste Saatgut für das nächste Jahr.",
-            "Unter der Erde ist der Frühling schon unterwegs.",
         ),
     },
 }

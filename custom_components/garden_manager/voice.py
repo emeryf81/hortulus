@@ -43,7 +43,7 @@ def _runtime(hass: HomeAssistant) -> GardenRuntime | None:
 def _join(items: list[str], lang: str) -> str:
     if len(items) <= 1:
         return "".join(items)
-    return ", ".join(items[:-1]) + {"nl": " en ", "fr": " et ", "de": " und "}.get(lang, " and ") + items[-1]
+    return ", ".join(items[:-1]) + {"nl": " en ", "fr": " et "}.get(lang, " and ") + items[-1]
 
 
 def answer(runtime: GardenRuntime, intent_type: str, lang: str) -> str:

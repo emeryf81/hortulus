@@ -97,8 +97,7 @@ export class DateInput extends LitElement {
   }
 
   render(): TemplateResult {
-    const placeholder =
-      this.lang === "nl" ? "dd-mm-jjjj" : this.lang === "fr" ? "jj/mm/aaaa" : this.lang === "de" ? "tt.mm.jjjj" : "dd/mm/yyyy";
+    const placeholder = this.lang === "nl" ? "dd-mm-jjjj" : this.lang === "fr" ? "jj/mm/aaaa" : "dd/mm/yyyy";
     return html`<input class="text ${this.invalid ? "invalid" : ""}" .value=${displayDate(this.value, this.lang)} placeholder=${placeholder}
         aria-label=${this.label} aria-invalid=${String(this.invalid)} ?disabled=${this.disabled} inputmode="numeric" @change=${this.onText} />
       ${this.disabled ? nothing : html`<button type="button" aria-label=${this.pickLabel} title=${this.pickLabel} @click=${this.openPicker}>📅</button>`}
