@@ -20,7 +20,8 @@ const server = createServer(async (req, res) => {
   const path = normalize(join(ROOT, decodeURIComponent(new URL(req.url, "http://x").pathname)));
   if (path !== ROOT && !path.startsWith(ROOT.endsWith(sep) ? ROOT : ROOT + sep)) return res.writeHead(403).end();
   try {
-    res.writeHead(200, { "content-type": TYPES[extname(path)] ?? "application/octet-stream" }).end(await readFile(path));
+    const body = await readFile(path);
+    res.writeHead(200, { "content-type": TYPES[extname(path)] ?? "application/octet-stream" }).end(body);
   } catch {
     res.writeHead(404).end();
   }
