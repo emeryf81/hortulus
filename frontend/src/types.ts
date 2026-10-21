@@ -888,6 +888,11 @@ export interface JournalEntry {
   id: string; at: ISODateTime; text: string; photos: string[]; kind: "note" | "observation" | "problem" | "milestone";
   planting_id: string | null; bed_id: string | null; zone_id: string | null; plant_id: string | null; author: string | null;
 }
+/** What the AI task saw on a photo (2.1). */
+export interface PhotoDiagnosis {
+  problem_id: string; kind: "pest" | "disease" | "healthy" | "other"; name: string; confidence: number;
+  explanation: string; remedy: string; known: boolean;
+}
 export interface SeedPacket { id: string; plant_id: string; variety: string; year: number | null; quantity: number; unit: "packet" | "seeds" | "g"; source: string; notes: string }
 export interface SeedStatus extends SeedPacket { use_by: number | null; status: "ok" | "use_soon" | "expired" | "unknown" | "empty"; needed: boolean }
 export interface SoilTest { date: ISODate; ph: number | null; organic_matter_pct: number | null; n_mg: number | null; p_mg: number | null; k_mg: number | null; mg_mg: number | null; lime_status: string | null; notes: string }

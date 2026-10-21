@@ -60,12 +60,12 @@ from .operations import (
     op_log_harvest,
     op_new_plan,
     op_postpone_task,
+    op_reset_water_factor,
     op_save_expense,
     op_save_journal,
     op_save_plan,
     op_save_plant,
     op_save_seed,
-    op_reset_water_factor,
     op_save_settings,
     op_save_soil_test,
     op_starter_garden,
@@ -150,6 +150,7 @@ def async_setup_websocket(hass: HomeAssistant) -> None:
         ws_climate_stats,
         ws_climate_import_csv,
         ws_climate_apply_local_frost,
+        ws_photo_diagnose,
         ws_cooking_suggest,
         ws_cooking_render,
         ws_cookbook_save,
@@ -731,11 +732,17 @@ def ws_settings_save(hass: HomeAssistant, connection: websocket_api.ActiveConnec
 
 
 @websocket_api.websocket_command(
-    {vol.Required("type"): f"{DOMAIN}/bed/reset_water_factor", vol.Optional("garden_id"): str, vol.Required("bed_id"): str}
+    {
+        vol.Required("type"): f"{DOMAIN}/bed/reset_water_factor",
+        vol.Optional("garden_id"): str,
+        vol.Required("bed_id"): str,
+    }
 )
 @websocket_api.require_admin
 @callback
-def ws_bed_reset_water_factor(hass: HomeAssistant, connection: websocket_api.ActiveConnection, msg: dict[str, Any]) -> None:
+def ws_bed_reset_water_factor(
+    hass: HomeAssistant, connection: websocket_api.ActiveConnection, msg: dict[str, Any]
+) -> None:
     runtime = _require_runtime(hass, connection, msg)
     if runtime is None:
         return
@@ -1940,6 +1947,60 @@ async def ws_climate_import_csv(
         {"days": len(days), "first": min(days) if days else None, "last": max(days) if days else None,
          "rows": parsed["rows"], "columns": parsed["columns"], "changed": changed},
     )  # fmt: skip
+
+
+@websocket_api.websocket_command(
+    {
+        vol.Required("type"): f"{DOMAIN}/photo/diagnose",
+        vol.Optional("garden_id"): str,
+        vol.Required("photo"): vol.All(str, vol.Match(r"^[A-Za-z0-9_-]{1,64}$")),
+        vol.Optional("planting_id"): str,
+        vol.Optional("bed_id"): str,
+    }
+)
+@websocket_api.async_response
+async def ws_photo_diagnose(
+    hass: HomeAssistant, connection: websocket_api.ActiveConnection, msg: dict[str, Any]
+) -> None:
+    """What is wrong with this plant? A photo (image_upload id) to an AI task entity (settings.ai_diagnosis)."""
+    from .engine import photo_diagnosis as pd
+
+    runtime = _require_runtime(hass, connection, msg)
+    if runtime is None:
+        return
+    data = runtime.repo.data
+    if not data.settings.ai_diagnosis:
+        connection.send_error(msg["id"], "disabled", "photo diagnosis is switched off")
+        return
+    if not hass.services.has_service("ai_task", "generate_data"):
+        connection.send_error(msg["id"], "ai_unavailable", "no AI task is set up in Home Assistant")
+        return
+    lang = runtime.coordinator.lang
+    planting = data.planting(msg.get("planting_id"))
+    bed_id = msg.get("bed_id") or (planting.bed_id if planting else None)
+    plant_ids = (
+        [planting.plant_id] if planting else [p.plant_id for p in data.plantings if bed_id and p.bed_id == bed_id]
+    )
+    db = runtime.repo.db
+    crops = [plant.name("en") for pid in dict.fromkeys(plant_ids) if (plant := db.get(pid)) is not None]
+    options = pd.candidates(db, plant_ids, lang)
+    call: dict[str, Any] = {
+        "task_name": "Hortulus photo diagnosis",
+        "instructions": pd.instructions(crops, options, lang),
+        "structure": pd.structure(),
+        "attachments": [
+            {"media_content_id": f"media-source://image_upload/{msg['photo']}", "media_content_type": "image/jpeg"}
+        ],
+    }
+    if data.settings.ai_task_entity:
+        call["entity_id"] = data.settings.ai_task_entity
+    try:
+        response = await hass.services.async_call("ai_task", "generate_data", call, blocking=True, return_response=True)
+    except (HomeAssistantError, vol.Invalid) as err:
+        connection.send_error(msg["id"], "ai_failed", str(err))
+        return
+    answer = (response or {}).get("data") if isinstance(response, dict) else None
+    connection.send_result(msg["id"], pd.interpret(answer, options, lang))
 
 
 @websocket_api.websocket_command(

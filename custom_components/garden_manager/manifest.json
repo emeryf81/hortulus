@@ -2,6 +2,8 @@
   "domain": "garden_manager",
   "name": "Hortulus Garden Manager",
   "after_dependencies": [
+    "ai_task",
+    "calendar",
     "conversation",
     "cover",
     "fan",

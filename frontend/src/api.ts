@@ -42,6 +42,7 @@ import type {
   TransitionPreview,
   TransitionResult,
   UndoResult,
+  PhotoDiagnosis,
 } from "./types";
 import type { CropRow } from "./views/crops-view";
 
@@ -410,6 +411,13 @@ export class GardenApi {
 
   deleteRecord(kind: "harvest" | "journal" | "seed" | "expense", recordId: string): Promise<void> {
     return this.call("records/delete", { kind, record_id: recordId });
+  }
+
+  diagnosePhoto(photo: string, where: { planting_id?: string | null; bed_id?: string | null }): Promise<PhotoDiagnosis> {
+    const extra: Record<string, string> = {};
+    if (where.planting_id) extra.planting_id = where.planting_id;
+    if (where.bed_id) extra.bed_id = where.bed_id;
+    return this.call("photo/diagnose", { photo, ...extra });
   }
 
   saveJournal(entry: Partial<JournalEntry>): Promise<{ entry: JournalEntry }> {

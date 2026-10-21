@@ -192,3 +192,70 @@ async def test_what_a_bed_learned_can_be_forgotten(hass: HomeAssistant, garden, 
     assert bed.water_factor == 1.0 and bed.water_factor_runs == 0
     await client.send_json({"id": 2, "type": "garden_manager/bed/reset_water_factor", "bed_id": "nope"})
     assert not (await _result(client))["success"]
+
+
+async def test_photo_diagnosis_through_an_ai_task(hass: HomeAssistant, garden, hass_ws_client) -> None:
+    from homeassistant.core import ServiceCall, SupportsResponse
+
+    entry, _ = garden
+    data = entry.runtime_data.repo.data
+    client = await hass_ws_client(hass)
+    await client.send_json({"id": 1, "type": "garden_manager/photo/diagnose", "photo": "abc123"})
+    msg = await _result(client)
+    assert not msg["success"] and msg["error"]["code"] == "ai_unavailable"
+
+    asked: list[dict] = []
+
+    async def generate(call: ServiceCall) -> dict:
+        asked.append(dict(call.data))
+        return {"conversation_id": "x", "data": {"problem_id": "late_blight", "confidence": 80, "explanation": "spots"}}
+
+    hass.services.async_register("ai_task", "generate_data", generate, supports_response=SupportsResponse.ONLY)
+    data.settings.ai_task_entity = "ai_task.garden_eye"
+    planting = next(p for p in data.plantings)
+    await client.send_json(
+        {"id": 2, "type": "garden_manager/photo/diagnose", "photo": "abc123", "planting_id": planting.id}
+    )
+    msg = await _result(client)
+    assert msg["success"], msg
+    assert msg["result"]["problem_id"] == "late_blight" and msg["result"]["confidence"] == 80
+    call = asked[-1]
+    assert call["entity_id"] == "ai_task.garden_eye"
+    assert call["attachments"][0]["media_content_id"] == "media-source://image_upload/abc123"
+    assert "problem_id" in call["structure"]
+
+    await client.send_json({"id": 3, "type": "garden_manager/photo/diagnose", "photo": "../../etc"})
+    assert not (await _result(client))["success"]  # only an upload id
+    data.settings.ai_diagnosis = False
+    await client.send_json({"id": 4, "type": "garden_manager/photo/diagnose", "photo": "abc123"})
+    assert (await _result(client))["error"]["code"] == "disabled"
+
+
+async def test_tasks_are_copied_once_into_another_calendar(hass: HomeAssistant, garden) -> None:
+    from homeassistant.core import ServiceCall
+
+    from custom_components.garden_manager.calendar_mirror import async_mirror_tasks
+
+    entry, _ = garden
+    runtime = entry.runtime_data
+    data = runtime.repo.data
+    created: list[dict] = []
+
+    async def create_event(call: ServiceCall) -> None:
+        created.append(dict(call.data))
+
+    hass.services.async_register("calendar", "create_event", create_event)
+    assert await async_mirror_tasks(hass, runtime) == 0  # no calendar chosen
+    hass.states.async_set("calendar.family", "off")
+    data.settings.mirror_calendar = "calendar.family"
+    data.settings.mirror_days = 14
+    today = dt_util.now().date()
+    expected = [t for t in data.tasks if t.is_open and today <= t.due < today + timedelta(days=14)]
+    assert expected, "the example garden has tasks in the coming two weeks"
+    added = await async_mirror_tasks(hass, runtime, today)
+    assert added == min(len(expected), 50) == len(created)
+    assert all(c["entity_id"] == "calendar.family" and "start_date" in c for c in created)
+    assert await async_mirror_tasks(hass, runtime, today) == 0  # each task once
+    data.settings.calendar_mirror = False
+    expected[0].due = today + timedelta(days=1) if expected[0].due != today + timedelta(days=1) else today
+    assert await async_mirror_tasks(hass, runtime, today) == 0  # switched off

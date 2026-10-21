@@ -88,15 +88,61 @@ def harvest_by_year(data: GardenData) -> dict[str, dict[str, float]]:
     return {pid: {season: round(kg, 2) for season, kg in sorted(years.items())} for pid, years in out.items()}
 
 
-def learned_yields(data: GardenData) -> dict[str, float]:
-    """kg/m² per crop from your own harvests (average over seasons with data)."""
+def _own_yields(data: GardenData) -> dict[str, list[float]]:
     per_season: dict[str, list[float]] = defaultdict(list)
     seasons = {season_for_date(data.settings.region, e.day) for e in data.harvest_log}
-    for season in seasons:
+    for season in sorted(seasons):
         for pid, crop in harvest_summary(data, season).items():
             if crop.kg_m2 is not None:
                 per_season[pid].append(crop.kg_m2)
-    return {pid: round(sum(v) / len(v), 2) for pid, v in per_season.items()}
+    return per_season
+
+
+def learned_yields(data: GardenData, db: PlantDatabase | None = None) -> dict[str, float]:
+    """kg/m² per crop from your own harvests (average over seasons with data).
+
+    With the plant database the book value counts as one extra season, so a single odd year does
+    not throw the expectation off and every year of your own weighs in more (GardenSettings.own_yields;
+    switched off, nothing is learned).
+    """
+    if not data.settings.own_yields:
+        return {}
+    out: dict[str, float] = {}
+    for pid, values in _own_yields(data).items():
+        plant = db.get(pid) if db is not None else None
+        book = plant.yield_kg_m2 if plant is not None and plant.yield_kg_m2 else None
+        if book is None:
+            out[pid] = round(sum(values) / len(values), 2)
+        else:
+            out[pid] = round((sum(values) + book) / (len(values) + 1), 2)
+    return out
+
+
+def learned_details(data: GardenData) -> dict[str, dict[str, Any]]:
+    """Per crop: your own kg/m² over the seasons, how many seasons, and days to the first harvest."""
+    if not data.settings.own_yields:
+        return {}
+    days = learned_harvest_days(data)
+    out: dict[str, dict[str, Any]] = {
+        pid: {"kg_m2": round(sum(v) / len(v), 2), "seasons": len(v), "first_harvest_days": days.get(pid)}
+        for pid, v in _own_yields(data).items()
+    }
+    for pid, d in days.items():
+        out.setdefault(pid, {"kg_m2": None, "seasons": 0, "first_harvest_days": d})
+    return out
+
+
+def learned_harvest_days(data: GardenData) -> dict[str, int]:
+    """Days from sowing (or planting out) to the first harvest, as it went in this garden."""
+    if not data.settings.own_yields:
+        return {}
+    per_crop: dict[str, list[int]] = defaultdict(list)
+    for p in data.plantings:
+        start = p.transplanted_on or p.sown_on
+        if p.harvest_started_on is None or start is None or p.harvest_started_on <= start:
+            continue
+        per_crop[p.plant_id].append((p.harvest_started_on - start).days)
+    return {pid: round(sum(v) / len(v)) for pid, v in per_crop.items()}
 
 
 # --------------------------------------------------------------------------- #

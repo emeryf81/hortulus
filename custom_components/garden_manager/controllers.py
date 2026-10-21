@@ -829,7 +829,11 @@ class ClimateController:
         now = dt_util.now()
         state = self.hass.states.get(zone.heater_entity)
         is_on = _is_open(state.state) if state else None
-        if state is not None and zone.heater_entity.startswith("climate.") and state.state not in ("unavailable", "unknown"):
+        if (
+            state is not None
+            and zone.heater_entity.startswith("climate.")
+            and state.state not in ("unavailable", "unknown")
+        ):
             is_on = state.state != "off"  # a climate entity: heat / auto / ... is on
         since = self._heat_booked.get(zone.id)
         if is_on and since is not None and book_heater(zone, now.date(), (now - since).total_seconds() / 3600):

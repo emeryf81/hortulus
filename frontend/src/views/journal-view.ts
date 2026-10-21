@@ -7,7 +7,7 @@ import { customElement, property, state } from "lit/decorators.js";
 import { photoUrl, type GardenApi } from "../api";
 import type { Translate } from "../i18n";
 import { shared } from "../styles/tokens";
-import type { FamilyInfo, JournalEntry, Plant, Planting, RecordsOverview, SeedPacket, Snapshot, SyslogEntry, SyslogSummary } from "../types";
+import type { FamilyInfo, JournalEntry, PhotoDiagnosis, Plant, Planting, RecordsOverview, SeedPacket, Snapshot, SyslogEntry, SyslogSummary } from "../types";
 import { familyColor, formatDate, plantName, presentIn, localeOf } from "../util/garden";
 import { glyphFor, glyphIcon } from "../planner/plant-glyphs";
 import "../components/date-input";
@@ -33,6 +33,9 @@ export class JournalView extends LitElement {
   @property({ attribute: false }) t!: Translate;
   @property() lang = "en";
   @property({ type: Boolean }) admin = true;
+  @property({ type: Boolean }) web = false;
+  /** Photo id -> what the AI saw, "busy", or an error text. */
+  @state() private diagnoses: Record<string, PhotoDiagnosis | "busy" | { error: string }> = {};
   @property() section: Section = "diary";
   /** Show only the system log (used by the Analysis tab). */
   @property({ type: Boolean }) systemOnly = false;
@@ -271,11 +274,55 @@ export class JournalView extends LitElement {
               · ${this.t(`journal.kind.${e.kind}`)}${e.plant_id ? ` · ${plantName(this.plant(e.plant_id), this.lang)}` : ""}${bed ? ` · ${bed.name}` : ""}${e.author ? ` · ${e.author}` : ""}</div>
               <div>${e.text}</div></div>
             ${e.photos.length ? html`<div class="photos">${e.photos.map((id) => html`<a href=${photoUrl(id, "original")} target="_blank" rel="noopener"><img src=${photoUrl(id)} alt="" loading="lazy" /></a>`)}</div>` : nothing}
+            ${e.photos.length && this.canDiagnose ? html`<div style="grid-column:2" class="stack">${e.photos.map((id) => this.renderDiagnosis(id, e))}</div>` : nothing}
             ${this.admin ? html`<div style="grid-column:2"><button class="btn small ghost" @click=${() => this.guard(() => this.api.deleteRecord("journal", e.id))}>${this.t("common.delete")}</button></div>` : nothing}
           </article>`;
         })}</div>` : html`<p class="small muted">${this.t("journal.empty")}</p>`}
       </section>
     </div>`;
+  }
+
+  // -- photo diagnosis (2.1) ----------------------------------------------------- //
+  private get canDiagnose(): boolean {
+    return !this.web && this.admin && this.snapshot.settings.ai_diagnosis !== false;
+  }
+
+  private async diagnose(photo: string, e: JournalEntry): Promise<void> {
+    this.diagnoses = { ...this.diagnoses, [photo]: "busy" };
+    try {
+      const result = await this.api.diagnosePhoto(photo, { planting_id: e.planting_id, bed_id: e.bed_id });
+      this.diagnoses = { ...this.diagnoses, [photo]: result };
+    } catch (err) {
+      const code = (err as { code?: string }).code;
+      const text = code === "ai_unavailable" ? this.t("diag.ai_unavailable") : (err as Error).message ?? String(err);
+      this.diagnoses = { ...this.diagnoses, [photo]: { error: text } };
+    }
+  }
+
+  private renderDiagnosis(photo: string, e: JournalEntry): TemplateResult {
+    const d = this.diagnoses[photo];
+    if (!d) {
+      return html`<button class="btn small" @click=${() => this.diagnose(photo, e)}>
+        <ha-icon icon="mdi:image-search-outline"></ha-icon>${this.t("diag.ask")}</button>`;
+    }
+    if (d === "busy") return html`<p class="xs muted" role="status">${this.t("diag.busy")}</p>`;
+    if ("error" in d) return html`<p class="xs" role="alert" style="color:var(--hl-danger)">⚠ ${d.error}</p>`;
+    const title = d.kind === "healthy" ? this.t("diag.healthy") : d.name || this.t("diag.unknown");
+    return html`<div class="finding ${d.kind === "healthy" ? "ok" : "warn"}" role="status">
+      <ha-icon icon=${d.kind === "healthy" ? "mdi:check-circle-outline" : d.kind === "pest" ? "mdi:bug-outline" : "mdi:leaf-off"}></ha-icon>
+      <span><b>${title}</b> <span class="xs muted">${this.t("diag.confidence", { pct: d.confidence })}</span><br />
+        <span class="small">${d.explanation}</span>
+        ${d.remedy ? html`<br /><span class="small"><b>${this.t("diag.what_to_do")}</b> ${d.remedy}</span>` : nothing}
+        ${d.kind !== "healthy" ? html`<br /><button class="btn small ghost" @click=${() => this.saveDiagnosis(photo, e, d)}>${this.t("diag.save")}</button>` : nothing}
+        <br /><span class="xs muted">${this.t("diag.disclaimer")}</span></span>
+    </div>`;
+  }
+
+  private async saveDiagnosis(photo: string, e: JournalEntry, d: PhotoDiagnosis): Promise<void> {
+    const text = [d.name, d.explanation, d.remedy].filter(Boolean).join(" — ");
+    await this.guard(() => this.api.saveJournal({
+      kind: "problem", text, photos: [photo], planting_id: e.planting_id, bed_id: e.bed_id, zone_id: e.zone_id, plant_id: e.plant_id,
+    }), this.t("diag.saved"));
   }
 
   // -- harvest ---------------------------------------------------------------- //

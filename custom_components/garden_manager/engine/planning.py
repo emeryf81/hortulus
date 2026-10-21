@@ -25,7 +25,7 @@ from .autoplan import feasibility
 from .geometry import plant_count
 from .models import GardenData, PlantingStatus, SowMethod, present_in
 from .plantdb import PlantDatabase
-from .records import learned_yields, seed_report
+from .records import learned_details, learned_harvest_days, learned_yields, seed_report
 from .schedule import PlantingTimeline
 from .seasons import layout_for
 
@@ -183,14 +183,22 @@ def successions(
 # --------------------------------------------------------------------------- #
 # Expected harvests
 # --------------------------------------------------------------------------- #
+MAX_SHIFT_DAYS = 30
+
+
 def harvest_forecast(
     data: GardenData,
     db: PlantDatabase,
     season: int,
     timelines: Mapping[str, PlantingTimeline],
 ) -> dict[str, Any]:
-    """Expected kg per week (Monday) for the season, per crop."""
-    learned = learned_yields(data)
+    """Expected kg per week (Monday) for the season, per crop.
+
+    Your own years count: yields blend in the kg/m² you harvested, and the harvest start moves to
+    when your first harvests really came (days after sowing or planting out), at most a month.
+    """
+    learned = learned_yields(data, db)
+    own_days = learned_harvest_days(data)
     weeks: dict[date, dict[str, float]] = defaultdict(lambda: defaultdict(float))
     totals: dict[str, float] = defaultdict(float)
     for p in data.plantings:
@@ -202,6 +210,11 @@ def harvest_forecast(
             continue
         kg = p.width_cm * p.length_cm / 10_000 * (learned.get(p.plant_id) or plant.yield_kg_m2 or 0.0)
         start, end = tl.harvest_start, max(tl.harvest_end, tl.harvest_start)
+        sown = p.transplanted_on or p.sown_on or p.transplant_date or p.sow_date
+        if p.plant_id in own_days and sown is not None and p.harvest_started_on is None:
+            shift = (sown + timedelta(days=own_days[p.plant_id])) - start
+            shift = max(timedelta(days=-MAX_SHIFT_DAYS), min(timedelta(days=MAX_SHIFT_DAYS), shift))
+            start, end = start + shift, end + shift
         days = (end - start).days + 1
         per_day = kg / days
         for i in range(days):
@@ -222,7 +235,8 @@ def harvest_forecast(
         "season": season,
         "weeks": rows,
         "totals": {k: round(v, 1) for k, v in sorted(totals.items(), key=lambda kv: -kv[1])},
-        "learned": sorted(k for k in totals if k in learned),
+        "learned": sorted(k for k in totals if k in learned or k in own_days),
+        "learned_detail": {k: v for k, v in learned_details(data).items() if k in totals},
     }
 
 

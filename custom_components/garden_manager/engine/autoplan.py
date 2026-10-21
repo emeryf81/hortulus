@@ -575,7 +575,7 @@ def autoplan(
         return result
 
     history = list(rotation_history(data.rotation_history, data.plantings, db))
-    learned = learned_yields(data)  # your own kg/m² beat the database average
+    learned = learned_yields(data, db)  # your own kg/m² weigh in against the database average
     demands = crop_demand(db, resources, options.max_crops)
     scale_to_capacity(demands, beds)
     assigned: dict[str, list[_Item]] = {b.id: [] for b in beds}

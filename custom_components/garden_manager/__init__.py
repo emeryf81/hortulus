@@ -160,6 +160,9 @@ def _schedule_reminders(hass: HomeAssistant, entry: GardenConfigEntry) -> None:
             await runtime.notifier.async_send_overdue(analysis)
         if now.weekday() == cfg.weekly_plan_weekday and _passed(hhmm, cfg.weekly_plan_time):
             await runtime.notifier.async_send_weekly(analysis)
+        from .calendar_mirror import async_mirror_tasks  # (imports the calendar platform)
+
+        await async_mirror_tasks(hass, runtime, now.date())  # new tasks reach the other calendar within 15 min
 
     entry.async_on_unload(async_track_time_change(hass, _tick, minute=[0, 15, 30, 45], second=0))
 
