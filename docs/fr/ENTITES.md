@@ -140,6 +140,14 @@ Litres dans les tonneaux de pluie maintenant (niveau du tonneau en % × capacit�
 réglés dans Paramètres → Compteur d'eau et tonneau de pluie). Les descriptions des tâches d'arrosage
 indiquent combien en utiliser d'abord.
 
+
+### `sensor.hortulus_pump_energy_this_year` (2.1)
+kWh consommés par les pompes d'arrosage cette année civile (device class energy, `total_increasing`), à partir de la
+puissance des pompes sous *Matériel d'irrigation*. Attributs : `rain_water_liters`, `mains_water_liters` (arrosé cette année par source).
+
+### `sensor.hortulus_greenhouse_heating_this_week` (2.1)
+kWh du chauffage antigel cette semaine ISO (seulement si une zone a un chauffage). Attributs par zone : `kwh`,
+`budget_left_kwh`.
 ### Capteurs de climat (historique du climat)
 Quatre capteurs du jardin résument ce que la météo a vraiment fait, d'après l'[historique du
 climat](CONFIGURATION.md#historique-du-climat), chacun avec la valeur de la même période l'an

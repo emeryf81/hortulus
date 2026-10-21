@@ -79,6 +79,13 @@ class Zone:
     climate_control: Literal["off", "advise", "auto"] = "advise"
     # Shade screen override for enclosed zones: auto follows the advice.
     shading_mode: Literal["auto", "on", "off"] = "auto"
+    # Frost protection for an enclosure (climate_control "auto"): a heater switched on below
+    # ``microclimate.min_heating_temp_c`` (default 3 °C) and off 1.5 °C above it, within an
+    # optional weekly energy budget.
+    heater_entity: str | None = None
+    heater_power_w: float = 0.0
+    heater_budget_kwh_week: float | None = None
+    heater_kwh: dict[str, float] = field(default_factory=dict)  # ISO week ("2026-W43") -> kWh used
 
     @property
     def is_enclosed(self) -> bool:
@@ -109,6 +116,10 @@ class GardenBed:
     valve_max_min: float | None = None
     notes: str = ""
     soil_tests: list[SoilTest] = field(default_factory=list)
+    # Learned by watching the soil moisture sensor after each run (GardenSettings.adaptive_irrigation):
+    # > 1 when the soil takes up less than the water balance expects (sand, run-off), < 1 when more.
+    water_factor: float = 1.0
+    water_factor_runs: int = 0
 
     @property
     def flow_lpm(self) -> float | None:
@@ -515,6 +526,8 @@ class GardenData:
     # The kitchen: saved recipes and what the cook usually has in the house.
     cookbook: list[CookbookRecipe] = field(default_factory=list)
     cooking_prefs: dict[str, Any] = field(default_factory=dict)
+    # Watering per year (the irrigation log keeps only 60 days): "2026" -> rain_l / mains_l / kwh
+    irrigation_years: dict[str, dict[str, float]] = field(default_factory=dict)
 
     # -- lookups ---------------------------------------------------------- #
     def zone(self, zone_id: str | None) -> Zone | None:
