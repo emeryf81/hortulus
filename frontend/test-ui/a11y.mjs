@@ -38,7 +38,14 @@ for (const [lang, dark] of [["nl", false], ["en", true]]) {
   for (const tab of TABS) {
     await page.goto(`${base}?tab=${tab}&lang=${lang}${dark ? "&dark=1" : ""}`);
     await page.locator("hortulus-panel").waitFor();
-    await page.waitForTimeout(700);
+    // the tab's view has rendered (not just "loading"), as in smoke.mjs
+    await page.waitForFunction(() => {
+      const deep = (node) => [...(node.shadowRoot ? node.shadowRoot.childNodes : []), ...node.childNodes]
+        .map((n) => (n.nodeType === 3 ? n.textContent : n.nodeType === 1 && !["STYLE", "SCRIPT"].includes(n.tagName) ? deep(n) : "")).join(" ");
+      const view = document.querySelector("hortulus-panel")?.shadowRoot?.querySelector("main")?.firstElementChild;
+      return !!view && view.tagName !== "P" && deep(view).trim().length > 20;
+    });
+    await page.waitForTimeout(300); // lazy parts of the view (charts, icons) settle
     await page.addScriptTag({ content: AXE });
     const result = await page.evaluate(async () =>
       // eslint-disable-next-line no-undef

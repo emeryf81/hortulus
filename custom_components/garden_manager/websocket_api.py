@@ -1958,6 +1958,7 @@ async def ws_climate_import_csv(
         vol.Optional("bed_id"): str,
     }
 )
+@websocket_api.require_admin
 @websocket_api.async_response
 async def ws_photo_diagnose(
     hass: HomeAssistant, connection: websocket_api.ActiveConnection, msg: dict[str, Any]

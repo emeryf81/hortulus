@@ -104,5 +104,14 @@ def test_own_years_blend_the_yield_and_move_the_harvest_start(garden, db, make_p
     assert first <= date(2026, 5, 21) <= first + timedelta(days=6)  # the week of sowing + 50 days
     assert "lettuce" in fc["learned"] and fc["learned_detail"]["lettuce"]["seasons"] == 1
 
+    # without a date of its own the planned sowing date counts
+    new.sow_date = None
+    tl = _timelines(garden, db, 2026, date(2026, 3, 1))
+    fc = planning.harvest_forecast(garden, db, 2026, tl)
+    first = min(date.fromisoformat(w["week"]) for w in fc["weeks"] if w["by_plant"].get("lettuce"))
+    learned_start = tl["l"].sow_date + timedelta(days=50)
+    assert abs((learned_start - tl["l"].harvest_start).days) <= planning.MAX_SHIFT_DAYS
+    assert first <= learned_start <= first + timedelta(days=6)
+
     garden.settings.own_yields = False
     assert learned_yields(garden, db) == {} and learned_harvest_days(garden) == {}

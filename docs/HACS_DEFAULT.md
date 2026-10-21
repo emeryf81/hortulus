@@ -2,7 +2,8 @@
 
 Today Hortulus is installed as a *custom repository* in HACS. Once it is in the
 [HACS default list](https://github.com/hacs/default), anyone can find it by name in HACS. Two pull
-requests are needed, both opened by the repository owner. Nobody else can open them on the owner's behalf.
+requests are needed: one to home-assistant/brands (step 1) and one to hacs/default (step 2). HACS accepts the
+second one only from the owner of the repository or a major contributor to it.
 
 ## Checklist (state on 2026-10-21)
 
@@ -12,7 +13,8 @@ requests are needed, both opened by the repository owner. Nobody else can open t
 | License | ✅ MIT |
 | `hacs.json` with name and minimum Home Assistant version | ✅ `2025.10.0` (CI tests that version **and** the pinned current one) |
 | `manifest.json` with `version`, `codeowners`, `documentation`, `issue_tracker` | ✅ |
-| hassfest and the HACS action pass | ✅ (the HACS action skips the brands check until step 1 is merged) |
+| hassfest passes | ✅ |
+| The HACS action passes without errors or ignores | ⏳ passes, but still with `ignore: brands`: complete after step 1 |
 | At least one GitHub release (not just a tag) | ✅ the release workflow publishes one for every version on `main` |
 | Brand images in `home-assistant/brands` | ⏳ step 1 |
 | Listed in `hacs/default` | ⏳ step 2 |
@@ -33,5 +35,5 @@ requests are needed, both opened by the repository owner. Nobody else can open t
 2. Add `emeryf81/hortulus` to the `integration` file, in alphabetical order (one line, no trailing comma problems).
 3. Open the pull request: title `Adds new integration [emeryf81/hortulus]`, link to the latest release and to a
    green run of the HACS action, and tick the boxes in their template.
-4. The HACS bot checks the repository. Once it is merged, Hortulus shows up in HACS under its own name, and
-   users can drop the custom repository entry.
+4. The HACS bot checks the repository. After the merge, Hortulus shows up in HACS under its own name at the next
+   scheduled HACS scan (not right away), and users can then drop the custom repository entry.

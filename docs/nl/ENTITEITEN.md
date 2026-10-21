@@ -168,7 +168,7 @@ kWh die de bewateringspompen dit kalenderjaar gebruikten (device class energy, `
 onder *Bewateringshardware*. Attributen: `rain_water_liters`, `mains_water_liters` (dit jaar bewaterd per bron).
 
 ### `sensor.hortulus_greenhouse_heating_this_week` (2.1)
-kWh van de vorstverwarming deze ISO‑week (alleen als een zone een verwarming heeft). Attributen per zone: `kwh`,
+kWh van de vorstverwarming deze ISO‑week. Attributen per zone: `kwh`,
 `budget_left_kwh`.
 ### Klimaatgeschiedenis
 

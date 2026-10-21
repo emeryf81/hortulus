@@ -55,7 +55,7 @@ async def async_setup_entry(
             ClimateSensor(coordinator, "sunshine_7_days"),
             ClimateSensor(coordinator, "frost_nights_season"),
             PumpEnergySensor(coordinator),
-            *([HeaterEnergySensor(coordinator)] if any(z.heater_entity for z in coordinator.repo.data.zones) else []),
+            HeaterEnergySensor(coordinator),
         ]
     )
     async_setup_dynamic(

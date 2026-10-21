@@ -146,7 +146,7 @@ kWh consommés par les pompes d'arrosage cette année civile (device class energ
 puissance des pompes sous *Matériel d'irrigation*. Attributs : `rain_water_liters`, `mains_water_liters` (arrosé cette année par source).
 
 ### `sensor.hortulus_greenhouse_heating_this_week` (2.1)
-kWh du chauffage antigel cette semaine ISO (seulement si une zone a un chauffage). Attributs par zone : `kwh`,
+kWh du chauffage antigel cette semaine ISO. Attributs par zone : `kwh`,
 `budget_left_kwh`.
 ### Capteurs de climat (historique du climat)
 Quatre capteurs du jardin résument ce que la météo a vraiment fait, d'après l'[historique du

@@ -55,6 +55,9 @@ export class JournalView extends LitElement {
     css`
       .plant-icon { border: 0; background: none; padding: 0; cursor: pointer; display: inline-grid; vertical-align: middle; }
       :host { display: block; }
+      .finding { display: flex; gap: var(--hl-s2); align-items: flex-start; font-size: var(--hl-fs-sm); padding: 6px 8px; border-radius: var(--hl-r-sm); background: var(--hl-surface-2); }
+      .finding.ok { background: var(--hl-leaf-100); }
+      .finding.warn { background: var(--hl-sun-100); }
       .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: var(--hl-s3); }
       .grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--hl-s4); align-items: start; }
       @media (max-width: 980px) { .grid { grid-template-columns: 1fr; } }
@@ -306,7 +309,10 @@ export class JournalView extends LitElement {
         <ha-icon icon="mdi:image-search-outline"></ha-icon>${this.t("diag.ask")}</button>`;
     }
     if (d === "busy") return html`<p class="xs muted" role="status">${this.t("diag.busy")}</p>`;
-    if ("error" in d) return html`<p class="xs" role="alert" style="color:var(--hl-danger)">⚠ ${d.error}</p>`;
+    if ("error" in d) {
+      return html`<p class="xs" role="alert" style="color:var(--hl-danger)">⚠ ${d.error}
+        <button class="btn small ghost" @click=${() => this.diagnose(photo, e)}>${this.t("diag.retry")}</button></p>`;
+    }
     const title = d.kind === "healthy" ? this.t("diag.healthy") : d.name || this.t("diag.unknown");
     return html`<div class="finding ${d.kind === "healthy" ? "ok" : "warn"}" role="status">
       <ha-icon icon=${d.kind === "healthy" ? "mdi:check-circle-outline" : d.kind === "pest" ? "mdi:bug-outline" : "mdi:leaf-off"}></ha-icon>

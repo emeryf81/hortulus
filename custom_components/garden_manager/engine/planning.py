@@ -210,7 +210,8 @@ def harvest_forecast(
             continue
         kg = p.width_cm * p.length_cm / 10_000 * (learned.get(p.plant_id) or plant.yield_kg_m2 or 0.0)
         start, end = tl.harvest_start, max(tl.harvest_end, tl.harvest_start)
-        sown = p.transplanted_on or p.sown_on or p.transplant_date or p.sow_date
+        # the same start as the learned days (planting out before sowing), planned dates as a fallback
+        sown = p.transplanted_on or p.transplant_date or tl.transplant_date or p.sown_on or p.sow_date or tl.sow_date
         if p.plant_id in own_days and sown is not None and p.harvest_started_on is None:
             shift = (sown + timedelta(days=own_days[p.plant_id])) - start
             shift = max(timedelta(days=-MAX_SHIFT_DAYS), min(timedelta(days=MAX_SHIFT_DAYS), shift))

@@ -1792,4 +1792,5 @@ export const de: Record<string, string> = {
   "diag.saved": "Im Tagebuch notiert",
   "diag.disclaimer": "Eine KI-Vermutung anhand eines Fotos: Prüfe die Pflanze selbst, bevor du handelst.",
   "climate.table": "Klimatabelle, seitlich scrollbar",
+  "diag.retry": "Erneut versuchen",
 };
