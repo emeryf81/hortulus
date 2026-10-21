@@ -141,7 +141,7 @@ kWh the watering pumps used this calendar year (device class energy, `total_incr
 under *Irrigation hardware*. Attributes: `rain_water_liters`, `mains_water_liters` (watered this year by source).
 
 ### `sensor.hortulus_greenhouse_heating_this_week` (2.1)
-kWh of the frost heaters this ISO week (only when a zone has a heater). Attributes per zone: `kwh`,
+kWh of the frost heaters this ISO week. Attributes per zone: `kwh`,
 `budget_left_kwh`.
 ### Climate history
 

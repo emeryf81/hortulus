@@ -836,8 +836,15 @@ class ClimateController:
         ):
             is_on = state.state != "off"  # a climate entity: heat / auto / ... is on
         since = self._heat_booked.get(zone.id)
-        if is_on and since is not None and book_heater(zone, now.date(), (now - since).total_seconds() / 3600):
-            self.coordinator.repo.async_schedule_save()
+        if is_on and since is not None:
+            booked = 0.0
+            while since.date() < now.date():  # each day's part to its own day, so to its own week
+                midnight = (since + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+                booked += book_heater(zone, since.date(), (midnight - since).total_seconds() / 3600)
+                since = midnight
+            booked += book_heater(zone, now.date(), (now - since).total_seconds() / 3600)
+            if booked:
+                self.coordinator.repo.async_schedule_save()
         if is_on:
             self._heat_booked[zone.id] = now
         else:

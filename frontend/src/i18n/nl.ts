@@ -1790,4 +1790,5 @@ export const nl: Record<string, string> = {
   "diag.saved": "Genoteerd in het dagboek",
   "diag.disclaimer": "Een AI-inschatting op basis van één foto: kijk zelf naar de plant voor je ingrijpt.",
   "climate.table": "Klimaattabel, schuift zijwaarts",
+  "diag.retry": "Opnieuw proberen",
 };

@@ -5,7 +5,7 @@ frost heating with a budget, and learning how much water a bed takes up."""
 from __future__ import annotations
 
 import asyncio
-from datetime import timedelta
+from datetime import date, timedelta
 
 from homeassistant.core import HomeAssistant
 from homeassistant.util import dt as dt_util
@@ -137,6 +137,24 @@ async def test_frost_heater_switches_and_books_its_energy(hass: HomeAssistant, g
     assert fast == []
 
 
+async def test_heating_through_sunday_night_books_each_part_in_its_own_week(
+    hass: HomeAssistant, garden, freezer
+) -> None:
+    entry, _ = garden
+    runtime = entry.runtime_data
+    zone = next(z for z in runtime.repo.data.zones if z.is_enclosed)
+    zone.heater_entity = "switch.heater"
+    zone.heater_power_w = 1000
+    zone.climate_control = "manual"  # only the energy is booked, nothing is switched
+    freezer.move_to(dt_util.as_local(dt_util.now()).replace(year=2026, month=10, day=25, hour=23, minute=0))  # Sunday
+    hass.states.async_set("switch.heater", "on")
+    runtime.climate._heater(zone, 1.0)  # on: counted from now
+    freezer.tick(timedelta(hours=2))  # Monday 01:00
+    runtime.climate._heater(zone, 1.0)
+    assert zone.heater_kwh[iso_week(date(2026, 10, 25))] == pytest.approx(1.0, abs=0.01)
+    assert zone.heater_kwh[iso_week(date(2026, 10, 26))] == pytest.approx(1.0, abs=0.01)
+
+
 async def test_a_stale_planner_draft_keeps_what_hortulus_measured(hass: HomeAssistant, garden) -> None:
     from custom_components.garden_manager.engine.serde import to_dict
     from custom_components.garden_manager.operations import op_save_plan
@@ -231,6 +249,15 @@ async def test_photo_diagnosis_through_an_ai_task(hass: HomeAssistant, garden, h
     assert (await _result(client))["error"]["code"] == "disabled"
 
 
+async def test_only_an_administrator_can_send_photos_to_the_ai(
+    hass: HomeAssistant, garden, hass_ws_client, hass_read_only_access_token
+) -> None:
+    client = await hass_ws_client(hass, hass_read_only_access_token)
+    await client.send_json({"id": 1, "type": "garden_manager/photo/diagnose", "photo": "abc123"})
+    msg = await _result(client)
+    assert not msg["success"] and msg["error"]["code"] == "unauthorized"
+
+
 async def test_tasks_are_copied_once_into_another_calendar(hass: HomeAssistant, garden) -> None:
     from homeassistant.core import ServiceCall
 
@@ -246,10 +273,13 @@ async def test_tasks_are_copied_once_into_another_calendar(hass: HomeAssistant, 
 
     hass.services.async_register("calendar", "create_event", create_event)
     assert await async_mirror_tasks(hass, runtime) == 0  # no calendar chosen
-    hass.states.async_set("calendar.family", "off")
+    hass.states.async_set("calendar.family", "unavailable")
     data.settings.mirror_calendar = "calendar.family"
     data.settings.mirror_days = 14
     today = dt_util.now().date()
+    assert await async_mirror_tasks(hass, runtime, today) == 0  # unavailable: nothing marked as copied
+    assert not [k for k in data.notified if k.startswith("mirror:")]
+    hass.states.async_set("calendar.family", "off")
     expected = [t for t in data.tasks if t.is_open and today <= t.due < today + timedelta(days=14)]
     assert expected, "the example garden has tasks in the coming two weeks"
     added = await async_mirror_tasks(hass, runtime, today)

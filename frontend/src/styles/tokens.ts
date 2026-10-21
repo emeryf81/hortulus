@@ -238,7 +238,8 @@ export const shared = css`
   }
   button.chip { cursor: pointer; }
   button.chip:hover { border-color: var(--hl-border); }
-  .chip[aria-pressed="true"] { background: var(--hl-leaf-100); color: var(--hl-chip-active-fg); border-color: var(--hl-leaf-300); }
+  .chip[aria-pressed="true"],
+  .chip[role="tab"][aria-selected="true"] { background: var(--hl-leaf-100); color: var(--hl-chip-active-fg); border-color: var(--hl-leaf-300); }
   .chip.ok { background: var(--hl-leaf-100); color: var(--hl-success); }
   .chip.warn { background: var(--hl-sun-100); color: var(--hl-warning-ink, #865000); }
   .chip.bad { background: var(--hl-tomato-100); color: var(--hl-danger-ink, #9a2e1c); }

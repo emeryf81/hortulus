@@ -283,7 +283,9 @@ export class SettingsView extends LitElement {
   }
 
   private renderHeater(z: Zone, setZone: (id: string, patch: (z: Zone) => void) => void): TemplateResult {
-    const used = z.heater_kwh?.[isoWeek(new Date())] ?? 0;
+    const today = this.snapshot.analysis?.today; // the garden's date, not the browser's (time zones)
+    const [y, m, d] = today ? today.split("-").map(Number) : [];
+    const used = z.heater_kwh?.[isoWeek(today ? new Date(y, m - 1, d) : new Date())] ?? 0;
     const budget = z.heater_budget_kwh_week ?? null;
     return html`
       ${this.entityInput(`${z.id}-heater`, "heater", z.heater_entity ?? null, (v) => setZone(z.id, (zz) => (zz.heater_entity = v)), this.t("settings.heater"))}
@@ -331,7 +333,15 @@ export class SettingsView extends LitElement {
     return html`<p class="xs muted full" role="status">${runs >= 2
       ? this.t("settings.water_factor", { pct: Math.round((b.water_factor ?? 1) * 100), n: runs })
       : this.t("settings.water_factor_learning", { n: runs })}
-      ${runs && this.admin ? html`<button class="btn small" @click=${() => this.api.resetWaterFactor(b.id)}>${this.t("settings.water_factor_reset")}</button>` : nothing}</p>`;
+      ${runs && this.admin ? html`<button class="btn small" @click=${() => this.resetWaterFactor(b.id)}>${this.t("settings.water_factor_reset")}</button>` : nothing}</p>`;
+  }
+
+  private async resetWaterFactor(bedId: string): Promise<void> {
+    try {
+      await this.api.resetWaterFactor(bedId);
+    } catch (err) {
+      this.toast(this.t("common.error", { message: (err as Error).message }));
+    }
   }
 
   private renderIrrigation(): TemplateResult {

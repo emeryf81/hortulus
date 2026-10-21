@@ -11,6 +11,7 @@ from datetime import date, timedelta
 import logging
 from typing import TYPE_CHECKING
 
+from homeassistant.const import STATE_UNAVAILABLE
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.util import dt as dt_util
@@ -33,8 +34,11 @@ async def async_mirror_tasks(hass: HomeAssistant, runtime: GardenRuntime, today:
     data = runtime.repo.data
     settings = data.settings
     target = settings.mirror_calendar
-    if not settings.calendar_mirror or not target or hass.states.get(target) is None:
+    if not settings.calendar_mirror or not target:
         return 0
+    state = hass.states.get(target)
+    if state is None or state.state == STATE_UNAVAILABLE:
+        return 0  # Home Assistant skips an unavailable calendar without an error: try again tomorrow
     today = today or dt_util.now().date()
     until = today + timedelta(days=settings.mirror_days)
     due = sorted((t for t in data.tasks if t.is_open and today <= t.due < until), key=lambda t: (t.due, t.id))
