@@ -121,7 +121,7 @@ def produce_kind(plant: Plant | None) -> str | None:
 # --------------------------------------------------------------------------- #
 @dataclass(frozen=True, slots=True)
 class Item:
-    names: tuple[str, str, str]  # en, nl, fr
+    names: tuple[str, str, str, str]  # en, nl, fr, de
     qty: float  # per person (or per dish for "dish" units)
     unit: str  # g | ml | pc | clove | slice | tbsp | cube | can
     group: str  # side | meat | fish | veg_protein | dairy | pantry | basic
@@ -129,101 +129,160 @@ class Item:
     fridge: bool = True  # offered as 'use this up from the fridge'
 
     def name(self, lang: str) -> str:
-        return self.names[{"en": 0, "nl": 1, "fr": 2}.get(lang, 0)]
+        return self.names[{"en": 0, "nl": 1, "fr": 2, "de": 3}.get(lang, 0)]
 
 
 SIDES: dict[str, Item] = {
-    "pasta": Item(("pasta", "pasta", "pâtes"), 90, "g", "side"),
-    "rice": Item(("rice", "rijst", "riz"), 75, "g", "side"),
-    "bulgur": Item(("bulgur", "bulgur", "boulgour"), 70, "g", "side"),
-    "couscous": Item(("couscous", "couscous", "couscous"), 70, "g", "side"),
-    "pearl_couscous": Item(("pearl couscous", "parelcouscous", "couscous perlé"), 75, "g", "side"),
-    "gnocchi": Item(("gnocchi", "gnocchi", "gnocchis"), 200, "g", "side"),
-    "potatoes": Item(("potatoes", "aardappelen", "pommes de terre"), 250, "g", "side"),
-    "fries": Item(("fries", "frietjes", "frites"), 200, "g", "side"),
-    "bread": Item(("crusty bread", "stokbrood", "pain croustillant"), 2, "slice", "side"),
-    "noodles": Item(("noodles", "noedels", "nouilles"), 80, "g", "side"),
+    "pasta": Item(("pasta", "pasta", "pâtes", "Nudeln"), 90, "g", "side"),
+    "rice": Item(("rice", "rijst", "riz", "Reis"), 75, "g", "side"),
+    "bulgur": Item(("bulgur", "bulgur", "boulgour", "Bulgur"), 70, "g", "side"),
+    "couscous": Item(("couscous", "couscous", "couscous", "Couscous"), 70, "g", "side"),
+    "pearl_couscous": Item(("pearl couscous", "parelcouscous", "couscous perlé", "Perlcouscous"), 75, "g", "side"),
+    "gnocchi": Item(("gnocchi", "gnocchi", "gnocchis", "Gnocchi"), 200, "g", "side"),
+    "potatoes": Item(("potatoes", "aardappelen", "pommes de terre", "Kartoffeln"), 250, "g", "side"),
+    "fries": Item(("fries", "frietjes", "frites", "Pommes frites"), 200, "g", "side"),
+    "bread": Item(("crusty bread", "stokbrood", "pain croustillant", "Baguette"), 2, "slice", "side"),
+    "noodles": Item(("noodles", "noedels", "nouilles", "Asia-Nudeln"), 80, "g", "side"),
 }
 PROTEINS: dict[str, Item] = {
-    "chicken": Item(("chicken breast", "kipfilet", "blanc de poulet"), 150, "g", "meat"),
-    "chicken_mince": Item(("chicken mince", "kippengehakt", "haché de poulet"), 125, "g", "meat"),
-    "beef": Item(("beef (steak strips)", "rundvlees (reepjes)", "bœuf (lanières)"), 150, "g", "meat"),
-    "steak": Item(("steak", "steak", "steak"), 180, "g", "meat"),
-    "stew_beef": Item(("stewing beef", "stoofvlees", "bœuf à braiser"), 175, "g", "meat"),
-    "pork": Item(("pork (strips)", "varkensvlees (reepjes)", "porc (lanières)"), 150, "g", "meat"),
-    "pork_tenderloin": Item(("pork tenderloin", "varkenshaasje", "filet mignon de porc"), 150, "g", "meat"),
-    "mince": Item(("minced meat", "gehakt", "haché"), 125, "g", "meat"),
-    "burger": Item(("burger", "hamburger", "hamburger"), 1, "pc", "meat"),
-    "sweetbread": Item(("sweetbreads", "zwezerik", "ris de veau"), 120, "g", "meat"),
-    "sausage": Item(("sausage", "worst", "saucisse"), 1, "pc", "meat"),
-    "bacon": Item(("bacon cubes", "spekblokjes", "lardons"), 50, "g", "meat"),
-    "ham": Item(("ham", "ham", "jambon"), 50, "g", "meat"),
-    "salmon": Item(("salmon fillet", "zalmfilet", "filet de saumon"), 125, "g", "fish"),
-    "white_fish": Item(("white fish fillet", "witvisfilet", "filet de poisson blanc"), 150, "g", "fish"),
-    "shrimp": Item(("prawns", "scampi", "scampis"), 100, "g", "fish"),
-    "tofu": Item(("tofu", "tofu", "tofu"), 125, "g", "veg_protein"),
-    "chickpeas": Item(("chickpeas (tin)", "kikkererwten (blik)", "pois chiches (boîte)"), 120, "g", "veg_protein"),
-    "lentils": Item(("lentils", "linzen", "lentilles"), 60, "g", "veg_protein"),
-    "egg": Item(("eggs", "eieren", "œufs"), 2, "pc", "veg_protein"),
-    "halloumi": Item(("halloumi", "halloumi", "halloumi"), 70, "g", "veg_protein"),
-    "goat_cheese": Item(("goat's cheese", "geitenkaas", "fromage de chèvre"), 50, "g", "veg_protein"),
+    "chicken": Item(("chicken breast", "kipfilet", "blanc de poulet", "Hähnchenbrust"), 150, "g", "meat"),
+    "chicken_mince": Item(("chicken mince", "kippengehakt", "haché de poulet", "Hähnchenhack"), 125, "g", "meat"),
+    "beef": Item(
+        ("beef (steak strips)", "rundvlees (reepjes)", "bœuf (lanières)", "Rindfleisch (Streifen)"), 150, "g", "meat"
+    ),
+    "steak": Item(("steak", "steak", "steak", "Steak"), 180, "g", "meat"),
+    "stew_beef": Item(("stewing beef", "stoofvlees", "bœuf à braiser", "Rindergulasch"), 175, "g", "meat"),
+    "pork": Item(
+        ("pork (strips)", "varkensvlees (reepjes)", "porc (lanières)", "Schweinefleisch (Streifen)"), 150, "g", "meat"
+    ),
+    "pork_tenderloin": Item(
+        ("pork tenderloin", "varkenshaasje", "filet mignon de porc", "Schweinefilet"), 150, "g", "meat"
+    ),
+    "mince": Item(("minced meat", "gehakt", "haché", "Hackfleisch"), 125, "g", "meat"),
+    "burger": Item(("burger", "hamburger", "hamburger", "Burger-Patty"), 1, "pc", "meat"),
+    "sweetbread": Item(("sweetbreads", "zwezerik", "ris de veau", "Kalbsbries"), 120, "g", "meat"),
+    "sausage": Item(("sausage", "worst", "saucisse", "Bratwurst"), 1, "pc", "meat"),
+    "bacon": Item(("bacon cubes", "spekblokjes", "lardons", "Speckwürfel"), 50, "g", "meat"),
+    "ham": Item(("ham", "ham", "jambon", "Schinken"), 50, "g", "meat"),
+    "salmon": Item(("salmon fillet", "zalmfilet", "filet de saumon", "Lachsfilet"), 125, "g", "fish"),
+    "white_fish": Item(
+        ("white fish fillet", "witvisfilet", "filet de poisson blanc", "Weißfischfilet"), 150, "g", "fish"
+    ),
+    "shrimp": Item(("prawns", "scampi", "scampis", "Garnelen"), 100, "g", "fish"),
+    "tofu": Item(("tofu", "tofu", "tofu", "Tofu"), 125, "g", "veg_protein"),
+    "chickpeas": Item(
+        ("chickpeas (tin)", "kikkererwten (blik)", "pois chiches (boîte)", "Kichererbsen (Dose)"),
+        120,
+        "g",
+        "veg_protein",
+    ),
+    "lentils": Item(("lentils", "linzen", "lentilles", "Linsen"), 60, "g", "veg_protein"),
+    "egg": Item(("eggs", "eieren", "œufs", "Eier"), 2, "pc", "veg_protein"),
+    "halloumi": Item(("halloumi", "halloumi", "halloumi", "Halloumi"), 70, "g", "veg_protein"),
+    "goat_cheese": Item(("goat's cheese", "geitenkaas", "fromage de chèvre", "Ziegenkäse"), 50, "g", "veg_protein"),
 }
 PANTRY: dict[str, Item] = {
-    "butter": Item(("butter", "boter", "beurre"), 10, "g", "dairy"),
-    "cream": Item(("cream", "room", "crème"), 40, "ml", "dairy"),
-    "milk": Item(("milk", "melk", "lait"), 100, "ml", "dairy"),
-    "eggs": Item(("eggs", "eieren", "œufs"), 2, "pc", "dairy"),
-    "parmesan": Item(("parmesan", "parmezaan", "parmesan"), 15, "g", "dairy"),
-    "feta": Item(("feta", "feta", "feta"), 40, "g", "dairy"),
-    "mozzarella": Item(("mozzarella", "mozzarella", "mozzarella"), 60, "g", "dairy"),
-    "grated_cheese": Item(("grated cheese", "geraspte kaas", "fromage râpé"), 30, "g", "dairy"),
-    "yoghurt": Item(("yoghurt", "yoghurt", "yaourt"), 50, "ml", "dairy"),
-    "lemon": Item(("lemon", "citroen", "citron"), 0.5, "pc", "pantry", per_dish=True),
-    "garlic": Item(("garlic", "look", "ail"), 2, "clove", "pantry", per_dish=True),
-    "onion": Item(("onion", "ui", "oignon"), 1, "pc", "pantry", per_dish=True),
-    "stock": Item(("stock cube", "bouillonblokje", "cube de bouillon"), 1, "cube", "pantry", per_dish=True),
-    "white_wine": Item(("white wine", "witte wijn", "vin blanc"), 100, "ml", "pantry", per_dish=True),
-    "tomato_paste": Item(("tomato paste", "tomatenpuree", "concentré de tomates"), 1, "tbsp", "pantry", per_dish=True),
-    "coconut_milk": Item(("coconut milk", "kokosmelk", "lait de coco"), 1, "can", "pantry", per_dish=True),
-    "curry_paste": Item(("curry paste", "currypasta", "pâte de curry"), 2, "tbsp", "pantry", per_dish=True),
-    "soy_sauce": Item(("soy sauce", "sojasaus", "sauce soja"), 2, "tbsp", "pantry", per_dish=True),
-    "ginger": Item(("fresh ginger", "verse gember", "gingembre frais"), 1, "pc", "pantry", per_dish=True),
-    "honey": Item(("honey", "honing", "miel"), 1, "tbsp", "pantry", per_dish=True),
-    "mustard": Item(("mustard", "mosterd", "moutarde"), 1, "tbsp", "pantry", per_dish=True),
+    "butter": Item(("butter", "boter", "beurre", "Butter"), 10, "g", "dairy"),
+    "cream": Item(("cream", "room", "crème", "Sahne"), 40, "ml", "dairy"),
+    "milk": Item(("milk", "melk", "lait", "Milch"), 100, "ml", "dairy"),
+    "eggs": Item(("eggs", "eieren", "œufs", "Eier"), 2, "pc", "dairy"),
+    "parmesan": Item(("parmesan", "parmezaan", "parmesan", "Parmesan"), 15, "g", "dairy"),
+    "feta": Item(("feta", "feta", "feta", "Feta"), 40, "g", "dairy"),
+    "mozzarella": Item(("mozzarella", "mozzarella", "mozzarella", "Mozzarella"), 60, "g", "dairy"),
+    "grated_cheese": Item(("grated cheese", "geraspte kaas", "fromage râpé", "Reibekäse"), 30, "g", "dairy"),
+    "yoghurt": Item(("yoghurt", "yoghurt", "yaourt", "Joghurt"), 50, "ml", "dairy"),
+    "lemon": Item(("lemon", "citroen", "citron", "Zitrone"), 0.5, "pc", "pantry", per_dish=True),
+    "garlic": Item(("garlic", "look", "ail", "Knoblauch"), 2, "clove", "pantry", per_dish=True),
+    "onion": Item(("onion", "ui", "oignon", "Zwiebel"), 1, "pc", "pantry", per_dish=True),
+    "stock": Item(
+        ("stock cube", "bouillonblokje", "cube de bouillon", "Brühwürfel"), 1, "cube", "pantry", per_dish=True
+    ),
+    "white_wine": Item(("white wine", "witte wijn", "vin blanc", "Weißwein"), 100, "ml", "pantry", per_dish=True),
+    "tomato_paste": Item(
+        ("tomato paste", "tomatenpuree", "concentré de tomates", "Tomatenmark"), 1, "tbsp", "pantry", per_dish=True
+    ),
+    "coconut_milk": Item(
+        ("coconut milk", "kokosmelk", "lait de coco", "Kokosmilch"), 1, "can", "pantry", per_dish=True
+    ),
+    "curry_paste": Item(
+        ("curry paste", "currypasta", "pâte de curry", "Currypaste"), 2, "tbsp", "pantry", per_dish=True
+    ),
+    "soy_sauce": Item(("soy sauce", "sojasaus", "sauce soja", "Sojasoße"), 2, "tbsp", "pantry", per_dish=True),
+    "ginger": Item(
+        ("fresh ginger", "verse gember", "gingembre frais", "Ingwer (frisch)"), 1, "pc", "pantry", per_dish=True
+    ),
+    "honey": Item(("honey", "honing", "miel", "Honig"), 1, "tbsp", "pantry", per_dish=True),
+    "mustard": Item(("mustard", "mosterd", "moutarde", "Senf"), 1, "tbsp", "pantry", per_dish=True),
     "nuts": Item(
-        ("nuts (walnuts, pine nuts)", "noten (walnoten, pijnboompitten)", "noix (noix, pignons)"), 15, "g", "pantry"
+        (
+            "nuts (walnuts, pine nuts)",
+            "noten (walnoten, pijnboompitten)",
+            "noix (noix, pignons)",
+            "Nüsse (Walnüsse, Pinienkerne)",
+        ),
+        15,
+        "g",
+        "pantry",
     ),
-    "flour": Item(("flour", "bloem", "farine"), 2, "tbsp", "pantry", per_dish=True),
-    "breadcrumbs": Item(("breadcrumbs", "paneermeel", "chapelure"), 3, "tbsp", "pantry", per_dish=True),
-    "puff_pastry": Item(("puff pastry", "bladerdeeg", "pâte feuilletée"), 1, "pc", "pantry", per_dish=True),
-    "sugar": Item(("sugar", "suiker", "sucre"), 25, "g", "pantry"),
-    "oats": Item(("rolled oats", "havervlokken", "flocons d'avoine"), 25, "g", "pantry"),
-    "vinegar": Item(("vinegar", "azijn", "vinaigre"), 1, "tbsp", "pantry", per_dish=True),
+    "flour": Item(("flour", "bloem", "farine", "Mehl"), 2, "tbsp", "pantry", per_dish=True),
+    "breadcrumbs": Item(("breadcrumbs", "paneermeel", "chapelure", "Paniermehl"), 3, "tbsp", "pantry", per_dish=True),
+    "puff_pastry": Item(
+        ("puff pastry", "bladerdeeg", "pâte feuilletée", "Blätterteig"), 1, "pc", "pantry", per_dish=True
+    ),
+    "sugar": Item(("sugar", "suiker", "sucre", "Zucker"), 25, "g", "pantry"),
+    "oats": Item(("rolled oats", "havervlokken", "flocons d'avoine", "Haferflocken"), 25, "g", "pantry"),
+    "vinegar": Item(("vinegar", "azijn", "vinaigre", "Essig"), 1, "tbsp", "pantry", per_dish=True),
     # for the dishes of ``cooking_dishes`` (store-cupboard items, not something to use up from the fridge)
-    "ricotta": Item(("ricotta", "ricotta", "ricotta"), 60, "g", "dairy", fridge=False),
-    "tahini": Item(("tahini", "tahin", "tahini"), 2, "tbsp", "pantry", per_dish=True, fridge=False),
-    "olives": Item(("olives", "olijven", "olives"), 40, "g", "pantry", per_dish=True, fridge=False),
-    "capers": Item(("capers", "kappertjes", "câpres"), 1, "tbsp", "pantry", per_dish=True, fridge=False),
-    "raisins": Item(("raisins", "rozijnen", "raisins secs"), 40, "g", "pantry", per_dish=True, fridge=False),
+    "ricotta": Item(("ricotta", "ricotta", "ricotta", "Ricotta"), 60, "g", "dairy", fridge=False),
+    "tahini": Item(("tahini", "tahin", "tahini", "Tahin"), 2, "tbsp", "pantry", per_dish=True, fridge=False),
+    "olives": Item(("olives", "olijven", "olives", "Oliven"), 40, "g", "pantry", per_dish=True, fridge=False),
+    "capers": Item(("capers", "kappertjes", "câpres", "Kapern"), 1, "tbsp", "pantry", per_dish=True, fridge=False),
+    "raisins": Item(("raisins", "rozijnen", "raisins secs", "Rosinen"), 40, "g", "pantry", per_dish=True, fridge=False),
     "baking_powder": Item(
-        ("baking powder", "bakpoeder", "levure chimique"), 1, "tbsp", "pantry", per_dish=True, fridge=False
+        ("baking powder", "bakpoeder", "levure chimique", "Backpulver"),
+        1,
+        "tbsp",
+        "pantry",
+        per_dish=True,
+        fridge=False,
     ),
-    "cinnamon": Item(("cinnamon", "kaneel", "cannelle"), 1, "tbsp", "pantry", per_dish=True, fridge=False),
-    "cumin": Item(("ground cumin", "komijnpoeder", "cumin moulu"), 1, "tbsp", "pantry", per_dish=True, fridge=False),
+    "cinnamon": Item(("cinnamon", "kaneel", "cannelle", "Zimt"), 1, "tbsp", "pantry", per_dish=True, fridge=False),
+    "cumin": Item(
+        ("ground cumin", "komijnpoeder", "cumin moulu", "Kreuzkümmel (gemahlen)"),
+        1,
+        "tbsp",
+        "pantry",
+        per_dish=True,
+        fridge=False,
+    ),
     "canned_tomatoes": Item(
-        ("tinned tomatoes", "tomaten uit blik", "tomates en boîte"), 1, "can", "pantry", per_dish=True, fridge=False
+        ("tinned tomatoes", "tomaten uit blik", "tomates en boîte", "Dosentomaten"),
+        1,
+        "can",
+        "pantry",
+        per_dish=True,
+        fridge=False,
     ),
     "gelatine": Item(
-        ("gelatine sheets", "gelatineblaadjes", "feuilles de gélatine"), 3, "pc", "pantry", per_dish=True, fridge=False
+        ("gelatine sheets", "gelatineblaadjes", "feuilles de gélatine", "Blattgelatine"),
+        3,
+        "pc",
+        "pantry",
+        per_dish=True,
+        fridge=False,
     ),
-    "jam_sugar": Item(("jam sugar", "geleisuiker", "sucre gélifiant"), 400, "g", "pantry", per_dish=True, fridge=False),
-    "soup_pasta": Item(("small soup pasta", "soeppasta", "petites pâtes à potage"), 20, "g", "pantry", fridge=False),
+    "jam_sugar": Item(
+        ("jam sugar", "geleisuiker", "sucre gélifiant", "Gelierzucker"), 400, "g", "pantry", per_dish=True, fridge=False
+    ),
+    "soup_pasta": Item(
+        ("small soup pasta", "soeppasta", "petites pâtes à potage", "Suppennudeln"), 20, "g", "pantry", fridge=False
+    ),
 }
 # Always in the house: never on a shopping list.
 BASICS = {
-    "salt": Item(("salt", "zout", "sel"), 0, "", "basic"),
-    "pepper": Item(("pepper", "peper", "poivre"), 0, "", "basic"),
-    "oil": Item(("olive oil", "olijfolie", "huile d'olive"), 0, "", "basic"),
+    "salt": Item(("salt", "zout", "sel", "Salz"), 0, "", "basic"),
+    "pepper": Item(("pepper", "peper", "poivre", "Pfeffer"), 0, "", "basic"),
+    "oil": Item(("olive oil", "olijfolie", "huile d'olive", "Olivenöl"), 0, "", "basic"),
 }
 
 
@@ -318,6 +377,8 @@ _COURSE_NAME = {
     "nl": {"soup": "Soepen", "starter": "Voorgerechten", "main": "Hoofdgerechten", "dessert": "Desserten",
            "preserve": "Bewaren & inmaken"},
     "fr": {"soup": "Soupes", "starter": "Entrées", "main": "Plats", "dessert": "Desserts", "preserve": "Conserves"},
+    "de": {"soup": "Suppen", "starter": "Vorspeisen", "main": "Hauptgerichte", "dessert": "Desserts",
+           "preserve": "Haltbar machen & Einlegen"},
 }  # fmt: skip
 
 
@@ -362,6 +423,10 @@ _PREP: dict[str, dict[str, str]] = {
            "allium": "{n} finement émincé", "fruiting": "{n} en morceaux", "squash": "{n} en cubes", "legume": "{n} écossé ou coupé",
            "potato": "{n} en cubes", "corn": "{n} égrené", "asparagus": "{n} pelé, bouts durs ôtés",
            "herb": "{n} ciselé", "fruit": "{n} lavé et coupé"},
+    "de": {"leafy": "{n} grob geschnitten", "brassica": "{n} in Röschen oder Streifen", "root": "{n} geschält und gewürfelt",
+           "allium": "{n} fein gehackt", "fruiting": "{n} in Stücken", "squash": "{n} in Würfeln", "legume": "{n} gepalt oder geschnitten",
+           "potato": "{n} in Würfeln", "corn": "{n} vom Kolben geschnitten", "asparagus": "{n} geschält, holzige Enden ab",
+           "herb": "{n} gehackt", "fruit": "{n} gewaschen und geschnitten"},
 }  # fmt: skip
 
 _TITLE: dict[str, dict[str, str]] = {
@@ -389,10 +454,18 @@ _TITLE: dict[str, dict[str, str]] = {
            "stuffed": "{a} farcis", "plate": "Assiette aux {a}",
            "pesto": "Pesto de {a}", "dessert": "Crumble de {a}",
            "cold_soup": "Soupe froide de {a}", "crostini": "Crostini aux {a}", "compote": "Compote tiède de {a}"},
+    "de": {"soup": "Suppe aus {a}", "roast": "Ofengemüse mit {a}",
+           "stir_fry": "Wok mit {a}", "pasta": "Pasta mit {a}",
+           "risotto": "Risotto mit {a}", "salad": "Salat mit {a}",
+           "gratin": "Gratin mit {a}", "stew": "Eintopf mit {a}",
+           "frittata": "Frittata mit {a}", "stoemp": "Stoemp mit {a}",
+           "stuffed": "Gefüllt: {a}", "plate": "Teller mit {a}",
+           "pesto": "Pesto aus {a}", "dessert": "Crumble mit {a}",
+           "cold_soup": "Kalte Suppe aus {a}", "crostini": "Crostini mit {a}", "compote": "Lauwarmes Kompott aus {a}"},
 }  # fmt: skip
 
-_WITH = {"en": "with {p}", "nl": "met {p}", "fr": "avec {p}"}
-_AND = {"en": "and", "nl": "en", "fr": "et"}
+_WITH = {"en": "with {p}", "nl": "met {p}", "fr": "avec {p}", "de": "dazu: {p}"}
+_AND = {"en": "and", "nl": "en", "fr": "et", "de": "und"}
 
 # The steps of each technique.  {veg}: the garden produce, {prep}: how to cut it,
 # {herbs}: garden herbs (or a fallback), {side}: the side in the dish.
@@ -535,6 +608,52 @@ _STEPS: dict[str, dict[str, list[str]]] = {
         "crostini": ["Préparez les légumes : {prep} ; faites revenir les fermes à l'huile d'olive, gardez les tendres crus.", "Faites griller des tranches de pain, frottez-les d'ail et arrosez d'huile d'olive.", "Garnissez les toasts chauds de légumes, salez, poivrez et servez aussitôt."],
         "compote": ["Préparez les fruits : {prep}.", "Faites-les mijoter doucement 10-15 minutes avec 2 c. à s. de sucre, un filet de citron et un peu d'eau.", "Servez tiède."],
     },
+    "de": {
+        "soup": ["Das Gemüse vorbereiten: {prep}.", "Die Zwiebel in einem großen Topf in etwas Öl andünsten, das Gemüse dazugeben und 3 Minuten rühren.",
+                 "Mit Wasser bedecken, den Brühwürfel dazugeben, aufkochen und 20 Minuten köcheln lassen, bis alles weich ist.",
+                 "Fein pürieren (oder stückig lassen), die Sahne einrühren und mit Salz und Pfeffer abschmecken."],
+        "roast": ["Den Ofen auf 210 °C vorheizen. Das Gemüse vorbereiten: {prep}.",
+                  "Auf einem Backblech mit Olivenöl, dem zerdrückten Knoblauch, Salz und Pfeffer vermengen.",
+                  "30-35 Minuten rösten, nach der Hälfte der Zeit wenden, bis die Ränder goldbraun sind."],
+        "stir_fry": ["Das Gemüse vorbereiten: {prep}. Knoblauch und Ingwer fein hacken.",
+                     "Einen Wok oder eine große Pfanne mit etwas Öl sehr heiß werden lassen; Knoblauch und Ingwer 30 Sekunden pfannenrühren.",
+                     "Zuerst das feste Gemüse dazugeben, das zarte nach 2 Minuten; alles soll knackig bleiben.",
+                     "Mit Sojasoße und einem Schuss Wasser würzen, durchschwenken und sofort servieren."],
+        "pasta": ["Das Gemüse vorbereiten: {prep}.", "Den Knoblauch sanft in Olivenöl anbraten, das Gemüse dazugeben und 6-8 Minuten garen, bis es gerade weich ist.",
+                  "Mit abgetropften {side} und einer Kelle Kochwasser vermengen, bis alles glänzt.", "Mit geriebenem Parmesan und schwarzem Pfeffer servieren."],
+        "risotto": ["Das Gemüse vorbereiten: {prep}. Die Brühe in einem Topf heiß halten.",
+                    "Die Zwiebel in Butter andünsten, den Reis dazugeben und 2 Minuten rühren; mit dem Wein ablöschen.",
+                    "Die heiße Brühe kellenweise unter Rühren 18 Minuten lang angießen; das Gemüse nach der Hälfte der Zeit dazugeben.",
+                    "Vom Herd nehmen, ein Stück Butter und den Parmesan unterrühren; zugedeckt 2 Minuten ruhen lassen."],
+        "salad": ["Das Gemüse vorbereiten: {prep}.", "Ein Dressing aus 3 EL Olivenöl, dem Zitronensaft, einem Teelöffel Senf, Salz und Pfeffer verquirlen.",
+                  "Alles erst kurz vor dem Servieren vermengen."],
+        "gratin": ["Den Ofen auf 190 °C vorheizen. Das Gemüse vorbereiten: {prep}.",
+                   "Das feste Gemüse 5 Minuten in Salzwasser blanchieren und gut abtropfen lassen.",
+                   "In eine gebutterte Form schichten, die Sahne mit dem zerdrückten Knoblauch, Salz und Pfeffer darübergießen.",
+                   "Mit Reibekäse bestreuen und 30 Minuten backen, bis es goldbraun ist und blubbert."],
+        "stew": ["Das Gemüse vorbereiten: {prep}.", "Zwiebel und Knoblauch in Öl andünsten, die Currypaste eine Minute mitrühren.",
+                 "Gemüse, Kokosmilch und ein Glas Wasser dazugeben; 25 Minuten sanft köcheln lassen.",
+                 "Mit Salz und, falls vorhanden, einem Spritzer Zitrone abschmecken."],
+        "frittata": ["Das Gemüse vorbereiten: {prep}.", "In einer ofenfesten Pfanne in etwas Öl 5 Minuten andünsten.",
+                     "Die Eier mit dem Käse, Salz und Pfeffer verquirlen und über das Gemüse gießen.",
+                     "Bei schwacher Hitze 8 Minuten stocken lassen, dann 5 Minuten unter dem Grill goldbraun backen."],
+        "stoemp": ["Das Gemüse vorbereiten: {prep}.", "Die Kartoffeln 20 Minuten in Salzwasser kochen; das Gemüse die letzten 6-8 Minuten mitgaren.",
+                   "Abgießen und mit Butter und einem Schuss warmer Milch grob stampfen; mit Salz, Pfeffer und etwas Muskat würzen."],
+        "stuffed": ["Den Ofen auf 190 °C vorheizen. Das Gemüse aushöhlen: {prep}; das Fruchtfleisch aufheben.",
+                    "Zwiebel, Knoblauch und das gehackte Fruchtfleisch anbraten, mit gegartem {side} mischen und kräftig würzen.",
+                    "Das Gemüse füllen, mit Reibekäse bestreuen und 30 Minuten backen."],
+        "plate": ["Das Gemüse vorbereiten: {prep}.", "Kurz dämpfen oder kochen, bis es gerade weich ist, dann in Butter mit Salz und Pfeffer schwenken.",
+                  "Alles heiß zusammen anrichten."],
+        "pesto": ["Kräuter und Blätter ({prep}) mit Knoblauch, Nüssen, Parmesan und Olivenöl zu einer groben Paste mixen.",
+                  "Mit Salz, Pfeffer und Zitrone abschmecken; mit etwas Kochwasser geschmeidig machen.",
+                  "Mit heißen {side} vermengen oder auf geröstetes Brot streichen."],
+        "dessert": ["Den Ofen auf 180 °C vorheizen. Das Obst vorbereiten: {prep}; mit einem Löffel Zucker in eine gebutterte Form geben.",
+                    "Mehl, Haferflocken, Zucker und kalte Butter zu groben Streuseln verreiben und über das Obst streuen.",
+                    "30-35 Minuten backen, bis es goldbraun ist und blubbert."],
+        "cold_soup": ["Das Gemüse vorbereiten: {prep}.", "Mit einer zerdrückten Knoblauchzehe, einem Schuss Essig, 4 EL Olivenöl und etwas kaltem Wasser glatt pürieren; kräftig würzen.", "Mindestens 30 Minuten kühlen und eiskalt mit einem Faden Olivenöl servieren."],
+        "crostini": ["Das Gemüse vorbereiten: {prep}; festes kurz in Olivenöl anbraten, zartes roh lassen.", "Brotscheiben rösten, mit einer halbierten Knoblauchzehe einreiben und mit Olivenöl beträufeln.", "Das Gemüse auf die warmen Brote häufen, mit Salz und Pfeffer würzen und sofort servieren."],
+        "compote": ["Das Obst vorbereiten: {prep}.", "Mit 2 EL Zucker, einem Spritzer Zitrone und einem Schuss Wasser 10-15 Minuten sanft weich köcheln.", "Lauwarm servieren."],
+    },
 }  # fmt: skip
 
 # How each protein is cooked, by where it goes in the dish.
@@ -557,6 +676,12 @@ _PROTEIN_STEP = {
            "veg_protein": "Ajoutez le {p} : tofu ou halloumi dorés à la poêle, pois chiches ou lentilles réchauffés dans le plat, œufs cuits 7 minutes.",
            "bacon": "Faites d'abord croustiller les {p} et utilisez la graisse pour les légumes.",
            "lentils": "Rincez les {p} et cuisez-les 20 à 25 minutes à feu doux dans beaucoup d'eau non salée ; égouttez et incorporez-les au plat."},
+    "de": {"meat": "{p} in einer heißen Pfanne mit etwas Öl rundum braun und durchbraten; mit Salz und Pfeffer würzen.",
+           "stew_beef": "{p} zuerst rundum scharf anbraten und mindestens 1 Stunde mitschmoren lassen (das Gemüse später dazugeben).",
+           "fish": "{p} sanft 3-4 Minuten pro Seite in etwas Öl oder Butter braten; mit Salz und Zitrone würzen.",
+           "veg_protein": "{p} dazugeben: Tofu oder Halloumi goldbraun braten, Kichererbsen oder Linsen im Gericht miterwärmen, Eier 7 Minuten kochen.",
+           "bacon": "Zuerst {p} knusprig braten und das Fett für das Gemüse verwenden.",
+           "lentils": "{p} abspülen und in reichlich ungesalzenem Wasser 20-25 Minuten sanft weich köcheln; abgießen und unter das Gericht rühren."},
 }  # fmt: skip
 
 _SIDE_STEP = {
@@ -584,8 +709,21 @@ _SIDE_STEP = {
            "potatoes": "Cuisez les pommes de terre 20 minutes à l'eau salée (ou rôtissez-les en quartiers).",
            "fries": "Faites cuire les frites jusqu'à ce qu'elles soient dorées et croustillantes.",
            "bread": "Faites griller le pain ou réchauffez-le au four.", "noodles": "Cuisez les nouilles selon l'emballage et rincez."},
+    "de": {"pasta": "Die Nudeln in reichlich Salzwasser al dente kochen.", "rice": "Den Reis nach Packungsanweisung garen.",
+           "bulgur": "Kochendes Wasser über den Bulgur gießen (1,5-faches Volumen), abdecken und 15 Minuten quellen lassen.",
+           "couscous": "Kochende Brühe über den Couscous gießen (gleiches Volumen), 5 Minuten zugedeckt ziehen lassen und mit einer Gabel auflockern.",
+           "pearl_couscous": "Den Perlcouscous 8 Minuten in Salzwasser kochen und abgießen.",
+           "gnocchi": "Die Gnocchi kochen, bis sie oben schwimmen (2-3 Minuten), oder in Butter goldbraun braten.",
+           "potatoes": "Die Kartoffeln 20 Minuten in Salzwasser kochen (oder als Spalten im Ofen rösten).",
+           "fries": "Die Pommes frites goldbraun und knusprig backen oder frittieren.",
+           "bread": "Das Brot rösten oder im Ofen aufwärmen.", "noodles": "Die Nudeln nach Packungsanweisung kochen und kurz abspülen."},
 }  # fmt: skip
-_SERVE_SIDE = {"en": "Serve with the {s}.", "nl": "Serveer met de {s}.", "fr": "Servez avec les {s}."}
+_SERVE_SIDE = {
+    "en": "Serve with the {s}.",
+    "nl": "Serveer met de {s}.",
+    "fr": "Servez avec les {s}.",
+    "de": "Mit {s} servieren.",
+}
 
 # What the cook has in the fridge ("use this up") only goes into a dish it suits, in a way of its
 # own (``cooking_extras``): items a dish does not list stay in the fridge for another one.
@@ -593,8 +731,8 @@ _CHEESES = frozenset(("parmesan", "feta", "mozzarella", "grated_cheese"))
 _CREAMY = frozenset(("cream", "coconut_milk", "milk"))
 # Garden herbs that belong in a cold sauce or butter (rosemary or sage do not)
 _SAUCE_HERBS = ("dill", *_d.MINTS, "parsley", "chives", "coriander")
-_LANG_IX = {"nl": 0, "en": 1, "fr": 2}
-_LANG_IX_EN = {"en": 0, "nl": 1, "fr": 2}  # the order of the texts of ``cooking_dishes``
+_LANG_IX = {"nl": 0, "en": 1, "fr": 2, "de": 3}
+_LANG_IX_EN = {"en": 0, "nl": 1, "fr": 2, "de": 3}  # the order of the texts of ``cooking_dishes``
 # A fridge item the dish's own garden produce already brings
 _GARDEN_GIVES = {"onion": {"onion", "shallot", "leek"}, "garlic": {"garlic", "elephant_garlic"}}
 
@@ -667,7 +805,7 @@ def _extra_steps(technique: str, extras: Sequence[str], lang: str, herbs: Sequen
     late: list[str] = []
     for item, key in plan.items():
         where, *texts = _x.PREP[key]
-        default = _x.HERB.get(key, ("verse kruiden", "fresh herbs", "fines herbes"))[ix]
+        default = _x.HERB.get(key, ("verse kruiden", "fresh herbs", "fines herbes", "frische Kräuter"))[ix]
         h = _join(list(herbs)[:2], lang) if herbs and key not in _x.FIXED_HERB else default
         name = PANTRY[item].name(lang).split(" (")[0]  # "nuts (walnuts, pine nuts)" -> "nuts"
         {"early": early, "mid": mid, "during": during}.get(where, late).append(texts[ix].format(x=name, h=h))
@@ -675,7 +813,7 @@ def _extra_steps(technique: str, extras: Sequence[str], lang: str, herbs: Sequen
 
 
 _HERBS = {"en": "Scatter over the {h} just before serving.", "nl": "Strooi vlak voor het opdienen de {h} erover.",
-          "fr": "Parsemez de {h} juste avant de servir."}  # fmt: skip
+          "fr": "Parsemez de {h} juste avant de servir.", "de": "Kurz vor dem Servieren {h} darüberstreuen."}  # fmt: skip
 _UNITS = {
     "en": {
         "g": "g",
@@ -707,6 +845,16 @@ _UNITS = {
         "cube": "",
         "can": "boîte",
     },
+    "de": {
+        "g": "g",
+        "ml": "ml",
+        "pc": "",
+        "clove": "Zehen",
+        "slice": "Scheiben",
+        "tbsp": "EL",
+        "cube": "",
+        "can": "Dose",
+    },
 }
 _TAG = {
     "en": {"warm": "warming", "oven": "oven", "quick": "quick", "fresh": "fresh", "sweet": "sweet", "vegetarian": "vegetarian",
@@ -715,6 +863,8 @@ _TAG = {
            "garden": "uit de tuin"},
     "fr": {"warm": "réconfortant", "oven": "four", "quick": "rapide", "fresh": "frais", "sweet": "sucré", "vegetarian": "végétarien",
            "garden": "du jardin"},
+    "de": {"warm": "wärmend", "oven": "Ofen", "quick": "schnell", "fresh": "frisch", "sweet": "süß", "vegetarian": "vegetarisch",
+           "garden": "aus dem Garten"},
 }  # fmt: skip
 _TECH_NAME = {
     "en": {"soup": "Soup", "roast": "Oven tray", "stir_fry": "Stir-fry", "pasta": "Pasta", "risotto": "Risotto", "salad": "Salad",
@@ -729,8 +879,12 @@ _TECH_NAME = {
            "gratin": "Gratin", "stew": "Mijoté & curry", "frittata": "Frittata", "stoemp": "Stoemp", "stuffed": "Légumes farcis",
            "plate": "Assiette viande et légumes", "pesto": "Pesto", "dessert": "Dessert", "cold_soup": "Soupe froide",
            "crostini": "Crostini", "compote": "Compote"},
+    "de": {"soup": "Suppe", "roast": "Ofenblech", "stir_fry": "Wok", "pasta": "Pasta", "risotto": "Risotto", "salad": "Salat",
+           "gratin": "Gratin", "stew": "Eintopf & Curry", "frittata": "Frittata", "stoemp": "Stoemp", "stuffed": "Gefülltes Gemüse",
+           "plate": "Teller mit Fleisch und Gemüse", "pesto": "Pesto", "dessert": "Dessert", "cold_soup": "Kalte Suppe",
+           "crostini": "Crostini", "compote": "Kompott"},
 }  # fmt: skip
-for _ix, _lang_code in enumerate(("en", "nl", "fr")):  # the texts of the dishes of cooking_dishes
+for _ix, _lang_code in enumerate(("en", "nl", "fr", "de")):  # the texts of the dishes of cooking_dishes
     for _id, _texts in _d.TITLE.items():
         _TITLE[_lang_code][_id] = _texts[_ix]
     for _id, _texts in _d.NAME.items():
@@ -748,12 +902,20 @@ _PDF = {
     "fr": {"book": "Livre de cuisine de saison", "from_garden": "du jardin", "ingredients": "Ingrédients", "method": "Préparation",
            "servings": "{n} personnes", "minutes": "{n} min", "shopping": "Liste de courses", "to_buy": "À acheter",
            "garden_items": "Du jardin (inutile d'acheter)", "contents": "Dans ce livre", "made": "Réalisé avec Hortulus le {d}"},
+    "de": {"book": "Saisonales Kochbuch", "from_garden": "aus dem Garten", "ingredients": "Zutaten", "method": "Zubereitung",
+           "servings": "{n} Portionen", "minutes": "{n} Min.", "shopping": "Einkaufsliste", "to_buy": "Zu kaufen",
+           "garden_items": "Aus dem Garten (nicht kaufen)", "contents": "In diesem Kochbuch", "made": "Erstellt mit Hortulus am {d}"},
 }  # fmt: skip
 
 
 def short_name(plant: Plant, lang: str) -> str:
     """'Pumpkin / Winter squash' -> 'pumpkin', 'French bean (bush)' -> 'french bean'."""
-    return plant.name(lang).split(" / ")[0].split(" (")[0].strip().lower()
+    return _lower(plant.name(lang).split(" / ")[0].split(" (")[0].strip(), lang)
+
+
+def _lower(text: str, lang: str) -> str:
+    """Lower case for a name inside a sentence; German nouns keep their capital letter."""
+    return text if lang == "de" else text.lower()
 
 
 def label(key: str, lang: str | None = "en") -> str:
@@ -762,7 +924,7 @@ def label(key: str, lang: str | None = "en") -> str:
 
 
 def _lang(lang: str | None) -> str:
-    return lang if lang in ("en", "nl", "fr") else "en"
+    return lang if lang in ("en", "nl", "fr", "de") else "en"
 
 
 def _join(names: Sequence[str], lang: str) -> str:
@@ -962,7 +1124,7 @@ def render(spec: Mapping[str, Any], db: PlantDatabase, lang: str | None = "en", 
                 where, *texts = own[hit]
                 text = texts[_LANG_IX_EN[lang]]
                 break
-        text = text.format(p=protein.name(lang).split(" (")[0].lower())
+        text = text.format(p=_lower(protein.name(lang).split(" (")[0], lang))
         {"early": after_first, "end": tail}.get(where, steps).append(text)
     fresh = {short_name(p, lang) for i in _SAUCE_HERBS if (p := db.get(i)) is not None}
     early, mid, during, late = _extra_steps(tech.id, extras, lang, [h for h in herbs if h in fresh], produce_ids, meat)
@@ -974,7 +1136,7 @@ def render(spec: Mapping[str, Any], db: PlantDatabase, lang: str | None = "en", 
         if n == len(method) - 1:  # "for the last 10 minutes ...": said before the oven or grill step it times
             steps += mid + during
             mid = during = []
-        steps.append(step.format(prep=prep or a, side=side_name.lower(), veg=_join(names, lang)))
+        steps.append(step.format(prep=prep or a, side=_lower(side_name, lang), veg=_join(names, lang)))
         if n == 1:
             steps += mid + after_first
             mid = []
