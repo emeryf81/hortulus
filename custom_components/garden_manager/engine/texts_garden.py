@@ -1,4 +1,4 @@
-"""Texts for the phase 3 maintenance rules and weather tasks (EN / NL / FR).
+"""Texts for the phase 3 maintenance rules and weather tasks (EN / NL / FR / DE).
 
 Kept apart from ``i18n.py`` so the core catalogue stays readable.  Imported
 for its side effect at the bottom of ``i18n.py``.
@@ -391,6 +391,48 @@ _PEST_FR = {
     "moths": "mites",
     "ants": "fourmis",
 }
+_PEST_DE = {
+    "aphids": "Blattläuse",
+    "whitefly": "Weiße Fliege",
+    "red_spider_mite": "Rote Spinne",
+    "thrips": "Thripse",
+    "slugs": "Schnecken",
+    "cabbage_white": "Kohlweißling",
+    "cabbage_root_fly": "Kohlfliege",
+    "flea_beetle": "Erdflöhe",
+    "carrot_fly": "Möhrenfliege",
+    "onion_fly": "Zwiebelfliege",
+    "leek_moth": "Lauchmotte",
+    "pea_moth": "Erbsenwickler",
+    "birds": "Vögel",
+    "pigeons": "Tauben",
+    "black_bean_aphid": "Schwarze Bohnenlaus",
+    "bean_weevil": "Bohnenkäfer",
+    "leaf_miner": "Minierfliege",
+    "asparagus_beetle": "Spargelhähnchen",
+    "celery_fly": "Selleriefliege",
+    "colorado_beetle": "Kartoffelkäfer",
+    "wireworm": "Drahtwurm",
+    "codling_moth": "Apfelwickler",
+    "woolly_aphid": "Blutlaus",
+    "winter_moth": "Frostspanner",
+    "pear_midge": "Birnengallmücke",
+    "pear_psylla": "Birnenblattsauger",
+    "plum_moth": "Pflaumenwickler",
+    "wasps": "Wespen",
+    "cherry_fruit_fly": "Kirschfruchtfliege",
+    "spotted_wing_drosophila": "Kirschessigfliege",
+    "black_cherry_aphid": "Schwarze Kirschenlaus",
+    "nut_weevil": "Haselnussbohrer",
+    "squirrels": "Eichhörnchen",
+    "currant_blister_aphid": "Johannisbeerblasenlaus",
+    "gooseberry_sawfly": "Stachelbeerblattwespe",
+    "big_bud_mite": "Johannisbeergallmilbe",
+    "raspberry_beetle": "Himbeerkäfer",
+    "nematodes": "Nematoden",
+    "moths": "Motten",
+    "ants": "Ameisen",
+}
 _MONTHS = {
     "en": [
         "January",
@@ -434,8 +476,22 @@ _MONTHS = {
         "novembre",
         "décembre",
     ],
+    "de": [
+        "Januar",
+        "Februar",
+        "März",
+        "April",
+        "Mai",
+        "Juni",
+        "Juli",
+        "August",
+        "September",
+        "Oktober",
+        "November",
+        "Dezember",
+    ],
 }
-for _lang in ("en", "nl", "fr"):
+for _lang in ("en", "nl", "fr", "de"):
     for _i, _m in enumerate(_MONTHS[_lang], start=1):
         MESSAGES[_lang][f"month.{_i}"] = _m
 for _pid, _name in _PEST_NL.items():
@@ -443,6 +499,8 @@ for _pid, _name in _PEST_NL.items():
     MESSAGES["en"][f"pest.{_pid}"] = _pid.replace("_", " ")
 for _pid, _name in _PEST_FR.items():
     MESSAGES["fr"][f"pest.{_pid}"] = _name
+for _pid, _name in _PEST_DE.items():
+    MESSAGES["de"][f"pest.{_pid}"] = _name
 
 MESSAGES["en"].update(
     {
@@ -724,6 +782,158 @@ MESSAGES["fr"].update(
     }
 )
 
+MESSAGES["de"].update(
+    {
+        "overdue.title": "Garten: {count} Aufgaben noch offen",
+        "voice.not_ready": "Hortulus startet noch, fragen Sie mich in einer Minute noch einmal.",
+        "voice.no_tasks": "Heute gibt es im Garten nichts zu tun. Genießen Sie es!",
+        "voice.tasks": "{count} Gartenaufgaben heute, etwa {minutes} Minuten: {tasks}.",
+        "voice.no_overdue": "Keine überfälligen Gartenaufgaben. Gut gemacht!",
+        "voice.overdue": "{count} Aufgaben sind überfällig: {tasks}.",
+        "voice.harvest": "Erntereif: {plants}.",
+        "voice.no_harvest": "Im Moment ist nichts erntereif.",
+        "voice.gh_temp": "In {zone} sind es {temp} Grad.",
+        "voice.gh_no_sensor": "Mit {zone} ist kein Thermometer verknüpft.",
+        "voice.gh_action.ventilate": "Öffnen Sie die Lüftungsklappen.",
+        "voice.gh_action.shade": "Bringen Sie die Schattierung an.",
+        "voice.gh_action.close_up": "Schließen Sie es vor dem Abend.",
+        "voice.gh_action.heat": "Es wird zu kalt, schalten Sie die Heizung ein.",
+        "voice.no_greenhouse": "Sie haben in Hortulus kein Gewächshaus.",
+        "voice.water": "Ja, gießen Sie {beds}.",
+        "voice.no_water": "Nein, der Boden ist feucht genug.",
+        "voice.frost": "Ja, es wird Frost bis {temp} Grad erwartet. Decken Sie empfindliche Pflanzen ab.",
+        "voice.no_frost": "Kein Frost erwartet.",
+        "desc.rain_water": "Regenwasser in den Tonnen: etwa {liters} L - zuerst dieses verwenden.",
+        "soil.adj.lime_dose": "Bodenprobe: {grams} g Gartenkalk ausbringen (pH-Wert zu niedrig), nicht zusammen mit Mist.",
+        "soil.adj.om_low": "Bodenprobe: wenig organische Substanz - Kompost um die Hälfte erhöht.",
+        "soil.adj.om_high": "Bodenprobe: viel organische Substanz - weniger Kompost nötig.",
+        "soil.adj.pk_high": "Bodenprobe: Phosphat und Kalium sind hoch - halbe Düngermenge, Kompost genügt.",
+        "soil.adj.pk_low": "Bodenprobe: Phosphat oder Kalium ist niedrig - etwas zusätzlicher organischer Dünger (oder Holzasche für K).",
+        "soil.adj.ph_high": "Bodenprobe: pH-Wert über 7,5 - kein Kalk; Laubkompost und Kompost senken ihn langsam.",
+        "weather.moved": "Wegen des Wetters auf {date} verschoben ({reason}).",
+        "weather.no_good_day": "Wetterwarnung: {reason} vorhergesagt - den besten Zeitpunkt selbst wählen oder mit Vlies schützen.",
+        "weather.problem.rain": "Regen",
+        "weather.problem.frost": "Frost",
+        "weather.problem.heat": "Hitze",
+        "weather.problem.wind": "starker Wind",
+        "overdue.window_closed": "jetzt zu spät - überspringen oder eine Alternative wählen",
+        "overdue.still_ok": "noch bis {date} möglich",
+        "overdue.do_now": "{days} Tage zu spät",
+        "overdue.footer": "Hortulus öffnen, um zu erledigen, zu verschieben oder zu überspringen.",
+        "weekly.title": "Garten: Ihre kommende Woche",
+        "weekly.day": "{day}: {count} Aufgaben (~{minutes} Min.)",
+        "weekly.empty": "Eine ruhige Woche - nichts geplant.",
+        # yearly garden work
+        "maint.clean_pots": "Töpfe, Schalen und Etiketten waschen",
+        "maint.clean_pots.desc": "Töpfe und Anzuchtschalen in heißem Wasser mit einem Spritzer Schmierseife oder etwas Essig "
+        "schrubben, abspülen und in der Sonne trocknen. Saubere Töpfe beugen der Umfallkrankheit vor.",
+        "maint.water_butts": "Regentonnen reinigen und anschließen",
+        "maint.water_butts.desc": "Schlamm herausschöpfen, den Regensammler am Fallrohr prüfen und einen Deckel oder ein feines "
+        "Netz auflegen (keine Mückenlarven). Regenwasser ist weicher und wärmer als Leitungswasser - die Pflanzen lieben es.",
+        "maint.irrigation_service": "Die Tropfbewässerung warten",
+        "maint.irrigation_service.desc": "Die Leitungen durchspülen, Filter und Tropfer reinigen (eine Nacht in Essig löst Kalk), "
+        "auf Lecks prüfen und jedes Ventil einmal testen.",
+        "maint.green_manure_dig": "Gründüngung abschneiden und einarbeiten",
+        "maint.green_manure_dig.desc": "Die Gründüngung mähen oder hacken, einige Tage welken lassen und flach in die "
+        "obersten 10 cm einarbeiten (ohne Umgraben: als Mulch unter einer Abdeckung liegen lassen). 3-4 Wochen später säen.",
+        "maint.slug_patrol": "Mit der Schneckenkontrolle beginnen",
+        "maint.slug_patrol.desc": "Nach der Dämmerung oder nach Regen mit der Taschenlampe die Runde machen. Ökologisch: Bierfalle "
+        "(eingegrabenes Glas, Rand 2 cm über dem Boden), ein Brett, unter dem sie sich sammeln, ein Ring aus Holzasche, Splitt oder "
+        "zerstoßenen Eierschalen um Sämlinge; Igel, Drosseln und Laufkäfer willkommen heißen.",
+        "maint.nettle_feed": "Brennnesseljauche ansetzen (Stickstoff)",
+        "maint.nettle_feed.desc": "1 kg junge Brennnesseln (vor der Blüte) in 10 l Regenwasser, täglich umrühren, 10-14 Tage "
+        "gären lassen. 1:10 verdünnt für Blattgemüse und Kohl, 1:20 für Sämlinge. Ein Deckel hält den Geruch zurück.",
+        "maint.comfrey_feed": "Beinwelljauche ansetzen (Kalium)",
+        "maint.comfrey_feed.desc": "Beinwellblätter in einen Eimer mit einigen Löchern im Boden packen, beschweren und die "
+        "schwarze Flüssigkeit auffangen (oder 1 kg 3 Wochen lang in 10 l Wasser einweichen). 1:10 verdünnen - perfekter Dünger "
+        "für Tomaten und Obst.",
+        "maint.sow_winter_crops": "Für die Herbst- und Winterernte säen",
+        "maint.sow_winter_crops.desc": "Letzte Gelegenheit im Freien für Winterkulturen: Feldsalat, Spinat, Winterportulak, "
+        "Rucola, Pak Choi, Endivie, Stielmus; Lauch, Grünkohl und Winterkohl auspflanzen. Leere Beete mit Gründüngung einsäen.",
+        "maint.hedge_trim": "Die Hecke schneiden (nach der Brutzeit)",
+        "maint.hedge_trim.desc": "Zuerst nach Nestern sehen - Vögel brüten bis Mitte August. Den Schnitt als Mulch "
+        "oder (gehäckselt) im Kompost verwenden.",
+        "maint.seed_saving": "Saatgut gewinnen",
+        "maint.seed_saving.desc": "Die besten Früchte samenfester Sorten auswählen (Tomate, Bohne, Erbse, Salat). "
+        "Tomate: das Fruchtfleisch 3 Tage in einem Glas Wasser gären lassen, abspülen und trocknen. In Papiertüten kühl und trocken lagern.",
+        "maint.fleece_ready": "Vlies, Folientunnel und Frostschutzgewebe bereitlegen",
+        "maint.fleece_ready.desc": "Vlies und Bögen prüfen, Fehlendes kaufen; alte Bettlaken und Pappkartons "
+        "helfen auch für eine Frostnacht.",
+        "maint.leaf_mould": "Laub für Laubkompost sammeln",
+        "maint.leaf_mould.desc": "Müllsäcke mit feuchtem Herbstlaub füllen, einige Löcher hineinstechen und 1-2 Jahre liegen lassen: "
+        "die beste kostenlose Anzuchterde und Mulch. Kranke Blätter (Schorf, Rost) aussortieren.",
+        "maint.gutters": "Dachrinnen und Regensammler reinigen",
+        "maint.gutters.desc": "Laub aus den Dachrinnen, dem Filter der Regentonne und den Gewächshausrinnen entfernen, damit der "
+        "Winterregen aufgefangen wird.",
+        "maint.nest_boxes": "Nistkästen reinigen und die Vögel füttern",
+        "maint.nest_boxes.desc": "Alte Nester entfernen (Flöhe), mit kochendem Wasser ausspülen - keine Chemie. Meisen fressen "
+        "Tausende Raupen und Blattläuse: den Kasten in 2-3 m Höhe aufhängen, Einflugloch nach Osten.",
+        "maint.storage_check": "Das Winterlager kontrollieren",
+        "maint.storage_check.desc": "Kartoffeln, Zwiebeln, Kürbisse, Äpfel und Wurzelgemüse durchsehen: alles Weiche oder "
+        "Faulende entfernen, das Lager dunkel, frostfrei und luftig halten.",
+        # greenhouse
+        "maint.gh_windows": "Die Scheiben von {zone} putzen",
+        "maint.gh_windows.desc": "Glas oder Polycarbonat innen und außen reinigen: ein schmutziges Dach kostet 10-20 % des Lichts. "
+        "Warmes Wasser mit Schmierseife oder einem Schuss Essig, eine weiche Bürste an einem Stiel, mit dem Schlauch abspülen; "
+        "Algen mit einem Pflanzenetikett aus den Überlappungen kratzen.",
+        "maint.gh_windows_autumn": "Das Glas von {zone} für das Winterlicht reinigen",
+        "maint.gh_windows_autumn.desc": "Schattierfarbe und Sommerschmutz abwaschen, damit Winterkulturen jeden Lichtstrahl bekommen.",
+        "maint.gh_vents_check": "Lüftungsklappen und Fensteröffner in {zone} prüfen",
+        "maint.gh_vents_check.desc": "Die automatischen Fensteröffner testen (Wachszylinder lassen nach einigen Jahren nach), "
+        "ebenso Ventilatoren und das Min/Max-Thermometer, vor dem ersten warmen Tag.",
+        "maint.gh_biocontrol": "Nützlinge in {zone} einsetzen",
+        "maint.gh_biocontrol.desc": "Ab 15 °C: Encarsia gegen die Weiße Fliege, Phytoseiulus gegen Spinnmilben und "
+        "Florfliegenlarven gegen Blattläuse freilassen. Gelbtafeln zur Kontrolle aufhängen. Eine Schale Wasser und einige Blumen "
+        "(Ringelblume, Steinkraut) halten sie dort.",
+        "maint.gh_winter_crops": "Winterkulturen in {zone} planen",
+        "maint.gh_winter_crops.desc": "Jetzt säen oder pflanzen für Ernten den ganzen Winter unter Glas: Feldsalat, Winterportulak, "
+        "Spinat, Pak Choi, Mizuna, Rucola, Mangold, Frühlingszwiebeln; Salat für das zeitige Frühjahr.",
+        # orchard
+        "maint.orchard_winter_wash": "Winterkontrolle der Obstbäume in {zone}",
+        "maint.orchard_winter_wash.desc": "An einem trockenen Tag nach Krebs, Fruchtmumien und Blattlauseiern suchen; lose Rinde "
+        "mit einer harten Bürste abbürsten. Mumien (Monilia) und Totholz entfernen.",
+        "maint.orchard_mow": "Wege im Obstgarten mähen, Blühstreifen stehen lassen",
+        "maint.orchard_mow.desc": "Eine Baumscheibe von 1 m grasfrei halten (Mulch), die Wege mähen und Streifen für Bestäuber "
+        "und Raubinsekten blühen lassen.",
+        "maint.orchard_grease_bands": "Leimringe an den Bäumen in {zone} anbringen",
+        "maint.orchard_grease_bands.desc": "Leimringe in 1 m Höhe hindern die flügellosen Weibchen des Frostspanners daran, "
+        "zur Eiablage hinaufzuklettern. Im März wieder entfernen.",
+        "maint.orchard_pollinators": "Den Bestäubern in {zone} helfen",
+        "maint.orchard_pollinators.desc": "Die Blüte kommt: ein Mauerbienenhaus aufhängen (Südost, 1-2 m), Löwenzahn im Rasen "
+        "blühen lassen, niemals während der Blüte spritzen.",
+        # weather episodes
+        "weather.heat": "Hitze im Anmarsch ({temp} °C am {day}): den Garten schützen",
+        "weather.heat.desc": "Bis zu {temp} °C über {days} Tag(e). Früh am Morgen gießen (5-8 Uhr), an die Wurzeln und "
+        "durchdringend (10-20 l/m²) statt jeden Abend ein wenig; offenen Boden 5-8 cm hoch mulchen (Rasenschnitt, Stroh); "
+        "morgens ernten; jetzt nicht säen, auspflanzen oder schneiden; Töpfe in den Schatten stellen und eine Schale "
+        "Wasser für Vögel und Insekten aufstellen.",
+        "weather.heat.shade": "Die empfindlichsten Kulturen mittags schattieren: {plants}. Kein Schattiernetz? Eine alte Gardine, "
+        "eine doppelte Lage Vlies, ein Sonnenschirm oder ein Bettlaken auf Stäben tun es auch.",
+        "weather.heat.very": "Sehr heiß: Tomaten und Paprika werfen über 32-35 °C Blüten ab - auch sie schattieren. "
+        "Töpfe und Jungpflanzen zweimal täglich kontrollieren.",
+        "weather.heat_gh": "Hitze im Anmarsch: {zone} kühlen ({temp} °C)",
+        "weather.heat_gh.desc": "Früh am Morgen alle Lüftungsklappen und die Tür öffnen, die Tür nur schließen, wenn die Nächte "
+        "unter 12 °C fallen; Schattierfarbe oder -netz anbringen; mittags Boden und Wege befeuchten (Verdunstung kühlt um 3-5 °C); "
+        "morgens gießen; ein Eimer Wasser im Gewächshaus puffert die Nacht ab.",
+        "weather.dry": "Trockene, warme Phase ({days} Tage): klug gießen",
+        "weather.dry.desc": "Einmal pro Woche durchdringend gießen (20 l/m²) statt täglich zu sprenkeln - die Wurzeln wachsen tiefer. "
+        "Einmal hacken („einmal hacken spart zweimal gießen“), Mulch nachlegen, zuerst die Regentonnen nutzen und morgens "
+        "gießen. Eingegrabene Flaschen oder Ollas (unglasierte Tontöpfe) neben durstigen Kulturen sparen die Hälfte des Wassers.",
+        "weather.storm": "Sturm im Anmarsch ({day}): den Garten sturmfest machen",
+        "weather.storm.desc": "Windböen bis {wind} km/h. Türen und Lüftungsklappen des Gewächshauses schließen, Vlies und Netze "
+        "beschweren (Steine, Sandsäcke, Zeltheringe), Töpfe und Anzuchtschalen an einen geschützten Ort bringen und lose Gegenstände wegräumen.",
+        "weather.storm.tall": "Stäbe und Bindungen hoher Kulturen prüfen: {plants}.",
+        "weather.rain": "Starkregen ({mm} mm am {day}): Nachsorge",
+        "weather.after_storm": "Nach dem Sturm ({day}): den Garten kontrollieren",
+        "weather.after_storm.desc": "Die Böen erreichten {wind} km/h. Hohe Kulturen neu anbinden und aufrichten, Stäbe, Netze, Vlies und das Gewächshaus (Türen, Scheiben) kontrollieren und abgeknickte Stängel einsammeln, bevor sie faulen.",
+        "weather.dry_logged": "Trockenphase: {mm} mm Regen in {days} Tagen",
+        "weather.dry_logged.desc": "In letzter Zeit ist kaum Regen gefallen, während die Pflanzen weiter getrunken haben. Durstige Beete einmal früh am Tag durchdringend gießen (10-20 l/m²) statt täglich ein wenig, offenen Boden mulchen und die Regentonnen kontrollieren.",
+        "weather.rain.desc": "Nach dem Regen: Schneckenrunde in der Dämmerung (Bierfallen, absammeln), nasse Beete nicht betreten "
+        "(ein Brett benutzen), Untersetzer und Töpfe leeren, prüfen, ob das Wasser abläuft. Mit dem Säen einige Tage warten; "
+        "faulende Früchte entfernen (Grauschimmel).",
+    }
+)
+
 MESSAGES["fr"].update(
     {
         "method.indoor_sow": "Semis à l'intérieur",
@@ -787,5 +997,67 @@ MESSAGES["fr"].update(
         "advice.gh_sensor": "Ajoutez un thermomètre dans la serre",
         "advice.gh_sensor.text": "Avec une sonde de température, Hortulus peut vous prévenir avant que la serre ne "
         "surchauffe ou ne gèle. Voir le chapitre sur les capteurs.",
+    }
+)
+
+MESSAGES["de"].update(
+    {
+        "method.indoor_sow": "Drinnen vorziehen",
+        "method.direct_sow": "Direktsaat im Freien",
+        "method.transplant": "Auspflanzen",
+        "moisture.dry": "trocken",
+        "moisture.slightly_dry": "etwas trocken",
+        "moisture.optimal": "genau richtig",
+        "moisture.wet": "nass",
+        "moisture.unknown": "unbekannt",
+        "pollination.insects": "Insektenbestäubt - Blumen in der Nähe helfen.",
+        "pollination.wind": "Windbestäubt - in Blöcken pflanzen.",
+        "pollination.partner": "Braucht eine zweite Sorte in der Nähe, um Früchte anzusetzen.",
+        "advice.whole_garden": "Ganzer Garten",
+        "advice.tools": "Werkzeug und Zubehör",
+        "advice.partner": "{plant} braucht einen Befruchterpartner",
+        "advice.partner.text": "Keine zweite Sorte von {plant} in der Nähe. Eine andere Sorte pflanzen, die zur gleichen Zeit "
+        "blüht (im Umkreis von etwa 50 m - ein Baum beim Nachbarn zählt mit), oder einen Befruchterast aufveredeln.",
+        "advice.pollinators": "Blumen für die Bestäuber in {zone} pflanzen",
+        "advice.pollinators.text": "{plants} brauchen Insekten, um Früchte anzusetzen. Ein Streifen {flowers} lockt Bienen und "
+        "Schwebfliegen an (die auch Blattläuse fressen).",
+        "advice.enemy": "{a} und {b} sind schlechte Nachbarn in {bed}",
+        "advice.enemy.text": "{reason} Eine der beiden Kulturen in ein anderes Beet umsetzen.",
+        "advice.better": "Bessere Nachbarn: {plants}.",
+        "advice.shade": "{tall} beschattet {short} in {bed}",
+        "advice.shade.text": "Hohe Kulturen gehören an die Nordseite eines Beets (oben auf dem Plan), damit sie {short} "
+        "nicht die Sonne nehmen.",
+        "advice.gaps": "Die Erntelücken füllen",
+        "advice.gaps.text": "Im {months} gibt es nichts zu ernten. Zum Beispiel {plants} ergänzen - oder mehr von der "
+        "Sommerernte einlagern.",
+        "advice.empty_bed": "{bed} ist leer - eine schnelle Kultur säen",
+        "advice.empty_bed.text": "Vor dem Frost ist noch Zeit für eine Zwischenkultur: {plants}.",
+        "advice.empty_bed_late": "{bed} für den Winter abdecken",
+        "advice.empty_bed_late.text": "Zu spät für Gemüse: eine Gründüngung ({plants}) säen oder den Boden mulchen.",
+        "advice.empty_greenhouse": "{bed} für Winterkulturen nutzen",
+        "advice.empty_greenhouse.text": "Unter Glas lässt sich den ganzen Winter ernten: {plants}.",
+        "advice.rotation": "{n} Kulturen verletzen die Fruchtfolge",
+        "advice.rotation.text": "Dieselbe Familie stand dort vor Kurzem - höheres Risiko für Bodenkrankheiten. Der Planer zeigt "
+        "für jede davon bessere Beete.",
+        "advice.heat_stress": "Hitzestress bei {plants}",
+        "advice.heat_stress.text": "Mittags schattieren, morgens gießen und das Gewächshaus vollständig lüften.",
+        "advice.feed": "{bed} gehen die Nährstoffe aus",
+        "advice.feed.text": "Mit verdünnter Brennnesseljauche (Blattgemüse) oder Beinwelljauche (Fruchtgemüse) düngen und Kompost aufbringen.",
+        "advice.flowers": "Blumen zwischen das Gemüse pflanzen",
+        "advice.flowers.text": "Etwa ein Zehntel Blumen ({flowers}) bringt Bestäuber und natürliche Schädlingsregulierung.",
+        "advice.year_transition": "{from} abschließen und zu {to} wechseln",
+        "advice.year_transition.text": "Das neue Jahr hat begonnen, aber nichts wird von selbst übernommen: Wählen Sie beim "
+        "Jahreswechsel, welcher Teil des Gartenplans, welche Stauden und welche überwinternden Kulturen nach {to} "
+        "übernommen werden. Bis dahin erhalten sie keine Aufgaben für {to}.",
+        "advice.compost": "Einen Komposthaufen einzeichnen",
+        "advice.compost.text": "Eigener Kompost ist der beste und günstigste Bodenverbesserer - am besten in einer halbschattigen Ecke.",
+        "advice.water_butt": "Regenwasser auffangen",
+        "advice.water_butt.text": "Eine Regentonne an der Dachrinne von Schuppen oder Gewächshaus liefert weiches, warmes Wasser und spart Leitungswasser.",
+        "advice.habitat": "Platz für Nützlinge schaffen",
+        "advice.habitat.text": "Eine Hecke, ein kleiner Teich, ein Holzstapel oder eine wilde Ecke lockt Igel, Kröten, Vögel und "
+        "Laufkäfer an - die beste Abwehr gegen Schnecken und Raupen.",
+        "advice.gh_sensor": "Ein Thermometer ins Gewächshaus hängen",
+        "advice.gh_sensor.text": "Mit einem Temperatursensor kann Hortulus warnen, bevor das Gewächshaus überhitzt oder einfriert. "
+        "Siehe das Kapitel über Sensoren.",
     }
 )

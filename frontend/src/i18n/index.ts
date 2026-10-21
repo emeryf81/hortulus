@@ -1,16 +1,17 @@
 import { en } from "./en";
 import { nl } from "./nl";
 import { fr } from "./fr";
+import { de } from "./de";
 
-const CATALOGS: Record<string, Record<string, string>> = { en, nl, fr };
+const CATALOGS: Record<string, Record<string, string>> = { en, nl, fr, de };
 
 export type Translate = (key: string, params?: Record<string, unknown>) => string;
 
-export type Lang = "en" | "nl" | "fr";
+export type Lang = "en" | "nl" | "fr" | "de";
 
 export const normalizeLang = (lang?: string | null): Lang => {
   const base = (lang ?? "en").toLowerCase().split(/[-_]/)[0];
-  return base === "nl" ? "nl" : base === "fr" ? "fr" : "en";
+  return base === "nl" ? "nl" : base === "fr" ? "fr" : base === "de" ? "de" : "en";
 };
 
 /** Build a translator. Unknown keys fall back to English, then to the key. */
@@ -59,6 +60,20 @@ export const PEST_FR: Record<string, string> = {
   wireworm: "taupin (ver fil de fer)",
 };
 
-const PEST_BY_LANG: Partial<Record<Lang, Record<string, string>>> = { nl: PEST_NL, fr: PEST_FR };
+export const PEST_DE: Record<string, string> = {
+  aphids: "Blattläuse", whitefly: "Weiße Fliege", red_spider_mite: "Spinnmilben (Rote Spinne)", thrips: "Thripse", slugs: "Schnecken",
+  cabbage_white: "Kohlweißling", cabbage_root_fly: "Kohlfliege", flea_beetle: "Erdflöhe", carrot_fly: "Möhrenfliege",
+  onion_fly: "Zwiebelfliege", leek_moth: "Lauchmotte", pea_moth: "Erbsenwickler", birds: "Vögel", pigeons: "Tauben",
+  black_bean_aphid: "Schwarze Bohnenlaus", bean_weevil: "Bohnenkäfer", leaf_miner: "Minierfliege",
+  late_blight: "Kraut- und Braunfäule", early_blight: "Dürrfleckenkrankheit (früh)", blossom_end_rot: "Blütenendfäule", botrytis: "Grauschimmel",
+  powdery_mildew: "Echter Mehltau", downy_mildew: "Falscher Mehltau", cucumber_mosaic_virus: "Gurkenmosaikvirus",
+  clubroot: "Kohlhernie", white_rot: "Mehlkrankheit", rust: "Rost", alternaria: "Alternaria", leaf_spot: "Blattflecken",
+  root_rot: "Wurzelfäule", anthracnose: "Brennfleckenkrankheit", halo_blight: "Fettfleckenkrankheit", chocolate_spot: "Schokoladenfleckenkrankheit",
+  damping_off: "Umfallkrankheit", ants: "Ameisen", asparagus_beetle: "Spargelhähnchen", canker: "Krebs", celery_fly: "Selleriefliege",
+  colorado_beetle: "Kartoffelkäfer", nematodes: "Nematoden", scab: "Schorf", smut: "Brand", verticillium_wilt: "Verticillium-Welke",
+  wireworm: "Drahtwurm",
+};
+
+const PEST_BY_LANG: Partial<Record<Lang, Record<string, string>>> = { nl: PEST_NL, fr: PEST_FR, de: PEST_DE };
 
 export const tagLabel = (tag: string, lang: string): string => PEST_BY_LANG[normalizeLang(lang)]?.[tag] ?? humanize(tag);

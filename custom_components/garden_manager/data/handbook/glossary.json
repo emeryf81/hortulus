@@ -12,6 +12,10 @@
   "fr": {
    "term": "ET0 (évapotranspiration de référence)",
    "text": "Eau qu'une pelouse rase et bien arrosée perd par jour (mm). Calculée avec FAO-56 Penman-Monteith à partir des prévisions ; Hargreaves quand l'humidité ou le vent manquent."
+  },
+  "de": {
+   "term": "ET0 (Referenzverdunstung)",
+   "text": "Wasser, das ein kurzer, gut bewässerter Rasen pro Tag verliert (mm). Berechnet mit FAO-56 Penman-Monteith aus der Vorhersage; Hargreaves, wenn Luftfeuchtigkeit oder Wind fehlen."
   }
  },
  "kc": {
@@ -27,6 +31,10 @@
   "fr": {
    "term": "Kc (coefficient cultural)",
    "text": "Multiplicateur appliqué à l'ET0 pour une culture à son stade actuel : faible après la plantation, maximal en pleine croissance, plus bas à nouveau pendant la maturation."
+  },
+  "de": {
+   "term": "Kc (Kulturkoeffizient)",
+   "text": "Faktor auf ET0 für eine Kultur in ihrem aktuellen Wachstumsstadium: niedrig nach der Pflanzung, am höchsten im vollen Wachstum, beim Abreifen wieder niedriger."
   }
  },
  "water_balance": {
@@ -42,6 +50,10 @@
   "fr": {
    "term": "Bilan hydrique",
    "text": "Sans sonde d'humidité, Hortulus suit l'eau de la zone racinaire par planche : évaporation de la culture en sortie, pluie et arrosage en entrée. Arrosez quand la moitié de l'eau disponible est consommée."
+  },
+  "de": {
+   "term": "Wasserbilanz",
+   "text": "Ohne Feuchtesensor verfolgt Hortulus das Wasser im Wurzelraum jedes Beets: Verdunstung der Kultur geht ab, Regen und Bewässerung kommen hinzu. Gegossen wird, wenn die Hälfte des verfügbaren Wassers verbraucht ist."
   }
  },
  "taw": {
@@ -57,6 +69,10 @@
   "fr": {
    "term": "Réserve utile (RU)",
    "text": "Quantité d'eau que la zone racinaire retient entre la capacité au champ et le point de flétrissement. Sable environ 80 mm par mètre de sol, limon 160, argile 180."
+  },
+  "de": {
+   "term": "Verfügbares Wasser (TAW)",
+   "text": "Wie viel Wasser der Wurzelraum zwischen Feldkapazität und Welkepunkt hält. Sand etwa 80 mm pro Meter Boden, Lehm 160, Ton 180."
   }
  },
  "gdd": {
@@ -72,6 +88,10 @@
   "fr": {
    "term": "Degrés-jours de croissance",
    "text": "Somme de la chaleur quotidienne au-dessus de la température de base d'une culture. Un printemps chaud accumule les degrés-jours plus vite et avance la récolte."
+  },
+  "de": {
+   "term": "Wachstumsgradtage",
+   "text": "Summe der täglichen Wärme über der Basistemperatur einer Kultur. Ein warmes Frühjahr sammelt schneller Gradtage und zieht die Ernte vor."
   }
  },
  "frost_dates": {
@@ -87,6 +107,10 @@
   "fr": {
    "term": "Dates de gel",
    "text": "Dernière gelée moyenne de printemps et première gelée moyenne d'automne de votre région. Toutes les fenêtres de semis sont comptées en semaines à partir de ces dates."
+  },
+  "de": {
+   "term": "Frostdaten",
+   "text": "Mittlerer letzter Frühjahrsfrost und erster Herbstfrost Ihrer Region. Alle Aussaatfenster werden in Wochen ab diesen Daten gezählt."
   }
  },
  "hardening_off": {
@@ -102,6 +126,10 @@
   "fr": {
    "term": "Endurcissement",
    "text": "Habituer les plants élevés à l'intérieur aux conditions extérieures pendant 7-10 jours avant la mise en place."
+  },
+  "de": {
+   "term": "Abhärten",
+   "text": "Drinnen vorgezogene Pflanzen vor dem Auspflanzen über 7-10 Tage an die Bedingungen im Freien gewöhnen."
   }
  },
  "succession": {
@@ -117,6 +145,10 @@
   "fr": {
    "term": "Semis échelonnés",
    "text": "Semer un peu toutes les 2-3 semaines plutôt que tout en une fois, pour une récolte régulière."
+  },
+  "de": {
+   "term": "Folgesaat",
+   "text": "Alle 2-3 Wochen ein wenig säen statt alles auf einmal, für eine gleichmäßige Ernte."
   }
  },
  "rotation": {
@@ -132,6 +164,10 @@
   "fr": {
    "term": "Rotation des cultures",
    "text": "Changer chaque année de famille de plantes dans chaque planche pour éviter l'accumulation de ravageurs et maladies du sol. La plupart des familles demandent 3-4 ans d'absence."
+  },
+  "de": {
+   "term": "Fruchtfolge",
+   "text": "Jedes Jahr die Pflanzenfamilie in jedem Beet wechseln, damit sich bodenbürtige Schädlinge und Krankheiten nicht anreichern. Die meisten Familien brauchen 3-4 Jahre Pause."
   }
  },
  "companion": {
@@ -147,6 +183,10 @@
   "fr": {
    "term": "Associations de cultures",
    "text": "Placer côte à côte des plantes qui s'entraident (odeur, répulsion des ravageurs, support, azote) et éloigner les rivales."
+  },
+  "de": {
+   "term": "Mischkultur",
+   "text": "Pflanzen, die sich gegenseitig helfen (Duft, Schädlingsabwehr, Stütze, Stickstoff), nah zusammensetzen und Konkurrenten auseinanderhalten."
   }
  },
  "allelopathy": {
@@ -162,6 +202,10 @@
   "fr": {
    "term": "Allélopathie",
    "text": "Une plante freine la croissance de ses voisines par des substances émises par ses racines ou ses feuilles (fenouil, absinthe, tournesol)."
+  },
+  "de": {
+   "term": "Allelopathie",
+   "text": "Eine Pflanze hemmt das Wachstum ihrer Nachbarn mit Stoffen aus Wurzeln oder Blättern (Fenchel, Wermut, Sonnenblume)."
   }
  },
  "trap_crop": {
@@ -177,6 +221,10 @@
   "fr": {
    "term": "Plante piège",
    "text": "Une plante qui attire un ravageur loin de la culture principale, comme la capucine pour les pucerons."
+  },
+  "de": {
+   "term": "Fangpflanze",
+   "text": "Eine Pflanze, die einen Schädling von der Hauptkultur weglockt, etwa Kapuzinerkresse für Blattläuse."
   }
  },
  "green_manure": {
@@ -192,6 +240,10 @@
   "fr": {
    "term": "Engrais vert",
    "text": "Une culture semée pour couvrir et nourrir un sol nu (phacélie, trèfle, seigle). Fauchez avant la floraison et laissez en paillage ou enfouissez superficiellement."
+  },
+  "de": {
+   "term": "Gründüngung",
+   "text": "Eine Kultur, die gesät wird, um offenen Boden zu bedecken und zu ernähren (Phacelia, Klee, Roggen). Vor der Blüte abschneiden und als Mulch liegen lassen oder flach einarbeiten."
   }
  },
  "mulch": {
@@ -207,6 +259,10 @@
   "fr": {
    "term": "Paillage",
    "text": "Une couche de matière organique sur le sol. Divise l'évaporation par deux, freine les mauvaises herbes et nourrit la vie du sol."
+  },
+  "de": {
+   "term": "Mulch",
+   "text": "Eine Schicht organischen Materials auf dem Boden. Halbiert die Verdunstung, unterdrückt Unkraut und ernährt das Bodenleben."
   }
  },
  "no_dig": {
@@ -222,6 +278,10 @@
   "fr": {
    "term": "Sans bêchage",
    "text": "Préserver la structure du sol et apporter le compost en surface au lieu de bêcher."
+  },
+  "de": {
+   "term": "No-Dig (ohne Umgraben)",
+   "text": "Die Bodenstruktur intakt lassen und Kompost obenauf geben, statt umzugraben."
   }
  },
  "npk": {
@@ -237,6 +297,10 @@
   "fr": {
    "term": "NPK",
    "text": "Azote (feuilles), phosphore (racines, fleurs) et potassium (fruits, résistance) : les trois principaux nutriments des plantes."
+  },
+  "de": {
+   "term": "NPK",
+   "text": "Stickstoff (Blätter), Phosphor (Wurzeln, Blüten) und Kalium (Früchte, Widerstandskraft): die drei Hauptnährstoffe der Pflanzen."
   }
  },
  "ec": {
@@ -252,6 +316,10 @@
   "fr": {
    "term": "CE (conductivité électrique)",
    "text": "Teneur en sels de l'eau du sol en mS/cm. Trop basse signifie carence, au-dessus de 2,5-3 c'est un stress salin."
+  },
+  "de": {
+   "term": "EC (elektrische Leitfähigkeit)",
+   "text": "Salzgehalt der Bodenfeuchte in mS/cm. Zu niedrig bedeutet Hunger, über 2,5-3 bedeutet Salzstress."
   }
  },
  "nutrient_index": {
@@ -267,6 +335,10 @@
   "fr": {
    "term": "Indice d'équilibre nutritif",
    "text": "0-100 : dans quelle mesure les mesures NPK ou CE correspondent aux besoins des cultures de la planche. 100 = tout est dans la plage."
+  },
+  "de": {
+   "term": "Nährstoffbilanz-Index",
+   "text": "0-100: wie gut die NPK- oder EC-Werte zum Bedarf der Kulturen im Beet passen. 100 = alles im Bereich."
   }
  },
  "compost": {
@@ -282,6 +354,10 @@
   "fr": {
    "term": "Compost",
    "text": "Matière organique décomposée. 5 kg/m² pour les cultures exigeantes, 3 pour les moyennes, 1,5 pour les peu exigeantes."
+  },
+  "de": {
+   "term": "Kompost",
+   "text": "Zersetzte organische Substanz. 5 kg/m² für Starkzehrer, 3 für Mittelzehrer, 1,5 für Schwachzehrer."
   }
  },
  "hutton": {
@@ -297,6 +373,10 @@
   "fr": {
    "term": "Période Hutton",
    "text": "Deux jours consécutifs avec un minimum de 10 °C ou plus et au moins 6 heures d'humidité au-dessus de 90 % : risque élevé de mildiou."
+  },
+  "de": {
+   "term": "Hutton-Periode",
+   "text": "Zwei aufeinanderfolgende Tage mit einem Minimum von 10 °C oder mehr und 6+ Stunden Luftfeuchtigkeit über 90 %: hohes Risiko für Kraut- und Braunfäule."
   }
  },
  "leaf_wetness": {
@@ -312,6 +392,10 @@
   "fr": {
    "term": "Humectation foliaire",
    "text": "Les spores de champignons ne germent que sur une feuille mouillée. Les heures d'humidité élevée entre 10 et 25 °C déterminent le risque de maladie."
+  },
+  "de": {
+   "term": "Blattnässe",
+   "text": "Pilzsporen keimen nur auf einem nassen Blatt. Stunden mit hoher Luftfeuchtigkeit bei 10-25 °C treiben das Krankheitsrisiko."
   }
  },
  "frost_lockout": {
@@ -327,6 +411,10 @@
   "fr": {
    "term": "Blocage gel",
    "text": "Les vannes extérieures restent fermées quand du gel est prévu dans les 12 heures ou qu'il fait trop froid maintenant, pour que les goutte-à-goutte ne gèlent pas et n'éclatent pas."
+  },
+  "de": {
+   "term": "Frostsperre",
+   "text": "Ventile im Freien bleiben geschlossen, wenn innerhalb von 12 Stunden Frost vorhergesagt ist oder es jetzt zu kalt ist, damit Tropfleitungen nicht einfrieren und platzen."
   }
  },
  "pump_interlock": {
@@ -342,6 +430,10 @@
   "fr": {
    "term": "Verrouillage de la pompe",
    "text": "La pompe ne démarre qu'une fois une vanne ouverte et s'arrête avant que la vanne ne se ferme, pour ne jamais tourner contre un circuit fermé."
+  },
+  "de": {
+   "term": "Pumpenverriegelung",
+   "text": "Die Pumpe startet erst, wenn ein Ventil offen ist, und stoppt, bevor das Ventil schließt, damit sie nie gegen ein geschlossenes System läuft."
   }
  },
  "microclimate": {
@@ -357,6 +449,10 @@
   "fr": {
    "term": "Microclimat",
    "text": "Conditions locales d'une zone : un abri, un mur chaud au sud ou une masse thermique (tonneaux d'eau, pierre) gardent les nuits un ou deux degrés plus chaudes."
+  },
+  "de": {
+   "term": "Mikroklima",
+   "text": "Lokale Bedingungen einer Zone: Windschutz, eine warme Südwand oder Wärmespeicher (Regentonnen, Stein) halten die Nächte ein bis zwei Grad wärmer."
   }
  },
  "ventilation": {
@@ -372,6 +468,10 @@
   "fr": {
    "term": "Aération",
    "text": "Ouvrir les fenêtres de la serre dès 22-25 °C évacue la chaleur et l'air humide - la principale défense contre les moisissures."
+  },
+  "de": {
+   "term": "Lüften",
+   "text": "Das Öffnen der Gewächshausklappen ab 22-25 °C führt Wärme und feuchte Luft ab - der wichtigste Schutz gegen Schimmel."
   }
  },
  "shading": {
@@ -387,6 +487,10 @@
   "fr": {
    "term": "Ombrage",
    "text": "Un blanc d'ombrage ou un filet de 30-40 % de la fin du printemps au début de l'automne maintient la serre sous la température maximale des cultures."
+  },
+  "de": {
+   "term": "Schattieren",
+   "text": "Schattierfarbe oder 30-40-%-Netz vom späten Frühjahr bis zum frühen Herbst hält ein Gewächshaus unter der Höchsttemperatur der Kulturen."
   }
  },
  "winter_rest": {
@@ -402,6 +506,10 @@
   "fr": {
    "term": "Repos hivernal",
    "text": "En hiver, le sol se repose sous un engrais vert ou un paillage ; pas de bêchage, et les tiges creuses restent pour les insectes."
+  },
+  "de": {
+   "term": "Winterruhe",
+   "text": "Im Winter ruht der Boden unter Gründüngung oder Mulch; kein Umgraben, hohle Stängel bleiben für Insekten stehen."
   }
  },
  "soil_prep": {
@@ -417,6 +525,10 @@
   "fr": {
    "term": "Préparation du sol",
    "text": "Deux semaines avant la plantation : ameublir sans retourner, désherber et épandre le compost dont les prochaines cultures ont besoin."
+  },
+  "de": {
+   "term": "Bodenvorbereitung",
+   "text": "Zwei Wochen vor der Pflanzung: lockern ohne umzudrehen, Unkraut entfernen und den Kompost ausbringen, den die kommenden Kulturen brauchen."
   }
  },
  "family": {
@@ -432,6 +544,10 @@
   "fr": {
    "term": "Famille botanique",
    "text": "Famille botanique (solanacées, crucifères, légumineuses...). Les membres d'une famille partagent ravageurs et maladies, la rotation se fait donc par famille."
+  },
+  "de": {
+   "term": "Pflanzenfamilie",
+   "text": "Botanische Familie (Nachtschattengewächse, Kreuzblütler, Hülsenfrüchtler ...). Familienmitglieder teilen Schädlinge und Krankheiten, daher funktioniert die Fruchtfolge pro Familie."
   }
  },
  "autofill": {
@@ -447,6 +563,10 @@
   "fr": {
    "term": "Remplissage automatique",
    "text": "Propose cultures, quantités et emplacements selon vos planches, la taille du ménage, le temps, l'eau et le compost - en respectant rotation, associations et ensoleillement."
+  },
+  "de": {
+   "term": "Automatisch füllen",
+   "text": "Schlägt Kulturen, Mengen und Platzierung anhand Ihrer Beete, Haushaltsgröße, Zeit, Wasser und Kompost vor - unter Beachtung von Fruchtfolge, Mischkultur und Sonne."
   }
  },
  "spacing": {
@@ -462,6 +582,10 @@
   "fr": {
    "term": "Espacement",
    "text": "Distance entre les plants sur le rang et entre les rangs. Trop serré signifie plus de maladies et des récoltes plus petites."
+  },
+  "de": {
+   "term": "Pflanzabstand",
+   "text": "Abstand zwischen den Pflanzen in der Reihe und zwischen den Reihen. Zu eng bedeutet mehr Krankheiten und kleinere Ernten."
   }
  },
  "zones": {
@@ -477,6 +601,10 @@
   "fr": {
    "term": "Zones",
    "text": "Parties du jardin au caractère propre - potager, serre, verger, petits fruits, jardin d'aromatiques ou de fleurs. Chaque zone a son propre plan et convient à ses propres plantes."
+  },
+  "de": {
+   "term": "Zonen",
+   "text": "Teile des Gartens mit eigenem Charakter - Gemüsegarten, Gewächshaus, Obstgarten, Beerenobst, Kräuter- oder Blumengarten. Jede Zone hat ihre eigene Karte und passt zu ihren eigenen Pflanzen."
   }
  },
  "perennial": {
@@ -492,6 +620,10 @@
   "fr": {
    "term": "Vivace",
    "text": "Une plante qui vit plusieurs années (arbres fruitiers, petits fruits, asperge, beaucoup d'aromatiques). Elle reste dans votre plan chaque saison jusqu'à ce que vous la retiriez explicitement."
+  },
+  "de": {
+   "term": "Mehrjährig",
+   "text": "Eine Pflanze, die viele Jahre lebt (Obstbäume, Beeren, Spargel, viele Kräuter). Sie bleibt jede Saison in Ihrem Plan, bis Sie sie ausdrücklich entfernen."
   }
  },
  "pollination": {
@@ -507,6 +639,10 @@
   "fr": {
    "term": "Pollinisation",
    "text": "Le pollen doit atteindre la fleur pour qu'elle donne un fruit : par les insectes, le vent, ou d'une deuxième variété (partenaire) pour les fruitiers autostériles."
+  },
+  "de": {
+   "term": "Bestäubung",
+   "text": "Pollen muss die Blüte erreichen, damit Früchte ansetzen: durch Insekten, Wind oder von einer zweiten Sorte (Befruchter) bei selbstunfruchtbarem Obst."
   }
  },
  "weather_scheduling": {
@@ -522,6 +658,10 @@
   "fr": {
    "term": "Planification selon la météo",
    "text": "Semis, plantation, taille et travaux similaires sont déplacés au jour sec, sans gel et pas trop chaud le plus proche dans leur fenêtre."
+  },
+  "de": {
+   "term": "Wetterabhängige Planung",
+   "text": "Säen, Auspflanzen, Schneiden und ähnliche Arbeiten rücken auf den nächstgelegenen trockenen, frostfreien und nicht zu heißen Tag innerhalb ihres Zeitfensters."
   }
  },
  "home_remedies": {
@@ -537,6 +677,10 @@
   "fr": {
    "term": "Remèdes maison",
    "text": "Solutions douces faites maison : savon noir, purin d'ortie et de consoude, pulvérisation de lait, pièges à bière, filets - toujours après la prévention et les auxiliaires."
+  },
+  "de": {
+   "term": "Hausmittel",
+   "text": "Milde, selbst gemachte Lösungen: Schmierseife, Brennnessel- und Beinwelljauche, Milchspritzung, Bierfallen, Netze - immer erst nach Vorbeugung und natürlichen Gegenspielern."
   }
  }
 }

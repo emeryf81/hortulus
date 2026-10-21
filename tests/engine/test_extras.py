@@ -28,8 +28,8 @@ TZ = ZoneInfo("Europe/Amsterdam")
 # --------------------------------------------------------------------------- #
 def test_every_theme_speaks_every_language():
     for theme, langs in slogans.SLOGANS.items():
-        assert set(langs) == {"nl", "en", "fr"}, theme
-        assert len(langs["nl"]) == len(langs["en"]) == len(langs["fr"]), theme
+        assert set(langs) == {"nl", "en", "fr", "de"}, theme
+        assert len(langs["nl"]) == len(langs["en"]) == len(langs["fr"]) == len(langs["de"]), theme
 
 
 def test_a_slogan_is_stable_for_a_day_and_changes_the_next():
@@ -55,7 +55,7 @@ def test_two_places_on_one_day_differ_and_the_season_joins_in():
 def test_slogans_follow_the_setting_and_unknown_languages_fall_back():
     assert slogans.enabled(GardenSettings())
     assert not slogans.enabled(GardenSettings(slogans=False))
-    assert slogans.slogan("de", day=date(2026, 6, 1)) in slogans.pool("en", ("garden", "veg", "outdoors", "summer"))
+    assert slogans.slogan("es", day=date(2026, 6, 1)) in slogans.pool("en", ("garden", "veg", "outdoors", "summer"))
 
 
 # --------------------------------------------------------------------------- #
