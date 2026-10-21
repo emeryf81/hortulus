@@ -572,6 +572,7 @@ export class SettingsView extends LitElement {
             <option value="en" ?selected=${s.language === "en"}>English</option>
             <option value="nl" ?selected=${s.language === "nl"}>Nederlands</option>
             <option value="fr" ?selected=${s.language === "fr"}>Français</option>
+            <option value="de" ?selected=${s.language === "de"}>Deutsch</option>
           </select></label>
         <label class="field">${this.t("settings.units")}<input disabled .value=${this.t("settings.units_metric")} /></label>
         <label class="field">${this.t("settings.snap")}<input type="number" min="1" max="50" .value=${String(s.snap_cm)}

@@ -276,9 +276,11 @@ def starter_garden(
     the caller copies the zones, beds, features and plantings over.
     """
     beds, width, length = STARTER_SIZES.get(size, STARTER_SIZES["medium"])
-    names = {"nl": ("Bak", "Kruidenpot", "Serre"), "fr": ("Carré", "Pot d'aromates", "Serre")}.get(
-        language, ("Bed", "Herb pot", "Greenhouse")
-    )
+    names = {
+        "nl": ("Bak", "Kruidenpot", "Serre"),
+        "fr": ("Carré", "Pot d'aromates", "Serre"),
+        "de": ("Beet", "Kräutertopf", "Gewächshaus"),
+    }.get(language, ("Bed", "Herb pot", "Greenhouse"))
     areas: list[dict[str, Any]] = [
         {CONF_AREA_NAME: f"{names[0]} {i + 1}", CONF_AREA_TYPE: "outdoor", CONF_WIDTH_M: width, CONF_LENGTH_M: length}
         for i in range(beds)
@@ -299,9 +301,11 @@ def starter_garden(
     add_example_plan(data, db, today)
     outdoor = next((z for z in data.zones if z.type is ZoneType.OUTDOOR), None)
     if outdoor is not None:
-        labels = {"nl": ("Pad", "Regenton", "Compost"), "fr": ("Allée", "Récupérateur d'eau", "Compost")}.get(
-            language, ("Path", "Water butt", "Compost")
-        )
+        labels = {
+            "nl": ("Pad", "Regenton", "Compost"),
+            "fr": ("Allée", "Récupérateur d'eau", "Compost"),
+            "de": ("Weg", "Regentonne", "Kompost"),
+        }.get(language, ("Path", "Water butt", "Compost"))
         data.features = [
             Feature(
                 _id("ft"),

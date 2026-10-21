@@ -25,6 +25,8 @@ New extras, again **on by default** and switchable under *Settings → Extras*:
 - **Photo diagnosis.** Under a diary photo, *What is wrong here?* asks Home Assistant's AI task, either your
   own or the preferred one. The AI chooses from the pests and diseases Hortulus knows, the crop's own ones
   first, and the answer comes with Hortulus' organic advice. One tap notes it in the diary as a problem.
+- **German.** The integration, the panel, the notifications, the handbook and the plant data are now also
+  available in German (Deutsch), next to English, Dutch and French.
 - **Tasks in your own calendar.** The coming tasks (7 days by default) are copied into another calendar,
   for example Google or CalDAV, each task once.
 
