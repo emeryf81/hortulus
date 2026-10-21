@@ -10,7 +10,7 @@ from homeassistant.components.sensor import (
     SensorEntity,
     SensorStateClass,
 )
-from homeassistant.const import PERCENTAGE, UnitOfLength, UnitOfMass, UnitOfTemperature, UnitOfVolume
+from homeassistant.const import PERCENTAGE, UnitOfEnergy, UnitOfLength, UnitOfMass, UnitOfTemperature, UnitOfVolume
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.util import dt as dt_util
@@ -18,6 +18,7 @@ from homeassistant.util import dt as dt_util
 from . import GardenConfigEntry
 from .coordinator import GardenCoordinator
 from .engine import climate
+from .engine.adaptive import heater_budget_left, iso_week
 from .engine.models import (
     GardenBed,
     GreenhouseAction,
@@ -53,6 +54,8 @@ async def async_setup_entry(
             ClimateSensor(coordinator, "mean_temperature_7_days"),
             ClimateSensor(coordinator, "sunshine_7_days"),
             ClimateSensor(coordinator, "frost_nights_season"),
+            PumpEnergySensor(coordinator),
+            *([HeaterEnergySensor(coordinator)] if any(z.heater_entity for z in coordinator.repo.data.zones) else []),
         ]
     )
     async_setup_dynamic(
@@ -400,6 +403,54 @@ class RainWaterSensor(GardenEntity, SensorEntity):
     @property
     def native_value(self) -> float | None:
         return water_stats(self.coordinator.repo.data, dt_util.now().date()).rain_available_l
+
+
+class PumpEnergySensor(GardenEntity, SensorEntity):
+    """Energy the watering pumps used this year (needs the pump power in the settings)."""
+
+    _attr_device_class = SensorDeviceClass.ENERGY
+    _attr_native_unit_of_measurement = UnitOfEnergy.KILO_WATT_HOUR
+    _attr_state_class = SensorStateClass.TOTAL_INCREASING
+    _attr_suggested_display_precision = 2
+
+    def __init__(self, coordinator: GardenCoordinator) -> None:
+        super().__init__(coordinator, "pump_energy_year")
+
+    @property
+    def native_value(self) -> float | None:
+        return water_stats(self.coordinator.repo.data, dt_util.now().date()).pump_kwh
+
+    @property
+    def extra_state_attributes(self) -> dict[str, Any]:
+        stats = water_stats(self.coordinator.repo.data, dt_util.now().date())
+        return {"rain_water_liters": stats.irrigated_rain_l, "mains_water_liters": stats.irrigated_mains_l}
+
+
+class HeaterEnergySensor(GardenEntity, SensorEntity):
+    """Energy the frost heaters of the enclosures used this (ISO) week."""
+
+    _attr_device_class = SensorDeviceClass.ENERGY
+    _attr_native_unit_of_measurement = UnitOfEnergy.KILO_WATT_HOUR
+    _attr_state_class = SensorStateClass.TOTAL_INCREASING
+    _attr_suggested_display_precision = 2
+
+    def __init__(self, coordinator: GardenCoordinator) -> None:
+        super().__init__(coordinator, "heater_energy_week")
+
+    @property
+    def native_value(self) -> float:
+        week = iso_week(dt_util.now().date())
+        return round(sum(z.heater_kwh.get(week, 0.0) for z in self.coordinator.repo.data.zones), 3)
+
+    @property
+    def extra_state_attributes(self) -> dict[str, Any]:
+        today = dt_util.now().date()
+        week = iso_week(today)
+        return {
+            z.name: {"kwh": z.heater_kwh.get(week, 0.0), "budget_left_kwh": heater_budget_left(z, today)}
+            for z in self.coordinator.repo.data.zones
+            if z.heater_entity
+        }
 
 
 class ClimateSensor(GardenEntity, SensorEntity):

@@ -387,6 +387,12 @@
       },
       "frost_nights_season": {
         "name": "Frost nights this season"
+      },
+      "pump_energy_year": {
+        "name": "Pump energy (this year)"
+      },
+      "heater_energy_week": {
+        "name": "Greenhouse heating (this week)"
       }
     },
     "binary_sensor": {

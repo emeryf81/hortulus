@@ -387,6 +387,12 @@
       },
       "frost_nights_season": {
         "name": "Nuits de gel cette saison"
+      },
+      "pump_energy_year": {
+        "name": "Énergie des pompes (cette année)"
+      },
+      "heater_energy_week": {
+        "name": "Chauffage sous abri (cette semaine)"
       }
     },
     "binary_sensor": {

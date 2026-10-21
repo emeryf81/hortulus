@@ -65,6 +65,7 @@ from .operations import (
     op_save_plan,
     op_save_plant,
     op_save_seed,
+    op_reset_water_factor,
     op_save_settings,
     op_save_soil_test,
     op_starter_garden,
@@ -101,6 +102,7 @@ def async_setup_websocket(hass: HomeAssistant) -> None:
         ws_task_add,
         ws_task_action,
         ws_settings_save,
+        ws_bed_reset_water_factor,
         ws_autofill,
         ws_autofill_apply,
         ws_print_render,
@@ -264,6 +266,7 @@ def build_snapshot(runtime: GardenRuntime) -> dict[str, Any]:
             ],
             "leak": runtime.irrigation.leak,
             "waiting_for_sun": getattr(runtime.irrigation, "waiting_for_sun", None),
+            "waiting_for_rain": getattr(runtime.irrigation, "waiting_for_rain", None),
         },
         "entry_id": coordinator.config_entry.entry_id,
         "gardens": listing(coordinator.hass),
@@ -725,6 +728,23 @@ def ws_settings_save(hass: HomeAssistant, connection: websocket_api.ActiveConnec
         connection.send_error(msg["id"], "invalid_settings", str(err))
         return
     connection.send_result(msg["id"], {"settings": to_dict(settings)})
+
+
+@websocket_api.websocket_command(
+    {vol.Required("type"): f"{DOMAIN}/bed/reset_water_factor", vol.Optional("garden_id"): str, vol.Required("bed_id"): str}
+)
+@websocket_api.require_admin
+@callback
+def ws_bed_reset_water_factor(hass: HomeAssistant, connection: websocket_api.ActiveConnection, msg: dict[str, Any]) -> None:
+    runtime = _require_runtime(hass, connection, msg)
+    if runtime is None:
+        return
+    try:
+        op_reset_water_factor(runtime, msg["bed_id"])
+    except HomeAssistantError as err:
+        connection.send_error(msg["id"], "unknown_bed", str(err))
+        return
+    connection.send_result(msg["id"], {"ok": True})
 
 
 # --------------------------------------------------------------------------- #

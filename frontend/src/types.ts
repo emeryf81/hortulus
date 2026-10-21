@@ -67,6 +67,11 @@ export interface Zone {
   shade_entity?: string | null;
   climate_control?: "off" | "advise" | "auto";
   shading_mode?: "auto" | "on" | "off";
+  /** Frost heating (2.1): switched in climate_control "auto". */
+  heater_entity?: string | null;
+  heater_power_w?: number;
+  heater_budget_kwh_week?: number | null;
+  heater_kwh?: Record<string, number>;
 }
 
 export type FeatureType =
@@ -104,6 +109,9 @@ export interface Bed {
   irrigation_flow_lpm: number | null;
   measured_flow_lpm?: number | null;
   valve_max_min?: number | null;
+  /** Learned from the moisture sensor after runs (2.1). */
+  water_factor?: number;
+  water_factor_runs?: number;
   notes: string;
   soil_tests?: SoilTest[];
 }
@@ -555,6 +563,13 @@ export interface IrrigationSettings {
   surplus_entity?: string | null;
   surplus_min_w?: number;
   surplus_latest?: string;
+  battery_entity?: string | null;
+  battery_full_pct?: number;
+  butt_pump_entity?: string | null;
+  butt_min_pct?: number;
+  butt_fallback?: boolean;
+  pump_power_w?: number;
+  butt_pump_power_w?: number;
 }
 
 export interface Resources {
@@ -675,6 +690,14 @@ export interface Settings {
   station_import?: boolean;
   solar_irrigation?: boolean;
   climate_card?: boolean;
+  frost_heating?: boolean;
+  adaptive_irrigation?: boolean;
+  own_yields?: boolean;
+  ai_diagnosis?: boolean;
+  calendar_mirror?: boolean;
+  ai_task_entity?: string | null;
+  mirror_calendar?: string | null;
+  mirror_days?: number;
 }
 
 export interface ForecastPoint {
@@ -723,7 +746,9 @@ export interface Snapshot {
     stuck?: { entity_id: string; since: ISODateTime; what: string }[];
     leak?: { entity_id: string; since: ISODateTime; liters: number; minutes: number } | null;
     /** A scheduled run waits for solar surplus (settings.solar_irrigation). */
-    waiting_for_sun?: { since: ISODateTime; watts: number | null; needed: number; latest: string } | null;
+    waiting_for_sun?: { since: ISODateTime; watts: number | null; needed: number; latest: string; battery?: number | null; battery_full?: number | null } | null;
+    /** ISO date a run was held back because the rain water butt was empty (no mains fallback). */
+    waiting_for_rain?: string | null;
   };
   analysis: Analysis | null;
   weather: {
@@ -875,7 +900,10 @@ export interface RecordsOverview {
   harvest_years?: Record<string, Record<string, number>>;
   learned_yields: Record<string, number>;
   seeds: { packets: SeedStatus[]; missing: string[]; season: number };
-  water: { week_l: number | null; season_l: number | null; rain_available_l: number | null; butt_pct: number | null; per_day: { day: string; liters: number }[] };
+  water: {
+    week_l: number | null; season_l: number | null; rain_available_l: number | null; butt_pct: number | null; per_day: { day: string; liters: number }[];
+    irrigated_rain_l?: number; irrigated_mains_l?: number; pump_kwh?: number;
+  };
   year: { season: number; rows: YearRow[]; tasks: number[]; minutes: number[] } | null;
   kitchen?: KitchenReport | null;
   economics?: Economics;

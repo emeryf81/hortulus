@@ -162,6 +162,10 @@ export class GardenApi {
     return this.call("tasks/action", { task_id: taskId, action, ...extra });
   }
 
+  resetWaterFactor(bedId: string): Promise<{ ok: boolean }> {
+    return this.call("bed/reset_water_factor", { bed_id: bedId });
+  }
+
   saveSettings(settings: Partial<Settings> | Record<string, unknown>): Promise<{ settings: Settings }> {
     return this.call("settings/save", { settings });
   }

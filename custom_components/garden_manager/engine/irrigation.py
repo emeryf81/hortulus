@@ -21,6 +21,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from typing import Any
 
+from .adaptive import water_factor
 from .models import GardenData, IrrigationAction
 from .watering import IrrigationRecommendation
 from .weather import NEAR_HOURS, FrostAssessment
@@ -154,6 +155,8 @@ def plan_irrigation(
         else:
             plan.skipped[bed.id] = ("irrigation.skip.not_needed", {})
             continue
+        if override_mm is None:
+            mm *= water_factor(data.settings, bed)  # what this bed really takes up (learned)
         liters = round(mm * bed.area_m2, 1)
         minutes = liters / flow
         capped = minutes > cfg.max_runtime_min

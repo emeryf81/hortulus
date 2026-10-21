@@ -387,6 +387,12 @@
       },
       "frost_nights_season": {
         "name": "Vorstnachten dit seizoen"
+      },
+      "pump_energy_year": {
+        "name": "Pompenergie (dit jaar)"
+      },
+      "heater_energy_week": {
+        "name": "Kasverwarming (deze week)"
       }
     },
     "binary_sensor": {

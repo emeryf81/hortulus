@@ -719,3 +719,24 @@ MESSAGES["fr"].update(
         "notify.solar_wait": "L'arrosage attend le surplus solaire ({watts} W maintenant, {needed} W nécessaires), au plus tard jusqu'à {latest}.",
     }
 )
+
+
+# -- 2.1: rain water first, frost heating ------------------------------------------------- #
+MESSAGES["en"].update(
+    {
+        "notify.butt_empty_title": "Hortulus – rain water butt empty",
+        "notify.butt_empty": "The rain water butt is nearly empty ({pct} %) and mains water is switched off for watering, so today's run waits for rain.",
+    }
+)
+MESSAGES["nl"].update(
+    {
+        "notify.butt_empty_title": "Hortulus – regenton leeg",
+        "notify.butt_empty": "De regenton is bijna leeg ({pct} %) en leidingwater staat uit voor de bewatering: de beurt van vandaag wacht op regen.",
+    }
+)
+MESSAGES["fr"].update(
+    {
+        "notify.butt_empty_title": "Hortulus – récupérateur d'eau de pluie vide",
+        "notify.butt_empty": "Le récupérateur d'eau de pluie est presque vide ({pct} %) et l'eau du réseau est désactivée pour l'arrosage : l'arrosage du jour attend la pluie.",
+    }
+)

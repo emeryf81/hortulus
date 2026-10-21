@@ -7,7 +7,8 @@
 export type EntityKind =
   | "soil_moisture" | "soil_temperature" | "air_temperature" | "air_humidity" | "light" | "rain" | "par" | "ec"
   | "npk_n" | "npk_p" | "npk_k" | "leaf_wetness" | "wind_speed" | "wind_gust" | "radiation"
-  | "weather" | "irrigation" | "pump" | "tts" | "media_player" | "vent" | "shade" | "meter" | "butt" | "power";
+  | "weather" | "irrigation" | "pump" | "tts" | "media_player" | "vent" | "shade" | "meter" | "butt" | "power"
+  | "battery" | "heater" | "calendar" | "ai_task";
 
 export interface EntityLike {
   entity_id: string;
@@ -65,6 +66,14 @@ export function entityFits(kind: EntityKind, s: EntityLike): boolean {
         || domain === "input_number";
     case "power": // solar surplus / grid export, in W or kW
       return (sensor && (dc === "power" || ["w", "kw"].includes(u))) || domain === "input_number";
+    case "battery": // a home battery's state of charge
+      return (sensor && (dc === "battery" || (u === "%" && named(s, ["soc", "batter", "accu", "charge"])))) || domain === "input_number";
+    case "heater": // a heater on a smart plug, or a climate entity
+      return domain === "switch" || domain === "input_boolean" || domain === "climate";
+    case "calendar":
+      return domain === "calendar" && !s.entity_id.startsWith("calendar.hortulus");
+    case "ai_task":
+      return domain === "ai_task";
     case "soil_moisture":
       return sensor && (dc === "moisture" || (dc === "humidity" && named(s, ["soil", "bodem", "sol", "plant"])));
     case "soil_temperature": // a soil probe says so in its name

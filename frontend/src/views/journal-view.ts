@@ -422,6 +422,9 @@ export class JournalView extends LitElement {
         <div class="tile">${this.t("journal.water_week")}<b>${w?.week_l != null ? `${w.week_l} L` : "–"}</b></div>
         <div class="tile">${this.t("journal.water_season")}<b>${w?.season_l != null ? `${w.season_l} L` : "–"}</b></div>
         <div class="tile">${this.t("journal.rain_available")}<b>${w?.rain_available_l != null ? `${w.rain_available_l} L` : w?.butt_pct != null ? `${w.butt_pct}%` : "–"}</b></div>
+        ${w?.irrigated_rain_l ? html`<div class="tile">${this.t("journal.from_rain")}<b>${w.irrigated_rain_l} L</b></div>` : nothing}
+        ${w?.irrigated_mains_l ? html`<div class="tile">${this.t("journal.from_mains")}<b>${w.irrigated_mains_l} L</b></div>` : nothing}
+        ${w?.pump_kwh ? html`<div class="tile">${this.t("journal.pump_energy")}<b>${w.pump_kwh.toFixed(2)} kWh</b></div>` : nothing}
       </div>
       ${w?.per_day.length ? html`<h3>${this.t("journal.per_day")}</h3><div class="days" role="img" aria-label=${this.t("journal.per_day")}>
         ${w.per_day.map((d) => html`<div title=${`${d.day}: ${d.liters} L`} style=${`height:${(d.liters / max) * 100}%`}></div>`)}</div>` : nothing}

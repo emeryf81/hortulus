@@ -394,3 +394,17 @@ def test_advise_mode_never_opens_valves(irrigated):
         irrigated, {"bed_1": _rec("bed_1")}, now=now, frost_by_zone={}, outdoor_frost=None, outdoor_temp=18.0
     )
     assert not plan.runs and plan.skipped["bed_1"][0] == "irrigation.skip.disabled"
+
+
+def test_a_learned_water_factor_scales_the_planned_water(irrigated):
+    now = datetime(2026, 7, 10, 5, 0, tzinfo=TZ)
+    kw = {"now": now, "frost_by_zone": {}, "outdoor_frost": None, "outdoor_temp": 18.0}
+    base = plan_irrigation(irrigated, {"bed_1": _rec("bed_1", mm=6.0)}, **kw).runs[0]
+    bed = irrigated.bed("bed_1")
+    bed.water_factor, bed.water_factor_runs = 1.5, 3
+    more = plan_irrigation(irrigated, {"bed_1": _rec("bed_1", mm=6.0)}, **kw).runs[0]
+    assert more.mm == pytest.approx(base.mm * 1.5, abs=0.1)
+    fixed = plan_irrigation(irrigated, {"bed_1": _rec("bed_1")}, force=True, bed_ids={"bed_1"}, override_mm=5.0, **kw)
+    assert fixed.runs[0].mm == 5.0  # a fixed amount stays what was asked
+    irrigated.settings.adaptive_irrigation = False
+    assert plan_irrigation(irrigated, {"bed_1": _rec("bed_1", mm=6.0)}, **kw).runs[0].mm == base.mm

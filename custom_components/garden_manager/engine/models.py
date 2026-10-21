@@ -507,6 +507,13 @@ class Zone:
     climate_control: Literal["off", "advise", "auto"] = "advise"
     # Shade screen override for enclosed zones: auto follows the advice.
     shading_mode: Literal["auto", "on", "off"] = "auto"
+    # Frost protection for an enclosure (climate_control "auto"): a heater switched on below
+    # ``microclimate.min_heating_temp_c`` (default 3 °C) and off 1.5 °C above it, within an
+    # optional weekly energy budget.
+    heater_entity: str | None = None
+    heater_power_w: float = 0.0
+    heater_budget_kwh_week: float | None = None
+    heater_kwh: dict[str, float] = field(default_factory=dict)  # ISO week ("2026-W43") -> kWh used
 
     @property
     def is_enclosed(self) -> bool:
@@ -553,6 +560,10 @@ class GardenBed:
     valve_max_min: float | None = None
     notes: str = ""
     soil_tests: list[SoilTest] = field(default_factory=list)
+    # Learned by watching the soil moisture sensor after each run (GardenSettings.adaptive_irrigation):
+    # > 1 when the soil takes up less than the water balance expects (sand, run-off), < 1 when more.
+    water_factor: float = 1.0
+    water_factor_runs: int = 0
 
     @property
     def flow_lpm(self) -> float | None:
@@ -767,6 +778,18 @@ class IrrigationSettings:
     surplus_entity: str | None = None
     surplus_min_w: float = 500.0
     surplus_latest: str = "11:00"
+    # ... or as soon as the home battery is (nearly) full: the surplus then goes to the grid anyway.
+    battery_entity: str | None = None  # state of charge in %
+    battery_full_pct: float = 95.0
+    # Rain water first: a pump that draws from the butt(s) while they hold more than ``butt_min_pct``;
+    # below that the mains pump (or plain mains pressure) takes over, unless ``butt_fallback`` is off -
+    # then the run waits for rain.
+    butt_pump_entity: str | None = None
+    butt_min_pct: float = 10.0
+    butt_fallback: bool = True
+    # Electric power of the pumps, for the energy per run (kWh) - 0 = not counted.
+    pump_power_w: float = 0.0
+    butt_pump_power_w: float = 0.0
 
 
 @dataclass(slots=True)
@@ -880,6 +903,15 @@ class GardenSettings:
     station_import: bool = True  # import a weather station's CSV export into the climate history
     solar_irrigation: bool = True  # wait for solar surplus before a scheduled run (needs a surplus sensor)
     climate_card: bool = True  # the dashboard card shows the climate against last year
+    # -- Extras (2.1) ---------------------------------------------------------------------- #
+    frost_heating: bool = True  # switch an enclosure's heater against frost (needs a heater entity)
+    adaptive_irrigation: bool = True  # learn per bed how much water really soaks in (needs a moisture sensor)
+    own_yields: bool = True  # yield and harvest-start expectations learn from the garden's own years
+    ai_diagnosis: bool = True  # "what is wrong with this plant?" from a photo (needs an AI task entity)
+    calendar_mirror: bool = True  # copy the coming tasks into another calendar (needs a calendar entity)
+    ai_task_entity: str | None = None  # ai_task.* entity; None = Home Assistant's preferred one
+    mirror_calendar: str | None = None  # calendar.* entity that receives the tasks
+    mirror_days: int = 7
 
 
 @dataclass(slots=True)
@@ -994,6 +1026,8 @@ class IrrigationEvent:
     liters: float = 0.0
     minutes: float = 0.0
     source: Literal["auto", "manual", "service", "task"] = "manual"
+    water: Literal["mains", "rain"] = "mains"  # where the water came from
+    kwh: float = 0.0  # pump energy (when the pump power is set)
 
 
 @dataclass(slots=True)
@@ -1090,6 +1124,8 @@ class GardenData:
     # The kitchen: saved recipes and what the cook usually has in the house.
     cookbook: list[CookbookRecipe] = field(default_factory=list)
     cooking_prefs: dict[str, Any] = field(default_factory=dict)
+    # Watering per year (the irrigation log keeps only 60 days): "2026" -> rain_l / mains_l / kwh
+    irrigation_years: dict[str, dict[str, float]] = field(default_factory=dict)
 
     # -- lookups ---------------------------------------------------------- #
     def zone(self, zone_id: str | None) -> Zone | None:
