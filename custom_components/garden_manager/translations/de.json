@@ -1125,6 +1125,9 @@
     },
     "cookbook_full": {
       "message": "Das Kochbuch ist voll ({max} Rezepte). Entfernen Sie zuerst ein paar."
+    },
+    "invalid_layout": {
+      "message": "Die Anordnung des Wandbildschirms ist ungültig: {reason}"
     }
   }
 }

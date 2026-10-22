@@ -1125,6 +1125,9 @@
     },
     "cookbook_full": {
       "message": "Le livre de cuisine est plein ({max} recettes). Supprimez-en d'abord quelques-unes."
+    },
+    "invalid_layout": {
+      "message": "La disposition de l'écran mural n'est pas valide : {reason}"
     }
   }
 }

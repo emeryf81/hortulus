@@ -698,6 +698,7 @@ export interface Settings {
   ai_task_entity?: string | null;
   mirror_calendar?: string | null;
   mirror_days?: number;
+  wall_layout?: WallBlock[] | null;
 }
 
 export interface ForecastPoint {
@@ -1112,4 +1113,19 @@ export interface CookingOverview {
   used_prefs: CookingPrefs;
   catalog: CookingCatalog;
   book: Recipe[];
+}
+
+/** One block of the wall screen: which one and how many of the 4 columns it spans. */
+export interface WallBlock { id: string; w: number }
+
+/** What the wall screen needs beyond the snapshot (wall/data). The texts are Dutch. */
+export interface WallData {
+  layout: WallBlock[];
+  custom: boolean;
+  blocks: Record<string, number>;
+  saying: string;
+  fact: string;
+  eco_month: { title: string; text: string };
+  recipe: { title: string; minutes: number | null; produce: string[]; course: string | null } | null;
+  ready: { name: string; until: string | null }[];
 }

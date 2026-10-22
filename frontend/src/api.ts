@@ -43,6 +43,8 @@ import type {
   TransitionResult,
   UndoResult,
   PhotoDiagnosis,
+  WallBlock,
+  WallData,
 } from "./types";
 import type { CropRow } from "./views/crops-view";
 
@@ -161,6 +163,14 @@ export class GardenApi {
     extra: { note?: string; photos?: string[]; days?: number; to?: string; cascade?: boolean; changes?: Record<string, unknown> } = {},
   ): Promise<{ next_task_id?: string | null; shifted?: string[]; warnings?: string[] }> {
     return this.call("tasks/action", { task_id: taskId, action, ...extra });
+  }
+
+  wallData(): Promise<WallData> {
+    return this.call("wall/data");
+  }
+
+  saveWallLayout(layout: WallBlock[] | null): Promise<{ layout: WallBlock[] | null }> {
+    return this.call("wall/layout", { layout });
   }
 
   resetWaterFactor(bedId: string): Promise<{ ok: boolean }> {
