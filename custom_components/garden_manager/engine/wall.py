@@ -56,11 +56,11 @@ def clean_layout(raw: Any) -> list[dict[str, Any]] | None:
         if not isinstance(item, Mapping):
             continue
         block = item.get("id")
-        if block not in BLOCKS or block in seen:
+        if not isinstance(block, str) or block not in BLOCKS or block in seen:
             continue
         try:
             width = int(item.get("w", BLOCKS[block]))
-        except (TypeError, ValueError):
+        except (TypeError, ValueError, OverflowError):
             width = BLOCKS[block]
         out.append({"id": block, "w": max(1, min(4, width))})
         seen.add(block)

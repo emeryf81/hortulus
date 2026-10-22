@@ -779,7 +779,7 @@ def ws_wall_data(hass: HomeAssistant, connection: websocket_api.ActiveConnection
     connection.send_result(
         msg["id"],
         {
-            "layout": data.settings.wall_layout or wall.default_layout(),
+            "layout": wall.default_layout() if data.settings.wall_layout is None else data.settings.wall_layout,
             "custom": data.settings.wall_layout is not None,
             "blocks": dict(wall.BLOCKS),
             "saying": wall.saying(today, south),

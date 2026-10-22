@@ -418,6 +418,19 @@ await step("wall screen (Dutch): arrange blocks, add a saying and a recipe tip, 
   assert.equal(sent.layout[0].id, "saying");
   assert.ok(sent.layout.some((b) => b.id === "recipe" && b.w === 3) && !sent.layout.some((b) => b.id === "radar"));
   assert.match(await wall.locator(".quote").first().innerText(), /\S/, "the saying shows");
+  // "Standaard" then "Annuleren" keeps the saved wall; "Standaard" then "Klaar" saves the default (null)
+  const saves = () => page.evaluate(() => window.__calls.filter((c) => c.type.endsWith("wall/layout")).length);
+  const before = await saves();
+  await wall.getByRole("button", { name: "Aanpassen" }).click();
+  await wall.locator(".bar").getByRole("button", { name: "Standaard" }).click();
+  await wall.locator(".bar").getByRole("button", { name: "Annuleren" }).click();
+  assert.equal(await saves(), before, "cancel saves nothing");
+  assert.equal((await blocks())[0], "Weerspreuk", "the arranged wall is still there");
+  await wall.getByRole("button", { name: "Aanpassen" }).click();
+  await wall.locator(".bar").getByRole("button", { name: "Standaard" }).click();
+  await wall.locator(".bar").getByRole("button", { name: "Klaar", exact: true }).click();
+  const reset = await page.evaluate(() => window.__calls.filter((c) => c.type.endsWith("wall/layout")).at(-1));
+  assert.equal(reset.layout, null, "back to the default wall");
   await page.setViewportSize({ width: 1400, height: 1000 });
   // other languages keep the default wall, without arranging
   await page.goto(`${base}?tab=wall&lang=en`);

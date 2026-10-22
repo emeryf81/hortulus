@@ -28,6 +28,9 @@ def test_a_layout_from_the_panel_is_made_safe() -> None:
     assert len(wall.clean_layout([{"id": b} for b in wall.BLOCKS] * 3)) == len(wall.BLOCKS)
     with pytest.raises(ValueError):
         wall.clean_layout("tasks")
+    # odd payloads from a client: an id that is not text, a width of infinity
+    assert wall.clean_layout([{"id": ["x"]}, {"id": "radar", "w": float("inf")}]) == [{"id": "radar", "w": 1}]
+    assert wall.clean_layout([]) == []
     assert {b["id"] for b in wall.default_layout()} <= set(wall.BLOCKS)
 
 
@@ -76,7 +79,13 @@ async def test_the_wall_is_arranged_and_kept_in_the_settings(hass: HomeAssistant
 
     await client.send_json({"id": 4, "type": "garden_manager/wall/data"})
     assert (await _result(client))["result"]["custom"] is True
-    await client.send_json({"id": 5, "type": "garden_manager/wall/layout", "layout": None})
+    # every block removed: an empty wall stays empty
+    await client.send_json({"id": 5, "type": "garden_manager/wall/layout", "layout": []})
+    assert (await _result(client))["result"]["layout"] == []
+    await client.send_json({"id": 6, "type": "garden_manager/wall/data"})
+    res = (await _result(client))["result"]
+    assert res["layout"] == [] and res["custom"] is True
+    await client.send_json({"id": 7, "type": "garden_manager/wall/layout", "layout": None})
     assert (await _result(client))["result"]["layout"] is None
     assert data.settings.wall_layout is None
 

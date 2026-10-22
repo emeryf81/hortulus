@@ -67,6 +67,7 @@ export class WallView extends LitElement {
   @state() private radarTick = Date.now();
   @state() private radarFailed = false;
   @state() private saveError = "";
+  private resetPending = false;
   private timer?: number;
   private dataTimer?: number;
 
@@ -187,7 +188,16 @@ export class WallView extends LitElement {
   private get layout(): WallBlock[] {
     if (this.draft) return this.draft;
     if (!this.dutch) return DEFAULT_LAYOUT;
-    return this.data?.layout ?? this.snapshot.settings.wall_layout ?? DEFAULT_LAYOUT;
+    // the snapshot follows every change (also from another screen); wall/data only until it has the field
+    const saved = this.snapshot.settings.wall_layout;
+    if (saved !== undefined) return saved ?? DEFAULT_LAYOUT;
+    return this.data?.layout ?? DEFAULT_LAYOUT;
+  }
+
+  /** Keep the snapshot and wall/data in step with what was saved, until the next snapshot arrives. */
+  private remember(layout: WallBlock[] | null): void {
+    this.snapshot.settings.wall_layout = layout;
+    if (this.data) this.data = { ...this.data, layout: layout ?? DEFAULT_LAYOUT, custom: layout != null };
   }
 
   private emit(name: string, detail?: unknown): void {
@@ -198,14 +208,17 @@ export class WallView extends LitElement {
   private startEditing(): void {
     this.draft = this.layout.map((b) => ({ ...b }));
     this.editing = true;
+    this.resetPending = false;
     this.saveError = "";
   }
 
   private async finishEditing(save: boolean): Promise<void> {
     if (save && this.draft && this.api) {
+      // "Standaard" and nothing changed since: back to the default wall, which follows future defaults
+      const reset = this.resetPending && JSON.stringify(this.draft) === JSON.stringify(DEFAULT_LAYOUT);
       try {
-        const { layout } = await this.api.saveWallLayout(this.draft);
-        if (this.data) this.data = { ...this.data, layout: layout ?? DEFAULT_LAYOUT, custom: layout != null };
+        const { layout } = await this.api.saveWallLayout(reset ? null : this.draft);
+        this.remember(layout);
       } catch (err) {
         this.saveError = (err as Error).message ?? String(err);
         return;
@@ -213,17 +226,13 @@ export class WallView extends LitElement {
     }
     this.editing = false;
     this.draft = null;
+    this.resetPending = false;
   }
 
-  private async resetLayout(): Promise<void> {
-    if (!this.api) return;
-    try {
-      await this.api.saveWallLayout(null);
-      if (this.data) this.data = { ...this.data, layout: DEFAULT_LAYOUT, custom: false };
-      this.draft = DEFAULT_LAYOUT.map((b) => ({ ...b }));
-    } catch (err) {
-      this.saveError = (err as Error).message ?? String(err);
-    }
+  /** Show the default wall in the draft; it is saved only with "Klaar" ("Annuleren" keeps the old one). */
+  private resetLayout(): void {
+    this.draft = DEFAULT_LAYOUT.map((b) => ({ ...b }));
+    this.resetPending = true;
   }
 
   private change(fn: (blocks: WallBlock[]) => void): void {
