@@ -162,6 +162,14 @@ Liters in de regentonnen nu (peil van de ton % × totale inhoud, beide ingesteld
 Instellingen → Watermeter & regenton). De omschrijvingen van watertaken zeggen hoeveel
 daarvan je eerst kunt gebruiken.
 
+
+### `sensor.hortulus_pump_energy_this_year` (2.1)
+kWh die de bewateringspompen dit kalenderjaar gebruikten (device class energy, `total_increasing`), uit het pompvermogen
+onder *Bewateringshardware*. Attributen: `rain_water_liters`, `mains_water_liters` (dit jaar bewaterd per bron).
+
+### `sensor.hortulus_greenhouse_heating_this_week` (2.1)
+kWh van de vorstverwarming deze ISO‑week. Attributen per zone: `kwh`,
+`budget_left_kwh`.
 ### Klimaatgeschiedenis
 
 Vier sensoren vatten samen wat het weer de laatste tijd echt deed, uit de

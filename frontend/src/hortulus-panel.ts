@@ -518,7 +518,7 @@ export class HortulusPanel extends LitElement {
         return html`<hl-calendar-view .snapshot=${snap} .api=${this.api!} .t=${this.t} .lang=${this.uiLang} .plants=${plantMap} .families=${this.families}></hl-calendar-view>`;
       case "journal":
         return html`<hl-journal-view .snapshot=${snap} .plants=${this.plants} .families=${this.families} .api=${this.api!} .t=${this.t}
-          .lang=${this.uiLang} .admin=${admin}></hl-journal-view>`;
+          .lang=${this.uiLang} .admin=${admin} .web=${!!this.panelConfig.web}></hl-journal-view>`;
       case "view":
         return html`<hl-garden-viewer .snapshot=${snap} .plants=${this.plants} .families=${this.families} .t=${this.t} .lang=${this.uiLang}></hl-garden-viewer>`;
       case "cooking":

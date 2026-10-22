@@ -229,7 +229,8 @@
         "auto": "Follow Home Assistant",
         "en": "English",
         "nl": "Nederlands",
-        "fr": "Français"
+        "fr": "Français",
+        "de": "Deutsch"
       }
     },
     "task_type": {
@@ -387,6 +388,12 @@
       },
       "frost_nights_season": {
         "name": "Frost nights this season"
+      },
+      "pump_energy_year": {
+        "name": "Pump energy (this year)"
+      },
+      "heater_energy_week": {
+        "name": "Greenhouse heating (this week)"
       }
     },
     "binary_sensor": {
@@ -1025,7 +1032,7 @@
     },
     "install_voice_sentences": {
       "name": "Install voice sentences",
-      "description": "Copy the Hortulus sentences for Assist to /config/custom_sentences (EN, NL and FR).",
+      "description": "Copy the Hortulus sentences for Assist to /config/custom_sentences (EN, NL, FR and DE).",
       "fields": {
         "overwrite": {
           "name": "Overwrite",

@@ -20,7 +20,10 @@ interface PlanningResult {
   season: number;
   seeds: { plant_id: string; plants: number; seeds: number; plantings: string[]; stock: { quantity: number; unit: string; variety: string; year: number | null }[]; status: "ok" | "check" | "short" | "none"; to_buy: number }[];
   successions: { bed_id: string; free_from: string; leaving: string[]; options: { plant_id: string; harvest_by: string; days: number }[] }[];
-  harvest: { weeks: { week: string; kg: number; by_plant: Record<string, number> }[]; totals: Record<string, number>; learned: string[] };
+  harvest: {
+    weeks: { week: string; kg: number; by_plant: Record<string, number> }[]; totals: Record<string, number>; learned: string[];
+    learned_detail?: Record<string, { kg_m2: number | null; seasons: number; first_harvest_days: number | null }>;
+  };
 }
 
 type Action = "sow_indoor" | "sow_direct" | "transplant" | "harvest";
@@ -277,9 +280,17 @@ export class CropsPlanning extends LitElement {
         <div class="axis">${weeks.map((w, i) => html`<span>${i % 4 === 0 ? formatDate(w.week, this.lang, { day: "numeric", month: "numeric" }) : ""}</span>`)}</div>
         <table><thead><tr><th>${this.t("lib.plant")}</th><th>kg</th><th></th></tr></thead>
           <tbody>${Object.entries(r.harvest.totals).map(([id, kg]) => html`<tr><td>${this.plant(id)}</td><td>${kg}</td>
-            <td class="xs muted">${r.harvest.learned.includes(id) ? this.t("plan.learned") : this.t("plan.book_yield")}</td></tr>`)}</tbody></table>`
+            <td class="xs muted">${r.harvest.learned.includes(id) ? this.learnedNote(r.harvest.learned_detail?.[id]) : this.t("plan.book_yield")}</td></tr>`)}</tbody></table>`
         : html`<p class="muted">${this.t("plan.harvest_none")}</p>`}
     </section>`;
+  }
+
+  /** "your yield · 2 seasons · first harvest after 64 days" */
+  private learnedNote(d?: { kg_m2: number | null; seasons: number; first_harvest_days: number | null }): string {
+    const parts = [this.t("plan.learned")];
+    if (d?.seasons) parts.push(this.t("plan.learned_seasons", { n: d.seasons }));
+    if (d?.first_harvest_days) parts.push(this.t("plan.learned_days", { days: d.first_harvest_days }));
+    return parts.join(" · ");
   }
 }
 

@@ -1,5 +1,44 @@
 # Changelog
 
+## 2.1.0 – 2026-10
+
+### Added
+New extras, again **on by default** and switchable under *Settings → Extras*:
+- **Battery as a start signal.** Energy-aware watering also starts the morning run as soon as the
+  home battery is (nearly) full: the surplus then goes to the grid anyway. Works with or without a
+  surplus sensor, and still never waits past the latest time.
+- **Rain water first.** A pump that draws from the rain water butt is used while the butt holds more than
+  a set level. Below that the mains pump (or plain mains pressure) takes over. Without the fallback the run
+  waits for rain, with one notification a day. Every run records where its water came from.
+- **Pump energy.** With the pump power filled in, every run records its kWh. New sensor *Pump energy
+  (this year)*, with rain and mains litres as attributes. The water card in the diary shows them too.
+- **Frost heating in the greenhouse or cold frame.** A heater (switch or climate entity) goes on below
+  a set temperature (zone air sensor) and off 1.5 °C above it. An optional weekly energy budget stops it
+  once the budget is used up. New sensor *Greenhouse heating (this week)*.
+- **Self-learning watering.** About 90 minutes after a run, the bed's moisture sensor shows how much water
+  really soaked in. After two runs the bed gets its own factor, so sandy or sloping beds get more water and
+  heavy soil gets less. The water balance is credited with what soaked in, not with what ran off.
+  The learned factor is shown per bed and can be reset.
+- **Harvest expectations from your own years.** Your own kg/m² now weigh in against the book value, which
+  counts as one extra season. The harvest start follows when your first harvests really came, at most a
+  month earlier or later.
+- **Photo diagnosis.** Under a diary photo, *What is wrong here?* asks Home Assistant's AI task, either your
+  own or the preferred one. The AI chooses from the pests and diseases Hortulus knows, the crop's own ones
+  first, and the answer comes with Hortulus' organic advice. One tap notes it in the diary as a problem.
+- **German.** The integration, the panel, the notifications, the handbook and the plant data are now also
+  available in German (Deutsch), next to English, Dutch and French.
+- **Tasks in your own calendar.** The coming tasks (7 days by default) are copied into another calendar,
+  for example Google or CalDAV, each task once.
+
+### Improved
+- **Accessibility.** The panel passes an automated WCAG 2.1 AA check (axe-core) on every tab, in light and
+  dark. Contrast of warning and error chips, rain figures and links is fixed, tab buttons announce
+  correctly, table drop-downs have names, and the calendar month reads as a list of days. CI now runs the
+  check on every change.
+- **CI on the oldest supported Home Assistant (2025.10)** next to the current release.
+- What Hortulus measures and learns itself (flow from the meter, water factor, heater energy) is no longer
+  undone when a planner draft that was opened earlier is saved.
+
 ## 2.0.0 – 2026-10
 
 ### Added

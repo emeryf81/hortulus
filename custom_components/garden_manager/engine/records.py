@@ -88,15 +88,61 @@ def harvest_by_year(data: GardenData) -> dict[str, dict[str, float]]:
     return {pid: {season: round(kg, 2) for season, kg in sorted(years.items())} for pid, years in out.items()}
 
 
-def learned_yields(data: GardenData) -> dict[str, float]:
-    """kg/m² per crop from your own harvests (average over seasons with data)."""
+def _own_yields(data: GardenData) -> dict[str, list[float]]:
     per_season: dict[str, list[float]] = defaultdict(list)
     seasons = {season_for_date(data.settings.region, e.day) for e in data.harvest_log}
-    for season in seasons:
+    for season in sorted(seasons):
         for pid, crop in harvest_summary(data, season).items():
             if crop.kg_m2 is not None:
                 per_season[pid].append(crop.kg_m2)
-    return {pid: round(sum(v) / len(v), 2) for pid, v in per_season.items()}
+    return per_season
+
+
+def learned_yields(data: GardenData, db: PlantDatabase | None = None) -> dict[str, float]:
+    """kg/m² per crop from your own harvests (average over seasons with data).
+
+    With the plant database the book value counts as one extra season, so a single odd year does
+    not throw the expectation off and every year of your own weighs in more (GardenSettings.own_yields;
+    switched off, nothing is learned).
+    """
+    if not data.settings.own_yields:
+        return {}
+    out: dict[str, float] = {}
+    for pid, values in _own_yields(data).items():
+        plant = db.get(pid) if db is not None else None
+        book = plant.yield_kg_m2 if plant is not None and plant.yield_kg_m2 else None
+        if book is None:
+            out[pid] = round(sum(values) / len(values), 2)
+        else:
+            out[pid] = round((sum(values) + book) / (len(values) + 1), 2)
+    return out
+
+
+def learned_details(data: GardenData) -> dict[str, dict[str, Any]]:
+    """Per crop: your own kg/m² over the seasons, how many seasons, and days to the first harvest."""
+    if not data.settings.own_yields:
+        return {}
+    days = learned_harvest_days(data)
+    out: dict[str, dict[str, Any]] = {
+        pid: {"kg_m2": round(sum(v) / len(v), 2), "seasons": len(v), "first_harvest_days": days.get(pid)}
+        for pid, v in _own_yields(data).items()
+    }
+    for pid, d in days.items():
+        out.setdefault(pid, {"kg_m2": None, "seasons": 0, "first_harvest_days": d})
+    return out
+
+
+def learned_harvest_days(data: GardenData) -> dict[str, int]:
+    """Days from sowing (or planting out) to the first harvest, as it went in this garden."""
+    if not data.settings.own_yields:
+        return {}
+    per_crop: dict[str, list[int]] = defaultdict(list)
+    for p in data.plantings:
+        start = p.transplanted_on or p.sown_on
+        if p.harvest_started_on is None or start is None or p.harvest_started_on <= start:
+            continue
+        per_crop[p.plant_id].append((p.harvest_started_on - start).days)
+    return {pid: round(sum(v) / len(v)) for pid, v in per_crop.items()}
 
 
 # --------------------------------------------------------------------------- #
@@ -176,9 +222,21 @@ class WaterStats:
     rain_available_l: float | None = None  # in the butts now
     butt_pct: float | None = None
     per_day: list[dict[str, Any]] = field(default_factory=list)  # last 14 days
+    # Watering this year by source, and the pump energy (2.1)
+    irrigated_rain_l: float = 0.0
+    irrigated_mains_l: float = 0.0
+    pump_kwh: float = 0.0
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
+
+
+def book_irrigation(data: GardenData, day: date, liters: float, water: str, kwh: float) -> None:
+    """Add one run to the year's watering totals (by source) and pump energy."""
+    year = data.irrigation_years.setdefault(str(day.year), {"rain_l": 0.0, "mains_l": 0.0, "kwh": 0.0})
+    key = "rain_l" if water == "rain" else "mains_l"
+    year[key] = round(year.get(key, 0.0) + max(liters, 0.0), 1)
+    year["kwh"] = round(year.get("kwh", 0.0) + max(kwh, 0.0), 3)
 
 
 def record_water(data: GardenData, day: date, meter_m3: float | None, butt_pct: float | None) -> bool:
@@ -220,6 +278,10 @@ def water_stats(data: GardenData, today: date) -> WaterStats:
                     {"day": r.day.isoformat(), "liters": round(max(r.meter_m3 - prev.meter_m3, 0) * 1000)}
                 )
             prev = r
+    year_stats = data.irrigation_years.get(str(today.year), {})
+    stats.irrigated_rain_l = round(year_stats.get("rain_l", 0.0), 1)
+    stats.irrigated_mains_l = round(year_stats.get("mains_l", 0.0), 1)
+    stats.pump_kwh = round(year_stats.get("kwh", 0.0), 2)
     butt = next((r for r in reversed(data.water_log) if r.butt_pct is not None), None)
     if butt is not None:
         stats.butt_pct = butt.butt_pct

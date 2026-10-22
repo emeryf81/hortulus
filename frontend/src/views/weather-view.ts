@@ -106,7 +106,7 @@ export class WeatherView extends LitElement {
       .range span { position: absolute; top: 0; bottom: 0; border-radius: 4px; background: linear-gradient(90deg, #6aa9de, #9cc58a, #f2b544, #e07a2e); }
       .tmin, .tmax { font-variant-numeric: tabular-nums; font-size: var(--hl-fs-sm); }
       .tmin { color: var(--hl-text-muted); text-align: right; }
-      .rain { font-size: 12px; color: var(--hl-water-500); font-variant-numeric: tabular-nums; }
+      .rain { font-size: 12px; color: var(--hl-water-ink, var(--hl-water-500)); font-variant-numeric: tabular-nums; }
       .tags { display: flex; gap: 4px; flex-wrap: wrap; }
       .radar img { width: 100%; border-radius: 14px; display: block; background: var(--hl-surface-2); min-height: 200px; }
       .muted-note { font-size: var(--hl-fs-xs); color: var(--hl-text-muted); }

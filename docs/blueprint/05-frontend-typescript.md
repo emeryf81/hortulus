@@ -423,6 +423,7 @@ export const tokens = css`
     --hl-frost-500: #5b8db8;
     --hl-frost-100: #e1ecf5;
     --hl-water-500: #3a7ca5;
+    --hl-water-ink: #2a5f86; /* text in water blue (AA on every light surface) */
 
     /* -- semantic (light) --------------------------------------------- */
     --hl-bg: #faf7f0;
@@ -449,7 +450,6 @@ export const tokens = css`
     --hl-container-fill: #a07b5a;
     --hl-zone-outdoor: rgba(76, 140, 63, 0.08);
     --hl-zone-greenhouse: rgba(91, 141, 184, 0.12);
-
     /* … typography, spacing, radii, shadows, family colours … */
   }`;
 ```

@@ -255,7 +255,7 @@ export class CropsView extends LitElement {
       ["follow", "mdi:swap-horizontal"], ["harvest", "mdi:basket-outline"]];
     return html`
       <div class="views" role="tablist">${views.map(([id, icon]) => html`<button class="chip" role="tab" aria-selected=${String(this.view === id)}
-        aria-pressed=${String(this.view === id)} @click=${() => (this.view = id)}><ha-icon icon=${icon}></ha-icon>${this.t(`crops.view.${id}`)}</button>`)}</div>
+        @click=${() => (this.view = id)}><ha-icon icon=${icon}></ha-icon>${this.t(`crops.view.${id}`)}</button>`)}</div>
       ${this.view === "list" ? this.renderList() : this.view === "timeline" ? html`${this.renderSeasonPick()}
         <section class="card"><hl-crop-gantt .rows=${this.rows} .plants=${this.plantMap} .families=${this.families} .t=${this.t} lang=${this.lang}
           season=${this.season} today=${this.snapshot.analysis?.today ?? ""} ?south=${this.snapshot.settings.region?.hemisphere === "south"} ?admin=${this.admin}
@@ -330,9 +330,9 @@ export class CropsView extends LitElement {
                 @click=${() => this.emit("focus-planting", { planting_id: p.id, season: this.season })}>🗺</button>` : nothing}
               ${r.timeline?.late ? html`<ha-icon class="late" icon="mdi:clock-alert-outline" title=${this.t("crops.late")}></ha-icon>` : nothing}</td>
             <td>${r.bed ?? html`<span class="late">${this.t("crops.no_bed")}</span>`}</td>
-            <td><select ?disabled=${!this.admin} @change=${(e: Event) => this.saveRow(r, { method: (e.target as HTMLSelectElement).value as SowMethod })}>
+            <td><select ?disabled=${!this.admin} aria-label=${`${this.t("crops.method")} · ${plantName(this.plantMap.get(p.plant_id), this.lang) || p.plant_id}`} @change=${(e: Event) => this.saveRow(r, { method: (e.target as HTMLSelectElement).value as SowMethod })}>
               ${METHODS.map((m) => html`<option value=${m} ?selected=${p.method === m}>${this.t(METHOD_LABEL[m])}</option>`)}</select></td>
-            <td><select ?disabled=${!this.admin} @change=${(e: Event) => this.saveRow(r, { status: (e.target as HTMLSelectElement).value as PlantingStatus })}>
+            <td><select ?disabled=${!this.admin} aria-label=${`${this.t("crops.status")} · ${plantName(this.plantMap.get(p.plant_id), this.lang) || p.plant_id}`} @change=${(e: Event) => this.saveRow(r, { status: (e.target as HTMLSelectElement).value as PlantingStatus })}>
               ${STATUSES.map((s) => html`<option value=${s} ?selected=${p.status === s}>${this.t(`status.${s}`)}</option>`)}</select></td>
             ${DATE_FIELDS.map((f) => html`<td>${this.dateInput(r, f)}</td>`)}
             <td><input type="number" min="0" .value=${p.count == null ? "" : String(p.count)} placeholder="auto" ?disabled=${!this.admin}

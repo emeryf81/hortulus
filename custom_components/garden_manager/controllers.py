@@ -29,8 +29,19 @@ from homeassistant.exceptions import HomeAssistantError
 from homeassistant.util import dt as dt_util
 
 from .const import EVENT_IRRIGATION_RUN
+from .engine.adaptive import (
+    SOAK_MINUTES,
+    book_heater,
+    choose_water,
+    expected_rise,
+    heater_wanted,
+    learn_water_factor,
+    pump_kwh,
+    water_factor,
+)
 from .engine.irrigation import IrrigationPlan, plan_irrigation
 from .engine.models import GreenhouseAction, IrrigationEvent
+from .engine.records import book_irrigation
 from .engine.waterbalance import trim_irrigation_log
 
 if TYPE_CHECKING:
@@ -131,6 +142,9 @@ class IrrigationController:
         self._partial_s = 0.0  # seconds held by an opening that was interrupted
         self.waiting_for_sun: dict[str, Any] | None = None  # a scheduled run waiting for solar surplus
         self._scheduled_on: date | None = None  # the day the scheduled run last fired
+        # runs whose soil moisture is read again after a while (adaptive irrigation)
+        self._soak_checks: list[dict[str, Any]] = []
+        self.waiting_for_rain: str | None = None  # ISO date a run was held back: the butt was empty
 
     @property
     def running(self) -> bool:
@@ -193,8 +207,8 @@ class IrrigationController:
 
     async def _run(self, plan: IrrigationPlan, source: str) -> None:
         settings = self.coordinator.repo.data.settings.irrigation
-        pump = settings.pump_entity
         touched: set[str] = set()
+        pumps: set[str] = set()  # every pump this run switched (mains and/or rain water)
         async with self._lock:
             self.status = RunStatus(running=True, last_plan=plan.to_dict())
             try:
@@ -202,6 +216,14 @@ class IrrigationController:
                     minutes = min(run.minutes, settings.max_runtime_min)
                     if minutes <= 0:
                         continue
+                    water = choose_water(settings, self.butt_pct())  # per bed: the butt can run dry
+                    if water.water is None:
+                        self._hold_for_rain(run.bed_id)
+                        continue
+                    pump = water.pump
+                    if pump:
+                        pumps.add(pump)
+                    moisture_before = self._moisture(run.bed_id)
                     self.status.bed_id = run.bed_id
                     self.status.started_at = dt_util.now()
                     self.status.ends_at = dt_util.now() + timedelta(minutes=minutes)
@@ -229,7 +251,10 @@ class IrrigationController:
                         self.hass.async_create_background_task(
                             self._verify_closed(run.entity_id, run.bed_id), "hortulus_verify_valve"
                         )
-                        self._log(run.bed_id, min(ran_s / 60, minutes), run, source, meter_start)
+                        ran_min = min(ran_s / 60, minutes)
+                        event = self._log(run.bed_id, ran_min, run, source, meter_start, water=water.water,
+                                          kwh=pump_kwh(ran_min, water.power_w))  # fmt: skip
+                        self._plan_soak_check(event, moisture_before)
             except asyncio.CancelledError:
                 _LOGGER.info("Irrigation run cancelled")
                 raise
@@ -237,9 +262,9 @@ class IrrigationController:
                 _LOGGER.error("Irrigation run aborted: %s", err)
                 self.status.last_error = str(err)
             finally:
-                # Belt and braces: everything off, whatever happened - the pump first,
-                # so it never pushes against valves that are already shut.
-                if pump:
+                # Belt and braces: everything off, whatever happened - the pumps first,
+                # so they never push against valves that are already shut.
+                for pump in pumps:
                     try:
                         await _switch(self.hass, pump, False)
                     except HomeAssistantError:
@@ -380,9 +405,85 @@ class IrrigationController:
         """Every valve/pump Hortulus drives -> what it is (bed name or ``pump``)."""
         data = self.coordinator.repo.data
         out = {b.irrigation_entity: b.name for b in data.beds if b.irrigation_entity}
-        if data.settings.irrigation.pump_entity:
-            out[data.settings.irrigation.pump_entity] = "pump"
+        for pump in (data.settings.irrigation.pump_entity, data.settings.irrigation.butt_pump_entity):
+            if pump:
+                out[pump] = "pump"
         return out
+
+    # ------------------------------------------------------------------ #
+    # Rain water and soil moisture
+    # ------------------------------------------------------------------ #
+    def butt_pct(self) -> float | None:
+        """How full the rain water butt is now (%), None without a (working) level sensor."""
+        return _float(self._state(self.coordinator.repo.data.settings.water.butt_level_entity or ""))
+
+    def _moisture(self, bed_id: str) -> float | None:
+        bed = self.coordinator.repo.data.bed(bed_id)
+        entity_id = bed.sensors.soil_moisture if bed else None
+        return _float(self._state(entity_id)) if entity_id else None
+
+    def _hold_for_rain(self, bed_id: str) -> None:
+        """The butt is empty and mains water is not allowed: skip, and say so once a day."""
+        today = dt_util.now().date().isoformat()
+        _LOGGER.info("Irrigation of %s held back: the rain water butt is empty", bed_id)
+        if self.waiting_for_rain == today:
+            return
+        self.waiting_for_rain = today
+        self.coordinator.async_update_listeners()
+        if self.notifier is not None:
+            from .engine.i18n import t
+
+            lang = self.coordinator.lang
+            self.hass.async_create_task(
+                self.notifier.async_send(
+                    t("notify.butt_empty_title", lang),
+                    t("notify.butt_empty", lang, pct=self.butt_pct()),
+                    notification_id="hortulus_butt_empty",
+                    tts=False,
+                )
+            )
+
+    def _plan_soak_check(self, event: IrrigationEvent | None, before: float | None) -> None:
+        """Read the bed's moisture again in a while: how much of the water really soaked in?"""
+        settings = self.coordinator.repo.data.settings
+        if event is None or before is None or not settings.adaptive_irrigation or event.mm <= 0:
+            return
+        bed = self.coordinator.repo.data.bed(event.bed_id)
+        if bed is None or not bed.area_m2:
+            return
+        delivered_mm = event.liters / bed.area_m2 if event.liters else event.mm
+        self._soak_checks = [c for c in self._soak_checks if c["bed_id"] != event.bed_id]
+        self._soak_checks.append({
+            "bed_id": event.bed_id, "before": before, "mm": delivered_mm,
+            "due": event.at + timedelta(minutes=SOAK_MINUTES), "rain": self._rain_24h(event.bed_id),
+        })  # fmt: skip
+
+    def _rain_24h(self, bed_id: str) -> float:
+        analysis = self.coordinator.data
+        bed = analysis.beds.get(bed_id) if analysis else None
+        rec = bed.irrigation if bed else None
+        return float(rec.rain_24h_mm or 0.0) if rec else 0.0
+
+    def _check_soak(self, now: datetime) -> bool:
+        """Due checks: learn the bed's water factor (skipped when it rained in between)."""
+        due = [c for c in self._soak_checks if c["due"] <= now]
+        if not due:
+            return False
+        self._soak_checks = [c for c in self._soak_checks if c["due"] > now]
+        data = self.coordinator.repo.data
+        learned = False
+        for check in due:
+            bed = data.bed(check["bed_id"])
+            after = self._moisture(check["bed_id"])
+            if bed is None or after is None or self._rain_24h(check["bed_id"]) - check["rain"] > 0.5:
+                continue
+            expected = expected_rise(check["mm"], data.settings.root_zone_depth_mm)
+            if learn_water_factor(bed, expected, after - check["before"]):
+                learned = True
+                _LOGGER.debug("Water factor of %s now %s (%s runs)", bed.name, bed.water_factor, bed.water_factor_runs)
+        if learned:
+            self.coordinator.repo.async_schedule_save()
+        return learned
 
     def _state(self, entity_id: str) -> str | None:
         state = self.hass.states.get(entity_id)
@@ -440,12 +541,11 @@ class IrrigationController:
         if self.running:
             raise HomeAssistantError("irrigation is running")
         seconds = max(1.0, min(float(seconds), TEST_MAX_S))
-        pump = self.coordinator.repo.data.settings.irrigation.pump_entity
-        if entity_id == pump:
+        irr = self.coordinator.repo.data.settings.irrigation
+        if entity_id in (irr.pump_entity, irr.butt_pump_entity):
             # a pump must never run on its own against closed valves: test it through a bed valve
             raise HomeAssistantError("the pump is tested together with a bed valve")
-        if not with_pump:
-            pump = None
+        pump = choose_water(irr, self.butt_pct()).pump if with_pump else None
         result: dict[str, Any] = {"entity_id": entity_id, "seconds": seconds, "before": self._state(entity_id)}
         # a task of its own, like a watering run: Stop (and Close) can end it, pump first
         task = self.hass.async_create_background_task(
@@ -515,8 +615,13 @@ class IrrigationController:
         usable, it never waits.  ``(ready, surplus in W)``."""
         settings = self.coordinator.repo.data.settings
         irr = settings.irrigation
-        if not settings.solar_irrigation or not irr.surplus_entity:
+        if not settings.solar_irrigation or not (irr.surplus_entity or irr.battery_entity):
             return True, None
+        battery = _float(self._state(irr.battery_entity)) if irr.battery_entity else None
+        if battery is not None and battery >= irr.battery_full_pct:
+            return True, None  # the home battery is full: the surplus goes to the grid anyway
+        if not irr.surplus_entity:
+            return self._past_latest(now), None
         state = self.hass.states.get(irr.surplus_entity)
         try:
             watts = float(state.state) if state is not None else None
@@ -527,12 +632,15 @@ class IrrigationController:
         unit = str(state.attributes.get("unit_of_measurement", "")).lower() if state is not None else ""
         if unit == "kw":  # some inverters (SolarEdge ...) report kW
             watts *= 1000
-        hh, _, mm = irr.surplus_latest.partition(":")
+        return watts >= irr.surplus_min_w or self._past_latest(now), round(watts)
+
+    def _past_latest(self, now: datetime) -> bool:
+        hh, _, mm = self.coordinator.repo.data.settings.irrigation.surplus_latest.partition(":")
         try:
             latest = now.replace(hour=int(hh), minute=int(mm or 0), second=0, microsecond=0)
         except ValueError:
             latest = now.replace(hour=11, minute=0, second=0, microsecond=0)
-        return watts >= irr.surplus_min_w or now >= latest, round(watts)
+        return now >= latest
 
     def _set_waiting(self, value: dict[str, Any] | None) -> None:
         """Change the solar wait and tell the panel and the card at once."""
@@ -550,7 +658,8 @@ class IrrigationController:
         if not ready:
             irr = self.coordinator.repo.data.settings.irrigation
             self._set_waiting({"since": now.isoformat(), "watts": watts, "needed": irr.surplus_min_w,
-                               "latest": irr.surplus_latest})  # fmt: skip
+                               "latest": irr.surplus_latest, "battery": self._battery(),
+                               "battery_full": irr.battery_full_pct if irr.battery_entity else None})  # fmt: skip
             _LOGGER.debug("Automatic irrigation waits for solar surplus: %s W", watts)
             return
         self._set_waiting(None)
@@ -567,7 +676,7 @@ class IrrigationController:
         settings = self.coordinator.repo.data.settings
         irr = settings.irrigation
         if (self._scheduled_on == now.date() or irr.mode != "auto" or not settings.solar_irrigation
-                or not irr.surplus_entity or self.running):  # fmt: skip
+                or not (irr.surplus_entity or irr.battery_entity) or self.running):  # fmt: skip
             return False
         hhmm = now.strftime("%H:%M")
         if not (irr.start_time.zfill(5) <= hhmm < irr.surplus_latest.zfill(5)):
@@ -588,8 +697,9 @@ class IrrigationController:
             ready, watts = self.solar_ready(now)
             if ready:
                 self.hass.async_create_task(self.async_start_scheduled(now))
-            elif watts != self.waiting_for_sun.get("watts"):
-                self._set_waiting({**self.waiting_for_sun, "watts": watts})
+            elif watts != self.waiting_for_sun.get("watts") or self._battery() != self.waiting_for_sun.get("battery"):
+                self._set_waiting({**self.waiting_for_sun, "watts": watts, "battery": self._battery()})
+        self._check_soak(now)
         limit = timedelta(minutes=self.coordinator.repo.data.settings.irrigation.max_runtime_min + STUCK_MARGIN_MIN)
         changed = False
         any_open = False
@@ -615,11 +725,25 @@ class IrrigationController:
         if changed:
             self.coordinator.async_update_listeners()
 
-    def _log(self, bed_id: str, minutes: float, run: Any, source: str, meter_start: float | None = None) -> None:
+    def _battery(self) -> float | None:
+        irr = self.coordinator.repo.data.settings.irrigation
+        return _float(self._state(irr.battery_entity)) if irr.battery_entity else None
+
+    def _log(
+        self,
+        bed_id: str,
+        minutes: float,
+        run: Any,
+        source: str,
+        meter_start: float | None = None,
+        *,
+        water: str | None = "mains",
+        kwh: float = 0.0,
+    ) -> IrrigationEvent | None:
         data = self.coordinator.repo.data
         bed = data.bed(bed_id)
         if bed is None or minutes <= 0:
-            return
+            return None
         meter_end = self.meter_liters() if meter_start is not None else None
         measured = meter_end - meter_start if meter_end is not None and meter_start is not None else None
         if measured is not None and measured > 0:
@@ -627,9 +751,12 @@ class IrrigationController:
             self._learn_flow(bed, minutes, measured)
         else:
             liters = round(minutes * (bed.flow_lpm or 0), 1)
-        mm = round(liters / bed.area_m2, 1) if bed.area_m2 else 0.0
+        # the water balance is credited with what the bed takes up (learned factor), not what ran off
+        mm = round(liters / bed.area_m2 / water_factor(data.settings, bed), 1) if bed.area_m2 else 0.0
         now = dt_util.now()
-        data.irrigation_log.append(IrrigationEvent(bed_id, now, mm, liters, round(minutes, 1), source))  # type: ignore[arg-type]
+        event = IrrigationEvent(bed_id, now, mm, liters, round(minutes, 1), source, water or "mains", kwh)  # type: ignore[arg-type]
+        data.irrigation_log.append(event)
+        book_irrigation(data, now.date(), liters, event.water, kwh)
         trim_irrigation_log(data, now)
         self.hass.bus.async_fire(
             EVENT_IRRIGATION_RUN,
@@ -640,8 +767,11 @@ class IrrigationController:
                 "liters": liters,
                 "mm": mm,
                 "source": source,
+                "water": event.water,
+                "kwh": kwh,
             },
         )
+        return event
 
 
 class ClimateController:
@@ -656,6 +786,7 @@ class ClimateController:
         self.hass = hass
         self.coordinator = coordinator
         self._last: dict[str, bool] = {}
+        self._heat_booked: dict[str, datetime] = {}  # zone id -> heater energy booked up to
 
     @callback
     def async_apply(self, *_: Any) -> None:
@@ -666,6 +797,8 @@ class ClimateController:
             if not zone.is_enclosed:
                 continue
             za = analysis.zones.get(zone.id)
+            if zone.heater_entity:
+                self._heater(zone, za.air_temperature if za else None)
             advice = za.greenhouse if za else None
             action = advice.action if advice else GreenhouseAction.NONE
             if zone.shade_entity:
@@ -690,6 +823,42 @@ class ClimateController:
                     and za.air_temperature > 12
                 )
                 self._set(f"vent:{zone.id}", zone.vent_entity, vent or humid, shade=False)
+
+    def _heater(self, zone: Any, air_c: float | None) -> None:
+        """Frost heating: book the energy of the time it was on, then switch it on or off."""
+        now = dt_util.now()
+        state = self.hass.states.get(zone.heater_entity)
+        is_on = _is_open(state.state) if state else None
+        if (
+            state is not None
+            and zone.heater_entity.startswith("climate.")
+            and state.state not in ("unavailable", "unknown")
+        ):
+            is_on = state.state != "off"  # a climate entity: heat / auto / ... is on
+        since = self._heat_booked.get(zone.id)
+        if is_on and since is not None:
+            booked = 0.0
+            while since.date() < now.date():  # each day's part to its own day, so to its own week
+                midnight = (since + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+                booked += book_heater(zone, since.date(), (midnight - since).total_seconds() / 3600)
+                since = midnight
+            booked += book_heater(zone, now.date(), (now - since).total_seconds() / 3600)
+            if booked:
+                self.coordinator.repo.async_schedule_save()
+        if is_on:
+            self._heat_booked[zone.id] = now
+        else:
+            self._heat_booked.pop(zone.id, None)
+        if not self.coordinator.repo.data.settings.frost_heating or zone.climate_control != "auto":
+            return
+        wanted = heater_wanted(zone, air_c, bool(is_on), now.date())
+        if wanted is not None and wanted != is_on:
+            self._last.pop(f"heat:{zone.id}:{zone.heater_entity}", None)  # follow the real state
+            self._set(f"heat:{zone.id}", zone.heater_entity, wanted, shade=False)
+            if wanted:
+                self._heat_booked[zone.id] = now  # its energy counts from now on
+            else:
+                self._heat_booked.pop(zone.id, None)
 
     def _set(self, key: str, entity_id: str, wanted: bool | None, *, shade: bool) -> None:
         key = f"{key}:{entity_id}"  # another entity mapped to the zone is switched afresh

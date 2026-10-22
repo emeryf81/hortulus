@@ -9,13 +9,15 @@
     "watch": "node build.mjs --watch",
     "typecheck": "tsc --noEmit",
     "test": "node build.mjs --test && node --test .test-dist/*.mjs",
-    "test:ui": "node test-ui/smoke.mjs"
+    "test:ui": "node test-ui/smoke.mjs",
+    "test:a11y": "node test-ui/a11y.mjs"
   },
   "dependencies": {
     "lit": "3.3.1"
   },
   "devDependencies": {
     "@types/node": "22.15.3",
+    "axe-core": "4.10.3",
     "esbuild": "0.25.10",
     "playwright": "1.56.1",
     "typescript": "5.9.3"

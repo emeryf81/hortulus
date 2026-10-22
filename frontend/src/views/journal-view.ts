@@ -7,7 +7,7 @@ import { customElement, property, state } from "lit/decorators.js";
 import { photoUrl, type GardenApi } from "../api";
 import type { Translate } from "../i18n";
 import { shared } from "../styles/tokens";
-import type { FamilyInfo, JournalEntry, Plant, Planting, RecordsOverview, SeedPacket, Snapshot, SyslogEntry, SyslogSummary } from "../types";
+import type { FamilyInfo, JournalEntry, PhotoDiagnosis, Plant, Planting, RecordsOverview, SeedPacket, Snapshot, SyslogEntry, SyslogSummary } from "../types";
 import { familyColor, formatDate, plantName, presentIn, localeOf } from "../util/garden";
 import { glyphFor, glyphIcon } from "../planner/plant-glyphs";
 import "../components/date-input";
@@ -33,6 +33,9 @@ export class JournalView extends LitElement {
   @property({ attribute: false }) t!: Translate;
   @property() lang = "en";
   @property({ type: Boolean }) admin = true;
+  @property({ type: Boolean }) web = false;
+  /** Photo id -> what the AI saw, "busy", or an error text. */
+  @state() private diagnoses: Record<string, PhotoDiagnosis | "busy" | { error: string }> = {};
   @property() section: Section = "diary";
   /** Show only the system log (used by the Analysis tab). */
   @property({ type: Boolean }) systemOnly = false;
@@ -52,6 +55,9 @@ export class JournalView extends LitElement {
     css`
       .plant-icon { border: 0; background: none; padding: 0; cursor: pointer; display: inline-grid; vertical-align: middle; }
       :host { display: block; }
+      .finding { display: flex; gap: var(--hl-s2); align-items: flex-start; font-size: var(--hl-fs-sm); padding: 6px 8px; border-radius: var(--hl-r-sm); background: var(--hl-surface-2); }
+      .finding.ok { background: var(--hl-leaf-100); }
+      .finding.warn { background: var(--hl-sun-100); }
       .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: var(--hl-s3); }
       .grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: var(--hl-s4); align-items: start; }
       @media (max-width: 980px) { .grid { grid-template-columns: 1fr; } }
@@ -183,7 +189,7 @@ export class JournalView extends LitElement {
     const sections: [Section, string][] = [["diary", "mdi:notebook-outline"], ["harvest", "mdi:basket-outline"], ["kitchen", "mdi:silverware-fork-knife"], ["seeds", "mdi:seed-outline"], ["water", "mdi:water-outline"], ["report", "mdi:file-chart-outline"], ["system", "mdi:history"]];
     return html`
       <div class="tabs" role="tablist">
-        ${sections.map(([id, icon]) => html`<button class="chip" role="tab" aria-selected=${String(this.section === id)} aria-pressed=${String(this.section === id)}
+        ${sections.map(([id, icon]) => html`<button class="chip" role="tab" aria-selected=${String(this.section === id)}
           @click=${() => this.openSection(id)}><ha-icon icon=${icon}></ha-icon>${this.t(`journal.${id}`)}</button>`)}
       </div>
       ${this.section === "diary" ? this.renderDiary() : this.section === "harvest" ? this.renderHarvest() : this.section === "seeds" ? this.renderSeeds()
@@ -271,11 +277,58 @@ export class JournalView extends LitElement {
               · ${this.t(`journal.kind.${e.kind}`)}${e.plant_id ? ` · ${plantName(this.plant(e.plant_id), this.lang)}` : ""}${bed ? ` · ${bed.name}` : ""}${e.author ? ` · ${e.author}` : ""}</div>
               <div>${e.text}</div></div>
             ${e.photos.length ? html`<div class="photos">${e.photos.map((id) => html`<a href=${photoUrl(id, "original")} target="_blank" rel="noopener"><img src=${photoUrl(id)} alt="" loading="lazy" /></a>`)}</div>` : nothing}
+            ${e.photos.length && this.canDiagnose ? html`<div style="grid-column:2" class="stack">${e.photos.map((id) => this.renderDiagnosis(id, e))}</div>` : nothing}
             ${this.admin ? html`<div style="grid-column:2"><button class="btn small ghost" @click=${() => this.guard(() => this.api.deleteRecord("journal", e.id))}>${this.t("common.delete")}</button></div>` : nothing}
           </article>`;
         })}</div>` : html`<p class="small muted">${this.t("journal.empty")}</p>`}
       </section>
     </div>`;
+  }
+
+  // -- photo diagnosis (2.1) ----------------------------------------------------- //
+  private get canDiagnose(): boolean {
+    return !this.web && this.admin && this.snapshot.settings.ai_diagnosis !== false;
+  }
+
+  private async diagnose(photo: string, e: JournalEntry): Promise<void> {
+    this.diagnoses = { ...this.diagnoses, [photo]: "busy" };
+    try {
+      const result = await this.api.diagnosePhoto(photo, { planting_id: e.planting_id, bed_id: e.bed_id });
+      this.diagnoses = { ...this.diagnoses, [photo]: result };
+    } catch (err) {
+      const code = (err as { code?: string }).code;
+      const text = code === "ai_unavailable" ? this.t("diag.ai_unavailable") : (err as Error).message ?? String(err);
+      this.diagnoses = { ...this.diagnoses, [photo]: { error: text } };
+    }
+  }
+
+  private renderDiagnosis(photo: string, e: JournalEntry): TemplateResult {
+    const d = this.diagnoses[photo];
+    if (!d) {
+      return html`<button class="btn small" @click=${() => this.diagnose(photo, e)}>
+        <ha-icon icon="mdi:image-search-outline"></ha-icon>${this.t("diag.ask")}</button>`;
+    }
+    if (d === "busy") return html`<p class="xs muted" role="status">${this.t("diag.busy")}</p>`;
+    if ("error" in d) {
+      return html`<p class="xs" role="alert" style="color:var(--hl-danger)">⚠ ${d.error}
+        <button class="btn small ghost" @click=${() => this.diagnose(photo, e)}>${this.t("diag.retry")}</button></p>`;
+    }
+    const title = d.kind === "healthy" ? this.t("diag.healthy") : d.name || this.t("diag.unknown");
+    return html`<div class="finding ${d.kind === "healthy" ? "ok" : "warn"}" role="status">
+      <ha-icon icon=${d.kind === "healthy" ? "mdi:check-circle-outline" : d.kind === "pest" ? "mdi:bug-outline" : "mdi:leaf-off"}></ha-icon>
+      <span><b>${title}</b> <span class="xs muted">${this.t("diag.confidence", { pct: d.confidence })}</span><br />
+        <span class="small">${d.explanation}</span>
+        ${d.remedy ? html`<br /><span class="small"><b>${this.t("diag.what_to_do")}</b> ${d.remedy}</span>` : nothing}
+        ${d.kind !== "healthy" ? html`<br /><button class="btn small ghost" @click=${() => this.saveDiagnosis(photo, e, d)}>${this.t("diag.save")}</button>` : nothing}
+        <br /><span class="xs muted">${this.t("diag.disclaimer")}</span></span>
+    </div>`;
+  }
+
+  private async saveDiagnosis(photo: string, e: JournalEntry, d: PhotoDiagnosis): Promise<void> {
+    const text = [d.name, d.explanation, d.remedy].filter(Boolean).join(" — ");
+    await this.guard(() => this.api.saveJournal({
+      kind: "problem", text, photos: [photo], planting_id: e.planting_id, bed_id: e.bed_id, zone_id: e.zone_id, plant_id: e.plant_id,
+    }), this.t("diag.saved"));
   }
 
   // -- harvest ---------------------------------------------------------------- //
@@ -422,6 +475,9 @@ export class JournalView extends LitElement {
         <div class="tile">${this.t("journal.water_week")}<b>${w?.week_l != null ? `${w.week_l} L` : "–"}</b></div>
         <div class="tile">${this.t("journal.water_season")}<b>${w?.season_l != null ? `${w.season_l} L` : "–"}</b></div>
         <div class="tile">${this.t("journal.rain_available")}<b>${w?.rain_available_l != null ? `${w.rain_available_l} L` : w?.butt_pct != null ? `${w.butt_pct}%` : "–"}</b></div>
+        ${w?.irrigated_rain_l ? html`<div class="tile">${this.t("journal.from_rain")}<b>${w.irrigated_rain_l} L</b></div>` : nothing}
+        ${w?.irrigated_mains_l ? html`<div class="tile">${this.t("journal.from_mains")}<b>${w.irrigated_mains_l} L</b></div>` : nothing}
+        ${w?.pump_kwh ? html`<div class="tile">${this.t("journal.pump_energy")}<b>${w.pump_kwh.toFixed(2)} kWh</b></div>` : nothing}
       </div>
       ${w?.per_day.length ? html`<h3>${this.t("journal.per_day")}</h3><div class="days" role="img" aria-label=${this.t("journal.per_day")}>
         ${w.per_day.map((d) => html`<div title=${`${d.day}: ${d.liters} L`} style=${`height:${(d.liters / max) * 100}%`}></div>`)}</div>` : nothing}

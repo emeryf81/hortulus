@@ -165,7 +165,7 @@ export class AnalysisView extends LitElement {
     const nErr = this.result?.errors.length ?? 0;
     return html`
       <div class="tabs" role="tablist">
-        ${sections.map(([id, icon]) => html`<button class="chip" role="tab" aria-selected=${String(this.section === id)} aria-pressed=${String(this.section === id)}
+        ${sections.map(([id, icon]) => html`<button class="chip" role="tab" aria-selected=${String(this.section === id)}
           @click=${() => (this.section = id)}><ha-icon icon=${icon}></ha-icon>${this.t(`analysis.${id}`)}${id === "errors" && nErr ? html` <span class="chip bad">${nErr}</span>` : nothing}</button>`)}
       </div>
       ${this.section === "check" ? this.renderCheck() : this.section === "why" ? this.renderWhy() : this.section === "errors" ? this.renderErrors()

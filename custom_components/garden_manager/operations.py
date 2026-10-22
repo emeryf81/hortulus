@@ -337,6 +337,17 @@ def op_save_plan(
     for bed in new_beds:
         if bed.id in old_tests:
             bed.soil_tests = old_tests[bed.id]
+    # What Hortulus measured and learned itself is kept from the server, never from a draft:
+    # the flow from the meter, the water factor, and the heater energy.
+    old_beds = {b.id: b for b in (current.beds if current else [])}
+    for bed in new_beds:
+        if (old := old_beds.get(bed.id)) is not None:
+            bed.measured_flow_lpm = old.measured_flow_lpm
+            bed.water_factor, bed.water_factor_runs = old.water_factor, old.water_factor_runs
+    old_zones = {z.id: z for z in (current.zones if current else [])}
+    for zone in new_zones:
+        if (old_zone := old_zones.get(zone.id)) is not None:
+            zone.heater_kwh = old_zone.heater_kwh
     # Likewise the lifecycle that harvests record (first harvest, "harvesting"): a draft opened
     # before the first harvest must not undo it.
     old_plantings = {p.id: p for p in data.plantings}
@@ -535,6 +546,25 @@ def _validate_settings(settings: GardenSettings) -> None:
             raise ValueError(f"{path} must be HH:MM")
 
     walk(settings, "")
+    irr = settings.irrigation
+    for name in ("battery_full_pct", "butt_min_pct"):
+        if not 0 <= getattr(irr, name) <= 100:
+            raise ValueError(f"irrigation.{name} must be 0-100")
+    for name in ("pump_power_w", "butt_pump_power_w"):
+        if getattr(irr, name) < 0:
+            raise ValueError(f"irrigation.{name} must not be negative")
+    if not 1 <= settings.mirror_days <= 31:
+        raise ValueError("mirror_days must be 1-31")
+
+
+@callback
+def op_reset_water_factor(runtime: GardenRuntime, bed_id: str) -> None:
+    """Forget what adaptive irrigation learned for a bed (after re-digging it, a new sensor ...)."""
+    bed = runtime.repo.data.bed(bed_id)
+    if bed is None:
+        raise _err("unknown_bed", bed=bed_id)
+    bed.water_factor, bed.water_factor_runs = 1.0, 0
+    runtime.repo.async_changed("plan", bump_revision=False)
 
 
 def op_save_settings(runtime: GardenRuntime, patch: Mapping[str, Any]) -> GardenSettings:

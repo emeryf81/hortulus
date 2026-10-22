@@ -6,7 +6,7 @@
 > **Hortulus** (`garden_manager`) is a Home Assistant custom integration plus a sidebar
 > panel for planning and running a vegetable garden. This blueprint is the single
 > technical reference: architecture, data model, algorithms, APIs, UI and tests. It describes
-> **integration version 2.0.0** (storage schema 1.8). All code excerpts are copied verbatim
+> **integration version 2.1.0** (storage schema 1.8). All code excerpts are copied verbatim
 > from the repository; follow the file links for the full implementation.
 > Nederlandstalige gebruikersdocumentatie staat in [`docs/nl`](nl/).
 
@@ -87,7 +87,7 @@ greenhouse/                                  ← repository (brand: Hortulus)
 ├── blueprints/automation/hortulus/          ← HA automation blueprints: frost_flash_light, button_log_harvest, water_when_dry, urgent_task_announce
 ├── custom_components/garden_manager/
 │   ├── __init__.py          setup/unload per config entry (= per garden), GardenRuntime, daily rollover, digest / reminder / irrigation schedules
-│   ├── manifest.json        domain, version 2.0.0, deps (http, frontend, panel_custom, websocket_api, persistent_notification, image_upload)
+│   ├── manifest.json        domain, version 2.1.0, deps (http, frontend, panel_custom, websocket_api, persistent_notification, image_upload)
 │   ├── const.py             constants, events, service names
 │   ├── config_flow.py       guided setup (region → weather → areas+sensors → notifications → summary) + options; a second entry = a second garden
 │   ├── options.py           options ⇄ stored settings

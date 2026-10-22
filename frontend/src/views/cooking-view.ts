@@ -137,7 +137,7 @@ export class CookingView extends LitElement {
       .menu h4 { margin: 0; font-family: var(--hl-font-display, inherit); }
       .menu-courses { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
       .menu-courses li { display: flex; flex-direction: column; }
-      .linklike { background: none; border: 0; padding: 0; font: inherit; color: var(--hl-leaf-700, inherit); text-align: left; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+      .linklike { background: none; border: 0; padding: 0; font: inherit; color: var(--hl-primary-hover, inherit); text-align: left; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
       .basket-item { display: grid; grid-template-columns: 56px 1fr auto; gap: 10px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--hl-border); }
       .basket-item img { width: 56px; height: 56px; border-radius: 10px; object-fit: cover; }
       .note { width: 100%; min-height: 60px; }

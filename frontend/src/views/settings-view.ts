@@ -22,7 +22,18 @@ const ZONES_USDA = Array.from({ length: 13 }, (_, i) => [`${i + 1}a`, `${i + 1}b
 type SensorKey = keyof SensorMapping;
 const GOALS = ["fresh", "storage", "herbs", "pollinators", "winter", "perennials", "easy"];
 
-const EXTRAS = ["slogans", "soil_estimate", "water_forecast", "sensor_health", "season_summary", "local_frost_suggest", "station_import", "solar_irrigation", "climate_card"] as const;
+const EXTRAS = ["slogans", "soil_estimate", "water_forecast", "sensor_health", "season_summary", "local_frost_suggest", "station_import", "solar_irrigation", "climate_card",
+  "frost_heating", "adaptive_irrigation", "own_yields", "ai_diagnosis", "calendar_mirror"] as const;
+
+/** The ISO week ("2026-W43") of a date, as the backend keys the heater energy. */
+function isoWeek(d: Date): string {
+  const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+  const day = t.getUTCDay() || 7;
+  t.setUTCDate(t.getUTCDate() + 4 - day);
+  const year = t.getUTCFullYear();
+  const week = Math.ceil(((t.getTime() - Date.UTC(year, 0, 1)) / 86400000 + 1) / 7);
+  return `${year}-W${String(week).padStart(2, "0")}`;
+}
 
 @customElement("hl-settings-view")
 export class SettingsView extends LitElement {
@@ -258,7 +269,8 @@ export class SettingsView extends LitElement {
                 ${(["off", "advise", "auto"] as const).map((m) => html`<option value=${m} ?selected=${(z.climate_control ?? "advise") === m}>${this.t(`settings.climate_control.${m}`)}</option>`)}
               </select></label>
             <label class="field check"><input type="checkbox" .checked=${Boolean(z.microclimate.thermal_mass)} ?disabled=${!this.admin}
-              @change=${(e: Event) => setZone(z.id, (zz) => (zz.microclimate.thermal_mass = (e.target as HTMLInputElement).checked))} />${this.t("settings.thermal_mass")}</label>` : nothing}
+              @change=${(e: Event) => setZone(z.id, (zz) => (zz.microclimate.thermal_mass = (e.target as HTMLInputElement).checked))} />${this.t("settings.thermal_mass")}</label>
+            ${this.snapshot.settings.frost_heating !== false ? this.renderHeater(z, setZone) : nothing}` : nothing}
           <label class="field check"><input type="checkbox" .checked=${Boolean(z.microclimate.wall_heat)} ?disabled=${!this.admin}
             @change=${(e: Event) => setZone(z.id, (zz) => (zz.microclimate.wall_heat = (e.target as HTMLInputElement).checked))} />${this.t("settings.wall_heat")}</label>
           <label class="field check"><input type="checkbox" .checked=${z.microclimate.heated} ?disabled=${!this.admin}
@@ -268,6 +280,26 @@ export class SettingsView extends LitElement {
         </div>
       </div>`)}
     </section>`;
+  }
+
+  private renderHeater(z: Zone, setZone: (id: string, patch: (z: Zone) => void) => void): TemplateResult {
+    const today = this.snapshot.analysis?.today; // the garden's date, not the browser's (time zones)
+    const [y, m, d] = today ? today.split("-").map(Number) : [];
+    const used = z.heater_kwh?.[isoWeek(today ? new Date(y, m - 1, d) : new Date())] ?? 0;
+    const budget = z.heater_budget_kwh_week ?? null;
+    return html`
+      ${this.entityInput(`${z.id}-heater`, "heater", z.heater_entity ?? null, (v) => setZone(z.id, (zz) => (zz.heater_entity = v)), this.t("settings.heater"))}
+      ${z.heater_entity ? html`
+        <label class="field">${this.t("settings.heater_target")}<input type="number" step="0.5" min="-5" max="20" ?disabled=${!this.admin}
+          .value=${String(z.microclimate.min_heating_temp_c ?? 3)}
+          @change=${(e: Event) => setZone(z.id, (zz) => (zz.microclimate.min_heating_temp_c = Number((e.target as HTMLInputElement).value)))} /></label>
+        <label class="field">${this.t("settings.heater_power")}<input type="number" step="50" min="0" ?disabled=${!this.admin} .value=${String(z.heater_power_w ?? 0)}
+          @change=${(e: Event) => setZone(z.id, (zz) => (zz.heater_power_w = Number((e.target as HTMLInputElement).value) || 0))} /></label>
+        <label class="field">${this.t("settings.heater_budget")}<input type="number" step="0.5" min="0" ?disabled=${!this.admin}
+          .value=${budget == null ? "" : String(budget)} placeholder=${this.t("settings.heater_budget_none")}
+          @change=${(e: Event) => setZone(z.id, (zz) => (zz.heater_budget_kwh_week = (e.target as HTMLInputElement).value === "" ? null : Number((e.target as HTMLInputElement).value)))} /></label>
+        <p class="xs muted full">${this.t("settings.heater_used", { kwh: used.toFixed(2) })}${budget != null ? html` · ${this.t("settings.heater_left", { kwh: Math.max(budget - used, 0).toFixed(2) })}` : nothing}
+          — ${this.t("settings.heater_hint")}</p>` : nothing}`;
   }
 
   private renderBeds(): TemplateResult {
@@ -288,9 +320,28 @@ export class SettingsView extends LitElement {
           ${b.irrigation_entity ? html`<label class="field">${this.t("settings.valve_timer")}<input type="number" min="0" step="1" .value=${String(b.valve_max_min ?? "")} ?disabled=${!this.admin}
             placeholder=${this.t("settings.valve_timer_none")}
             @change=${(e: Event) => setBed(b.id, (bb) => (bb.valve_max_min = Number((e.target as HTMLInputElement).value) || null))} /></label>` : nothing}
+          ${this.waterFactor(b)}
         </div>
       </div>`)}
     </section>`;
+  }
+
+  /** What adaptive irrigation learned for this bed (needs a moisture sensor and a valve). */
+  private waterFactor(b: Bed): TemplateResult {
+    if (this.snapshot.settings.adaptive_irrigation === false || !b.irrigation_entity || !b.sensors.soil_moisture) return html``;
+    const runs = b.water_factor_runs ?? 0;
+    return html`<p class="xs muted full" role="status">${runs >= 2
+      ? this.t("settings.water_factor", { pct: Math.round((b.water_factor ?? 1) * 100), n: runs })
+      : this.t("settings.water_factor_learning", { n: runs })}
+      ${runs && this.admin ? html`<button class="btn small" @click=${() => this.resetWaterFactor(b.id)}>${this.t("settings.water_factor_reset")}</button>` : nothing}</p>`;
+  }
+
+  private async resetWaterFactor(bedId: string): Promise<void> {
+    try {
+      await this.api.resetWaterFactor(bedId);
+    } catch (err) {
+      this.toast(this.t("common.error", { message: (err as Error).message }));
+    }
   }
 
   private renderIrrigation(): TemplateResult {
@@ -324,8 +375,24 @@ export class SettingsView extends LitElement {
           @change=${(e: Event) => set({ surplus_min_w: Number((e.target as HTMLInputElement).value) })} /></label>
         <label class="field">${this.t("settings.surplus_latest")}<input type="time" .value=${cfg.surplus_latest ?? "11:00"}
           @change=${(e: Event) => set({ surplus_latest: (e.target as HTMLInputElement).value })} /></label>
+        ${this.entityInput("battery", "battery", cfg.battery_entity ?? null, (v) => set({ battery_entity: v }), this.t("settings.battery_entity"))}
+        ${cfg.battery_entity ? html`<label class="field">${this.t("settings.battery_full_pct")}<input type="number" min="10" max="100" step="1" .value=${String(cfg.battery_full_pct ?? 95)}
+          @change=${(e: Event) => set({ battery_full_pct: Number((e.target as HTMLInputElement).value) })} /></label>` : nothing}
       </div>
-      <p class="xs muted">${this.t("settings.surplus_hint")}</p>` : nothing}
+      <p class="xs muted">${this.t("settings.surplus_hint")} ${cfg.battery_entity ? this.t("settings.battery_hint") : ""}</p>` : nothing}
+      <h3>${this.t("settings.rain_first")}</h3>
+      <div class="form-grid">
+        ${this.entityInput("butt-pump", "pump", cfg.butt_pump_entity ?? null, (v) => set({ butt_pump_entity: v }), this.t("settings.butt_pump"))}
+        ${cfg.butt_pump_entity ? html`
+          <label class="field">${this.t("settings.butt_min_pct")}<input type="number" min="0" max="90" step="1" .value=${String(cfg.butt_min_pct ?? 10)}
+            @change=${(e: Event) => set({ butt_min_pct: Number((e.target as HTMLInputElement).value) })} /></label>
+          <label class="field check full"><input type="checkbox" .checked=${cfg.butt_fallback ?? true}
+            @change=${(e: Event) => set({ butt_fallback: (e.target as HTMLInputElement).checked })} />${this.t("settings.butt_fallback")}</label>` : nothing}
+        ${cfg.pump_entity ? num("pump_power_w", this.t("settings.pump_power"), 10, 0, 5000) : nothing}
+        ${cfg.butt_pump_entity ? num("butt_pump_power_w", this.t("settings.butt_pump_power"), 10, 0, 5000) : nothing}
+      </div>
+      ${cfg.butt_pump_entity ? html`<p class="xs muted">${this.t("settings.butt_hint")}</p>` : nothing}
+      ${cfg.pump_entity || cfg.butt_pump_entity ? html`<p class="xs muted">${this.t("settings.pump_power_hint")}</p>` : nothing}
       <p class="xs muted">${this.t("settings.irrigation_hint", { n: valves })}</p>
     </section>`;
   }
@@ -338,7 +405,22 @@ export class SettingsView extends LitElement {
       <p class="xs muted">${this.t("settings.extras_hint")}</p>
       ${EXTRAS.map((k) => html`<label class="field check"><input type="checkbox" .checked=${s[k] ?? true}
         @change=${(e: Event) => this.saveSettings({ [k]: (e.target as HTMLInputElement).checked })} />${this.t(`settings.extra.${k}`)}</label>`)}
+      ${this.renderAiAndCalendar()}
     </section>`;
+  }
+
+  private renderAiAndCalendar(): TemplateResult {
+    const st = this.snapshot.settings;
+    return html`<div class="form-grid">
+      ${st.ai_diagnosis !== false ? html`
+        ${this.entityInput("ai-task", "ai_task", st.ai_task_entity ?? null, (v) => this.saveSettings({ ai_task_entity: v }), this.t("settings.ai_task_entity"))}
+        <p class="xs muted full">${st.ai_task_entity ? "" : `${this.t("settings.ai_task_default")}. `}${this.t("settings.ai_hint")}</p>` : nothing}
+      ${st.calendar_mirror !== false ? html`
+        ${this.entityInput("mirror-cal", "calendar", st.mirror_calendar ?? null, (v) => this.saveSettings({ mirror_calendar: v }), this.t("settings.mirror_calendar"))}
+        ${st.mirror_calendar ? html`<label class="field">${this.t("settings.mirror_days")}<input type="number" min="1" max="31" .value=${String(st.mirror_days ?? 7)}
+          @change=${(e: Event) => this.saveSettings({ mirror_days: Number((e.target as HTMLInputElement).value) || 7 })} /></label>` : nothing}
+        <p class="xs muted full">${this.t("settings.mirror_hint")}</p>` : nothing}
+    </div>`;
   }
 
   private renderResources(): TemplateResult {
@@ -445,7 +527,7 @@ export class SettingsView extends LitElement {
         const price = Number(String(f.get("price") ?? "").replace(",", "."));
         if (f.get("plant") && price > 0) set({ prices: { [String(f.get("plant"))]: price } });
       }}>
-        <select name="plant">${planted.map((id) => html`<option value=${id}>${plantName(byId.get(id), this.lang) || id}</option>`)}</select>
+        <select name="plant" aria-label=${this.t("lib.plant")}>${planted.map((id) => html`<option value=${id}>${plantName(byId.get(id), this.lang) || id}</option>`)}</select>
         <input name="price" type="number" min="0.01" step="0.01" inputmode="decimal" placeholder=${`${eco.currency}/kg`} style="max-width:110px" />
         <button class="btn small" type="submit" ?disabled=${!planted.length}>${this.t("common.add")}</button>
       </form>
@@ -500,6 +582,7 @@ export class SettingsView extends LitElement {
             <option value="en" ?selected=${s.language === "en"}>English</option>
             <option value="nl" ?selected=${s.language === "nl"}>Nederlands</option>
             <option value="fr" ?selected=${s.language === "fr"}>Français</option>
+            <option value="de" ?selected=${s.language === "de"}>Deutsch</option>
           </select></label>
         <label class="field">${this.t("settings.units")}<input disabled .value=${this.t("settings.units_metric")} /></label>
         <label class="field">${this.t("settings.snap")}<input type="number" min="1" max="50" .value=${String(s.snap_cm)}

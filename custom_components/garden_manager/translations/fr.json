@@ -229,7 +229,8 @@
         "auto": "Suivre Home Assistant",
         "en": "English",
         "nl": "Nederlands",
-        "fr": "Français"
+        "fr": "Français",
+        "de": "Deutsch"
       }
     },
     "task_type": {
@@ -387,6 +388,12 @@
       },
       "frost_nights_season": {
         "name": "Nuits de gel cette saison"
+      },
+      "pump_energy_year": {
+        "name": "Énergie des pompes (cette année)"
+      },
+      "heater_energy_week": {
+        "name": "Chauffage sous abri (cette semaine)"
       }
     },
     "binary_sensor": {
@@ -1025,7 +1032,7 @@
     },
     "install_voice_sentences": {
       "name": "Installer les phrases vocales",
-      "description": "Copie les phrases Hortulus pour Assist dans /config/custom_sentences (EN, NL et FR).",
+      "description": "Copie les phrases Hortulus pour Assist dans /config/custom_sentences (EN, NL, FR et DE).",
       "fields": {
         "overwrite": {
           "name": "Écraser",

@@ -303,7 +303,10 @@ export class DashboardView extends LitElement {
       <div class="kv"><span>${this.t("dash.irrigation_mode")}</span><span class="chip">${this.t(`settings.irrigation_mode.${cfg?.mode ?? "advise"}`)}</span></div>
       ${status?.running ? html`<div class="kv"><span class="chip ok"><ha-icon icon="mdi:sprinkler"></ha-icon>${this.t("dash.watering_now", { bed: bedName(status.bed_id) })}</span>
         <button class="btn small danger" @click=${() => this.emit("irrigation", "stop")}>${this.t("dash.stop")}</button></div>` : nothing}
-      ${status?.waiting_for_sun ? html`<div class="kv"><span class="chip warn"><ha-icon icon="mdi:solar-power-variant"></ha-icon>${this.t("dash.waiting_for_sun")}</span></div>` : nothing}
+      ${status?.waiting_for_sun ? html`<div class="kv"><span class="chip warn"><ha-icon icon="mdi:solar-power-variant"></ha-icon>${this.t("dash.waiting_for_sun")}</span>
+        ${status.waiting_for_sun.battery != null && status.waiting_for_sun.battery_full != null
+          ? html`<span class="xs muted">${this.t("dash.waiting_battery", { pct: Math.round(status.waiting_for_sun.battery), full: status.waiting_for_sun.battery_full })}</span>` : nothing}</div>` : nothing}
+      ${status?.waiting_for_rain && status.waiting_for_rain === a.today ? html`<div class="kv"><span class="chip warn"><ha-icon icon="mdi:barrel-outline"></ha-icon>${this.t("dash.waiting_for_rain")}</span></div>` : nothing}
       ${status?.last_error ? html`<p class="xs" style="color:var(--hl-danger)">⚠ ${status.last_error}</p>` : nothing}
       <div class="kv"><span>${this.t("dash.beds_need_water")}</span><b>${needWater.length ? needWater.map((b) => b.name).join(", ") : "–"}</b></div>
       ${valves && this.admin && !status?.running ? html`<button class="btn small" @click=${() => this.emit("irrigation", "run")}>
@@ -348,7 +351,7 @@ export class DashboardView extends LitElement {
           <span>${Math.round(ba.depletion_mm)} / ${Math.round(ba.taw_mm)} mm</span></div>` : nothing}
         ${ba?.et_factor != null && Math.abs(ba.et_factor - 1) >= 0.05 ? html`<div class="kv xs muted"><span>${this.t("dash.drying")}</span>
           <span>${this.t(ba.et_factor > 1 ? "dash.drying_fast" : "dash.drying_slow", { pct: Math.round(Math.abs(ba.et_factor - 1) * 100) })}</span></div>` : nothing}
-        <div class="avatars" aria-label=${this.t("dash.active_crops", { n: active.length })}>
+        <div class="avatars" role="group" aria-label=${this.t("dash.active_crops", { n: active.length })}>
           ${active.map((p) => {
             const plant = this.plants.get(p!.plant_id);
             const name = plantName(plant, this.lang);

@@ -268,7 +268,12 @@ def test_overrides_and_search(db):
         load_builtin_json(), overrides={"tomato": {"spacing_cm": 60, "names": {"nl": "Trostomaat"}}}
     )
     tomato = custom_db.get("tomato")
-    assert tomato.spacing_cm == 60 and tomato.names == {"en": "Tomato", "nl": "Trostomaat", "fr": "Tomate"}
+    assert tomato.spacing_cm == 60 and tomato.names == {
+        "en": "Tomato",
+        "nl": "Trostomaat",
+        "fr": "Tomate",
+        "de": "Tomate",
+    }
     assert tomato.source == "override"
     assert {p.id for p in db.search("tomaat")} == {"tomato", "cherry_tomato", "beefsteak_tomato"}
     assert {"pea", "bush_bean", "broad_bean", "runner_bean"} <= {p.id for p in db.search(family="Fabaceae")}

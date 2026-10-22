@@ -87,7 +87,7 @@ export class AdviceView extends LitElement {
       .months { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; }
       .month { border-radius: var(--hl-r-sm); padding: 6px 2px; text-align: center; font-size: 11px; background: var(--hl-leaf-100); }
       .month b { display: block; font-size: 16px; }
-      .month.gap { background: var(--hl-tomato-100); color: var(--hl-tomato-700, #8a2a1f); }
+      .month.gap { background: var(--hl-tomato-100); color: var(--hl-danger-ink, #8a2a1f); }
       .month.now { outline: 2px solid var(--hl-focus); }
       table { width: 100%; border-collapse: collapse; font-size: var(--hl-fs-sm); }
       td, th { padding: 4px 6px; border-bottom: 1px solid var(--hl-border); text-align: left; }

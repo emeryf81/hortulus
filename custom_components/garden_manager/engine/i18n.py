@@ -1,4 +1,4 @@
-"""Backend message catalog (English / Dutch / French).
+"""Backend message catalog (English / Dutch / French / German).
 
 Entities, notifications and calendar events are rendered server-side, so the
 backend needs its own small catalog.  The frontend has a richer catalog in
@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import Any
 
-SUPPORTED = ("en", "nl", "fr")
+SUPPORTED = ("en", "nl", "fr", "de")
 
 MESSAGES: dict[str, dict[str, str]] = {
     "en": {
@@ -249,6 +249,83 @@ MESSAGES: dict[str, dict[str, str]] = {
         "when.tonight": "cette nuit",
         "when.tomorrow_night": "demain soir",
     },
+    "de": {
+        "task.sow_indoor": "{plant} drinnen vorziehen",
+        "task.sow_direct": "{plant} in {bed} aussäen",
+        "task.harden_off": "{plant} abhärten",
+        "task.transplant": "{plant} in {bed} auspflanzen",
+        "task.thin": "{plant} in {bed} vereinzeln",
+        "task.stake": "{plant} in {bed} stützen",
+        "task.prune": "{plant} in {bed} schneiden",
+        "task.pinch": "{plant} in {bed} entspitzen",
+        "task.earth_up": "{plant} in {bed} anhäufeln",
+        "task.feed": "{plant} in {bed} düngen",
+        "task.water": "{bed} gießen ({liters} L)",
+        "task.weed": "{bed} jäten",
+        "task.pest_check": "{plant} auf Schädlinge kontrollieren",
+        "task.harvest": "{plant} in {bed} ernten",
+        "task.harvest_start": "Erste Ernte von {plant} in {bed}",
+        "task.ventilate": "{zone} lüften",
+        "task.shade": "{zone} schattieren",
+        "task.frost_protect": "{plants} vor Frost schützen",
+        "task.close_up": "{zone} vor der Nacht schließen",
+        "task.mulch": "{plant} in {bed} mulchen",
+        "task.cut_back": "{plant} in {bed} zurückschneiden",
+        "task.protect": "{plant} in {bed} schützen",
+        "task.clean": "Rund um {plant} in {bed} aufräumen",
+        "task.tie_in": "{plant} in {bed} anbinden",
+        "task.thin_fruit": "Früchte von {plant} in {bed} ausdünnen",
+        "task.pollinate": "{plant} in {bed} beim Bestäuben helfen",
+        "task.check": "{plant} in {bed} kontrollieren",
+        "task.make_feed": "Pflanzenjauche ansetzen",
+        "task.care.water": "{plant} in {bed} gießen",
+        "task.care.pest_check": "{plant} in {bed} auf Schädlinge kontrollieren",
+        "desc.sow_indoor": "{depth} cm tief bei mindestens {soil_temp} °C säen. Die Keimung dauert {germ_min}-{germ_max} Tage.",
+        "desc.sow_direct": "{depth} cm tief säen, Reihenabstand {row_spacing} cm. Der Boden sollte mindestens {soil_temp} °C warm sein.",
+        "desc.harden_off": "Die Jungpflanzen einige Stunden am Tag ins Freie stellen und die Dauer über 7-10 Tage steigern.",
+        "desc.transplant": "Pflanzabstand {spacing} cm.",
+        "desc.thin": "Die Sämlinge auf {spacing} cm vereinzeln.",
+        "desc.water": "Bodenfeuchte {moisture} % (Ziel {target} %). Etwa {mm} mm ({liters} L) geben.",
+        "desc.weed": "Zwischen den Reihen hacken, solange das Unkraut klein ist.",
+        "desc.harvest": "Erwarteter Erntezeitraum {start} - {end}.",
+        "desc.frost": "Tiefsttemperatur von {temp} °C gegen {time} erwartet.",
+        "desc.ventilate": "Drinnen werden {temp} °C erwartet; {plants} vertragen bis {max} °C.",
+        "alert.frost": "Frostrisiko {level}: {temp} °C erwartet {when}",
+        "alert.frost_logged": "Es hat gefroren ({temp} °C): diese Kulturen auf Frostschäden prüfen",
+        "alert.heat": "Hitzestress in {zone}: {temp} °C erwartet",
+        "alert.dry": "{bed} ist trocken ({moisture} %)",
+        "alert.sensor_stale": "Sensor {entity} hat sich seit einer Weile nicht gemeldet",
+        "alert.forecast_unavailable": "Wettervorhersage nicht verfügbar",
+        "reason.soil_too_cold": "Der Boden hat {soil} °C; {plant} braucht {min} °C zum Keimen.",
+        "reason.soil_too_hot": "Der Boden hat {soil} °C; über {max} °C keimt {plant} schlecht.",
+        "reason.frost_forecast": "Frost ({temp} °C) vor dem {date} vorhergesagt; {plant} ist frostempfindlich.",
+        "reason.window_open": "Das Zeitfenster ist offen.",
+        "reason.window_not_yet": "Das Zeitfenster öffnet am {date}.",
+        "reason.window_closed": "Das Zeitfenster hat sich am {date} geschlossen.",
+        "reason.greenhouse_extension": "Im Gewächshaus kann {weeks} Wochen früher begonnen werden.",
+        "reason.not_greenhouse_suitable": "{plant} eignet sich nicht für das Gewächshaus.",
+        "compat.friend": "{a} und {b} sind gute Nachbarn: {reason}",
+        "compat.enemy": "{a} und {b} sollten nicht zusammen gepflanzt werden: {reason}",
+        "compat.overlap": "{a} und {b} überlappen sich - zu wenig Platz.",
+        "compat.rotation": "{family} stand in {season} in {bed}; {years} Jahre warten.",
+        "compat.same_family_adjacent": "{a} und {b} gehören zur selben Familie und teilen sich Schädlinge.",
+        "compat.deters": "{a} schützt {b}: hält {pests} fern.",
+        "compat.trap": "{a} lockt {pests} von {b} weg (Fangpflanze).",
+        "compat.allelopathy": "{a} gibt wachstumshemmende Stoffe ab - von {b} fernhalten.",
+        "compat.competition": "{a} und {b} sind beide Starkzehrer und stehen so dicht beieinander - zusätzlich Kompost geben oder mehr Platz lassen.",
+        "compat.shading": "{a} (etwa {height} cm hoch) wird {b} beschatten - hohe Kulturen auf die sonnenabgewandte Seite pflanzen.",
+        "compat.shade_benefit": "{a} spendet {b} willkommenen Sommerschatten.",
+        "digest.title": "Garten heute",
+        "digest.none": "Heute keine Gartenarbeiten. Genießen Sie den Garten!",
+        "digest.count": "{count} Aufgaben heute (~{minutes} Min.)",
+        "risk.none": "keins",
+        "risk.low": "gering",
+        "risk.moderate": "mäßig",
+        "risk.high": "hoch",
+        "risk.unknown": "unbekannt",
+        "when.tonight": "heute Nacht",
+        "when.tomorrow_night": "morgen Nacht",
+    },
 }
 
 
@@ -466,32 +543,113 @@ MESSAGES["fr"].update(
         "irrigation.skip.disabled": "L'arrosage automatique est désactivé",
     }
 )
+MESSAGES["de"].update(
+    {
+        "maint.plan_season": "Die kommende Saison planen",
+        "maint.plan_season.desc": "Notizen und Ernten des Vorjahres durchsehen, die Fruchtfolge prüfen und den Planer ausfüllen (Automatisch füllen kann eine Aufteilung vorschlagen).",
+        "maint.order_seeds": "Saatgutvorrat prüfen und Saatgut bestellen",
+        "maint.order_seeds.desc": "Altes Saatgut einer Keimprobe unterziehen (10 Samen auf feuchtem Küchenpapier) und Fehlendes bestellen.",
+        "maint.seed_station": "Den Anzuchtplatz vorbereiten",
+        "maint.seed_station.desc": "Anzuchtschalen und Töpfe reinigen, Pflanzenlampen und Heizmatten prüfen, frische Anzuchterde kaufen.",
+        "maint.compost_spring": "Den Komposthaufen umsetzen",
+        "maint.compost_spring.desc": "Den Haufen umsetzen und reifen Kompost für die Frühjahrsbeete sieben.",
+        "maint.mulch_beds": "Die Beete mulchen",
+        "maint.mulch_beds.desc": "Sobald sich der Boden erwärmt hat, 5 cm Rasenschnitt, Stroh oder Kompost um die Kulturen verteilen, um Wasser zu sparen und Unkraut zu unterdrücken.",
+        "maint.compost_summer": "Den Komposthaufen umsetzen",
+        "maint.compost_summer.desc": "Grünes und Braunes mischen und den Haufen so feucht wie einen ausgedrückten Schwamm halten.",
+        "maint.compost_autumn": "Einen Herbstkomposthaufen anlegen",
+        "maint.compost_autumn.desc": "Laub und Ernterückstände sammeln (kein krankes Material), einen neuen Haufen beginnen und ihn über den Winter abdecken.",
+        "maint.winter_water": "Schläuche und Regentonnen entleeren",
+        "maint.winter_water.desc": "Schläuche leeren und einlagern, Tropfleitungen und Außenwasserhähne vor dem ersten starken Frost entleeren.",
+        "maint.winter_rest": "Den Garten winterfest machen",
+        "maint.winter_rest.desc": "Abgeerntete Kulturen entfernen, offenen Boden bedecken (Mulch oder Gründüngung), hohle Stängel für Insekten stehen lassen und den Boden ruhen lassen.",
+        "maint.soil_test": "Den Boden untersuchen",
+        "maint.soil_test.desc": "Pro Beet eine Mischprobe nehmen (pH-Wert, organische Substanz, P, K). Alle drei Jahre wiederholen.",
+        "maint.tool_care": "Werkzeug reinigen und schärfen",
+        "maint.tool_care.desc": "Werkzeug reinigen, schärfen und ölen; Stützen und Netze reparieren; den Schuppen aufräumen.",
+        "maint.gh_spring_clean": "Frühjahrsputz in {zone}",
+        "maint.gh_spring_clean.desc": "Das Glas innen und außen für maximales Licht waschen, Pflanztische reinigen und Lüftungsklappen prüfen, bevor die Aussaat beginnt.",
+        "maint.gh_shading_on": "Schattierung in {zone} anbringen",
+        "maint.gh_shading_on.desc": "Schattierfarbe oder Schattiernetz (30-40 %) vor den ersten heißen Tagen anbringen.",
+        "maint.gh_shading_off": "Schattierung in {zone} entfernen",
+        "maint.gh_shading_off.desc": "Die Schattierung abnehmen, damit Herbstkulturen das ganze verfügbare Licht bekommen.",
+        "maint.gh_winter": "{zone} auf den Winter vorbereiten",
+        "maint.gh_winter.desc": "Luftpolsterfolie anbringen, Heizung und Min/Max-Thermometer prüfen, Spalten schließen.",
+        "maint.gh_autumn_clean": "{zone} reinigen und desinfizieren",
+        "maint.gh_autumn_clean.desc": "Alle Kulturen entfernen, Glas, Rahmen und Pflanztische mit heißem Seifenwasser reinigen, die Beeterde erneuern oder ruhen lassen (Winterruhe).",
+        "maint.cut_back_spring": "{plant} in {bed} zurückschneiden",
+        "maint.cut_back_spring.desc": "Den Vorjahresaustrieb bis auf frische Triebe zurückschneiden, damit die Pflanze kompakt bleibt.",
+        "maint.cut_back_autumn": "{plant} in {bed} zurückschneiden",
+        "maint.cut_back_autumn.desc": "Verblühte Stängel nach den ersten Frösten abschneiden und mit Kompost abdecken.",
+        "maint.protect_winter": "{plant} in {bed} vor dem Winter schützen",
+        "maint.protect_winter.desc": "Mit Vlies oder einer dicken Mulchschicht abdecken oder Töpfe an einen geschützten Platz stellen.",
+        "maint.divide": "{plant} in {bed} teilen",
+        "maint.divide.desc": "Den Horst ausgraben und teilen, die wüchsigen äußeren Teile in aufgefrischte Erde wieder einpflanzen.",
+        "maint.soil_prep": "{bed} für die Pflanzung vorbereiten",
+        "maint.soil_prep.desc": "Den Boden lockern, ohne ihn umzugraben, Unkraut entfernen, {compost} kg Kompost (und {fertilizer} g organischen Dünger) für {crops} ausbringen.",
+        "maint.soil_prep.lime": "Kohlgewächse folgen: den pH-Wert prüfen (Ziel 6,5-7) gegen Kohlhernie.",
+        "maint.green_manure": "Gründüngung in {bed} säen",
+        "maint.green_manure.desc": "Das Beet ist leer: Phacelia, Senf (nicht vor Kohlgewächsen), Klee oder Winterroggen säen, um den Boden zu schützen und zu ernähren.",
+        "maint.cover_bed": "{bed} für den Winter abdecken",
+        "maint.cover_bed.desc": "Zu spät für Gründüngung: den Boden mit Kompost, Laub oder Stroh bedecken, damit er ruht und das Bodenleben weiterarbeitet.",
+        "desc.feed": "Etwa {liquid} L verdünnten Flüssigdünger ({ml} ml Konzentrat 1:100) oder {grams} g organischen Granulatdünger geben.",
+        "task.disease_check": "{plants} auf {disease} kontrollieren",
+        "desc.disease": "Krankheitsrisiko {level}: {reason}. Befallene Blätter entfernen, den Boden statt der Blätter gießen und für bessere Luftzirkulation sorgen.",
+        "disease.blight": "Kraut- und Braunfäule",
+        "disease.mildew": "Mehltau",
+        "disease.reason.hutton_period": "zwei aufeinanderfolgende feuchtwarme Tage (Hutton-Kriterien)",
+        "disease.reason.hutton_logged": "die letzten Tage waren feucht und warm (Hutton-Kriterien, gemessen)",
+        "disease.reason.wet_days_logged": "mehrere nasse Tage liegen hinter uns",
+        "disease.reason.wet_hours": "{hours} Stunden Blattnässe vorhergesagt",
+        "disease.reason.long_wet_period": "eine lange Nässeperiode ({hours} Stunden) vorhergesagt",
+        "disease.reason.humid_greenhouse_air": "Luftfeuchtigkeit {humidity} % im Gewächshaus",
+        "disease.reason.leaf_wet_now": "die Blätter sind gerade nass",
+        "alert.disease": "Krankheitsrisiko {level} in {zone}",
+        "alert.nutrients": "Nährstoffbilanz in {bed}: {status}",
+        "irrigation.skip.frost": "Frostsperre: {temp} °C vorhergesagt (Grenze {limit} °C)",
+        "irrigation.skip.rain": "Regen erwartet: {mm} mm (Aussetzen über {limit} mm)",
+        "irrigation.skip.no_valve": "Kein Ventil eingerichtet",
+        "irrigation.skip.no_flow": "Durchfluss (L/min) unbekannt - in den Beeteinstellungen festlegen",
+        "irrigation.skip.not_needed": "Kein Wasser nötig",
+        "irrigation.skip.disabled": "Automatische Bewässerung ist aus",
+    }
+)
 
 
 PEST_LABELS: dict[str, dict[str, str]] = {
-    "aphids": {"en": "aphids", "nl": "bladluis", "fr": "pucerons"},
-    "whitefly": {"en": "whitefly", "nl": "witte vlieg", "fr": "aleurodes"},
-    "red_spider_mite": {"en": "red spider mite", "nl": "spint", "fr": "araignée rouge"},
-    "thrips": {"en": "thrips", "nl": "trips", "fr": "thrips"},
-    "slugs": {"en": "slugs", "nl": "slakken", "fr": "limaces"},
-    "cabbage_white": {"en": "cabbage white", "nl": "koolwitje", "fr": "piéride du chou"},
-    "cabbage_root_fly": {"en": "cabbage root fly", "nl": "koolvlieg", "fr": "mouche du chou"},
-    "flea_beetle": {"en": "flea beetle", "nl": "aardvlo", "fr": "altise"},
-    "carrot_fly": {"en": "carrot fly", "nl": "wortelvlieg", "fr": "mouche de la carotte"},
-    "onion_fly": {"en": "onion fly", "nl": "uienvlieg", "fr": "mouche de l'oignon"},
-    "leek_moth": {"en": "leek moth", "nl": "preimot", "fr": "teigne du poireau"},
-    "pea_moth": {"en": "pea moth", "nl": "erwtenbladroller", "fr": "tordeuse du pois"},
-    "black_bean_aphid": {"en": "black bean aphid", "nl": "zwarte bonenluis", "fr": "puceron noir de la fève"},
-    "bean_weevil": {"en": "bean weevil", "nl": "bonenkever", "fr": "bruche du haricot"},
-    "leaf_miner": {"en": "leaf miner", "nl": "bladmineerder", "fr": "mineuse"},
-    "nematodes": {"en": "nematodes", "nl": "aaltjes", "fr": "nématodes"},
-    "ants": {"en": "ants", "nl": "mieren", "fr": "fourmis"},
-    "colorado_beetle": {"en": "Colorado beetle", "nl": "coloradokever", "fr": "doryphore"},
-    "wireworm": {"en": "wireworm", "nl": "ritnaald", "fr": "taupin"},
-    "celery_fly": {"en": "celery fly", "nl": "selderijvlieg", "fr": "mouche du céleri"},
-    "asparagus_beetle": {"en": "asparagus beetle", "nl": "aspergekever", "fr": "criocère de l'asperge"},
-    "birds": {"en": "birds", "nl": "vogels", "fr": "oiseaux"},
-    "pigeons": {"en": "pigeons", "nl": "duiven", "fr": "pigeons"},
+    "aphids": {"en": "aphids", "nl": "bladluis", "fr": "pucerons", "de": "Blattläuse"},
+    "whitefly": {"en": "whitefly", "nl": "witte vlieg", "fr": "aleurodes", "de": "Weiße Fliege"},
+    "red_spider_mite": {"en": "red spider mite", "nl": "spint", "fr": "araignée rouge", "de": "Rote Spinne"},
+    "thrips": {"en": "thrips", "nl": "trips", "fr": "thrips", "de": "Thripse"},
+    "slugs": {"en": "slugs", "nl": "slakken", "fr": "limaces", "de": "Schnecken"},
+    "cabbage_white": {"en": "cabbage white", "nl": "koolwitje", "fr": "piéride du chou", "de": "Kohlweißling"},
+    "cabbage_root_fly": {"en": "cabbage root fly", "nl": "koolvlieg", "fr": "mouche du chou", "de": "Kohlfliege"},
+    "flea_beetle": {"en": "flea beetle", "nl": "aardvlo", "fr": "altise", "de": "Erdflöhe"},
+    "carrot_fly": {"en": "carrot fly", "nl": "wortelvlieg", "fr": "mouche de la carotte", "de": "Möhrenfliege"},
+    "onion_fly": {"en": "onion fly", "nl": "uienvlieg", "fr": "mouche de l'oignon", "de": "Zwiebelfliege"},
+    "leek_moth": {"en": "leek moth", "nl": "preimot", "fr": "teigne du poireau", "de": "Lauchmotte"},
+    "pea_moth": {"en": "pea moth", "nl": "erwtenbladroller", "fr": "tordeuse du pois", "de": "Erbsenwickler"},
+    "black_bean_aphid": {
+        "en": "black bean aphid",
+        "nl": "zwarte bonenluis",
+        "fr": "puceron noir de la fève",
+        "de": "Schwarze Bohnenlaus",
+    },
+    "bean_weevil": {"en": "bean weevil", "nl": "bonenkever", "fr": "bruche du haricot", "de": "Bohnenkäfer"},
+    "leaf_miner": {"en": "leaf miner", "nl": "bladmineerder", "fr": "mineuse", "de": "Minierfliege"},
+    "nematodes": {"en": "nematodes", "nl": "aaltjes", "fr": "nématodes", "de": "Nematoden"},
+    "ants": {"en": "ants", "nl": "mieren", "fr": "fourmis", "de": "Ameisen"},
+    "colorado_beetle": {"en": "Colorado beetle", "nl": "coloradokever", "fr": "doryphore", "de": "Kartoffelkäfer"},
+    "wireworm": {"en": "wireworm", "nl": "ritnaald", "fr": "taupin", "de": "Drahtwurm"},
+    "celery_fly": {"en": "celery fly", "nl": "selderijvlieg", "fr": "mouche du céleri", "de": "Selleriefliege"},
+    "asparagus_beetle": {
+        "en": "asparagus beetle",
+        "nl": "aspergekever",
+        "fr": "criocère de l'asperge",
+        "de": "Spargelhähnchen",
+    },
+    "birds": {"en": "birds", "nl": "vogels", "fr": "oiseaux", "de": "Vögel"},
+    "pigeons": {"en": "pigeons", "nl": "duiven", "fr": "pigeons", "de": "Tauben"},
 }
 
 
@@ -557,6 +715,17 @@ MESSAGES["fr"].update(
         "notify.water_leak": "Le compteur d'eau ({entity}) a compté {liters} L en {minutes} minutes alors que toutes les vannes de Hortulus étaient fermées. Une fuite, ou un robinet resté ouvert ?",
     }
 )
+MESSAGES["de"].update(
+    {
+        "notify.valve_title": "Hortulus – Bewässerungsventil",
+        "notify.valve_stuck": "{what} ({entity}) ist schon viel länger offen als jeder Bewässerungsdurchgang. Klemmt es oder wurde es von Hand geöffnet?",
+        "notify.valve_not_closed": "{what} ({entity}) hat nach dem Gießen nicht „geschlossen“ gemeldet. Bitte das Ventil prüfen.",
+        "notify.valve_did_not_open": "{what} ({entity}) hat während des Tests nicht „offen“ gemeldet. Bitte die Verbindung prüfen.",
+        "notify.valve_lost": "{what} ({entity}) hat während der Bewässerung durch Hortulus keinen Zustand mehr gemeldet; der Durchgang wurde daher beendet und die Pumpe gestoppt. Bitte Ventil und Verbindung prüfen.",
+        "notify.valve_closed_early": "{what} ({entity}) hat sich nach {minutes} Min. von selbst geschlossen, obwohl Hortulus noch gegossen hat. Hat das Ventil einen eigenen Timer? Diesen unter Einstellungen → Beete → Ventil-Timer eintragen, dann teilt Hortulus längere Durchgänge auf.",
+        "notify.water_leak": "Der Wasserzähler ({entity}) hat {liters} L in {minutes} Minuten gezählt, während alle Hortulus-Ventile geschlossen waren. Ein Leck oder ein offener Wasserhahn?",
+    }
+)
 
 # Seeds to buy -> a Home Assistant to-do list.
 MESSAGES["en"].update(
@@ -590,6 +759,17 @@ MESSAGES["fr"].update(
         "action.tomorrow": "Demain",
         "action.water_now": "Arroser maintenant",
         "action.close_valve": "Fermer la vanne",
+    }
+)
+MESSAGES["de"].update(
+    {
+        "seeds.todo_item_any": "Saatgut: {plant}",
+        "seeds.todo_amount": "Etwa {seeds} Samen.",
+        "seeds.todo_description": "Für den Hortulus-Plan {season}: {plants} Pflanzen.",
+        "action.done": "Erledigt",
+        "action.tomorrow": "Morgen",
+        "action.water_now": "Jetzt gießen",
+        "action.close_valve": "Ventil schließen",
     }
 )
 
@@ -650,6 +830,25 @@ MESSAGES["fr"].update(
         "desc.pest.leek_moth": "Couvrez les poireaux d'un filet anti-insectes fin pendant les vols ; coupez les feuilles atteintes avec les chenilles.",
         "desc.pest.aphids": "Écrasez les petites colonies, pulvérisez de l'eau ou du savon noir, et laissez coccinelles et syrphes faire leur travail.",
         "desc.pest.slugs": "Temps doux et humide : ramassez les limaces à la nuit tombée, posez des pièges à bière et protégez les semis.",
+    }
+)
+MESSAGES["de"].update(
+    {
+        "task.pest_net": "{plants} in {bed} gegen {pest} abdecken",
+        "task.pest_watch": "{plants} in {bed} auf {pest} absuchen",
+        "task.pest_collect": "{pest} von {plants} in {bed} absammeln",
+        "task.pest_slugs": "Abendliche Schneckenrunde in {bed} ({plants})",
+        "desc.pest_net": "{pest} ist unterwegs: ein Kulturschutznetz über die Kultur legen, bevor der Flug beginnt, die Ränder gut abdichten und es während der ganzen Flugzeit liegen lassen.",
+        "desc.pest_check": "{pest} ist unterwegs: unter den Blättern und an den Triebspitzen nachsehen; früh eingreifen, solange es nur wenige sind.",
+        "desc.pest_collect": "{pest} ist unterwegs: Käfer und Larven von Hand in Seifenwasser absammeln, auch unter den Blättern nachsehen.",
+        "desc.pest_trap": "{pest}: nach Einbruch der Dunkelheit mit der Taschenlampe absammeln, Bierfallen oder Bretter auslegen und Jungpflanzen schützen.",
+        "desc.pest.carrot_fly": "Die Möhrenfliege fliegt niedrig: ab der Aussaat mit feinem Kulturschutznetz (oder einer 60 cm hohen Barriere) abdecken, abends vereinzeln und den Boden danach andrücken.",
+        "desc.pest.cabbage_root_fly": "Die Kohlfliege legt ihre Eier am Stängel ab: Kragen um junge Kohlpflanzen legen oder sie mit Kulturschutznetz abdecken.",
+        "desc.pest.cabbage_white": "Kohlgewächse mit Schmetterlingsnetz (Maschenweite 5-7 mm) abdecken und wöchentlich unter den Blättern nach gelben Eiern sehen.",
+        "desc.pest.onion_fly": "Zwiebeln und Lauch mit feinem Kulturschutznetz abdecken; vergilbende, welkende Pflanzen samt Maden entfernen.",
+        "desc.pest.leek_moth": "Lauch während der Flugzeiten mit feinem Kulturschutznetz abdecken; befallene Blätter samt Raupen abschneiden.",
+        "desc.pest.aphids": "Kleine Kolonien zerdrücken, mit Wasser oder Schmierseifenlösung abspritzen und Marienkäfer und Schwebfliegen arbeiten lassen.",
+        "desc.pest.slugs": "Eine milde, feuchte Phase: Schnecken nach Einbruch der Dunkelheit absammeln, Bierfallen aufstellen und Sämlinge geschützt halten.",
     }
 )
 
@@ -717,5 +916,49 @@ MESSAGES["fr"].update(
         "summary.frost": "{n} nuits de gel (l'an dernier {then}).",
         "notify.month_title": "Hortulus – {month} dans votre jardin",
         "notify.solar_wait": "L'arrosage attend le surplus solaire ({watts} W maintenant, {needed} W nécessaires), au plus tard jusqu'à {latest}.",
+    }
+)
+MESSAGES["de"].update(
+    {
+        "alert.sensor_silent": "{entity} meldet sich seit {days} Tagen nicht: Batterie oder Verbindung prüfen oder die Verknüpfung in den Einstellungen lösen",
+        "alert.local_frost_ready": "Ihr Garten hat über {years} Jahre eigene Frostdaten gemessen (letzter Frost {last_frost}, erster Frost {first_frost}): diese statt der regionalen unter Wetter → Klimaverlauf verwenden",
+        "summary.same_temp": "So warm wie im Vorjahr (im Mittel {temp} °C).",
+        "summary.warmer": "{diff} °C wärmer als im Vorjahr (im Mittel {temp} °C).",
+        "summary.colder": "{diff} °C kälter als im Vorjahr (im Mittel {temp} °C).",
+        "summary.same_rain": "Etwa so viel Regen wie im Vorjahr ({mm} mm).",
+        "summary.wetter": "{pct} % nasser als im Vorjahr ({mm} mm).",
+        "summary.drier": "{pct} % trockener als im Vorjahr ({mm} mm).",
+        "summary.sunnier": "{pct} % mehr Sonnenschein als im Vorjahr.",
+        "summary.duller": "{pct} % weniger Sonnenschein als im Vorjahr.",
+        "summary.frost": "{n} Frostnächte (Vorjahr {then}).",
+        "notify.month_title": "Hortulus – der {month} in Ihrem Garten",
+        "notify.solar_wait": "Die Bewässerung wartet auf Solarüberschuss (jetzt {watts} W, {needed} W nötig) bis spätestens {latest}.",
+    }
+)
+
+
+# -- 2.1: rain water first, frost heating ------------------------------------------------- #
+MESSAGES["en"].update(
+    {
+        "notify.butt_empty_title": "Hortulus – rain water butt empty",
+        "notify.butt_empty": "The rain water butt is nearly empty ({pct} %) and mains water is switched off for watering, so today's run waits for rain.",
+    }
+)
+MESSAGES["nl"].update(
+    {
+        "notify.butt_empty_title": "Hortulus – regenton leeg",
+        "notify.butt_empty": "De regenton is bijna leeg ({pct} %) en leidingwater staat uit voor de bewatering: de beurt van vandaag wacht op regen.",
+    }
+)
+MESSAGES["fr"].update(
+    {
+        "notify.butt_empty_title": "Hortulus – récupérateur d'eau de pluie vide",
+        "notify.butt_empty": "Le récupérateur d'eau de pluie est presque vide ({pct} %) et l'eau du réseau est désactivée pour l'arrosage : l'arrosage du jour attend la pluie.",
+    }
+)
+MESSAGES["de"].update(
+    {
+        "notify.butt_empty_title": "Hortulus – Regentonne leer",
+        "notify.butt_empty": "Die Regentonne ist fast leer ({pct} %) und Leitungswasser ist für die Bewässerung ausgeschaltet: Die heutige Bewässerung wartet auf Regen.",
     }
 )

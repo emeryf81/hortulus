@@ -420,6 +420,8 @@ def plan_irrigation(
         else:
             plan.skipped[bed.id] = ("irrigation.skip.not_needed", {})
             continue
+        if override_mm is None:
+            mm *= water_factor(data.settings, bed)  # what this bed really takes up (learned)
         liters = round(mm * bed.area_m2, 1)
         minutes = liters / flow
         capped = minutes > cfg.max_runtime_min
@@ -583,7 +585,7 @@ See [ENTITY_REFERENCE](../en/ENTITY_REFERENCE.md). Storage schema 1.5 added `fea
 `water_balance`, `irrigation_log`, `settings.irrigation` and `settings.resources`
 (migration `_v1_4_to_1_5`); later minors are listed in 3.6 (current: 1.8).
 
-### 11.9 Release map 1.0 → 2.0.0
+### 11.9 Release map 1.0 → 2.1.0
 
 Where each release put its code (details per release in [`CHANGELOG.md`](../../CHANGELOG.md)).
 
@@ -602,6 +604,7 @@ Where each release put its code (details per release in [`CHANGELOG.md`](../../C
 | 1.8.0 | climate history and statistics (every temperature sensor, recorder and Open‑Meteo gap filling, months kept for good, measured frost dates), weather station sensors, four climate sensors; growth, water balance, disease and tasks follow the logged weather | `engine/climate.py`, `climate_history.py`, `components/climate-history.ts`, storage schema 1.8 |
 | 1.8.1 | review round: measured days stay measured, one task per weather episode, rain gauge and water meter units, reload and options fixes, greenhouse entities follow the zone type | `engine/climate.py`, `engine/weather_tasks.py`, `coordinator.py`, `entity.py`, `websocket_api.py` |
 | 2.0.0 | extras, all on and switchable in Settings → Extras: garden sayings, estimated soil temperature, water forecast per bed, silent‑sensor alert, season and month summary against last year, own frost dates in one click, weather station CSV import, solar‑aware watering, climate line on the card; release workflow | `engine/slogans.py`, `engine/climate.py`, `engine/waterbalance.py`, `controllers.py`, `card/hortulus-tasks-card.ts`, `.github/workflows/release.yml` |
+| 2.1.0 | battery as a start signal, rain water first with pump energy, frost heating with a weekly budget, self‑learning water factor per bed, harvest expectations from own years, photo diagnosis through an AI task, tasks copied into another calendar; WCAG 2.1 AA check and CI on the oldest supported Home Assistant | `engine/adaptive.py`, `engine/photo_diagnosis.py`, `engine/records.py`, `controllers.py`, `calendar_mirror.py`, `frontend/test-ui/a11y.mjs` |
 
 ---
 

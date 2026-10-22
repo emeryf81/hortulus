@@ -191,7 +191,7 @@ def test_every_dish_its_own_idea(db: PlantDatabase) -> None:
             assert item in cooking.PANTRY, item
             for key in keys:
                 where, *texts = x.PREP[key]
-                assert where in ("early", "mid", "during", "late") and len(texts) == 3 and all(texts), key
+                assert where in ("early", "mid", "during", "late") and len(texts) == 4 and all(texts), key
 
 
 def test_the_cooks_own_version(db: PlantDatabase) -> None:
@@ -275,7 +275,7 @@ def test_every_dish_reads_well_in_every_language(db: PlantDatabase) -> None:
         assert ids, tech.id
         assert all(item in cooking.PANTRY for item in tech.staples), tech.id
         assert tech.sides == () or all(side in cooking.SIDES for side in tech.sides), tech.id
-        for lang in ("en", "nl", "fr"):
+        for lang in ("en", "nl", "fr", "de"):
             assert len(cooking._STEPS[lang][tech.id]) == len(cooking._STEPS["en"][tech.id]) >= 3, (tech.id, lang)
             # a herb dish needs its herb; the others take a vegetable or fruit first
             pick = ids[:1]

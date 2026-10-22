@@ -42,6 +42,7 @@ import type {
   TransitionPreview,
   TransitionResult,
   UndoResult,
+  PhotoDiagnosis,
 } from "./types";
 import type { CropRow } from "./views/crops-view";
 
@@ -160,6 +161,10 @@ export class GardenApi {
     extra: { note?: string; photos?: string[]; days?: number; to?: string; cascade?: boolean; changes?: Record<string, unknown> } = {},
   ): Promise<{ next_task_id?: string | null; shifted?: string[]; warnings?: string[] }> {
     return this.call("tasks/action", { task_id: taskId, action, ...extra });
+  }
+
+  resetWaterFactor(bedId: string): Promise<{ ok: boolean }> {
+    return this.call("bed/reset_water_factor", { bed_id: bedId });
   }
 
   saveSettings(settings: Partial<Settings> | Record<string, unknown>): Promise<{ settings: Settings }> {
@@ -406,6 +411,13 @@ export class GardenApi {
 
   deleteRecord(kind: "harvest" | "journal" | "seed" | "expense", recordId: string): Promise<void> {
     return this.call("records/delete", { kind, record_id: recordId });
+  }
+
+  diagnosePhoto(photo: string, where: { planting_id?: string | null; bed_id?: string | null }): Promise<PhotoDiagnosis> {
+    const extra: Record<string, string> = {};
+    if (where.planting_id) extra.planting_id = where.planting_id;
+    if (where.bed_id) extra.bed_id = where.bed_id;
+    return this.call("photo/diagnose", { photo, ...extra });
   }
 
   saveJournal(entry: Partial<JournalEntry>): Promise<{ entry: JournalEntry }> {

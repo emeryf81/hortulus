@@ -305,7 +305,7 @@ await step("weather: climate history, periods against last year, every temperatu
   assert.equal(await history.locator("table tbody tr", { hasText: "sensor.greenhouse_temp" }).count(), 1);
   await history.locator("button[role=tab]", { hasText: "1 jaar" }).click();
   await page.waitForFunction(() => document.querySelector("hortulus-panel")?.shadowRoot?.querySelector("hl-weather-view")
-    ?.shadowRoot?.querySelector("hl-climate-history")?.shadowRoot?.querySelector("button[aria-pressed=true]")?.textContent?.includes("1 jaar"));
+    ?.shadowRoot?.querySelector("hl-climate-history")?.shadowRoot?.querySelector("button[aria-selected=true]")?.textContent?.includes("1 jaar"));
   assert.ok(await page.evaluate(() => window.__calls.some((c) => c.type.endsWith("/climate/stats"))));
 });
 

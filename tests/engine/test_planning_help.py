@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, timedelta
 
 from custom_components.garden_manager.engine import planning
 from custom_components.garden_manager.engine.models import PlantingStatus, SeedPacket, SowMethod
@@ -79,3 +79,39 @@ def test_season_report_compares_harvest_with_expectation(garden, db, make_planti
     assert crops["lettuce"]["kg"] == 9.0 and crops["lettuce"]["verdict"] in ("above", "as_expected")
     assert crops["bush_bean"]["verdict"] == "failed" and report["failed"][0]["notes"] == "slakken"
     assert report["problems"][0]["text"] == "bladluis op de bonen" and report["totals"]["failed"] == 1
+
+
+def test_own_years_blend_the_yield_and_move_the_harvest_start(garden, db, make_planting):
+    from custom_components.garden_manager.engine.models import HarvestEntry
+    from custom_components.garden_manager.engine.records import learned_details, learned_harvest_days, learned_yields
+
+    garden.layout_season = 2026
+    book = db.get("lettuce").yield_kg_m2
+    # last year: 1 m² of lettuce sown on 1 April, first harvest after 50 days, 6 kg in all
+    old = make_planting("lettuce", "bed_1", 2025, id="old", width_cm=100, length_cm=100,
+                        sown_on=date(2025, 4, 1), harvest_started_on=date(2025, 5, 21))  # fmt: skip
+    new = make_planting("lettuce", "bed_1", 2026, id="l", width_cm=100, length_cm=100, sow_date=date(2026, 4, 1))
+    garden.plantings = [old, new]
+    garden.harvest_log = [HarvestEntry("h", date(2025, 6, 1), "lettuce", 6.0, planting_id="old")]
+    assert learned_yields(garden) == {"lettuce": 6.0}
+    assert learned_yields(garden, db) == {"lettuce": round((6.0 + book) / 2, 2)}  # the book counts as one season
+    assert learned_harvest_days(garden) == {"lettuce": 50}
+    assert learned_details(garden)["lettuce"] == {"kg_m2": 6.0, "seasons": 1, "first_harvest_days": 50}
+
+    tl = _timelines(garden, db, 2026, date(2026, 3, 1))
+    fc = planning.harvest_forecast(garden, db, 2026, tl)
+    first = min(date.fromisoformat(w["week"]) for w in fc["weeks"] if w["by_plant"].get("lettuce"))
+    assert first <= date(2026, 5, 21) <= first + timedelta(days=6)  # the week of sowing + 50 days
+    assert "lettuce" in fc["learned"] and fc["learned_detail"]["lettuce"]["seasons"] == 1
+
+    # without a date of its own the planned sowing date counts
+    new.sow_date = None
+    tl = _timelines(garden, db, 2026, date(2026, 3, 1))
+    fc = planning.harvest_forecast(garden, db, 2026, tl)
+    first = min(date.fromisoformat(w["week"]) for w in fc["weeks"] if w["by_plant"].get("lettuce"))
+    learned_start = tl["l"].sow_date + timedelta(days=50)
+    assert abs((learned_start - tl["l"].harvest_start).days) <= planning.MAX_SHIFT_DAYS
+    assert first <= learned_start <= first + timedelta(days=6)
+
+    garden.settings.own_yields = False
+    assert learned_yields(garden, db) == {} and learned_harvest_days(garden) == {}

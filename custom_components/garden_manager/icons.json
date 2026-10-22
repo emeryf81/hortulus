@@ -74,6 +74,12 @@
       },
       "rain_water": {
         "default": "mdi:barrel-outline"
+      },
+      "pump_energy_year": {
+        "default": "mdi:pump"
+      },
+      "heater_energy_week": {
+        "default": "mdi:radiator"
       }
     },
     "binary_sensor": {

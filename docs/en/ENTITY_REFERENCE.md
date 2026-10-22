@@ -135,6 +135,14 @@ Settings → Water meter & rain butt (one reading per day is stored). Attributes
 Litres in the rain water butts now (butt level % × total capacity, both set in Settings →
 Water meter & rain butt). Watering task descriptions say how much of it to use first.
 
+
+### `sensor.hortulus_pump_energy_this_year` (2.1)
+kWh the watering pumps used this calendar year (device class energy, `total_increasing`), from the pump power set
+under *Irrigation hardware*. Attributes: `rain_water_liters`, `mains_water_liters` (watered this year by source).
+
+### `sensor.hortulus_greenhouse_heating_this_week` (2.1)
+kWh of the frost heaters this ISO week. Attributes per zone: `kwh`,
+`budget_left_kwh`.
 ### Climate history
 
 Four garden‑wide sensors summarise the climate history (outdoor days as logged by Hortulus
