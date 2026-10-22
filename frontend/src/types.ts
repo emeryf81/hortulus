@@ -699,6 +699,8 @@ export interface Settings {
   mirror_calendar?: string | null;
   mirror_days?: number;
   wall_layout?: WallBlock[] | null;
+  /** Everyone's own wall (2.2.1), by user id; null = the default wall. */
+  wall_layouts?: Record<string, WallBlock[] | null>;
 }
 
 export interface ForecastPoint {
@@ -1122,6 +1124,9 @@ export interface WallBlock { id: string; w: number }
 export interface WallData {
   layout: WallBlock[];
   custom: boolean;
+  /** Whose wall this is, and whether they may arrange it (a website visitor who only looks may not). */
+  user_id: string | null;
+  can_arrange: boolean;
   blocks: Record<string, number>;
   saying: string;
   fact: string;

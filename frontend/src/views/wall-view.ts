@@ -6,9 +6,10 @@
  * fact ... The gardener picks the blocks, drags them in order and sets their
  * width; everything fits on one screen. No menus; it dims at night.
  *
- * The layout is kept in the garden's settings (wall/layout), so every screen
- * shows the same wall. Arranging it is Dutch only for now: in other languages
- * the wall keeps its default blocks.
+ * Everyone arranges their own wall (wall/layout); it is kept in the garden's
+ * settings by user, so the same person sees the same wall on every screen.
+ * Arranging it is Dutch only for now: in other languages the wall keeps its
+ * default blocks.
  */
 import { LitElement, css, html, nothing, type TemplateResult } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
@@ -58,7 +59,6 @@ export class WallView extends LitElement {
   @property({ attribute: false }) plants = new Map<string, Plant>();
   @property({ attribute: false }) families: Record<string, FamilyInfo> = {};
   @property() lang = "en";
-  @property({ type: Boolean }) admin = false;
   @state() private now = new Date();
   @state() private data: WallData | null = null;
   @state() private editing = false;
@@ -184,19 +184,26 @@ export class WallView extends LitElement {
     }
   }
 
-  /** The blocks to show: the garden's own wall in Dutch, the default elsewhere. */
+  private get userId(): string | undefined {
+    return this.data?.user_id ?? this.hass?.user?.id;
+  }
+
+  /** The blocks to show: this person's own wall in Dutch, the default elsewhere. */
   private get layout(): WallBlock[] {
     if (this.draft) return this.draft;
     if (!this.dutch) return DEFAULT_LAYOUT;
-    // the snapshot follows every change (also from another screen); wall/data only until it has the field
-    const saved = this.snapshot.settings.wall_layout;
-    if (saved !== undefined) return saved ?? DEFAULT_LAYOUT;
-    return this.data?.layout ?? DEFAULT_LAYOUT;
+    // the snapshot follows every change (also from another screen of the same person)
+    const own = this.snapshot.settings.wall_layouts;
+    const uid = this.userId;
+    if (uid != null && own && uid in own) return own[uid] ?? DEFAULT_LAYOUT;
+    // not arranged yet: the garden's wall from 2.2.0, if there is one
+    return this.data?.layout ?? this.snapshot.settings.wall_layout ?? DEFAULT_LAYOUT;
   }
 
   /** Keep the snapshot and wall/data in step with what was saved, until the next snapshot arrives. */
   private remember(layout: WallBlock[] | null): void {
-    this.snapshot.settings.wall_layout = layout;
+    const uid = this.userId;
+    if (uid != null) this.snapshot.settings.wall_layouts = { ...this.snapshot.settings.wall_layouts, [uid]: layout };
     if (this.data) this.data = { ...this.data, layout: layout ?? DEFAULT_LAYOUT, custom: layout != null };
   }
 
@@ -433,7 +440,7 @@ export class WallView extends LitElement {
     const a = this.snapshot.analysis;
     const st = this.snapshot.irrigation_status;
     const blocks = this.layout;
-    const canArrange = this.dutch && this.admin && !!this.api;
+    const canArrange = this.dutch && !!this.data?.can_arrange && !!this.api;
     return html`
       <div class="bar">
         ${canArrange && !this.editing ? html`<button class="btn small ghost" @click=${() => this.startEditing()}>Aanpassen</button>` : nothing}

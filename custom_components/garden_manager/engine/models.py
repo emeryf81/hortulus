@@ -913,7 +913,10 @@ class GardenSettings:
     mirror_calendar: str | None = None  # calendar.* entity that receives the tasks
     mirror_days: int = 7
     # The wall screen's blocks in order, [{"id": "tasks", "w": 2}, ...]; None = the default wall.
+    # Since 2.2.1 everyone arranges their own wall (wall_layouts, by user id; None = the default wall);
+    # wall_layout is the garden's wall from 2.2.0, still shown to whoever has not arranged one.
     wall_layout: list[dict[str, Any]] | None = None
+    wall_layouts: dict[str, list[dict[str, Any]] | None] = field(default_factory=dict)
 
 
 @dataclass(slots=True)

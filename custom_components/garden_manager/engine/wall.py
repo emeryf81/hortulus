@@ -1,8 +1,8 @@
 """The wall screen's blocks and the bits of reading it can show.
 
-The wall screen (kiosk) is a grid of blocks the gardener arranges: which blocks, in which order,
-how wide. The layout lives in the garden's settings so a tablet in the kitchen and the panel show
-the same screen. The reading blocks (a weather saying, an organic gardening fact, a recipe tip)
+The wall screen (kiosk) is a grid of blocks everyone arranges for themselves: which blocks, in which
+order, how wide. The layouts live in the garden's settings by user, so the same person sees the same
+wall on the kitchen tablet and in the panel. The reading blocks (a weather saying, an organic gardening fact, a recipe tip)
 are Dutch only for now; in other languages the wall keeps its fixed default layout.
 """
 
@@ -42,6 +42,16 @@ MAX_BLOCKS = 24
 
 def default_layout() -> list[dict[str, Any]]:
     return [{"id": block, "w": width} for block, width in DEFAULT_LAYOUT]
+
+
+def layout_for(
+    layouts: Mapping[str, list[dict[str, Any]] | None], shared: list[dict[str, Any]] | None, user_id: str | None
+) -> tuple[list[dict[str, Any]], bool]:
+    """One person's wall and whether it is their own: their layout, else the garden's (2.2.0), else the default."""
+    if user_id is not None and user_id in layouts:
+        own = layouts[user_id]
+        return (default_layout(), False) if own is None else (own, True)
+    return (default_layout(), False) if shared is None else (shared, True)
 
 
 def clean_layout(raw: Any) -> list[dict[str, Any]] | None:

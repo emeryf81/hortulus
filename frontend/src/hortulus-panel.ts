@@ -587,7 +587,6 @@ export class HortulusPanel extends LitElement {
   render(): TemplateResult {
     if (this.tab === "wall" && this.snapshot && this.api) {
       return html`<hl-wall-view .snapshot=${this.snapshot} .hass=${this.hass} .api=${this.api} .t=${this.t} lang=${this.uiLang}
-          ?admin=${this.hass.user?.is_admin ?? true}
           .plants=${new Map(this.plants.map((p) => [p.id, p]))} .families=${this.families}
           @navigate=${(e: CustomEvent<Tab>) => this.navigate(e.detail)}
           @complete-task=${(e: CustomEvent<Task>) => this.completeTask(e.detail)}

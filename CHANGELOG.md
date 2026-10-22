@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.2.1 – 2026-10
+
+### Changed
+- **Everyone arranges their own wall screen.** Arranging the wall is no longer for administrators
+  only: every Home Assistant user (administrator or not) has their own wall, kept with the garden by
+  user (`settings.wall_layouts`) and shown on every screen they sign in on. Whoever has not arranged
+  a wall yet sees the one an administrator saved with 2.2.0, or the default wall. `wall/data` now
+  also returns `user_id` and `can_arrange`.
+
 ## 2.2.0 – 2026-10
 
 ### Added

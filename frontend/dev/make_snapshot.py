@@ -540,7 +540,8 @@ def _wall(data, db, analysis, lang: str) -> dict:
     c = _cooking(data, db, analysis, "nl")
     title, text = eco.month_tip(day.month, "nl")
     return {
-        "layout": wall.default_layout(), "custom": False, "blocks": dict(wall.BLOCKS),
+        "layout": wall.default_layout(), "custom": False, "user_id": "u", "can_arrange": True,
+        "blocks": dict(wall.BLOCKS),
         "saying": wall.saying(day), "fact": wall.fact(day), "eco_month": {"title": title, "text": text},
         "recipe": wall.recipe_tip(c["recipes"], day),
         "ready": [{"name": p["name"], "until": p.get("until")} for p in c["ready"]],

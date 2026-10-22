@@ -567,22 +567,25 @@ def op_reset_water_factor(runtime: GardenRuntime, bed_id: str) -> None:
     runtime.repo.async_changed("plan", bump_revision=False)
 
 
-def op_save_wall_layout(runtime: GardenRuntime, layout: Any) -> list[dict[str, Any]] | None:
-    """The wall screen's blocks, order and widths (None goes back to the default wall)."""
+def op_save_wall_layout(runtime: GardenRuntime, user_id: str, layout: Any) -> list[dict[str, Any]] | None:
+    """One person's wall screen: blocks, order and widths (None goes back to the default wall)."""
     from .engine.wall import clean_layout
 
     try:
-        runtime.repo.data.settings.wall_layout = clean_layout(layout)
+        cleaned = clean_layout(layout)
     except ValueError as err:
         raise _err("invalid_layout", reason=str(err)) from err
+    runtime.repo.data.settings.wall_layouts[user_id] = cleaned
     runtime.repo.async_changed("settings")
-    return runtime.repo.data.settings.wall_layout
+    return cleaned
 
 
 def op_save_settings(runtime: GardenRuntime, patch: Mapping[str, Any]) -> GardenSettings:
     repo = runtime.repo
     merged = _deep_merge(to_dict(repo.data.settings), patch)
-    merged["wall_layout"] = to_dict(repo.data.settings.wall_layout)  # changed through op_save_wall_layout only
+    # the walls are changed through op_save_wall_layout only
+    merged["wall_layout"] = to_dict(repo.data.settings.wall_layout)
+    merged["wall_layouts"] = to_dict(repo.data.settings.wall_layouts)
     # Mappings are edited key by key; an empty value removes the key.
     for key in ("assignment", "person_notify"):
         if isinstance(merged.get(key), dict):
