@@ -51,15 +51,29 @@ def test_every_month_has_sayings_and_the_texts_change_daily() -> None:
     assert wall.recipe_tip([], date(2026, 5, 1)) is None
 
 
-async def test_the_wall_is_arranged_and_kept_in_the_settings(hass: HomeAssistant, garden, hass_ws_client) -> None:
+def test_whose_wall_is_shown() -> None:
+    mine = [{"id": "saying", "w": 1}]
+    shared = [{"id": "radar", "w": 2}]
+    assert wall.layout_for({"u1": mine}, shared, "u1") == (mine, True)
+    assert wall.layout_for({"u1": mine}, shared, "u2") == (shared, True)  # the garden's wall from 2.2.0
+    assert wall.layout_for({"u1": None}, shared, "u1") == (wall.default_layout(), False)
+    assert wall.layout_for({}, None, "u1") == (wall.default_layout(), False)
+    assert wall.layout_for({"u1": mine}, None, None) == (wall.default_layout(), False)
+
+
+async def test_the_wall_is_arranged_and_kept_in_the_settings(
+    hass: HomeAssistant, garden, hass_ws_client, hass_admin_user
+) -> None:
     entry, _ = garden
     data = entry.runtime_data.repo.data
+    uid = hass_admin_user.id
     client = await hass_ws_client(hass)
     await client.send_json({"id": 1, "type": "garden_manager/wall/data"})
     msg = await _result(client)
     assert msg["success"], msg
     res = msg["result"]
     assert res["custom"] is False and res["layout"] == wall.default_layout()
+    assert res["user_id"] == uid and res["can_arrange"] is True
     assert res["saying"] and res["fact"] and res["eco_month"]["text"]
     assert set(res["blocks"]) == set(wall.BLOCKS)
 
@@ -68,14 +82,17 @@ async def test_the_wall_is_arranged_and_kept_in_the_settings(hass: HomeAssistant
     msg = await _result(client)
     assert msg["success"], msg
     assert msg["result"]["layout"] == [{"id": "saying", "w": 1}, {"id": "radar", "w": 2}]
-    assert data.settings.wall_layout == msg["result"]["layout"]
+    assert data.settings.wall_layouts[uid] == msg["result"]["layout"]
+    assert data.settings.wall_layout is None
 
-    # a settings save from the panel leaves the wall alone
+    # a settings save from the panel leaves the walls alone
     await client.send_json(
-        {"id": 3, "type": "garden_manager/settings/save", "settings": {"wall_layout": None, "mirror_days": 5}}
-    )
+        {"id": 3, "type": "garden_manager/settings/save",
+         "settings": {"wall_layout": [], "wall_layouts": {}, "mirror_days": 5}}
+    )  # fmt: skip
     assert (await _result(client))["success"]
-    assert data.settings.wall_layout == [{"id": "saying", "w": 1}, {"id": "radar", "w": 2}]
+    assert data.settings.wall_layouts[uid] == [{"id": "saying", "w": 1}, {"id": "radar", "w": 2}]
+    assert data.settings.wall_layout is None
 
     await client.send_json({"id": 4, "type": "garden_manager/wall/data"})
     assert (await _result(client))["result"]["custom"] is True
@@ -87,15 +104,32 @@ async def test_the_wall_is_arranged_and_kept_in_the_settings(hass: HomeAssistant
     assert res["layout"] == [] and res["custom"] is True
     await client.send_json({"id": 7, "type": "garden_manager/wall/layout", "layout": None})
     assert (await _result(client))["result"]["layout"] is None
-    assert data.settings.wall_layout is None
+    assert data.settings.wall_layouts[uid] is None
+    await client.send_json({"id": 8, "type": "garden_manager/wall/data"})
+    res = (await _result(client))["result"]
+    assert res["layout"] == wall.default_layout() and res["custom"] is False
 
 
-async def test_only_an_administrator_arranges_the_wall(
-    hass: HomeAssistant, garden, hass_ws_client, hass_read_only_access_token
+async def test_everyone_arranges_their_own_wall(
+    hass: HomeAssistant, garden, hass_ws_client, hass_admin_user, hass_read_only_user, hass_read_only_access_token
 ) -> None:
+    entry, _ = garden
+    data = entry.runtime_data.repo.data
+    data.settings.wall_layout = [{"id": "fact", "w": 2}]  # the garden's wall, arranged in 2.2.0
+    admin = await hass_ws_client(hass)
+    await admin.send_json({"id": 1, "type": "garden_manager/wall/layout", "layout": [{"id": "clock", "w": 4}]})
+    assert (await _result(admin))["success"]
+
     client = await hass_ws_client(hass, hass_read_only_access_token)
-    await client.send_json({"id": 1, "type": "garden_manager/wall/layout", "layout": [{"id": "clock", "w": 2}]})
+    await client.send_json({"id": 1, "type": "garden_manager/wall/data"})
+    res = (await _result(client))["result"]
+    assert res["layout"] == [{"id": "fact", "w": 2}] and res["can_arrange"] is True  # not the administrator's
+    await client.send_json({"id": 2, "type": "garden_manager/wall/layout", "layout": [{"id": "saying", "w": 1}]})
     msg = await _result(client)
-    assert not msg["success"] and msg["error"]["code"] == "unauthorized"
-    await client.send_json({"id": 2, "type": "garden_manager/wall/data"})
-    assert (await _result(client))["success"]  # reading the wall is for everyone
+    assert msg["success"], msg
+    assert data.settings.wall_layouts == {
+        hass_admin_user.id: [{"id": "clock", "w": 4}],
+        hass_read_only_user.id: [{"id": "saying", "w": 1}],
+    }
+    await admin.send_json({"id": 2, "type": "garden_manager/wall/data"})
+    assert (await _result(admin))["result"]["layout"] == [{"id": "clock", "w": 4}]

@@ -763,7 +763,7 @@ def ws_bed_reset_water_factor(
 @websocket_api.websocket_command({vol.Required("type"): f"{DOMAIN}/wall/data", vol.Optional("garden_id"): str})
 @callback
 def ws_wall_data(hass: HomeAssistant, connection: websocket_api.ActiveConnection, msg: dict[str, Any]) -> None:
-    """The wall's layout and its reading blocks for today (a saying, a fact, a recipe tip; Dutch)."""
+    """This person's wall and its reading blocks for today (a saying, a fact, a recipe tip; Dutch)."""
     from .engine import eco, wall
     from .engine.models import Hemisphere
 
@@ -776,11 +776,16 @@ def ws_wall_data(hass: HomeAssistant, connection: websocket_api.ActiveConnection
     ready = _ready_produce(runtime, "nl")
     prefs = cooking.Prefs.from_dict(data.cooking_prefs or {})
     title, text = eco.month_tip(today.month, "nl")
+    user_id = connection.user.id if connection.user else None
+    layout, custom = wall.layout_for(data.settings.wall_layouts, data.settings.wall_layout, user_id)
     connection.send_result(
         msg["id"],
         {
-            "layout": wall.default_layout() if data.settings.wall_layout is None else data.settings.wall_layout,
-            "custom": data.settings.wall_layout is not None,
+            "layout": layout,
+            "custom": custom,
+            "user_id": user_id,
+            # everyone arranges their own wall; a website visitor who may only look at the garden cannot save
+            "can_arrange": user_id is not None and getattr(connection.user, "can_save", True),
             "blocks": dict(wall.BLOCKS),
             "saying": wall.saying(today, south),
             "fact": wall.fact(today),
@@ -798,12 +803,16 @@ def ws_wall_data(hass: HomeAssistant, connection: websocket_api.ActiveConnection
         vol.Required("layout"): vol.Any(None, [dict]),
     }
 )
-@websocket_api.require_admin
 @callback
 def ws_wall_layout(hass: HomeAssistant, connection: websocket_api.ActiveConnection, msg: dict[str, Any]) -> None:
+    """Save the wall of whoever is asking: every user has their own, administrator or not."""
+    if not getattr(connection.user, "can_save", True):  # the website's look-only visitors
+        connection.send_error(msg["id"], "unauthorized", "read only")
+        return
     runtime = _require_runtime(hass, connection, msg)
     if runtime is not None:
-        _ws_op(connection, msg, lambda: {"layout": op_save_wall_layout(runtime, msg["layout"])})
+        user_id = connection.user.id
+        _ws_op(connection, msg, lambda: {"layout": op_save_wall_layout(runtime, user_id, msg["layout"])})
 
 
 # --------------------------------------------------------------------------- #

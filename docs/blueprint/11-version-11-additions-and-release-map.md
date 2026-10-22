@@ -585,7 +585,7 @@ See [ENTITY_REFERENCE](../en/ENTITY_REFERENCE.md). Storage schema 1.5 added `fea
 `water_balance`, `irrigation_log`, `settings.irrigation` and `settings.resources`
 (migration `_v1_4_to_1_5`); later minors are listed in 3.6 (current: 1.8).
 
-### 11.9 Release map 1.0 → 2.2.0
+### 11.9 Release map 1.0 → 2.2.1
 
 Where each release put its code (details per release in [`CHANGELOG.md`](../../CHANGELOG.md)).
 
@@ -606,6 +606,7 @@ Where each release put its code (details per release in [`CHANGELOG.md`](../../C
 | 2.0.0 | extras, all on and switchable in Settings → Extras: garden sayings, estimated soil temperature, water forecast per bed, silent‑sensor alert, season and month summary against last year, own frost dates in one click, weather station CSV import, solar‑aware watering, climate line on the card; release workflow | `engine/slogans.py`, `engine/climate.py`, `engine/waterbalance.py`, `controllers.py`, `card/hortulus-tasks-card.ts`, `.github/workflows/release.yml` |
 | 2.1.0 | battery as a start signal, rain water first with pump energy, frost heating with a weekly budget, self‑learning water factor per bed, harvest expectations from own years, photo diagnosis through an AI task, tasks copied into another calendar; WCAG 2.1 AA check and CI on the oldest supported Home Assistant | `engine/adaptive.py`, `engine/photo_diagnosis.py`, `engine/records.py`, `controllers.py`, `calendar_mirror.py`, `frontend/test-ui/a11y.mjs` |
 | 2.2.0 | the wall screen as a grid of blocks the gardener arranges (drag, width, 18 blocks incl. rain radar, agenda, weather saying, recipe tip, organic fact; Dutch for now), kept in `settings.wall_layout` | `engine/wall.py`, `frontend/src/views/wall-view.ts`, `websocket_api.py` (`wall/data`, `wall/layout`) |
+| 2.2.1 | everyone arranges their own wall, kept by user in `settings.wall_layouts` (the 2.2.0 `wall_layout` stays as the starting wall); `wall/layout` no longer admin-only | `engine/wall.py` (`layout_for`), `operations.py`, `websocket_api.py`, `frontend/src/views/wall-view.ts` |
 
 ---
 
