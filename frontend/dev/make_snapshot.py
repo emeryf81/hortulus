@@ -459,6 +459,7 @@ def build(lang: str) -> dict:
         },
         "supplies": {**catalog(lang), "shopping": [i.to_dict() for i in shopping_list(data, db, analysis, lang)]},
         "cooking": _cooking(data, db, analysis, lang),
+        "wall": _wall(data, db, analysis, lang),
         "climate": _climate_stats(data, readings),
     }
     return {
@@ -529,6 +530,21 @@ def _climate_stats(data, readings) -> dict:
         preset_first=anchors.first_frost,
         sensors=sensors,
     )
+
+
+def _wall(data, db, analysis, lang: str) -> dict:
+    """What wall/data returns: the default layout and today's reading blocks (Dutch)."""
+    from custom_components.garden_manager.engine import eco, wall
+
+    day = date(2026, 8, 12)
+    c = _cooking(data, db, analysis, "nl")
+    title, text = eco.month_tip(day.month, "nl")
+    return {
+        "layout": wall.default_layout(), "custom": False, "blocks": dict(wall.BLOCKS),
+        "saying": wall.saying(day), "fact": wall.fact(day), "eco_month": {"title": title, "text": text},
+        "recipe": wall.recipe_tip(c["recipes"], day),
+        "ready": [{"name": p["name"], "until": p.get("until")} for p in c["ready"]],
+    }  # fmt: skip
 
 
 def _cooking(data, db, analysis, lang: str) -> dict:

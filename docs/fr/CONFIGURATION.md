@@ -204,7 +204,10 @@ avec un premier plan), dessiner le vôtre ou lire d'abord le manuel.
 ### Écran mural
 Une vue kiosque calme et en grand format pour une tablette (`/hortulus/wall`, ou *Aujourd'hui →
 Écran mural*) : l'heure, la météo, les tâches du jour avec de grosses cases à cocher, l'humidité
-des planches et les alertes. Pas de menus ; l'écran s'assombrit la nuit.
+des planches et les alertes. Pas de menus ; l'écran s'assombrit la nuit. En néerlandais,
+*Aanpassen* permet à un administrateur de choisir les blocs (prévisions, radar de pluie, agenda,
+dicton météo, idée de recette, fait sur le jardinage bio, le jardin en chiffres…), de les glisser
+dans l'ordre et d'en régler la largeur ; tout tient sur un seul écran.
 
 ### Plan du jardin
 Le plan du jardin fixe la forme du jardin pour **une saison**, sans plantes, en trois étapes :

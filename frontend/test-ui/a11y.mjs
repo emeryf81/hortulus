@@ -13,7 +13,7 @@ import { chromium } from "playwright";
 const ROOT = normalize(join(fileURLToPath(new URL(".", import.meta.url)), "..", ".."));
 const TYPES = { ".html": "text/html", ".js": "text/javascript", ".mjs": "text/javascript", ".json": "application/json", ".svg": "image/svg+xml" };
 const AXE = await readFile(createRequire(import.meta.url).resolve("axe-core/axe.min.js"), "utf8");
-const TABS = ["dashboard", "planner", "layout", "crops", "calendar", "weather", "analysis", "journal", "cooking", "advice", "library", "handbook", "print", "settings"];
+const TABS = ["wall", "dashboard", "planner", "layout", "crops", "calendar", "weather", "analysis", "journal", "cooking", "advice", "library", "handbook", "print", "settings"];
 const FAIL_ON = new Set(["serious", "critical"]);
 
 const server = createServer(async (req, res) => {
@@ -38,8 +38,9 @@ for (const [lang, dark] of [["nl", false], ["en", true]]) {
   for (const tab of TABS) {
     await page.goto(`${base}?tab=${tab}&lang=${lang}${dark ? "&dark=1" : ""}`);
     await page.locator("hortulus-panel").waitFor();
-    // the tab's view has rendered (not just "loading"), as in smoke.mjs
-    await page.waitForFunction(() => {
+    // the tab's view has rendered (not just "loading"), as in smoke.mjs; the wall screen has no menu or <main>
+    if (tab === "wall") await page.locator("hl-wall-view .block").first().waitFor();
+    else await page.waitForFunction(() => {
       const deep = (node) => [...(node.shadowRoot ? node.shadowRoot.childNodes : []), ...node.childNodes]
         .map((n) => (n.nodeType === 3 ? n.textContent : n.nodeType === 1 && !["STYLE", "SCRIPT"].includes(n.tagName) ? deep(n) : "")).join(" ");
       const view = document.querySelector("hortulus-panel")?.shadowRoot?.querySelector("main")?.firstElementChild;

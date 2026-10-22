@@ -210,7 +210,9 @@ optionally a greenhouse, with a first plan), draw your own or read the handbook 
 ### Wall screen
 A calm, large kiosk view for a tablet (`/hortulus/wall`, or *Today → Wall screen*): the
 time, the weather, today's tasks with big tick boxes, the beds' moisture and alerts. No
-menus; it dims at night.
+menus; it dims at night. In Dutch, *Aanpassen* lets an administrator choose the blocks (forecast,
+rain radar, agenda, weather saying, recipe tip, organic gardening fact, garden in numbers and more),
+drag them in order and set their width; everything stays on one screen.
 
 ### Garden plan
 The garden plan fixes the shape of the garden for **one season**, without plants, in three

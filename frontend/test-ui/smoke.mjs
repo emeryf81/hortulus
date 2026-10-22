@@ -392,6 +392,39 @@ await step("wall screen: clock and big tick-boxes, back to Today", async () => {
   await page.locator("hl-dashboard-view").waitFor();
 });
 
+await step("wall screen (Dutch): arrange blocks, add a saying and a recipe tip, save", async () => {
+  await page.setViewportSize({ width: 1400, height: 2200 }); // all blocks in view while dragging
+  await page.goto(`${base}?tab=wall&lang=nl`);
+  await page.locator("hl-wall-view .clock").waitFor();
+  const wall = page.locator("hl-wall-view");
+  await wall.getByRole("button", { name: "Aanpassen" }).click();
+  await wall.locator(".add").waitFor();
+  await wall.getByRole("button", { name: /Weerspreuk/ }).click();
+  await wall.getByRole("button", { name: /Recepttip/ }).click();
+  await wall.getByRole("button", { name: /Buienradar/ }).click();
+  const blocks = () => wall.locator(".block").evaluateAll((els) => els.map((e) => e.getAttribute("aria-label")));
+  assert.deepEqual((await blocks()).slice(-3), ["Weerspreuk", "Recepttip", "Buienradar"]);
+  // drag the saying to the front, make the recipe wider, remove the radar
+  const saying = wall.locator(".block", { hasText: "Weerspreuk" }).first();
+  await saying.dragTo(wall.locator(".block").first());
+  assert.equal((await blocks())[0], "Weerspreuk", "dragged to the front");
+  const recipe = wall.locator(".block", { has: page.locator(".tools .name", { hasText: "Recepttip" }) });
+  await recipe.getByRole("button", { name: "Breder" }).click();
+  assert.match(await recipe.getAttribute("class"), /\bw3\b/);
+  await wall.locator(".block", { has: page.locator(".tools .name", { hasText: "Buienradar" }) }).getByRole("button", { name: "Verwijderen" }).click();
+  await wall.locator(".bar").getByRole("button", { name: "Klaar", exact: true }).click();
+  await wall.locator(".add").waitFor({ state: "detached" });
+  const sent = await page.evaluate(() => window.__calls.filter((c) => c.type.endsWith("wall/layout")).at(-1));
+  assert.equal(sent.layout[0].id, "saying");
+  assert.ok(sent.layout.some((b) => b.id === "recipe" && b.w === 3) && !sent.layout.some((b) => b.id === "radar"));
+  assert.match(await wall.locator(".quote").first().innerText(), /\S/, "the saying shows");
+  await page.setViewportSize({ width: 1400, height: 1000 });
+  // other languages keep the default wall, without arranging
+  await page.goto(`${base}?tab=wall&lang=en`);
+  await page.locator("hl-wall-view .clock").waitFor();
+  assert.equal(await page.locator("hl-wall-view").getByRole("button", { name: "Aanpassen" }).count(), 0);
+});
+
 await step("crops on a phone: one card per crop", async () => {
   await page.setViewportSize({ width: 400, height: 860 });
   await open("crops");

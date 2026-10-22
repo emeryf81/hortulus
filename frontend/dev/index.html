@@ -94,6 +94,8 @@
         if (type === "supplies") return x.supplies;
         if (type === "records/overview") return x.records;
         if (type === "climate/stats") return x.climate;
+        if (type === "wall/data") return x.wall;
+        if (type === "wall/layout") { x.wall = { ...x.wall, layout: msg.layout ?? x.wall.layout, custom: msg.layout != null }; return { layout: msg.layout }; }
         if (type.startsWith("cooking/")) {
           const c = x.cooking;
           const find = (spec) => c.recipes.find((r) => r.technique === spec.technique) ?? c.recipes[0];

@@ -1125,6 +1125,9 @@
     },
     "cookbook_full": {
       "message": "The cookbook is full ({max} recipes). Remove a few first."
+    },
+    "invalid_layout": {
+      "message": "The wall layout is not valid: {reason}"
     }
   }
 }

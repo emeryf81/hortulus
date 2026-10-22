@@ -1125,6 +1125,9 @@
     },
     "cookbook_full": {
       "message": "Het kookboek is vol ({max} recepten). Verwijder er eerst een paar."
+    },
+    "invalid_layout": {
+      "message": "De indeling van het wandscherm is niet geldig: {reason}"
     }
   }
 }

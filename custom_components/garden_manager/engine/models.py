@@ -912,6 +912,8 @@ class GardenSettings:
     ai_task_entity: str | None = None  # ai_task.* entity; None = Home Assistant's preferred one
     mirror_calendar: str | None = None  # calendar.* entity that receives the tasks
     mirror_days: int = 7
+    # The wall screen's blocks in order, [{"id": "tasks", "w": 2}, ...]; None = the default wall.
+    wall_layout: list[dict[str, Any]] | None = None
 
 
 @dataclass(slots=True)

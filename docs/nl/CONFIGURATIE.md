@@ -214,6 +214,14 @@ Een rustige, grote kioskweergave voor een tablet (`/hortulus/wall`, of *Vandaag 
 Wandscherm*): de tijd, het weer, de taken van vandaag met grote vinkjes, het vocht van de
 bedden en de meldingen. Zonder menu's; 's nachts dimt het scherm.
 
+Met **Aanpassen** (rechtsboven, voor beheerders) stel je het wandscherm zelf samen: kies uit achttien
+blokken (klok, weer nu, weersverwachting, buienradar, taken van vandaag, agenda, bodemvocht,
+bewatering, oogstklaar, zaaien en planten, plagen, je tuin in cijfers, zon, weerspreuk, weetje over
+biologisch tuinieren, biologische tip van de maand, recepttip en tuinspreuk), sleep ze in de juiste
+volgorde (of gebruik ◀ ▶) en maak ze smaller of breder (− +). De tekst schaalt mee met elk blok, zodat
+alles op één scherm past. *Standaard* zet het oorspronkelijke wandscherm terug. Het samenstellen kan
+voorlopig alleen in het Nederlands; in andere talen toont het wandscherm de vaste blokken.
+
 ### Tuinplan
 Het tuinplan legt de vorm van de tuin vast voor **één seizoen**, zonder planten, in drie
 stappen: **Terrein** (elementen: huis, oprit, straat, parking, carport, terras, vlonder, muur,

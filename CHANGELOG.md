@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.2.0 – 2026-10
+
+### Added
+- **Arrange the wall screen yourself** (Dutch for now). *Aanpassen* on the wall screen turns every
+  block into a tile you drag into place (or move with ◀ ▶), make narrower or wider (− +) or remove.
+  Eighteen blocks to choose from: clock, weather now, forecast, rain radar, today's tasks, the
+  agenda for the coming week, soil moisture, watering, ready to harvest, sowing and planting this
+  week, pests, your garden in numbers, sunrise and sunset, a weather saying, an organic gardening
+  fact, the organic tip of the month, a recipe tip with what the garden gives now and a garden
+  saying. Text scales with each block, so the whole wall stays on one screen. The layout is kept
+  with the garden (new `wall/data` and `wall/layout` commands, administrators only for saving); in
+  other languages the wall keeps its default blocks.
+
 ## 2.1.0 – 2026-10
 
 ### Added

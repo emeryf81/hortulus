@@ -6,7 +6,7 @@
 > **Hortulus** (`garden_manager`) is a Home Assistant custom integration plus a sidebar
 > panel for planning and running a vegetable garden. This blueprint is the single
 > technical reference: architecture, data model, algorithms, APIs, UI and tests. It describes
-> **integration version 2.1.0** (storage schema 1.8). All code excerpts are copied verbatim
+> **integration version 2.2.0** (storage schema 1.8). All code excerpts are copied verbatim
 > from the repository; follow the file links for the full implementation.
 > Nederlandstalige gebruikersdocumentatie staat in [`docs/nl`](nl/).
 
@@ -87,7 +87,7 @@ greenhouse/                                  ← repository (brand: Hortulus)
 ├── blueprints/automation/hortulus/          ← HA automation blueprints: frost_flash_light, button_log_harvest, water_when_dry, urgent_task_announce
 ├── custom_components/garden_manager/
 │   ├── __init__.py          setup/unload per config entry (= per garden), GardenRuntime, daily rollover, digest / reminder / irrigation schedules
-│   ├── manifest.json        domain, version 2.1.0, deps (http, frontend, panel_custom, websocket_api, persistent_notification, image_upload)
+│   ├── manifest.json        domain, version 2.2.0, deps (http, frontend, panel_custom, websocket_api, persistent_notification, image_upload)
 │   ├── const.py             constants, events, service names
 │   ├── config_flow.py       guided setup (region → weather → areas+sensors → notifications → summary) + options; a second entry = a second garden
 │   ├── options.py           options ⇄ stored settings
@@ -1556,7 +1556,7 @@ See [ENTITY_REFERENCE](en/ENTITY_REFERENCE.md). Storage schema 1.5 added `featur
 `water_balance`, `irrigation_log`, `settings.irrigation` and `settings.resources`
 (migration `_v1_4_to_1_5`); later minors are listed in 3.6 (current: 1.8).
 
-### 11.9 Release map 1.0 → 2.1.0
+### 11.9 Release map 1.0 → 2.2.0
 
 Where each release put its code (details per release in [`CHANGELOG.md`](../CHANGELOG.md)).
 
@@ -1576,3 +1576,4 @@ Where each release put its code (details per release in [`CHANGELOG.md`](../CHAN
 | 1.8.1 | review round: measured days stay measured, one task per weather episode, rain gauge and water meter units, reload and options fixes, greenhouse entities follow the zone type | `engine/climate.py`, `engine/weather_tasks.py`, `coordinator.py`, `entity.py`, `websocket_api.py` |
 | 2.0.0 | extras, all on and switchable in Settings → Extras: garden sayings, estimated soil temperature, water forecast per bed, silent‑sensor alert, season and month summary against last year, own frost dates in one click, weather station CSV import, solar‑aware watering, climate line on the card; release workflow | `engine/slogans.py`, `engine/climate.py`, `engine/waterbalance.py`, `controllers.py`, `card/hortulus-tasks-card.ts`, `.github/workflows/release.yml` |
 | 2.1.0 | battery as a start signal, rain water first with pump energy, frost heating with a weekly budget, self‑learning water factor per bed, harvest expectations from own years, photo diagnosis through an AI task, tasks copied into another calendar; WCAG 2.1 AA check and CI on the oldest supported Home Assistant | `engine/adaptive.py`, `engine/photo_diagnosis.py`, `engine/records.py`, `controllers.py`, `calendar_mirror.py`, `frontend/test-ui/a11y.mjs` |
+| 2.2.0 | the wall screen as a grid of blocks the gardener arranges (drag, width, 18 blocks incl. rain radar, agenda, weather saying, recipe tip, organic fact; Dutch for now), kept in `settings.wall_layout` | `engine/wall.py`, `frontend/src/views/wall-view.ts`, `websocket_api.py` (`wall/data`, `wall/layout`) |

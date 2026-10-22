@@ -68,6 +68,7 @@ from .operations import (
     op_save_seed,
     op_save_settings,
     op_save_soil_test,
+    op_save_wall_layout,
     op_starter_garden,
     op_undo,
     op_update_planting,
@@ -151,6 +152,8 @@ def async_setup_websocket(hass: HomeAssistant) -> None:
         ws_climate_import_csv,
         ws_climate_apply_local_frost,
         ws_photo_diagnose,
+        ws_wall_data,
+        ws_wall_layout,
         ws_cooking_suggest,
         ws_cooking_render,
         ws_cookbook_save,
@@ -752,6 +755,55 @@ def ws_bed_reset_water_factor(
         connection.send_error(msg["id"], "unknown_bed", str(err))
         return
     connection.send_result(msg["id"], {"ok": True})
+
+
+# --------------------------------------------------------------------------- #
+# Wall screen
+# --------------------------------------------------------------------------- #
+@websocket_api.websocket_command({vol.Required("type"): f"{DOMAIN}/wall/data", vol.Optional("garden_id"): str})
+@callback
+def ws_wall_data(hass: HomeAssistant, connection: websocket_api.ActiveConnection, msg: dict[str, Any]) -> None:
+    """The wall's layout and its reading blocks for today (a saying, a fact, a recipe tip; Dutch)."""
+    from .engine import eco, wall
+    from .engine.models import Hemisphere
+
+    runtime = _require_runtime(hass, connection, msg)
+    if runtime is None:
+        return
+    data, db = runtime.repo.data, runtime.repo.db
+    today = dt_util.now().date()
+    south = resolve_profile(data.settings.region).hemisphere is Hemisphere.SOUTH
+    ready = _ready_produce(runtime, "nl")
+    prefs = cooking.Prefs.from_dict(data.cooking_prefs or {})
+    title, text = eco.month_tip(today.month, "nl")
+    connection.send_result(
+        msg["id"],
+        {
+            "layout": data.settings.wall_layout or wall.default_layout(),
+            "custom": data.settings.wall_layout is not None,
+            "blocks": dict(wall.BLOCKS),
+            "saying": wall.saying(today, south),
+            "fact": wall.fact(today),
+            "eco_month": {"title": title, "text": text},
+            "recipe": wall.recipe_tip(cooking.suggest(ready, db, prefs, "nl", 6) if ready else [], today),
+            "ready": [{"name": p["name"], "until": p.get("until")} for p in ready],
+        },
+    )
+
+
+@websocket_api.websocket_command(
+    {
+        vol.Required("type"): f"{DOMAIN}/wall/layout",
+        vol.Optional("garden_id"): str,
+        vol.Required("layout"): vol.Any(None, [dict]),
+    }
+)
+@websocket_api.require_admin
+@callback
+def ws_wall_layout(hass: HomeAssistant, connection: websocket_api.ActiveConnection, msg: dict[str, Any]) -> None:
+    runtime = _require_runtime(hass, connection, msg)
+    if runtime is not None:
+        _ws_op(connection, msg, lambda: {"layout": op_save_wall_layout(runtime, msg["layout"])})
 
 
 # --------------------------------------------------------------------------- #
